@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/githack-GooseTrack-app/static/css/main.7acaea2f.css",
+    "main.js": "/githack-GooseTrack-app/static/js/main.f075f5d9.js",
+    "index.html": "/githack-GooseTrack-app/index.html",
+    "main.7acaea2f.css.map": "/githack-GooseTrack-app/static/css/main.7acaea2f.css.map",
+    "main.f075f5d9.js.map": "/githack-GooseTrack-app/static/js/main.f075f5d9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.f075f5d9.js"
+  ]
+}
