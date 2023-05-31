@@ -2,7 +2,7 @@
   "name": "githack-GooseTrack",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://a-pinchuk.github.io/githack-GooseTrack-app/",
+  "homepage": "https://githack-goose-track-app.vercel.app/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
