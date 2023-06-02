@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from 'redux/auth/operations';
-import { fetchTasks, addTask, deleteTask, updateTask } from './operations.js';
+import {
+  fetchTasks,
+  addTask,
+  deleteTask,
+  updateTask,
+  changeTasksCategory,
+} from './operations.js';
 
 const pending = state => {
   state.isLoading = true;
@@ -25,10 +31,12 @@ export const tasksSlice = createSlice({
       .addCase(addTask.pending, pending)
       .addCase(deleteTask.pending, pending)
       .addCase(updateTask.pending, pending)
+      .addCase(changeTasksCategory.pending, pending)
       .addCase(fetchTasks.rejected, rejected)
       .addCase(addTask.rejected, rejected)
       .addCase(deleteTask.rejected, rejected)
       .addCase(updateTask.rejected, rejected)
+      .addCase(changeTasksCategory.rejected, rejected)
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -59,6 +67,14 @@ export const tasksSlice = createSlice({
         state.tasks = [];
         state.error = null;
         state.isLoading = false;
+      })
+      .addCase(changeTasksCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.tasks.findIndex(
+          task => task.id === action.payload.id
+        );
+        state.tasks[index] = action.payload;
       });
   },
 });
