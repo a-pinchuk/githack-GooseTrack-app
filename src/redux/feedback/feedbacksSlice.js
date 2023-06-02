@@ -41,13 +41,13 @@ export const feedbacksSlice = createSlice({
       })
       .addCase(addFeedback.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.feedbacks.push(action.payload);
+        state.feedbacks.data.push(action.payload);
       })
       .addCase(deleteFeedback.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.feedbacks.id === action.payload.id;
-        state.feedbacks.splice(index, 1);
+        state.feedbacks.data.splice(index, 1);
       })
       .addCase(updateFeedback.fulfilled, (state, action) => {
         state.isLoading = false;

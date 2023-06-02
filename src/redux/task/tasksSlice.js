@@ -53,15 +53,13 @@ export const tasksSlice = createSlice({
       .addCase(addTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.tasks.push(action.payload);
+        state.tasks.data.push(action.payload);
       })
       .addCase(deleteTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.tasks.findIndex(
-          task => task.id === action.payload.id
-        );
-        state.tasks.splice(index, 1);
+        const index = state.tasks.id === action.payload.id;
+        state.tasks.data.splice(index, 1);
       })
       .addCase(updateTasks.fulfilled, (state, action) => {
         state.isLoading = false;

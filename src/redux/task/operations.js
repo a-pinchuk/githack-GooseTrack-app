@@ -27,10 +27,11 @@ export const fetchTasksById = createAsyncThunk(
 
 export const addTasks = createAsyncThunk(
   'tasks/addTasks',
-  async ({ title, start, end, priority, category }, thunkAPI) => {
+  async ({ title, date, start, end, priority, category }, thunkAPI) => {
     try {
       const response = await axios.post('/tasks', {
         title,
+        date,
         start,
         end,
         priority,
