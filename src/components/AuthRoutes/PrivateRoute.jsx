@@ -1,3 +1,4 @@
+import { useAuth } from 'hooks/useAuth';
 import { Navigate, Outlet } from 'react-router-dom';
 // import { useAuth } from '../../hooks/useAuth';
 
@@ -7,10 +8,10 @@ import { Navigate, Outlet } from 'react-router-dom';
  */
 
 export const PrivateRoute = () => {
-  const token = true;
+  const { isLoggedIn } = useAuth();
   console.log('Private route');
 
-  return token ? (
+  return isLoggedIn ? (
     <>
       <Outlet />
     </>
