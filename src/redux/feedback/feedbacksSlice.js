@@ -41,7 +41,6 @@ export const feedbacksSlice = createSlice({
       })
       .addCase(addFeedback.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
         state.feedbacks.push(action.payload);
       })
       .addCase(deleteFeedback.fulfilled, (state, action) => {

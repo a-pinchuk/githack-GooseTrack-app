@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logOut } from 'redux/auth/operations';
+import { logOut } from '../auth/operations';
 import {
   fetchTasks,
-  addTask,
-  deleteTask,
-  updateTask,
+  addTasks,
+  deleteTasks,
+  updateTasks,
   changeTasksCategory,
 } from './operations.js';
 
@@ -28,26 +28,26 @@ export const tasksSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchTasks.pending, pending)
-      .addCase(addTask.pending, pending)
-      .addCase(deleteTask.pending, pending)
-      .addCase(updateTask.pending, pending)
+      .addCase(addTasks.pending, pending)
+      .addCase(deleteTasks.pending, pending)
+      .addCase(updateTasks.pending, pending)
       .addCase(changeTasksCategory.pending, pending)
       .addCase(fetchTasks.rejected, rejected)
-      .addCase(addTask.rejected, rejected)
-      .addCase(deleteTask.rejected, rejected)
-      .addCase(updateTask.rejected, rejected)
+      .addCase(addTasks.rejected, rejected)
+      .addCase(deleteTasks.rejected, rejected)
+      .addCase(updateTasks.rejected, rejected)
       .addCase(changeTasksCategory.rejected, rejected)
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.tasks = action.payload;
       })
-      .addCase(addTask.fulfilled, (state, action) => {
+      .addCase(addTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.tasks.push(action.payload);
       })
-      .addCase(deleteTask.fulfilled, (state, action) => {
+      .addCase(deleteTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.tasks.findIndex(
@@ -55,7 +55,7 @@ export const tasksSlice = createSlice({
         );
         state.tasks.splice(index, 1);
       })
-      .addCase(updateTask.fulfilled, (state, action) => {
+      .addCase(updateTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.tasks.findIndex(

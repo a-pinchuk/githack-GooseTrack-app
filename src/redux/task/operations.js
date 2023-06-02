@@ -7,8 +7,8 @@ export const fetchTasks = createAsyncThunk(
     try {
       const response = await axios.get('/tasks');
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -25,8 +25,8 @@ export const addTasks = createAsyncThunk(
         category,
       });
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -37,8 +37,8 @@ export const deleteTasks = createAsyncThunk(
     try {
       const response = await axios.delete(`/tasks/${id}`);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -54,21 +54,21 @@ export const updateTasks = createAsyncThunk(
         priority,
       });
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 export const changeTasksCategory = createAsyncThunk(
-  'tasks/updateTasks',
+  'tasks/changeTasksCategory',
   async ({ id, category }, thunkAPI) => {
     try {
       const response = await axios.patch(`/tasks/${id}/category`, {
         category,
       });
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
