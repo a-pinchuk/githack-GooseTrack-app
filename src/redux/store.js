@@ -9,10 +9,14 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import { persistedAuthSlice } from '../redux/auth/authSlice';
+import { tasksSlice } from './task/tasksSlice';
+import { feedbacksSlice } from './feedback/feedbacksSlice';
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthSlice,
+    tasks: tasksSlice.reducer,
+    feedback: feedbacksSlice.reducer,
   },
 
   middleware(getDefaultMiddleware) {
