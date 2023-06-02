@@ -46,17 +46,13 @@ export const feedbacksSlice = createSlice({
       .addCase(deleteFeedback.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.feedbacks.findIndex(
-          feedback => feedback.id === action.payload.id
-        );
+        const index = state.feedbacks.id === action.payload.id;
         state.feedbacks.splice(index, 1);
       })
       .addCase(updateFeedback.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.feedbacks.findIndex(
-          feedback => feedback.id === action.payload.id
-        );
+        const index = state.feedbacks.id === action.payload.id;
         state.feedbacks[index] = action.payload;
       })
       .addCase(logOut.fulfilled, state => {
