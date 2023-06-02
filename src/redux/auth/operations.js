@@ -75,6 +75,24 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+export const updateUserInfo = createAsyncThunk(
+  '/users/user',
+  async ({ name, email, phone, skype, birthday }, thunkAPI) => {
+    try {
+      const response = await axios.patch('/users/user', {
+        name,
+        email,
+        phone,
+        skype,
+        birthday,
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const updateAvatar = createAsyncThunk(
   '/users/avatars',
   async (id, { avatarUrl }, thunkAPI) => {

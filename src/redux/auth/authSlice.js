@@ -7,12 +7,20 @@ import {
   logOut,
   refreshUser,
   updateAvatar,
+  updateUserInfo,
 } from './operations';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: '', email: '', avatarUrl: '' },
+    user: {
+      name: '',
+      email: '',
+      avatarUrl: '',
+      phone: '',
+      skype: '',
+      birthday: '',
+    },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -28,13 +36,18 @@ const authSlice = createSlice({
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.id = action.payload.id;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: '', email: '', avatarUrl: '' };
-        state.id = null;
+        state.user = {
+          name: '',
+          email: '',
+          avatarUrl: '',
+          phone: '',
+          skype: '',
+          birthday: '',
+        };
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -51,6 +64,9 @@ const authSlice = createSlice({
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
         state.user.avatarUrl = action.payload.avatarUrl;
+      })
+      .addCase(updateUserInfo.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
   },
 });
