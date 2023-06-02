@@ -12,11 +12,11 @@ import { theme } from '../src/theme';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <BrowserRouter basename="/githack-GooseTrack-app">
-          <App />
-        </BrowserRouter>
-      </Provider>
+      {/* <Provider store={store}> */}
+      <BrowserRouter basename="/githack-GooseTrack-app">
+        <App />
+      </BrowserRouter>
+      {/* </Provider> */}
     </ThemeProvider>
   </React.StrictMode>
 );
