@@ -15,17 +15,17 @@ return(
 	<TaskContainer>
 		<TaskItem>
 		<ColumnHeadBar title="To do"/>
-		<ColumnTasksList/>
+		<ColumnTasksList toolbarData={["In progres", "Done"]}/>
 		<AddTasksBth/>
 		</TaskItem>
 		<TaskItem>
 		<ColumnHeadBar title="In progress"/>
-		<ColumnTasksList/>
+		<ColumnTasksList toolbarData={["Done", "To do"]}/>
 		<AddTasksBth/>
 		</TaskItem>
 		<TaskItem>
 		<ColumnHeadBar title="Done"/>
-		<ColumnTasksList/>
+		<ColumnTasksList toolbarData={["To do", "In progress"]}/>
 		<AddTasksBth/>
 		</TaskItem>
 	</TaskContainer>

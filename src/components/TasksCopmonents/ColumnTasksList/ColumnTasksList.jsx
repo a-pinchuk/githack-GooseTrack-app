@@ -3,8 +3,9 @@ import {AvatorTaskList, BoxIconBth, IconBthArrow, IconBthPencil, IconBthTrash, T
 import { useState } from "react"
 // import {ReactComponent as Arrow} from '../../../images/TasksSvg/arrow-right.svg';
 
-export const ColumnTasksList = () => {
+export const ColumnTasksList = ({toolbarData}) => {
 	const [isVisible, setIsVisible] = useState(false);
+	console.log(toolbarData);
 
 		
 	return(
@@ -22,12 +23,13 @@ export const ColumnTasksList = () => {
 					<IconBthTrash/>
 					{isVisible && <Tooltip>
 						<ul style={{listStyle:'none', margin:"0", padding:'0'}}>
-							<TooltipButtonItem>
-								<TooltipButton>In progress<IconBthArrow style={{margin:'0'}}/></TooltipButton>
-							</TooltipButtonItem>
-							<TooltipButtonItem>
-							<TooltipButton>Done<IconBthArrow style={{margin:'0'}}/></TooltipButton>
-							</TooltipButtonItem>
+						<TooltipButtonItem>
+									<TooltipButton>{toolbarData[0]}<IconBthArrow style={{margin:'0'}}/></TooltipButton>
+								</TooltipButtonItem>
+								<TooltipButtonItem>
+								<TooltipButton>{toolbarData[1]}<IconBthArrow style={{margin:'0'}}/></TooltipButton>
+								</TooltipButtonItem>
+					
 						</ul>
 					</Tooltip >}
 				</BoxIconBth>
