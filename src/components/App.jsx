@@ -5,6 +5,7 @@ import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 
 import MainPage from 'pages/MainPage/MainPage';
+import { CalendarPage } from './CalendarPage/CalendarPage';
 
 const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -27,7 +28,7 @@ export const App = () => {
             element={<Navigate to="/calendar/month/:currentDate" replace />}
           />
           <Route path="account" element={<Layout />} />
-          <Route path="calendar" element={<Layout />}>
+          <Route path="calendar" element={<CalendarPage />}>
             <Route
               index
               element={<Navigate to="/calendar/month/:currentDate" replace />}
