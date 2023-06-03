@@ -4,17 +4,22 @@ import { lazy, Suspense } from 'react';
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 
+import MainPage from 'pages/MainPage/MainPage';
+
 const Layout = lazy(() => import('../components/Layout/Layout'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 
 export const App = () => {
   return (
     <Suspense>
       <Routes>
         <Route path="/" element={<PublicRoute />}>
-          <Route index element={<Navigate to="/home" />} />
-          <Route path="home" element={<Layout />} />
-          <Route path="register" element={<Layout />} />
-          <Route path="login" element={<Layout />} />
+          {/* <Route index element={<Navigate to="home" />} /> */}
+          <Route index element={<MainPage />} />
+          {/* <Route path="home" element={<MainPage />} /> */}
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
         </Route>
         <Route path="/" element={<PrivateRoute />}>
           <Route
