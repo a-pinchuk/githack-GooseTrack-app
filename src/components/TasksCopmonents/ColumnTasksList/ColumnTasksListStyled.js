@@ -35,7 +35,7 @@ export const IconBthArrow = styled(Arrow)`
 cursor: pointer;
 width: 16px;
 height: 16px;
-stroke: ${({active}) => active ? `${theme.colors.secondary}` : `${theme.colors.black}`};
+stroke: ${({isactive}) => isactive ? `${theme.colors.secondary}` : `${theme.colors.black}`};
 transition: stroke 250ms linear;
 margin-right: 10px;
 
