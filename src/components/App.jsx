@@ -1,5 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import AccountPage from '../pages/AccountPage';
 
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
@@ -21,7 +22,7 @@ export const App = () => {
             index
             element={<Navigate to="/calendar/month/:currentDate" replace />}
           />
-          <Route path="account" element={<Layout />} />
+          <Route path="account" element={<AccountPage />} />
           <Route path="calendar" element={<Layout />}>
             <Route
               index
