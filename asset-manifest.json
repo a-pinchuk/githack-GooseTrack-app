@@ -1,15 +1,19 @@
 {
   "files": {
     "main.css": "/githack-GooseTrack-app/static/css/main.2011cead.css",
-    "main.js": "/githack-GooseTrack-app/static/js/main.2ea2431a.js",
-    "static/js/242.3a1fdfcf.chunk.js": "/githack-GooseTrack-app/static/js/242.3a1fdfcf.chunk.js",
+    "main.js": "/githack-GooseTrack-app/static/js/main.a8ae6583.js",
+    "static/js/390.0b9cd61c.chunk.js": "/githack-GooseTrack-app/static/js/390.0b9cd61c.chunk.js",
+    "static/js/671.e10fb4d4.chunk.js": "/githack-GooseTrack-app/static/js/671.e10fb4d4.chunk.js",
+    "static/js/601.d6e6691e.chunk.js": "/githack-GooseTrack-app/static/js/601.d6e6691e.chunk.js",
     "index.html": "/githack-GooseTrack-app/index.html",
     "main.2011cead.css.map": "/githack-GooseTrack-app/static/css/main.2011cead.css.map",
-    "main.2ea2431a.js.map": "/githack-GooseTrack-app/static/js/main.2ea2431a.js.map",
-    "242.3a1fdfcf.chunk.js.map": "/githack-GooseTrack-app/static/js/242.3a1fdfcf.chunk.js.map"
+    "main.a8ae6583.js.map": "/githack-GooseTrack-app/static/js/main.a8ae6583.js.map",
+    "390.0b9cd61c.chunk.js.map": "/githack-GooseTrack-app/static/js/390.0b9cd61c.chunk.js.map",
+    "671.e10fb4d4.chunk.js.map": "/githack-GooseTrack-app/static/js/671.e10fb4d4.chunk.js.map",
+    "601.d6e6691e.chunk.js.map": "/githack-GooseTrack-app/static/js/601.d6e6691e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2011cead.css",
-    "static/js/main.2ea2431a.js"
+    "static/js/main.a8ae6583.js"
   ]
 }
