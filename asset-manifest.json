@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/githack-GooseTrack-app/static/css/main.2011cead.css",
-    "main.js": "/githack-GooseTrack-app/static/js/main.a8ae6583.js",
-    "static/js/390.0b9cd61c.chunk.js": "/githack-GooseTrack-app/static/js/390.0b9cd61c.chunk.js",
-    "static/js/671.e10fb4d4.chunk.js": "/githack-GooseTrack-app/static/js/671.e10fb4d4.chunk.js",
-    "static/js/601.d6e6691e.chunk.js": "/githack-GooseTrack-app/static/js/601.d6e6691e.chunk.js",
+    "main.css": "/githack-GooseTrack-app/static/css/main.596becf4.css",
+    "main.js": "/githack-GooseTrack-app/static/js/main.238088b1.js",
+    "static/js/390.d94a296d.chunk.js": "/githack-GooseTrack-app/static/js/390.d94a296d.chunk.js",
+    "static/js/671.c4f777a1.chunk.js": "/githack-GooseTrack-app/static/js/671.c4f777a1.chunk.js",
+    "static/js/601.1e632942.chunk.js": "/githack-GooseTrack-app/static/js/601.1e632942.chunk.js",
     "index.html": "/githack-GooseTrack-app/index.html",
-    "main.2011cead.css.map": "/githack-GooseTrack-app/static/css/main.2011cead.css.map",
-    "main.a8ae6583.js.map": "/githack-GooseTrack-app/static/js/main.a8ae6583.js.map",
-    "390.0b9cd61c.chunk.js.map": "/githack-GooseTrack-app/static/js/390.0b9cd61c.chunk.js.map",
-    "671.e10fb4d4.chunk.js.map": "/githack-GooseTrack-app/static/js/671.e10fb4d4.chunk.js.map",
-    "601.d6e6691e.chunk.js.map": "/githack-GooseTrack-app/static/js/601.d6e6691e.chunk.js.map"
+    "main.596becf4.css.map": "/githack-GooseTrack-app/static/css/main.596becf4.css.map",
+    "main.238088b1.js.map": "/githack-GooseTrack-app/static/js/main.238088b1.js.map",
+    "390.d94a296d.chunk.js.map": "/githack-GooseTrack-app/static/js/390.d94a296d.chunk.js.map",
+    "671.c4f777a1.chunk.js.map": "/githack-GooseTrack-app/static/js/671.c4f777a1.chunk.js.map",
+    "601.1e632942.chunk.js.map": "/githack-GooseTrack-app/static/js/601.1e632942.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2011cead.css",
-    "static/js/main.a8ae6583.js"
+    "static/css/main.596becf4.css",
+    "static/js/main.238088b1.js"
   ]
 }
