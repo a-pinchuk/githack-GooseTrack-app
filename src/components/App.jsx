@@ -10,10 +10,12 @@ import UserForm from './UserForm/UserForm';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
+// import { ChoosedDay } from './ChoosedDay/ChoosedDay';
 
 const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ export const App = () => {
               element={<Navigate to="/calendar/month/:currentDate" replace />}
             />
             <Route path="month/:currentDate" element={<Layout />} />
-            <Route path="day/:currentDay" element={<Layout />} />
+            <Route path="day/:currentDay" element={<ChoosedDay />} />
           </Route>
         </Route>
       </Routes>
