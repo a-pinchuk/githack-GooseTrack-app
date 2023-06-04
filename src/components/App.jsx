@@ -22,28 +22,22 @@ export const App = () => {
     <>
       <button onClick={toggleModal}>Open Modal</button>
       {isModalOpen && <TaskModal toggleModal={toggleModal}></TaskModal>}
-    <Suspense>
-      <Routes>
-        <Route path="/" element={<PublicRoute />}>
-          {/* <Route index element={<Navigate to="home" />} /> */}
-          <Route index element={<MainPage />} />
-          {/* <Route path="home" element={<MainPage />} /> */}
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="login" element={<LoginPage />} />
-        </Route>
-        <Routes path="/" element={<PrivateRoute />}>
-          <Route
-            index
-            element={<Navigate to="/calendar/month/:currentDate" replace />}
-          />
-          <Route path="account" element={<Layout />} />
-          <Route path="calendar" element={<CalendarPage />}>
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<PublicRoute />}>
+            {/* <Route index element={<Navigate to="home" />} /> */}
+            <Route index element={<MainPage />} />
+            {/* <Route path="home" element={<MainPage />} /> */}
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<LoginPage />} />
+          </Route>
+          <Route path="/" element={<PrivateRoute />}>
             <Route
               index
               element={<Navigate to="/calendar/month/:currentDate" replace />}
             />
             <Route path="account" element={<Layout />} />
-            <Route path="calendar" element={<Layout />}>
+            <Route path="calendar" element={<CalendarPage />}>
               <Route
                 index
                 element={<Navigate to="/calendar/month/:currentDate" replace />}
