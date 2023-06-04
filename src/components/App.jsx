@@ -10,7 +10,7 @@ import UserForm from './UserForm/UserForm';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
-import { ChoosedMonth } from './ChoosedMonth/ChoosedMonth';
+const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
