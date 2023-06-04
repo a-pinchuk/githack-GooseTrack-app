@@ -50,6 +50,11 @@ export const EditButton = styled.button`
   line-height: 18px;
 `;
 
+export const CancelButton = styled(EditButton)`
+  background: #efefef;
+  color: #111111;
+`;
+
 export const RadioButtonsInput = styled.input`
   margin-right: 8px;
 `;

@@ -20,6 +20,7 @@ export const App = () => {
   };
   return (
     <>
+      {/* open modal button here is to make tests */}
       <button onClick={toggleModal}>Open Modal</button>
       {isModalOpen && <TaskModal toggleModal={toggleModal}></TaskModal>}
       <Suspense>

@@ -14,6 +14,10 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalContainer = styled.div`
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
   background-color: white;
   /* padding: 20px; */
   border-radius: 4px;
