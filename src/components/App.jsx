@@ -3,7 +3,6 @@ import { lazy, Suspense } from 'react';
 
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
-
 import MainPage from 'pages/MainPage/MainPage';
 
 const Layout = lazy(() => import('../components/Layout/Layout'));
@@ -26,14 +25,14 @@ export const App = () => {
             index
             element={<Navigate to="/calendar/month/:currentDate" replace />}
           />
-          <Route path="account" element={<Layout />} />
-          <Route path="calendar" element={<Layout />}>
-            <Route
-              index
-              element={<Navigate to="/calendar/month/:currentDate" replace />}
-            />
-            <Route path="month/:currentDate" element={<Layout />} />
-            <Route path="day/:currentDay" element={<Layout />} />
+            <Route path="account" element={<Layout />} />
+            <Route path="calendar" element={<Layout />}>
+              <Route
+                index
+                element={<Navigate to="/calendar/month/:currentDate" replace />}
+              />
+              <Route path="month/:currentDate" element={<Layout />} />
+              <Route path="day/:currentDay" element={<Layout />} />
           </Route>
         </Route>
       </Routes>
