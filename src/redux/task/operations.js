@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchTasks = createAsyncThunk(
-  'tasks/fetchAll',
+export const fetchAllTasks = createAsyncThunk(
+  'tasks/fetchAllTasks',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/tasks');
@@ -13,8 +13,8 @@ export const fetchTasks = createAsyncThunk(
   }
 );
 
-export const fetchTasksById = createAsyncThunk(
-  'tasks/fetchTasksById',
+export const fetchTaskById = createAsyncThunk(
+  'tasks/fetchTaskById',
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`/tasks/${id}`);
@@ -25,8 +25,8 @@ export const fetchTasksById = createAsyncThunk(
   }
 );
 
-export const addTasks = createAsyncThunk(
-  'tasks/addTasks',
+export const addTask = createAsyncThunk(
+  'tasks/addTask',
   async ({ title, date, start, end, priority, category }, thunkAPI) => {
     try {
       const response = await axios.post('/tasks', {
@@ -44,8 +44,8 @@ export const addTasks = createAsyncThunk(
   }
 );
 
-export const deleteTasks = createAsyncThunk(
-  'tasks/deleteTasks',
+export const deleteTask = createAsyncThunk(
+  'tasks/deleteTask',
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`/tasks/${id}`);
@@ -56,8 +56,8 @@ export const deleteTasks = createAsyncThunk(
   }
 );
 
-export const updateTasks = createAsyncThunk(
-  'tasks/updateTasks',
+export const updateTask = createAsyncThunk(
+  'tasks/updateTask',
   async ({ id, title, date, start, end, priority, category }, thunkAPI) => {
     try {
       const response = await axios.put(`/tasks/${id}`, {
@@ -74,8 +74,8 @@ export const updateTasks = createAsyncThunk(
     }
   }
 );
-export const changeTasksCategory = createAsyncThunk(
-  'tasks/changeTasksCategory',
+export const changeTaskCategory = createAsyncThunk(
+  'tasks/changeTaskCategory',
   async ({ id, category }, thunkAPI) => {
     try {
       const response = await axios.patch(`/tasks/${id}/category`, {

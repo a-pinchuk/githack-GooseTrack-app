@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
@@ -7,6 +7,10 @@ import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 import MainPage from 'pages/MainPage/MainPage';
 import TaskModal from './TaskModal/TaskModal';
 import { CalendarPage } from './CalendarPage/CalendarPage';
+import UserForm from './UserForm/UserForm';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
+import { refreshUser } from 'redux/auth/operations';
 
 const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -18,7 +22,14 @@ export const App = () => {
   const toggleModal = () => {
     setIsModalOpen(prevState => !prevState);
   };
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  return isRefreshing ? (
+    <h2>Loading...</h2>
+  ) : (
     <>
       {/* open modal button here is to make tests */}
       <button onClick={toggleModal}>Open Modal</button>
@@ -37,7 +48,7 @@ export const App = () => {
               index
               element={<Navigate to="/calendar/month/:currentDate" replace />}
             />
-            <Route path="account" element={<Layout />} />
+            <Route path="account" element={<UserForm />} />
             <Route path="calendar" element={<CalendarPage />}>
               <Route
                 index

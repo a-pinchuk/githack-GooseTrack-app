@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from 'redux/auth/operations';
 import {
-  fetchFeedbacks,
+  fetchALLFeedbacks,
   addFeedback,
   deleteFeedback,
   updateFeedback,
@@ -26,15 +26,15 @@ export const feedbacksSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(fetchFeedbacks.pending, pending)
+      .addCase(fetchALLFeedbacks.pending, pending)
       .addCase(addFeedback.pending, pending)
       .addCase(deleteFeedback.pending, pending)
       .addCase(updateFeedback.pending, pending)
-      .addCase(fetchFeedbacks.rejected, rejected)
+      .addCase(fetchALLFeedbacks.rejected, rejected)
       .addCase(addFeedback.rejected, rejected)
       .addCase(deleteFeedback.rejected, rejected)
       .addCase(updateFeedback.rejected, rejected)
-      .addCase(fetchFeedbacks.fulfilled, (state, action) => {
+      .addCase(fetchALLFeedbacks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.feedbacks = action.payload;
