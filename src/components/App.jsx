@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
@@ -7,13 +7,23 @@ import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 import MainPage from 'pages/MainPage/MainPage';
 import { CalendarPage } from './CalendarPage/CalendarPage';
 import UserForm from './UserForm/UserForm';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
+import { refreshUser } from 'redux/auth/operations';
 
 const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  return isRefreshing ? (
+    <h2>Loading...</h2>
+  ) : (
     <Suspense>
       <Routes>
         <Route path="/" element={<PublicRoute />}>
