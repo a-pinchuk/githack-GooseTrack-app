@@ -187,11 +187,12 @@ const ExampleForm = () => {
       phone: '',
       skype: '',
     },
-    validateSchema: schema,
-    onSubmit: (values, { resetForm }) => {
+    validationSchema: schema,
+    onSubmit: (values, actions) => {
+      console.log(actions);
       console.log(values);
       alert('The Form was submitted');
-      resetForm();
+      // resetForm();
     },
   });
   return (
