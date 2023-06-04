@@ -38,6 +38,7 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/users/login', { email, password });
       setAuthHeader(res.data.token);
       Notify.success(`Welcome!!!`);
+      console.log(res.data.email);
       return res.data;
     } catch (error) {
       Notify.failure(`Bad request`);
@@ -77,34 +78,24 @@ export const refreshUser = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   '/users/user',
-  async ({ name, email, phone, skype, birthday }, thunkAPI) => {
+  async ({ avatarUrl, name, email, phone, skype, birthday }, thunkAPI) => {
     try {
-      const response = await axios.patch('/users/user', {
-        name,
-        email,
-        phone,
-        skype,
-        birthday,
+      const formData = new FormData();
+      formData.append('avatar', avatarUrl);
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phone', phone);
+      formData.append('skype', skype);
+      formData.append('birthday', birthday);
+
+      const response = await axios.patch(`/users/user/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-export const updateAvatar = createAsyncThunk(
-  '/users/avatars',
-  async (id, { avatarUrl }, thunkAPI) => {
-    try {
-      const formData = new FormData();
-      formData.append('avatar', id, { avatarUrl });
-      const res = await axios.patch('/users/avatars', formData);
-      Notify.success(`Avatar updated successfully!`);
-      return res.data;
-    } catch (error) {
-      Notify.failure(`Failed to update avatar`);
-      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
