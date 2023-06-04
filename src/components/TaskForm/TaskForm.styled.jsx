@@ -55,11 +55,47 @@ export const CancelButton = styled(EditButton)`
   color: #111111;
 `;
 
+export const RadioContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const RadioButtonsInput = styled.input`
-  margin-right: 8px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 `;
 
 export const RadioButtonsLabel = styled.label`
-  display: flex;
-  align-items: center;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+`;
+
+export const RadioButtonCustom = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: #fff;
+
+  /* Define different colors for each radio button */
+  ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
+    background-color: #72c2f8;
+    border-color: #2196f3;
+    border: 1.3px solid rgba(114, 194, 248, 0.5);
+  }
+
+  ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
+    background-color: #4caf50;
+    border-color: #4caf50;
+  }
+
+  ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
+    background-color: #f44336;
+    border-color: #f44336;
+  }
 `;

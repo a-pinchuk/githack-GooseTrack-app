@@ -6,9 +6,11 @@ import {
   Label,
   RadioButtonsInput,
   RadioButtonsLabel,
+  RadioButtonCustom,
   CancelButton,
+  RadioContainer,
 } from './TaskForm.styled';
-import { addTasks, updateTasks } from 'redux/task/operations';
+import { addTasks, updateTask } from 'redux/task/operations';
 import { ReactComponent as EditPen } from '../../images/editPen.svg';
 import { ReactComponent as AddIcon } from '../../images/addIcon.svg';
 
@@ -54,7 +56,7 @@ export const TaskForm = ({ initialData, toggleModal }) => {
       // must be replaced with if(initialData.id)
       if (true) {
         // Task is being updated
-        await updateTasks({ id: initialData.id, ...taskData });
+        await updateTask({ id: initialData.id, ...taskData });
         // Update task in the collection
         // ...
       } else {
@@ -121,36 +123,45 @@ export const TaskForm = ({ initialData, toggleModal }) => {
           gap: '16px',
         }}
       >
-        <RadioButtonsLabel>
-          <RadioButtonsInput
-            type="radio"
-            value="low"
-            name="priority"
-            checked={checkboxValue === 'low'}
-            onChange={handleChange}
-          />
-          Low
-        </RadioButtonsLabel>
-        <RadioButtonsLabel>
-          <RadioButtonsInput
-            type="radio"
-            value="medium"
-            name="priority"
-            checked={checkboxValue === 'medium'}
-            onChange={handleChange}
-          />
-          Medium
-        </RadioButtonsLabel>
-        <RadioButtonsLabel>
-          <RadioButtonsInput
-            type="radio"
-            value="high"
-            name="priority"
-            checked={checkboxValue === 'high'}
-            onChange={handleChange}
-          />
-          High
-        </RadioButtonsLabel>
+        <RadioContainer>
+          <RadioButtonsLabel>
+            <RadioButtonsInput
+              type="radio"
+              value="low"
+              name="priority"
+              checked={checkboxValue === 'low'}
+              onChange={handleChange}
+            />
+            <RadioButtonCustom />
+            Low
+          </RadioButtonsLabel>
+        </RadioContainer>
+        <RadioContainer>
+          <RadioButtonsLabel>
+            <RadioButtonsInput
+              type="radio"
+              value="medium"
+              name="priority"
+              checked={checkboxValue === 'medium'}
+              onChange={handleChange}
+            />
+            <RadioButtonCustom />
+            Medium
+          </RadioButtonsLabel>
+        </RadioContainer>
+        <RadioContainer>
+          <RadioButtonsLabel>
+            <RadioButtonsInput
+              type="radio"
+              value="high"
+              name="priority"
+              checked={checkboxValue === 'high'}
+              onChange={handleChange}
+            />
+            <RadioButtonCustom />
+            High
+          </RadioButtonsLabel>
+        </RadioContainer>
       </div>
       {/* must be replaced with initialData.id */}
       {false ? (
