@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { Box, Button, TextField, Typography } from '@mui/material';
@@ -29,17 +28,6 @@ const UserForm = () => {
       dispatch(updateUserInfo(updatedValues));
     },
   });
-
-  //   useEffect(() => {
-  //     formik.setValues({
-  //       avatar: user.avatar || null,
-  //       name: user.name || '',
-  //       email: user.email || '',
-  //       phone: user.phone || '',
-  //       skype: user.skype || '',
-  //       birthday: user.birthday || '',
-  //     });
-  //   }, [user, formik]);
 
   return (
     <Box
