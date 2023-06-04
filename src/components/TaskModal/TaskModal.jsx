@@ -1,11 +1,9 @@
 import { Modal } from 'components/Modal/Modal';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Outlet } from 'react-router-dom';
 
-const TaskModal = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(true);
+const TaskModal = initialData => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -15,16 +13,15 @@ const TaskModal = () => {
     setIsModalOpen(false);
   };
 
-  return ReactDOM.createPortal(
-    <div>
+  return (
+    <>
       <button onClick={openModal}>Open Modal</button>
-      {/* {isModalOpen && (
+      {isModalOpen && (
         <Modal onClose={closeModal}>
-          <TaskForm></TaskForm>
+          <TaskForm onClose={closeModal} initialData={initialData}></TaskForm>
         </Modal>
-      )} */}
-    </div>,
-    document.getElementById('modal-root')
+      )}
+    </>
   );
 };
 

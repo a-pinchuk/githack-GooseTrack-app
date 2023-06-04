@@ -9,7 +9,7 @@ import {
 } from './TaskForm.styled';
 import { updateTasks } from 'redux/task/operations';
 
-export const TaskForm = ({ children, onClick }) => {
+export const TaskForm = ({ children }, onClose) => {
   const [checkboxValue, setCheckboxValue] = useState('low');
   const [startTimeValue, setStartTimeValue] = useState('09:00');
   const [endTimeValue, setEndTimeValue] = useState('15:00');
