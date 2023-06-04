@@ -77,14 +77,20 @@ export const refreshUser = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   '/users/user',
-  async ({ name, email, phone, skype, birthday }, thunkAPI) => {
+  async ({ avatar, name, email, phone, skype, birthday }, thunkAPI) => {
     try {
-      const response = await axios.patch('/users/user', {
-        name,
-        email,
-        phone,
-        skype,
-        birthday,
+      const formData = new FormData();
+      formData.append('avatar', avatar);
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phone', phone);
+      formData.append('skype', skype);
+      formData.append('birthday', birthday);
+
+      const response = await axios.patch(`/users/user/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
       return response.data;
     } catch (e) {
@@ -93,18 +99,18 @@ export const updateUserInfo = createAsyncThunk(
   }
 );
 
-export const updateAvatar = createAsyncThunk(
-  '/users/avatars',
-  async (id, { avatarUrl }, thunkAPI) => {
-    try {
-      const formData = new FormData();
-      formData.append('avatar', id, { avatarUrl });
-      const res = await axios.patch('/users/avatars', formData);
-      Notify.success(`Avatar updated successfully!`);
-      return res.data;
-    } catch (error) {
-      Notify.failure(`Failed to update avatar`);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const updateAvatar = createAsyncThunk(
+//   '/users/avatars',
+//   async (id, { avatarUrl }, thunkAPI) => {
+//     try {
+//       const formData = new FormData();
+//       formData.append('avatar', id, { avatarUrl });
+//       const res = await axios.patch('/users/avatars', formData);
+//       Notify.success(`Avatar updated successfully!`);
+//       return res.data;
+//     } catch (error) {
+//       Notify.failure(`Failed to update avatar`);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
