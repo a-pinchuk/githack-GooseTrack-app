@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
+import moment from 'moment/moment';
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -17,15 +18,14 @@ const UserForm = () => {
       birthday: '',
     },
     onSubmit: values => {
-      const formData = new FormData();
-      formData.append('avatar', values.avatar);
-      formData.append('name', values.name);
-      formData.append('email', values.email);
-      formData.append('phone', values.phone);
-      formData.append('skype', values.skype);
-      formData.append('birthday', values.birthday);
+      const formattedDate = moment(values.birthday).format('DD/MM/YYYY'); // Преобразуйте дату в нужный формат
 
-      dispatch(updateUserInfo(formData));
+      const updatedValues = {
+        ...values,
+        birthday: formattedDate,
+      };
+
+      dispatch(updateUserInfo(updatedValues));
     },
   });
 
