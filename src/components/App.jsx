@@ -10,6 +10,7 @@ import UserForm from './UserForm/UserForm';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
+import { ChoosedMonth } from './ChoosedMonth/ChoosedMonth';
 
 const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -44,7 +45,7 @@ export const App = () => {
               index
               element={<Navigate to="/calendar/month/:currentDate" replace />}
             />
-            <Route path="month/:currentDate" element={<Layout />} />
+            <Route path="month/:currentDate" element={<ChoosedMonth />} />
             <Route path="day/:currentDay" element={<Layout />} />
           </Route>
         </Route>
