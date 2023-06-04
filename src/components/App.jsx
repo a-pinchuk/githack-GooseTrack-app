@@ -5,25 +5,32 @@ import AccountPage from '../pages/AccountPage';
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 
+import MainPage from 'pages/MainPage/MainPage';
+import { CalendarPage } from './CalendarPage/CalendarPage';
+import UserForm from './UserForm/UserForm';
+
 const Layout = lazy(() => import('../components/Layout/Layout'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 
 export const App = () => {
   return (
     <Suspense>
       <Routes>
         <Route path="/" element={<PublicRoute />}>
-          <Route index element={<Navigate to="/home" />} />
-          <Route path="home" element={<Layout />} />
-          <Route path="register" element={<Layout />} />
-          <Route path="login" element={<Layout />} />
+          {/* <Route index element={<Navigate to="home" />} /> */}
+          <Route index element={<MainPage />} />
+          {/* <Route path="home" element={<MainPage />} /> */}
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
         </Route>
         <Route path="/" element={<PrivateRoute />}>
           <Route
             index
             element={<Navigate to="/calendar/month/:currentDate" replace />}
           />
-          <Route path="account" element={<AccountPage />} />
-          <Route path="calendar" element={<Layout />}>
+          <Route path="account" element={<UserForm />} />
+          <Route path="calendar" element={<CalendarPage />}>
             <Route
               index
               element={<Navigate to="/calendar/month/:currentDate" replace />}

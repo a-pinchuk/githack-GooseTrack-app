@@ -1,4 +1,5 @@
 // import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from 'hooks/useAuth';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 /**
@@ -7,11 +8,11 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
  */
 
 export const PublicRoute = () => {
-  const token = false;
+  const { isLoggedIn } = useAuth();
   const location = useLocation();
   console.log('Public route');
 
-  return !token ? (
+  return !isLoggedIn ? (
     <Outlet />
   ) : (
     <Navigate
