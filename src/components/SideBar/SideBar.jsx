@@ -18,10 +18,10 @@ export const SideBar = () => {
           <Nav>
             <NavList>
               <li>
-                <StyledLink to="/">My account</StyledLink>
+                <StyledLink to="/account">My account</StyledLink>
               </li>
               <li>
-                <StyledLink to="/contacts">Calendar</StyledLink>
+                <StyledLink to="/calendar">Calendar</StyledLink>
               </li>
             </NavList>
           </Nav>
