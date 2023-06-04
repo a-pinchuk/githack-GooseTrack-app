@@ -6,7 +6,6 @@ import {
   logIn,
   logOut,
   refreshUser,
-  updateAvatar,
   updateUserInfo,
 } from './operations';
 
@@ -30,7 +29,6 @@ const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.id = action.payload.id;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -61,9 +59,6 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
-      })
-      .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.user.avatarUrl = action.payload.avatarUrl;
       })
       .addCase(updateUserInfo.fulfilled, (state, action) => {
         state.user = action.payload;
