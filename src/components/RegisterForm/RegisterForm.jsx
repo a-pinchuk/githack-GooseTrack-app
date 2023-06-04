@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import { Wrapper, StyledForm, StyledButton } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -16,6 +18,10 @@ export const RegisterForm = () => {
       })
     );
     form.reset();
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -45,12 +51,15 @@ export const RegisterForm = () => {
         <label>
           Password
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 8 characters long."
             required
           />
+          <button onClick={togglePasswordVisibility}>
+            {showPassword ? 'Hide' : 'Show'} Password
+          </button>
         </label>
         <StyledButton type="submit">Sign Up</StyledButton>
       </StyledForm>
