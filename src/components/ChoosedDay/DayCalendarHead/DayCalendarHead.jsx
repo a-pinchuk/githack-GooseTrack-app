@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect, memo } from 'react';
 import {
   WeeksItem,
   WeeksItemDay,
@@ -6,67 +6,81 @@ import {
   DivGridWeeks,
   WeeksItemDateName,
   SelectedDay,
+  NotSelectedDay,
 } from './DayCalendarHead.styled';
 
 import * as dateFns from 'date-fns';
-import {
-  currentDay,
-  currentMonth,
-  currentTime,
-  currentYear,
-} from 'Redux/calendar/calendar.slice';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export const DayCalendarHead = props => {
-  const { CalendarDate } = props;
+export const DayCalendarHead = () => {
+  const { currentDay: targetDate } = useParams();
+  console.log(targetDate);
+  const navigate = useNavigate();
+  // const targetDate = '2023-05-31';
+
   const formatofWeek = 'eeee';
-  const time = useSelector(state => state.calendar.time);
-  const dispatch = useDispatch();
-  dispatch(currentTime(dateFns.getTime(CalendarDate)));
-  dispatch(currentDay(dateFns.getDate(CalendarDate)));
-  dispatch(currentMonth(dateFns.getMonth(CalendarDate)));
-  dispatch(currentYear(dateFns.getYear(CalendarDate)));
-  const startDate = dateFns.startOfWeek(CalendarDate, { weekStartsOn: 1 });
-  //Find the last day of week of lastDay
-  const endDate = dateFns.lastDayOfWeek(CalendarDate, { weekStartsOn: 1 });
-  //render all days
+  const [time, setTime] = useState(new Date());
 
-  const totalDate = dateFns.eachDayOfInterval({
-    start: startDate,
-    end: endDate,
-  });
-  let longWeeksString;
-  if (window.innerWidth <= 768) {
-    longWeeksString = 1;
-  } else {
-    longWeeksString = 3;
-  }
+  useEffect(() => {
+    const calendarDate = new Date(targetDate);
+    setTime(calendarDate);
+  }, [targetDate]);
+
+  const startDate = dateFns.startOfWeek(time, { weekStartsOn: 1 });
+  const endDate = dateFns.lastDayOfWeek(time, { weekStartsOn: 1 });
+
+  const getTotalDate = () => {
+    return dateFns.eachDayOfInterval({
+      start: startDate,
+      end: endDate,
+    });
+  };
+
+  const totalDate = getTotalDate();
+
+  let longWeeksString = window.innerWidth <= 768 ? 1 : 3;
+
   const curenttDayStyle = cureDayStyl => {
-    const dateNow = dateFns.formatISO(Date.now());
-    if (dateFns.formatISO(cureDayStyl).slice(0, 10) === dateNow.slice(0, 10)) {
-      return WeeksItemCurrent;
-    }
-    return WeeksItemDay;
+    const formattedDate = dateFns.formatISO(cureDayStyl).slice(0, 10);
+    return formattedDate === targetDate;
   };
+
   const selectedDay = dayWeeks => {
-    if (
-      dateFns.formatISO(dayWeeks).slice(0, 10) ===
-      dateFns.formatISO(time).slice(0, 10)
-    ) {
-      return SelectedDay;
-    }
+    const formattedDate = dateFns.formatISO(dayWeeks).slice(0, 10);
+    return formattedDate === targetDate;
   };
+
+  const handleChangDay = dayData =>
+    navigate(`day/${dateFns.formatISO(dayData).slice(0, 10)}`);
+
   return (
-    <div className={DivGridWeeks}>
+    <DivGridWeeks>
       {totalDate.map(week => (
-        <div className={WeeksItem} key={week}>
-          <div className={WeeksItemDateName}>
+        <WeeksItem key={week.getTime()}>
+          <WeeksItemDateName>
             {dateFns.format(week, formatofWeek).substring(0, longWeeksString)}
-          </div>
-          <div className={selectedDay(week)}>
-            <div className={curenttDayStyle(week)}>{week.getDate()}</div>
-          </div>
-        </div>
+          </WeeksItemDateName>
+          {selectedDay(week) ? (
+            <SelectedDay onClick={() => handleChangDay(week)}>
+              {curenttDayStyle(week) ? (
+                <WeeksItemCurrent>{week.getDate()}</WeeksItemCurrent>
+              ) : (
+                <WeeksItemDay>{week.getDate()}</WeeksItemDay>
+              )}
+            </SelectedDay>
+          ) : (
+            <NotSelectedDay onClick={() => handleChangDay(week)}>
+              {curenttDayStyle(week) ? (
+                <WeeksItemCurrent>{week.getDate()}</WeeksItemCurrent>
+              ) : (
+                <WeeksItemDay>{week.getDate()}</WeeksItemDay>
+              )}
+            </NotSelectedDay>
+          )}
+        </WeeksItem>
       ))}
-    </div>
+    </DivGridWeeks>
   );
 };
+
+export default memo(DayCalendarHead);

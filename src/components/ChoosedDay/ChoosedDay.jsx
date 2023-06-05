@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectAllTasks } from 'redux/task/selectors';
-import { Container, Container1, Container2 } from './ChoosedDay.styled';
+import { Container } from './ChoosedDay.styled';
+import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
 
 const ChoosedDay = () => {
   const targetDate = '2023-06-01';
@@ -51,8 +52,7 @@ const ChoosedDay = () => {
 
   return (
     <div className={Container}>
-      <div className={Container1}>WeeksHeader</div>
-      <div className={Container2}>TaskColumnsList</div>
+      <DayCalendarHead />
     </div>
   );
 };
