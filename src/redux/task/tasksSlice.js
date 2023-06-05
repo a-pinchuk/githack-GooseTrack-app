@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from '../auth/operations';
 import {
-  fetchTasks,
-  fetchTasksById,
-  addTasks,
-  deleteTasks,
-  updateTasks,
-  changeTasksCategory,
+  fetchAllTasks,
+  fetchTaskById,
+  addTask,
+  deleteTask,
+  updateTask,
+  changeTaskCategory,
 } from './operations.js';
 
 const pending = state => {
@@ -28,40 +28,40 @@ export const tasksSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(fetchTasks.pending, pending)
-      .addCase(fetchTasksById.pending, pending)
-      .addCase(addTasks.pending, pending)
-      .addCase(deleteTasks.pending, pending)
-      .addCase(updateTasks.pending, pending)
-      .addCase(changeTasksCategory.pending, pending)
-      .addCase(fetchTasks.rejected, rejected)
-      .addCase(fetchTasksById.rejected, rejected)
-      .addCase(addTasks.rejected, rejected)
-      .addCase(deleteTasks.rejected, rejected)
-      .addCase(updateTasks.rejected, rejected)
-      .addCase(changeTasksCategory.rejected, rejected)
-      .addCase(fetchTasks.fulfilled, (state, action) => {
+      .addCase(fetchAllTasks.pending, pending)
+      .addCase(fetchTaskById.pending, pending)
+      .addCase(addTask.pending, pending)
+      .addCase(deleteTask.pending, pending)
+      .addCase(updateTask.pending, pending)
+      .addCase(changeTaskCategory.pending, pending)
+      .addCase(fetchAllTasks.rejected, rejected)
+      .addCase(fetchTaskById.rejected, rejected)
+      .addCase(addTask.rejected, rejected)
+      .addCase(deleteTask.rejected, rejected)
+      .addCase(updateTask.rejected, rejected)
+      .addCase(changeTaskCategory.rejected, rejected)
+      .addCase(fetchAllTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.tasks = action.payload;
       })
-      .addCase(fetchTasksById.fulfilled, (state, action) => {
+      .addCase(fetchTaskById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.tasks = action.payload;
       })
-      .addCase(addTasks.fulfilled, (state, action) => {
+      .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.tasks.data.push(action.payload);
       })
-      .addCase(deleteTasks.fulfilled, (state, action) => {
+      .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.tasks.id === action.payload.id;
         state.tasks.data.splice(index, 1);
       })
-      .addCase(updateTasks.fulfilled, (state, action) => {
+      .addCase(updateTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.tasks.id === action.payload.id;
@@ -72,7 +72,7 @@ export const tasksSlice = createSlice({
         state.error = null;
         state.isLoading = false;
       })
-      .addCase(changeTasksCategory.fulfilled, (state, action) => {
+      .addCase(changeTaskCategory.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.tasks.id === action.payload.id;

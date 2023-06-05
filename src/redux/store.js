@@ -16,7 +16,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthSlice,
     tasks: tasksSlice.reducer,
-    feedback: feedbacksSlice.reducer,
+    feedbacks: feedbacksSlice.reducer,
   },
 
   middleware(getDefaultMiddleware) {
