@@ -15,6 +15,7 @@ const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ export const App = () => {
               element={<Navigate to="/calendar/month/:currentDate" replace />}
             />
             <Route path="month/:currentDate" element={<ChoosedMonth />} />
-            <Route path="day/:currentDay" element={<Layout />} />
+            <Route path="day/:currentDay" element={<ChoosedDay />} />
           </Route>
         </Route>
       </Routes>
