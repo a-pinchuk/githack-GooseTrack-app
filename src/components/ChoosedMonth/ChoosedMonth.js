@@ -6,18 +6,17 @@ import { selectAllTasks } from '../../redux/task/selectors';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 
-export const ChoosedMonth = () => {
+const ChoosedMonth = () => {
   const allTasks = useSelector(selectAllTasks);
 
   moment.updateLocale('en', { week: { dow: 1 } });
 
-  const [currentDate] = useParams();
+  const { currentDate } = useParams();
 
   const today = moment(currentDate);
 
   const startDay = today.clone().startOf('month').startOf('week');
 
-  console.log('allTasks:', allTasks);
   return (
     <div>
       <MonthCalendarHead />
@@ -25,3 +24,5 @@ export const ChoosedMonth = () => {
     </div>
   );
 };
+
+export default ChoosedMonth;
