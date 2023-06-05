@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
@@ -7,7 +7,6 @@ import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 import MainPage from 'pages/MainPage/MainPage';
 import { CalendarPage } from './CalendarPage/CalendarPage';
 import UserForm from './UserForm/UserForm';
-
 
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
@@ -31,23 +30,13 @@ export const App = () => {
     <Suspense>
       <Routes>
         <Route path="/" element={<PublicRoute />}>
-          {/* <Route index element={<Navigate to="home" />} /> */}
           <Route index element={<MainPage />} />
-          {/* <Route path="home" element={<MainPage />} /> */}
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
         </Route>
         <Route path="/" element={<PrivateRoute />}>
-          <Route
-            index
-            element={<Navigate to="/calendar/month/:currentDate" replace />}
-          />
           <Route path="account" element={<UserForm />} />
           <Route path="calendar" element={<CalendarPage />}>
-            <Route
-              index
-              element={<Navigate to="/calendar/month/:currentDate" replace />}
-            />
             <Route path="month/:currentDate" element={<ChoosedMonth />} />
             <Route path="day/:currentDay" element={<ChoosedDay />} />
           </Route>
