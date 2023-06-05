@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
 import { selectUser } from 'redux/auth/selectors';
 import moment from 'moment/moment';
+import { ReactComponent as Avatar } from '../../images/avatar.svg';
 // import * as Yup from 'yup';
 
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -13,7 +14,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import {
   Container,
   FormContainer,
-  StyledAvatar,
   Plus,
   Heading,
   Title,
@@ -22,7 +22,9 @@ import {
   WrapperInput,
   Button,
   Label,
+  StyledAvatar,
 } from './UserForm.styled';
+import { useState } from 'react';
 
 // const validationSchema = Yup.object().shape({
 //   avatar: Yup.string().url(),
@@ -48,6 +50,19 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
+  const [selectedImage, setSelectedImage] = useState(null);
+  console.log('🚀 ~ selectedImage:', selectedImage);
+
+  const handleAvatarUpload = event => {
+    formik.setFieldValue('avatar', event.currentTarget.files[0]);
+
+    const file = event.currentTarget.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       avatar: null,
@@ -67,7 +82,7 @@ const UserForm = () => {
       console.log(updatedValues);
 
       dispatch(updateUserInfo(updatedValues));
-      console.log('Form waas submitted');
+      console.log('Form was submitted');
       resetForm();
     },
   });
@@ -75,8 +90,17 @@ const UserForm = () => {
   return (
     <Container>
       <FormContainer onSubmit={formik.handleSubmit}>
-        <StyledAvatar />
-        <Plus />
+        <StyledAvatar>
+          {selectedImage ? (
+            <img src={selectedImage} alt="Avatar" />
+          ) : (
+            <Avatar />
+          )}
+        </StyledAvatar>
+        <Label htmlFor="avatar">
+          <Plus />
+        </Label>
+
         <Heading>{user.name}</Heading>
         <Title>User</Title>
 
@@ -84,9 +108,8 @@ const UserForm = () => {
           id="avatar"
           name="avatar"
           type="file"
-          onChange={event => {
-            formik.setFieldValue('avatar', event.currentTarget.files[0]);
-          }}
+          onChange={handleAvatarUpload}
+          style={{ display: 'none' }}
         />
         <Wrapper>
           <WrapperInput>
@@ -107,17 +130,6 @@ const UserForm = () => {
           </WrapperInput>
           <WrapperInput>
             <Label htmlFor="birthday">Birthday</Label>
-            {/* <Input
-              id="birthday"
-              name="birthday"
-              type="date"
-              value={formik.values.birthday || ''}
-              onChange={formik.handleChange}
-              error={
-                formik.touched.birthday && formik.errors.birthday ? true : false
-              }
-              helperText={formik.touched.birthday && formik.errors.birthday}
-            /> */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer components={['DatePicker']}>
                 <DatePicker name="birthday" views={['year', 'month', 'day']} />
@@ -168,4 +180,5 @@ const UserForm = () => {
     </Container>
   );
 };
+
 export default UserForm;

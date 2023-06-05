@@ -1,14 +1,10 @@
-import { AddTasksBth } from '../AddTasksBth/AddTasksBth';
-import { ColumnHeadBar } from '../ColumnHeadBar/ColumnHeaderBar';
-import { ColumnTasksList } from '../ColumnTasksList/ColumnTasksList';
+import { TasksColumn } from '../TasksColumn/TasksColumn';
+import { TaskContainer } from './TasksColumnsListStyled';
 
-import { TaskContainer, TaskItem } from '../TasksColumn/TasksColumnStyled';
-
-export const TasksColumn = () => {
+export const TasksColumnsList = () => {
   //----Заглушка
   const title = ['To do', 'In progress', 'Done'];
-
-  const inProgressData = [
+  const mainArray = [
     {
       category: 'in-progress',
       createdAt: '2023-06-02T18:37:25.149Z',
@@ -16,7 +12,7 @@ export const TasksColumn = () => {
       end: '18:48',
       priority: 'medium',
       start: '18:05',
-      title: 'My task  medium in-progress 18:05-18:48',
+      title: 'i have change status',
       updatedAt: '2023-06-02T18:37:25.149Z',
       _id: '647a36e501a3371dd3c04599',
     },
@@ -29,22 +25,8 @@ export const TasksColumn = () => {
       start: '18:05',
       title: 'My task  medium in-progress 18:05-18:48',
       updatedAt: '2023-06-02T18:37:25.149Z',
-      _id: '647a36e501a3371dd3c04599',
+      _id: '647a36e501a3371dd3c04592',
     },
-    {
-      category: 'in-progress',
-      createdAt: '2023-06-02T18:37:25.149Z',
-      date: '2023-06-27',
-      end: '18:48',
-      priority: 'high',
-      start: '18:05',
-      title: 'My task  medium in-progress 18:05-18:48',
-      updatedAt: '2023-06-02T18:37:25.149Z',
-      _id: '647a36e501a3371dd3c04599',
-    },
-  ];
-
-  const doneTasks = [
     {
       category: 'done',
       createdAt: '2023-06-02T18:37:25.149Z',
@@ -68,26 +50,13 @@ export const TasksColumn = () => {
       _id: '647a36e501a3371dd3c04513',
     },
     {
-      category: 'done',
-      createdAt: '2023-06-02T18:37:25.149Z',
-      date: '2023-06-27',
-      end: '18:48',
-      priority: 'low',
-      start: '18:05',
-      title: 'My task  make a pie 18:05-18:48',
-      updatedAt: '2023-06-02T18:37:25.149Z',
-      _id: '647a36e501a3371dd3c04513',
-    },
-  ];
-  const toDoTasks = [
-    {
       category: 'to-do',
       createdAt: '2023-06-02T18:37:25.149Z',
       date: '2023-06-27',
       end: '18:48',
       priority: 'medium',
       start: '18:05',
-      title: 'My task  medium in-progress 18:05-18:48',
+      title: 'done task',
       updatedAt: '2023-06-02T18:37:25.149Z',
       _id: '647a36e501a3371dd3c04508',
     },
@@ -115,34 +84,14 @@ export const TasksColumn = () => {
     },
   ];
 
-  // const [toDo, setToDo] = useState([]);
-  console.log('INPROGRES--->', inProgressData);
-  console.log('DONETASK====>', doneTasks);
-  console.log('TODOTASK---->', toDoTasks);
+  const inProg = mainArray.filter(item => item.category === 'in-progress');
+  const finish = mainArray.filter(item => item.category === 'done');
 
   return (
     <TaskContainer>
-      <TaskItem>
-        <ColumnHeadBar title={title[2]} />
-        <ColumnTasksList
-          toolbarData={['In progres', 'Done']}
-          taskData={toDoTasks}
-        />
-        <AddTasksBth />
-      </TaskItem>
-      <TaskItem>
-        <ColumnHeadBar title={title[1]} />
-        <ColumnTasksList toolbarData={['Done', 'To do']} taskData={doneTasks} />
-        <AddTasksBth />
-      </TaskItem>
-      <TaskItem>
-        <ColumnHeadBar title={title[0]} />
-        <ColumnTasksList
-          toolbarData={['To do', 'In progress']}
-          taskData={inProgressData}
-        />
-        <AddTasksBth />
-      </TaskItem>
+      <TasksColumn title={title[0]} taskData={mainArray} />
+      <TasksColumn title={title[1]} taskData={inProg} />
+      <TasksColumn title={title[2]} taskData={finish} />
     </TaskContainer>
   );
 };
