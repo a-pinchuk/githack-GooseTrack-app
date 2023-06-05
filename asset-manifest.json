@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/githack-GooseTrack-app/static/css/main.1306aefa.css",
-    "main.js": "/githack-GooseTrack-app/static/js/main.bee52871.js",
+    "main.js": "/githack-GooseTrack-app/static/js/main.b9f760d5.js",
     "static/js/525.b87f82ef.chunk.js": "/githack-GooseTrack-app/static/js/525.b87f82ef.chunk.js",
-    "static/js/516.24dab08b.chunk.js": "/githack-GooseTrack-app/static/js/516.24dab08b.chunk.js",
+    "static/js/516.c84f9899.chunk.js": "/githack-GooseTrack-app/static/js/516.c84f9899.chunk.js",
     "static/js/600.b6e9369d.chunk.js": "/githack-GooseTrack-app/static/js/600.b6e9369d.chunk.js",
     "static/js/543.53805ecf.chunk.js": "/githack-GooseTrack-app/static/js/543.53805ecf.chunk.js",
     "static/js/727.5b672266.chunk.js": "/githack-GooseTrack-app/static/js/727.5b672266.chunk.js",
@@ -18,9 +18,9 @@
     "static/media/arrow-right.svg": "/githack-GooseTrack-app/static/media/arrow-right.2e46d53f94f11fd96c0535fb7dcecbab.svg",
     "static/media/trash-04.svg": "/githack-GooseTrack-app/static/media/trash-04.ad20fae097fe4535c012b776fd815590.svg",
     "main.1306aefa.css.map": "/githack-GooseTrack-app/static/css/main.1306aefa.css.map",
-    "main.bee52871.js.map": "/githack-GooseTrack-app/static/js/main.bee52871.js.map",
+    "main.b9f760d5.js.map": "/githack-GooseTrack-app/static/js/main.b9f760d5.js.map",
     "525.b87f82ef.chunk.js.map": "/githack-GooseTrack-app/static/js/525.b87f82ef.chunk.js.map",
-    "516.24dab08b.chunk.js.map": "/githack-GooseTrack-app/static/js/516.24dab08b.chunk.js.map",
+    "516.c84f9899.chunk.js.map": "/githack-GooseTrack-app/static/js/516.c84f9899.chunk.js.map",
     "600.b6e9369d.chunk.js.map": "/githack-GooseTrack-app/static/js/600.b6e9369d.chunk.js.map",
     "543.53805ecf.chunk.js.map": "/githack-GooseTrack-app/static/js/543.53805ecf.chunk.js.map",
     "727.5b672266.chunk.js.map": "/githack-GooseTrack-app/static/js/727.5b672266.chunk.js.map",
@@ -28,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.1306aefa.css",
-    "static/js/main.bee52871.js"
+    "static/js/main.b9f760d5.js"
   ]
 }
