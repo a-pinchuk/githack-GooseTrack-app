@@ -4,6 +4,7 @@ import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { selectAllTasks } from 'redux/task/selectors';
 //import {} from './CalendarPage.styled';
+import TestModalDelete from 'components/TestModalDelete/TestModalDelete';
 
 export const CalendarPage = () => {
   return (
@@ -15,6 +16,7 @@ export const CalendarPage = () => {
     >
       <TemporaryHeaderCalendar />
       <LogoutBtn />
+      <TestModalDelete />
     </div>
   );
 };
