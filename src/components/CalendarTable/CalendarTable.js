@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import {
@@ -13,9 +13,7 @@ import {
 } from './CalendarTable.styled';
 import moment from 'moment';
 
-export const CalendarTable = ({ startDay, today }) => {
-  const [tasks, setTasks] = useState([]);
-
+export const CalendarTable = ({ startDay, today, tasks }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   // const isDesktop = useMediaQuery({ minWidth: 1440 });
@@ -44,12 +42,6 @@ export const CalendarTable = ({ startDay, today }) => {
 
   const isCurrentDay = day => moment().isSame(day, 'day');
   const isSelectedMonth = day => today.isSame(day, 'month');
-
-  useEffect(() => {
-    fetch('https://githack-goosetrack.onrender.com/api/tasks')
-      .then(res => res.json())
-      .then(res => setTasks(res.data));
-  }, []);
 
   let dayTasksFiltered = [];
 
