@@ -10,3 +10,9 @@
   background: #e7e5e5;
   border-radius: 12px;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
