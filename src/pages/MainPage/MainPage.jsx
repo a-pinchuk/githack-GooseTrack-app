@@ -26,7 +26,12 @@ const MainPage = () => {
         G<span>oo</span>seTrack
       </h1>
       <nav>
-        <MainPageLoginLink to="login">Log in</MainPageLoginLink>
+        <MainPageLoginLink to="login">
+          Log in
+          <svg height="13.5" width="13.5">
+            <use href={sprite + '#icon-enter'}></use>
+          </svg>
+        </MainPageLoginLink>
         <MainPageRegisterLink to="register">Sign up</MainPageRegisterLink>
       </nav>
     </MainPageHeaderStyled>

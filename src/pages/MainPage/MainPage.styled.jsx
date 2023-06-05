@@ -21,22 +21,34 @@ export const MainPageHeaderStyled = styled.header`
     flex-direction: column;
     align-items: center;
     row-gap: 208px;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 40px;
+
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      column-gap: 24px;
+    }
   }
 
   h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+
     font-weight: 400;
-    color: #fff;
     font-size: 44px;
     line-height: 1.09;
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 0;
+
+    color: ${p => p.theme.colors.white};
+
     text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
       0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
     @media screen and (min-width: 768px) {
-      font-size: 120px;
-      line-height: 1.25;
+      font-size: ${p => p.theme.fontSizes.xl};
+      line-height: ${p => p.theme.lineHeights.body};
     }
   }
 
@@ -69,40 +81,48 @@ export const ImageWrapper = styled.div`
 `;
 
 export const MainPageLoginLink = styled(Link)`
-  font-family: ${p => p.theme.fonts.text};
-  cursor: pointer;
-
-  font-weight: 600;
   display: flex;
-  column-gap: 8.25px;
   justify-content: center;
   align-items: center;
+  column-gap: 8.25px;
+
   width: 131px;
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-  border-radius: 16px;
-  background-color: #fff;
-  color: #3e85f3;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1.29;
   padding-top: 14px;
   padding-bottom: 14px;
+
+  font-family: ${p => p.theme.fonts.text};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: 1.29;
+  text-decoration: none;
+
+  color: ${p => p.theme.colors.primary};
+  background-color: ${p => p.theme.colors.background};
+
+  border-radius: ${p => p.theme.radii.big};
+  box-shadow: ${p => p.theme.shadows.boxShadow};
+
   opacity: 1;
+  cursor: pointer;
 
   &:hover,
   &:focus {
     opacity: 0.8;
   }
+
+  & svg {
+    stroke: ${p => p.theme.colors.primary};
+  }
 `;
 
 export const MainPageRegisterLink = styled(Link)`
-  /* font-family: 'Inter'; */
-  cursor: pointer;
-
-  color: #fff;
-  font-size: 12px;
+  font-family: ${p => p.theme.fonts.text};
+  font-size: ${p => p.theme.fontSizes.xs};
   line-height: 1.16;
   text-decoration: underline;
+
+  color: ${p => p.theme.colors.white};
+  cursor: pointer;
 
   &:hover,
   &:focus {
