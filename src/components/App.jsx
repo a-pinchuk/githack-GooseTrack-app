@@ -1,18 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 
 import MainPage from 'pages/MainPage/MainPage';
 import TaskModal from './TaskModal/TaskModal';
-import { CalendarPage } from './CalendarPage/CalendarPage';
 import UserForm from './UserForm/UserForm';
 
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
 
+const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 // const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -20,7 +20,7 @@ const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 export const App = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(prevState => !prevState);
