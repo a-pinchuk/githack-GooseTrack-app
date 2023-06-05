@@ -5,6 +5,7 @@ import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 
 import MainPage from 'pages/MainPage/MainPage';
+import TaskModal from './TaskModal/TaskModal';
 import { CalendarPage } from './CalendarPage/CalendarPage';
 import UserForm from './UserForm/UserForm';
 
@@ -19,6 +20,11 @@ const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 export const App = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   useEffect(() => {
@@ -40,8 +46,9 @@ export const App = () => {
             <Route path="month/:currentDate" element={<ChoosedMonth />} />
             <Route path="day/:currentDay" element={<ChoosedDay />} />
           </Route>
-        </Route>
-      </Routes>
-    </Suspense>
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   );
 };
