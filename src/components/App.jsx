@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense, useEffect, useState } from 'react';
 
+import React, { lazy, Suspense, useEffect } from 'react';
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
-
 import MainPage from 'pages/MainPage/MainPage';
 import TaskModal from './TaskModal/TaskModal';
+import { CalendarPage } from './CalendarPage/CalendarPage';
 import UserForm from './UserForm/UserForm';
-
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
