@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
   @media (min-width: 768px) {
     min-width: 768px;
     padding-top: 132px;
@@ -44,7 +44,7 @@ export const FormContainer = styled.form`
   }
 `;
 
-export const StyledAvatar = styled(Avatar)`
+export const StyledAvatar = styled.div`
   width: 72px;
   height: 72px;
   position: absolute;
@@ -61,6 +61,13 @@ export const StyledAvatar = styled(Avatar)`
   }
   @media (min-width: 1440px) {
     margin-bottom: 20px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: ${p => p.theme.radii.round};
   }
 `;
 
@@ -111,10 +118,10 @@ export const Wrapper = styled.div`
   gap: 18px;
   @media (min-width: 1440px) {
     width: 758px;
-    flex-direction: initial; 
+    flex-direction: initial;
     flex-wrap: wrap;
     column-gap: 50px;
-    row-gap: 24px; 
+    row-gap: 24px;
   }
 `;
 

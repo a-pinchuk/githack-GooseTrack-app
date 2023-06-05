@@ -8,8 +8,8 @@ import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTasks } from 'redux/task/operations';
-import { selectAllTasks, selectTasksError } from 'redux/task/selectors';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { selectAllTasks } from 'redux/task/selectors';
+// import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const CalendarPage = () => {
   const [today, setToday] = useState(moment());
