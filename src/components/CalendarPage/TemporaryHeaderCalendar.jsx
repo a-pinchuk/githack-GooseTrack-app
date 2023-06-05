@@ -45,24 +45,6 @@ export const TemporaryHeaderCalendar = () => {
           ></div>
         </div>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '38px',
-        }}
-      >
-        <div>
-          <button>{formatDate()}</button>
-          <button onClick={handlePreviousDate}> {'<'}</button>
-          <button onClick={handleNextDate}>{'>'}</button>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <button>Month</button>
-          <button>Day</button>
-        </div>
-      </div>
     </>
   );
 };

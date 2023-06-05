@@ -3,12 +3,12 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { PublicRoute } from '../components/AuthRoutes/PublicRoute';
 import { PrivateRoute } from '../components/AuthRoutes/PrivateRoute';
 import MainPage from 'pages/MainPage/MainPage';
-import { CalendarPage } from './CalendarPage/CalendarPage';
 import UserForm from './UserForm/UserForm';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
 
+const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
