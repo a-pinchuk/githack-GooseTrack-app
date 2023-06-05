@@ -1,5 +1,6 @@
 // import React, { useEffect, useState } from 'react';
 import { TasksColumn } from 'components/TasksCopmonents/TasksColumn/TasksColumn';
+import LogoutBtn from 'components/TestBtnLogout/LogoutBtn';
 import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { selectAllTasks } from 'redux/task/selectors';
@@ -14,6 +15,7 @@ export const CalendarPage = () => {
       }}
     >
       <TemporaryHeaderCalendar />
+      <LogoutBtn />
       <TasksColumn />
     </div>
   );
