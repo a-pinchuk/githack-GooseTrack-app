@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { selectAllTasks } from 'redux/task/selectors';
 import { Container } from './ChoosedDay.styled';
 import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
+import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
 
 const ChoosedDay = () => {
   const targetDate = '2023-06-01';
@@ -41,8 +42,8 @@ const ChoosedDay = () => {
 
       return {
         done: sortByDate(doneArray),
-        'in-progress': sortByDate(inProgressArray),
-        'to-do': sortByDate(toDoArray),
+        inProgress: sortByDate(inProgressArray),
+        toDo: sortByDate(toDoArray),
       };
     }
 
@@ -53,6 +54,7 @@ const ChoosedDay = () => {
   return (
     <div className={Container}>
       <DayCalendarHead />
+      {sortedTasks && <TasksColumnsList sortedTasksData={sortedTasks} />}
     </div>
   );
 };

@@ -51,7 +51,7 @@ export const DayCalendarHead = () => {
   };
 
   const handleChangDay = dayData =>
-    navigate(`day/${dateFns.formatISO(dayData).slice(0, 10)}`);
+    navigate(`/calendar/day/${dateFns.formatISO(dayData).slice(0, 10)}`);
 
   return (
     <DivGridWeeks>
