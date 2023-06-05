@@ -17,7 +17,6 @@ import {
   Plus,
   Heading,
   Title,
-  AvatarInput,
   Input,
   Wrapper,
   WrapperInput,
