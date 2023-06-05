@@ -10,12 +10,12 @@ import UserForm from './UserForm/UserForm';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
-const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
-const Layout = lazy(() => import('../components/Layout/Layout'));
+// const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
+const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 export const App = () => {
   const dispatch = useDispatch();
