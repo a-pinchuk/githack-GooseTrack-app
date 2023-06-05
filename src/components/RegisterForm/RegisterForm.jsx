@@ -39,7 +39,6 @@ const validationSchema = Yup.object().shape({
 });
 
 export const RegisterForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const [passwordType, setPasswordType] = useState('password');
