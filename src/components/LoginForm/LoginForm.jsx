@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
-import { register } from 'redux/auth/operations';
+import { logIn } from 'redux/auth/operations';
 import {
   StyledForm,
   StyledTitle,
@@ -43,10 +43,10 @@ export const LoginForm = () => {
 
   return (
     <Formik
-      initialValues={{ name: '', email: '', password: '' }}
+      initialValues={{ email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await dispatch(register(values));
+        await dispatch(logIn(values));
         setSubmitting(false);
       }}
     >
