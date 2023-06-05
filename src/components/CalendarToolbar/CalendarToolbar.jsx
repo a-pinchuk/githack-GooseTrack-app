@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';

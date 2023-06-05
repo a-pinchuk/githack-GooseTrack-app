@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as Avatar } from '../../images/avatar.svg';
+// import { ReactComponent as Avatar } from '../../images/avatar.svg';
 import { ReactComponent as Cross } from '../../images/cross.svg';
 
 export const Container = styled.div`
