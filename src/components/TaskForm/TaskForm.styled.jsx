@@ -70,11 +70,42 @@ export const RadioButtonsLabel = styled.label`
   position: relative;
   padding-left: 25px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  align-content: center;
 `;
 
 export const RadioButtonCustom = styled.span`
+  /* position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background-color: inherit;
+  color: transparent;
+  border: 1px solid transparent;
+  border-radius: 15px;
+
+  ${RadioButtonsInput}:checked + & {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      background-color: #01a982;
+      border-radius: 12px;
+    }
+
+    border-color: #01a982;
+  }
+  transform: scale(0.6); */
+
   position: absolute;
-  top: 0;
+  /* top: 0; */
   left: 0;
   width: 10px;
   height: 10px;
@@ -86,16 +117,57 @@ export const RadioButtonCustom = styled.span`
   ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
     background-color: #72c2f8;
     border-color: #2196f3;
-    border: 1.3px solid rgba(114, 194, 248, 0.5);
+    /* &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      background-color: #72c2f8;
+      border-radius: 10px;
+    }
+    box-shadow: inset 0px 0px 0px 2px #2196f3;
+
+    border-color: #2196f3; */
   }
 
   ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
     background-color: #4caf50;
     border-color: #4caf50;
+    /* &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      background-color: #4caf50;
+      border-radius: 10px;
+    }
+    box-shadow: inset 0px 0px 0px 2px #4caf50;
+
+    border-color: #4caf50; */
   }
 
   ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
     background-color: #f44336;
     border-color: #f44336;
+    /* &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      background-color: #f44336;
+      border-radius: 10px;
+    }
+    box-shadow: inset 0px 0px 0px 2px #f44336;
+
+    border-color: #f44336; */
   }
 `;
