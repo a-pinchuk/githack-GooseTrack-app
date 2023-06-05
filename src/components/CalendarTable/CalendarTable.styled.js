@@ -60,7 +60,7 @@ export const DayWrapper = styled.div`
 
   margin-right: 2px;
 
-  /* font-family: "Inter"; */
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -115,7 +115,7 @@ export const TaskList = styled.ul`
   padding: 0;
   margin: 0;
 
-  /* font-family: "Inter"; */
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 10px;

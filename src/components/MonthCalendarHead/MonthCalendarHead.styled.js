@@ -8,7 +8,7 @@ export const DaysWrapper = styled.div`
   height: 50px;
   max-width: 100%;
 
-  /* font-family: "Inter"; */
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
