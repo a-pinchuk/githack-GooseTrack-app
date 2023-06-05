@@ -2,7 +2,7 @@ import { AddTasksBth } from '../AddTasksBth/AddTasksBth';
 import { ColumnHeadBar } from '../ColumnHeadBar/ColumnHeaderBar';
 import { ColumnTasksList } from '../ColumnTasksList/ColumnTasksList';
 
-import { TaskItem } from '../TasksColumn/TasksColumnStyled';
+import { TaskItem } from './TasksColumnStyled';
 
 export const TasksColumn = ({ taskData, title }) => {
   return (

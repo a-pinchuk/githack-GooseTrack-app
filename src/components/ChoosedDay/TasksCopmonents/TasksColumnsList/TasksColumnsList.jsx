@@ -1,5 +1,5 @@
 import { TasksColumn } from '../TasksColumn/TasksColumn';
-import { TaskContainer } from '../TasksColumnsList/TasksColumnsListStyled';
+import { TaskContainer } from './TasksColumnsListStyled';
 
 export const TasksColumnsList = () => {
   //----Заглушка
