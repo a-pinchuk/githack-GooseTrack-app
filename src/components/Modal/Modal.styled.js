@@ -14,25 +14,21 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalContainer = styled.div`
+  position: relative;
+
   /* display: flex;
   justify-content: center;
   align-items: center; */
+  background-color: ${p => p.theme.colors.background};
 
-  background-color: white;
-  /* padding: 20px; */
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-  box-sizing: border-box;
-
-  position: relative;
   width: 396px;
   height: 360px;
 
-  background: #ffffff;
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
   border-radius: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 export const CloseButton = styled.button`
