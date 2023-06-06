@@ -1,12 +1,13 @@
-import { Modal } from 'components/Modal/Modal';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchAllTasks } from 'redux/task/operations';
-import { refreshUser } from 'redux/auth/operations';
+import TaskModal from 'components/TaskModal/TaskModal';
+
+// import { useDispatch } from 'react-redux';
+// import { fetchAllTasks } from 'redux/task/operations';
+// import { refreshUser } from 'redux/auth/operations';
 
 const TestModalDelete = () => {
   const [showModal, setShowModal] = useState(false);
-  const dispatc = useDispatch();
+  // const dispatc = useDispatch();
 
   const handlerCloseModal = () => {
     setShowModal(false);
@@ -14,7 +15,7 @@ const TestModalDelete = () => {
   return (
     <>
       <p>TestModalDelete</p>
-      <button
+      {/* <button
         type="button"
         onClick={() => {
           dispatc(refreshUser());
@@ -22,16 +23,12 @@ const TestModalDelete = () => {
         }}
       >
         dispatc modal
-      </button>
+      </button> */}
 
       <button type="button" onClick={() => setShowModal(true)}>
         Open modal
       </button>
-      {showModal && (
-        <Modal handlerCloseModal={handlerCloseModal}>
-          <p> This is MODAL!!!!</p>
-        </Modal>
-      )}
+      {showModal && <TaskModal handlerCloseModal={handlerCloseModal} />}
     </>
   );
 };

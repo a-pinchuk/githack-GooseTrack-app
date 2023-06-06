@@ -1,8 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Backdrop, CloseButton, ModalContainer } from './Modal.styled';
-import { ReactComponent as CloseIcon } from '../../images/x-close.svg';
+import {
+  Backdrop,
+  CloseButton,
+  ModalContainer,
+  MyCloseIcon,
+} from './Modal.styled';
 
 export const Modal = ({ children, handlerCloseModal }) => {
   const handleKeyDown = useCallback(
@@ -42,7 +46,7 @@ export const Modal = ({ children, handlerCloseModal }) => {
       <Backdrop onClick={handleBackdropClick}>
         <ModalContainer>
           <CloseButton onClick={handlerCloseModal}>
-            <CloseIcon width="24" height="24"></CloseIcon>
+            <MyCloseIcon width="24" height="24"></MyCloseIcon>
           </CloseButton>
           {children}
         </ModalContainer>

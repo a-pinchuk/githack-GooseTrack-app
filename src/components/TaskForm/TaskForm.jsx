@@ -14,7 +14,7 @@ import { addTasks, updateTask } from 'redux/task/operations';
 import { ReactComponent as EditPen } from '../../images/editPen.svg';
 import { ReactComponent as AddIcon } from '../../images/addIcon.svg';
 
-export const TaskForm = ({ initialData, toggleModal }) => {
+export const TaskForm = ({ initialData, handlerCloseModal }) => {
   const [titleValue, setTitleValue] = useState('title');
   const [checkboxValue, setCheckboxValue] = useState('low');
   const [startTimeValue, setStartTimeValue] = useState('09:00');
@@ -67,7 +67,7 @@ export const TaskForm = ({ initialData, toggleModal }) => {
       }
 
       // Task added/updated successfully, close modal
-      toggleModal();
+      handlerCloseModal();
     } catch (error) {
       // Show error message to the user
       console.error(error);
@@ -175,7 +175,7 @@ export const TaskForm = ({ initialData, toggleModal }) => {
             <AddIcon width="11.67px" height="11.67px"></AddIcon>
             <span style={{ marginLeft: '9.63px' }}>Add</span>
           </EditButton>
-          <CancelButton type="button" onClick={toggleModal}>
+          <CancelButton type="button" onClick={handlerCloseModal}>
             Cancel
           </CancelButton>
         </div>
