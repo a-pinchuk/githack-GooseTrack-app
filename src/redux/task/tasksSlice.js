@@ -43,7 +43,7 @@ export const tasksSlice = createSlice({
       .addCase(fetchAllTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.tasks = action.payload;
+        state.tasks = action.payload.data;
       })
       .addCase(fetchTaskById.fulfilled, (state, action) => {
         state.isLoading = false;

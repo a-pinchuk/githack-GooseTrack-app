@@ -5,14 +5,8 @@ import {
   TaskText,
 } from './TaskColumnCardStyled';
 import { TasklToolBar } from '../TaskToolBar/TaskToolBar';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
-export const TaskColumnCard = ({ toolbarData, item }) => {
-  const userName = useSelector(selectUser);
-  console.log(userName);
 
-  console.log(toolbarData);
-  console.log(item);
+export const TaskColumnCard = ({ toolbarData, item }) => {
   return (
     <TaskListItem>
       <TaskText>{item.title}</TaskText>
@@ -30,7 +24,7 @@ export const TaskColumnCard = ({ toolbarData, item }) => {
           height="28"
         />
         <TaskStatue priority={item.priority}>{item.priority}</TaskStatue>
-        <TasklToolBar toolbarData={toolbarData} />
+        <TasklToolBar toolbarData={toolbarData} idData={item._id} />
       </div>
     </TaskListItem>
   );

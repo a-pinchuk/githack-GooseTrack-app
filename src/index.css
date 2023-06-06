@@ -11,6 +11,12 @@
   border-radius: 12px;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body.no-scroll {
   overflow: hidden;
   overflow-y: hidden;

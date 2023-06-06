@@ -1,11 +1,14 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectAllTasks } from 'redux/task/selectors';
-import { Container, Container1, Container2 } from './ChoosedDay.styled';
+import { Container } from './ChoosedDay.styled';
+import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
+import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
 
 const ChoosedDay = () => {
   const targetDate = '2023-06-01';
   const tasks = useSelector(selectAllTasks);
+
   const [sortedTasks, setSortedTasks] = useState(null);
   console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
 
@@ -40,19 +43,22 @@ const ChoosedDay = () => {
 
       return {
         done: sortByDate(doneArray),
-        'in-progress': sortByDate(inProgressArray),
-        'to-do': sortByDate(toDoArray),
+        inProgress: sortByDate(inProgressArray),
+        toDo: sortByDate(toDoArray),
       };
     }
+    console.log('getCategorizedArrays fucn data ---> ', tasks);
 
-    const categorizedArrays = getCategorizedArrays(tasks, targetDate);
-    setSortedTasks(categorizedArrays);
+    if (tasks && tasks.length > 0) {
+      const categorizedArrays = getCategorizedArrays(tasks, targetDate);
+      setSortedTasks(categorizedArrays);
+    }
   }, [tasks]);
 
   return (
     <div className={Container}>
-      <div className={Container1}>WeeksHeader</div>
-      <div className={Container2}>TaskColumnsList</div>
+      <DayCalendarHead />
+      {sortedTasks && <TasksColumnsList sortedTasksData={sortedTasks} />}
     </div>
   );
 };

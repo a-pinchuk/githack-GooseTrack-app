@@ -8,6 +8,7 @@ import moment from 'moment';
 
 const ChoosedMonth = () => {
   const allTasks = useSelector(selectAllTasks);
+  console.log('🚀 ~ allTasks:', allTasks);
 
   moment.updateLocale('en', { week: { dow: 1 } });
 

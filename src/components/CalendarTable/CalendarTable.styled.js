@@ -5,12 +5,21 @@ export const CalendarGridWrapper = styled.div`
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 1px;
-  max-width: 100%;
+  max-width: 767px;
+  margin: 0 auto;
 
   border: 1px solid rgba(220, 227, 229, 0.8);
   overflow: hidden;
   background: rgba(220, 227, 229, 0.8);
   border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+  }
 `;
 
 export const CellWrapper = styled.div`
