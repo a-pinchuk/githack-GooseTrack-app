@@ -14,6 +14,7 @@ import {
 import moment from 'moment';
 
 export const CalendarTable = ({ startDay, today, tasks }) => {
+  console.log('🚀 ~ tasks:', tasks);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   // const isDesktop = useMediaQuery({ minWidth: 1440 });
@@ -43,11 +44,14 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   const isCurrentDay = day => moment().isSame(day, 'day');
   const isSelectedMonth = day => today.isSame(day, 'month');
 
-  let dayTasksFiltered = [];
-
   const filterTask = calendarDay => {
-    dayTasksFiltered = [
-      ...tasks.filter(task => task.date === calendarDay.format('YYYY-MM-DD')),
+    if (!tasks || !tasks.data || tasks.data.length === 0) {
+      return [];
+    }
+    let dayTasksFiltered = [
+      ...tasks.data.filter(
+        task => task.date === calendarDay.format('YYYY-MM-DD')
+      ),
     ];
     return dayTasksFiltered;
   };
@@ -66,33 +70,40 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
 
   return (
     <CalendarGridWrapper>
-      {daysArray.map(dayItem => (
-        <CellWrapper
-          key={dayItem.format('DDMMYYYY')}
-          isSelectedMonth={isSelectedMonth(dayItem)}
-        >
-          <RowInCeil justifyContent={'flex-end'}>
-            <ShowDayWrapper>
-              <DayWrapper>
-                {!isCurrentDay(dayItem) ? (
-                  <span>{dayItem.format('D')}</span>
-                ) : (
-                  <CurrentDay>{dayItem.format('D')}</CurrentDay>
+      {daysArray.map(dayItem => {
+        const dayTasks = filterTask(dayItem); // Получаем отфильтрованные задачи для данного дня
+        return (
+          <CellWrapper
+            key={dayItem.format('DDMMYYYY')}
+            isSelectedMonth={isSelectedMonth(dayItem)}
+          >
+            <RowInCeil justifyContent={'flex-end'}>
+              <ShowDayWrapper>
+                <DayWrapper>
+                  {!isCurrentDay(dayItem) ? (
+                    <span>{dayItem.format('D')}</span>
+                  ) : (
+                    <CurrentDay>{dayItem.format('D')}</CurrentDay>
+                  )}
+                </DayWrapper>
+              </ShowDayWrapper>
+            </RowInCeil>
+            {dayTasks.length > 0 && (
+              <TaskList>
+                {dayTasks.map(
+                  (
+                    task // Используем отфильтрованные задачи здесь
+                  ) => (
+                    <TaskItem key={task._id} priority={task.priority}>
+                      {cutString(task.title)}
+                    </TaskItem>
+                  )
                 )}
-              </DayWrapper>
-            </ShowDayWrapper>
-          </RowInCeil>
-          {filterTask(dayItem).length > 0 && (
-            <TaskList>
-              {dayTasksFiltered.map(task => (
-                <TaskItem key={task._id} priority={task.priority}>
-                  {cutString(task.title)}
-                </TaskItem>
-              ))}
-            </TaskList>
-          )}
-        </CellWrapper>
-      ))}
+              </TaskList>
+            )}
+          </CellWrapper>
+        );
+      })}
     </CalendarGridWrapper>
   );
 };
