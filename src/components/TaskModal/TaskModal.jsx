@@ -2,11 +2,13 @@ import { Modal } from 'components/Modal/Modal';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { fetchTaskById } from 'services/apiTasks';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 // ! task_info
 // Edit task
 // const initialData = {
-//   id: 'id-Tasks',
+//   id: '647f8c50626766a35b1cd440',
 // };
 
 // ! Create task
@@ -14,25 +16,30 @@ import { useParams } from 'react-router-dom';
 //   category: 'in-progress',
 // };
 const TaskModal = ({ task_info, handlerCloseModal }) => {
+  const [errorFetch, setErrorFetch] = useState(false);
+
   const [initialData, setInitialData] = useState(null);
   const { currentDay } = useParams();
-  console.log('currentDay', currentDay);
+
+  useEffect(() => {
+    if (errorFetch) {
+      Notify.failure(`Error fetch task`);
+      handlerCloseModal();
+    }
+  }, [errorFetch, handlerCloseModal]);
 
   useEffect(() => {
     const { id, category } = task_info;
 
     const loadTask = async id => {
       //TODO - read task from bac-end
-
-      setInitialData({
-        title: 'My task 1',
-        date: '2023-06-01',
-        start: '09:10',
-        end: '09:40',
-        priority: 'low',
-        category: 'in-progress',
-        statusOperation: 'edit',
-      });
+      const taks = await fetchTaskById(id);
+      console.log('taks', taks);
+      if (!taks) {
+        setErrorFetch(true);
+        return;
+      }
+      setInitialData({ ...taks.data, statusOperation: 'edit' });
     };
 
     if (id) {

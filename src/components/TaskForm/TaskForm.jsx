@@ -49,8 +49,8 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
   const error = useSelector(selectTasksError);
 
   useEffect(() => {
-    const { statusOperation, ...information } = initialData;
-    console.log('🚀 ~ statusOperation:', statusOperation);
+    const { statusOperation, _id, ...information } = initialData;
+    if (_id) information.id = _id;
     setInformationTask(information);
     setOperation(statusOperation);
   }, [initialData]);
@@ -62,9 +62,9 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
   }, [dateSave, successful, handlerCloseModal]);
 
   useEffect(() => {
-    if (!error) return;
+    if (!error || !dateSave) return;
     Notify.failure(`Data save error`);
-  }, [error]);
+  }, [error, dateSave]);
 
   const handleChange = event => {
     const { name, value } = event.target;

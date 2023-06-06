@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TaskModal from 'components/TaskModal/TaskModal';
 
 // const initialData = {
-//   id: 'id-Tasks',
+//   id: '647f8c50626766a35b1cd440',
 // };
 
 // const initialData = {
@@ -10,7 +10,7 @@ import TaskModal from 'components/TaskModal/TaskModal';
 // };
 
 const task_info = {
-  category: 'in-progress',
+  id: '647f8c50626766a35b1cd440',
 };
 
 const TestModalDelete = () => {

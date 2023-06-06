@@ -52,26 +52,31 @@ export const tasksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.successful = true;
-        state.tasks = action.payload;
+        state.tasks = action.payload.data;
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.successful = true;
-        state.tasks.push(action.payload);
+        state.tasks.push(action.payload.data);
       })
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.successful = true;
-        const index = state.tasks.id === action.payload.id;
+        const index = state.tasks.findIndex(
+          elem => elem._id === action.payload.data._id
+        );
         state.tasks.splice(index, 1);
       })
       .addCase(updateTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.successful = true;
-        const index = state.tasks.id === action.payload.id;
+        const index = state.tasks.findIndex(
+          elem => elem._id === action.payload.data._id
+        );
+
         state.tasks[index] = action.payload;
       })
       .addCase(logOut.fulfilled, state => {
@@ -84,7 +89,10 @@ export const tasksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.successful = true;
-        const index = state.tasks.id === action.payload.id;
+        const index = state.tasks.findIndex(
+          elem => elem._id === action.payload.data._id
+        );
+
         state.tasks[index] = action.payload;
       });
   },
