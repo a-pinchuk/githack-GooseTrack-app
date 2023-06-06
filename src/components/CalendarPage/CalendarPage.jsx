@@ -21,8 +21,14 @@ const CalendarPage = () => {
 
   const tasks = useSelector(selectAllTasks);
 
+  const currentPath = window.location.pathname;
+  const pathAfterCalendar = currentPath.slice(currentPath.indexOf('/calendar'));
+
   useEffect(() => {
-    navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
+    if (pathAfterCalendar === '/calendar') {
+      navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
+    }
+
     if (tasks.length === 0) {
       dispatch(fetchAllTasks());
     }
@@ -71,10 +77,10 @@ const CalendarPage = () => {
 
   const typeMonthHendler = () => {
     const desiredPath = `/calendar/month/${moment().format('YYYY-MM-DD')}`;
-    const currentPath = window.location.pathname;
-    const pathAfterCalendar = currentPath.slice(
-      currentPath.indexOf('/calendar')
-    );
+    // const currentPath = window.location.pathname;
+    // const pathAfterCalendar = currentPath.slice(
+    //   currentPath.indexOf('/calendar')
+    // );
     if (pathAfterCalendar !== desiredPath) {
       setTypeSelect('month');
       navigate(desiredPath);
