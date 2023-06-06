@@ -45,13 +45,11 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   const isSelectedMonth = day => today.isSame(day, 'month');
 
   const filterTask = calendarDay => {
-    if (!tasks || !tasks.data || tasks.data.length === 0) {
+    if (!tasks || tasks.length === 0) {
       return [];
     }
     let dayTasksFiltered = [
-      ...tasks.data.filter(
-        task => task.date === calendarDay.format('YYYY-MM-DD')
-      ),
+      ...tasks.filter(task => task.date === calendarDay.format('YYYY-MM-DD')),
     ];
     return dayTasksFiltered;
   };
