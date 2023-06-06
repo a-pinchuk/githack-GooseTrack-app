@@ -5,7 +5,7 @@ import { ColumnTasksList } from '../ColumnTasksList/ColumnTasksList';
 import { TaskItem } from './TasksColumnStyled';
 
 export const TasksColumn = ({ taskData, title }) => {
-  console.log('TasksColumn component data ---> ', taskData);
+  //   console.log('TasksColumn component data ---> ', taskData);
   return (
     <>
       <TaskItem>
