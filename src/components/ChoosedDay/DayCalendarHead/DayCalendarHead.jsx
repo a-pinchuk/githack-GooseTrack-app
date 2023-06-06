@@ -1,5 +1,14 @@
 import { useState, useEffect, memo } from 'react';
 import {
+  format,
+  formatISO,
+  startOfWeek,
+  lastDayOfWeek,
+  eachDayOfInterval,
+} from 'date-fns';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import {
   WeeksItem,
   WeeksItemDay,
   WeeksItemCurrent,
@@ -9,28 +18,26 @@ import {
   NotSelectedDay,
 } from './DayCalendarHead.styled';
 
-import * as dateFns from 'date-fns';
-import { useNavigate, useParams } from 'react-router-dom';
-
 export const DayCalendarHead = () => {
   const { currentDay: targetDate } = useParams();
   console.log(targetDate);
   const navigate = useNavigate();
-  // const targetDate = '2023-05-31';
 
   const formatofWeek = 'eeee';
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
+    // Оновлюємо state `time` при зміні параметра `targetDate`
     const calendarDate = new Date(targetDate);
     setTime(calendarDate);
   }, [targetDate]);
 
-  const startDate = dateFns.startOfWeek(time, { weekStartsOn: 1 });
-  const endDate = dateFns.lastDayOfWeek(time, { weekStartsOn: 1 });
+  const startDate = startOfWeek(time, { weekStartsOn: 1 });
+  const endDate = lastDayOfWeek(time, { weekStartsOn: 1 });
 
   const getTotalDate = () => {
-    return dateFns.eachDayOfInterval({
+    // Отримуємо масив всіх дат у поточному тижні
+    return eachDayOfInterval({
       start: startDate,
       end: endDate,
     });
@@ -40,43 +47,45 @@ export const DayCalendarHead = () => {
 
   let longWeeksString = window.innerWidth <= 768 ? 1 : 3;
 
-  const curenttDayStyle = cureDayStyl => {
-    const formattedDate = dateFns.formatISO(cureDayStyl).slice(0, 10);
-    return formattedDate === targetDate;
-  };
+  const formatDate = date => formatISO(date).slice(0, 10);
 
-  const selectedDay = dayWeeks => {
-    const formattedDate = dateFns.formatISO(dayWeeks).slice(0, 10);
-    return formattedDate === targetDate;
-  };
-
+  const curenttDayStyle = cureDayStyl => formatDate(cureDayStyl) === targetDate;
+  const selectedDay = dayWeeks => formatDate(dayWeeks) === targetDate;
   const handleChangDay = dayData =>
-    navigate(`/calendar/day/${dateFns.formatISO(dayData).slice(0, 10)}`);
+    navigate(`/calendar/day/${formatDate(dayData)}`);
+
+  const renderDayComponent = (week, isSelected) => {
+    const dayComponent = curenttDayStyle(week) ? (
+      // Відображаємо поточний день з іншим стилем
+      <WeeksItemCurrent>{week.getDate()}</WeeksItemCurrent>
+    ) : (
+      // Відображаємо звичайний день
+      <WeeksItemDay>{week.getDate()}</WeeksItemDay>
+    );
+    return isSelected ? (
+      // Додаємо клас "SelectedDay" для виділення обраного дня
+      <SelectedDay onClick={() => handleChangDay(week)}>
+        {dayComponent}
+      </SelectedDay>
+    ) : (
+      // Додаємо клас "NotSelectedDay" для невиділеного дня
+      <NotSelectedDay onClick={() => handleChangDay(week)}>
+        {dayComponent}
+      </NotSelectedDay>
+    );
+  };
+
+  const formatWeekName = week =>
+    format(week, formatofWeek).substring(0, longWeeksString);
 
   return (
     <DivGridWeeks>
       {totalDate.map(week => (
         <WeeksItem key={week.getTime()}>
-          <WeeksItemDateName>
-            {dateFns.format(week, formatofWeek).substring(0, longWeeksString)}
-          </WeeksItemDateName>
-          {selectedDay(week) ? (
-            <SelectedDay onClick={() => handleChangDay(week)}>
-              {curenttDayStyle(week) ? (
-                <WeeksItemCurrent>{week.getDate()}</WeeksItemCurrent>
-              ) : (
-                <WeeksItemDay>{week.getDate()}</WeeksItemDay>
-              )}
-            </SelectedDay>
-          ) : (
-            <NotSelectedDay onClick={() => handleChangDay(week)}>
-              {curenttDayStyle(week) ? (
-                <WeeksItemCurrent>{week.getDate()}</WeeksItemCurrent>
-              ) : (
-                <WeeksItemDay>{week.getDate()}</WeeksItemDay>
-              )}
-            </NotSelectedDay>
-          )}
+          {/* Відображаємо назву дня тижня */}
+          <WeeksItemDateName>{formatWeekName(week)}</WeeksItemDateName>
+          {/* Відображаємо компонент дня */}
+          {renderDayComponent(week, selectedDay(week))}
         </WeeksItem>
       ))}
     </DivGridWeeks>
