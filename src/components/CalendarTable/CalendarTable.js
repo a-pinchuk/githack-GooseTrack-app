@@ -14,6 +14,7 @@ import {
 import moment from 'moment';
 
 export const CalendarTable = ({ startDay, today, tasks }) => {
+  console.log('🚀 ~ tasks:', tasks);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   // const isDesktop = useMediaQuery({ minWidth: 1440 });
@@ -46,8 +47,13 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   let dayTasksFiltered = [];
 
   const filterTask = calendarDay => {
-    dayTasksFiltered = [
-      ...tasks.filter(task => task.date === calendarDay.format('YYYY-MM-DD')),
+    if (!tasks || !tasks.data || tasks.data.length === 0) {
+      return [];
+    }
+    let dayTasksFiltered = [
+      ...tasks.data.filter(
+        task => task.date === calendarDay.format('YYYY-MM-DD')
+      ),
     ];
     return dayTasksFiltered;
   };
