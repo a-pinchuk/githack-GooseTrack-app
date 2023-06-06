@@ -56,11 +56,11 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   let maxLengthOfTaskTitle = null;
 
   if (isMobile) {
-    maxLengthOfTaskTitle = 4;
+    maxLengthOfTaskTitle = 3;
   } else if (isTablet) {
     maxLengthOfTaskTitle = 6;
   } else {
-    maxLengthOfTaskTitle = 10;
+    maxLengthOfTaskTitle = 12;
   }
 
   const cutString = str => {
