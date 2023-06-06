@@ -20,13 +20,13 @@ export const DaysWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     height: 46px;
-    max-width: 768px;
+    max-width: 704px;
     margin-bottom: 14px;
   }
 
   @media screen and (min-width: 1440px) {
     height: 46px;
-    max-width: 1440px;
+    max-width: 1087px;
     margin-bottom: 15px;
   }
 `;

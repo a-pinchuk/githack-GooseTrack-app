@@ -15,12 +15,12 @@ export const CalendarGridWrapper = styled.div`
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
-    max-width: 768px;
+    max-width: 704px;
     height: 720px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
+    max-width: 1087px;
     height: 625px;
   }
 `;

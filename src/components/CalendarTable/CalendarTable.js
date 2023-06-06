@@ -15,7 +15,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 const DayLink = styled(Link)`
-  min-width: 47px;
+  /* min-width: 47px; */
   padding: 5px 2px;
   overflow: hidden;
 
@@ -37,7 +37,7 @@ const DayLink = styled(Link)`
   }
 
   @media screen and (min-width: 768px) {
-    min-width: calc(100px-6px);
+    /* min-width: calc(100px-6px); */
     padding: 8px 4px 2px;
   }
 
