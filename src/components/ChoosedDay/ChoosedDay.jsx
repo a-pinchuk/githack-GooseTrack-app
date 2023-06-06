@@ -7,8 +7,8 @@ import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumn
 
 const ChoosedDay = () => {
   const targetDate = '2023-06-01';
-  const { tasks } = useSelector(selectAllTasks);
-  console.log('🚀 ~ taskИЗДня:', tasks);
+  const tasks = useSelector(selectAllTasks);
+
   const [sortedTasks, setSortedTasks] = useState(null);
   console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
 
@@ -47,9 +47,12 @@ const ChoosedDay = () => {
         toDo: sortByDate(toDoArray),
       };
     }
+    console.log('getCategorizedArrays fucn data ---> ', tasks);
 
-    const categorizedArrays = getCategorizedArrays(tasks, targetDate);
-    setSortedTasks(categorizedArrays);
+    if (tasks && tasks.length > 0) {
+      const categorizedArrays = getCategorizedArrays(tasks, targetDate);
+      setSortedTasks(categorizedArrays);
+    }
   }, [tasks]);
 
   return (

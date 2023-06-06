@@ -2,7 +2,7 @@ import { TasksColumn } from '../TasksColumn/TasksColumn';
 import { TaskContainer } from './TasksColumnsListStyled';
 
 export const TasksColumnsList = ({ sortedTasksData }) => {
-  console.log('TasksColumnsList', sortedTasksData);
+  console.log('TasksColumnsList component data --->', sortedTasksData);
   const { done, inProgress, toDo } = sortedTasksData;
 
   //----Заглушка
