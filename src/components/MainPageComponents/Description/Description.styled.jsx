@@ -1,0 +1,176 @@
+import styled from 'styled-components';
+
+export const Main = styled.div`
+  width: 335px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 64px;
+  margin-bottom: 64px;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1184px;
+
+    margin-bottom: 100px;
+  }
+`;
+
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 335px;
+
+  &:not(:last-child) {
+    margin-bottom: 64px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 1184px;
+
+    &:nth-child(2) {
+      flex-direction: row-reverse;
+    }
+  }
+`;
+
+export const InfoBox = styled.div`
+  width: 335px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 275px;
+
+    margin-left: 0;
+    margin-bottom: 48px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-left: 77px;
+    margin-bottom: 0;
+  }
+`;
+
+export const InfoBoxReverse = styled.div`
+  width: 335px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 275px;
+
+    margin-right: 0;
+    margin-bottom: 48px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-right: 77px;
+    margin-bottom: 0;
+  }
+`;
+
+export const Number = styled.h1`
+  margin-top: 0;
+  margin-bottom: 22px;
+
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: 80px;
+  line-height: 0.8;
+  letter-spacing: -4px;
+
+  color: ${p => p.theme.colors.primary};
+
+  @media screen and (min-width: 768px) {
+    font-size: 104px;
+    line-height: 1.04;
+
+    margin-bottom: 20px;
+  }
+`;
+
+export const ColorTitle = styled.h1`
+  display: inline-block;
+
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding: 8px 18px;
+
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: 32px;
+  line-height: ${p => p.theme.lineHeights.body};
+  text-align: center;
+
+  color: ${p => p.theme.colors.primary};
+  background-color: ${p => p.theme.colors.bgBlue};
+  border-radius: 44px;
+
+  @media screen and (min-width: 768px) {
+    padding: 6px 18px;
+
+    font-size: 40px;
+    line-height: ${p => p.theme.lineHeights.heading};
+  }
+`;
+
+export const SubTitle = styled.h2`
+  margin-top: 0;
+  margin-bottom: 14px;
+
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: 32px;
+  line-height: ${p => p.theme.lineHeights.body};
+
+  color: ${p => p.theme.colors.blackTitle};
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.lineHeights.heading};
+  }
+`;
+
+export const Text = styled.p`
+  margin-top: 0;
+  margin-bottom: 0;
+
+  width: 335px;
+
+  font-family: ${p => p.theme.fonts.text};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: 1.29;
+
+  color: ${p => p.theme.colors.text};
+
+  @media screen and (min-width: 768px) {
+    width: 275px;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
