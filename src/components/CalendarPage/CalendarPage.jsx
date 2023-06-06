@@ -11,7 +11,6 @@ import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTasks } from 'redux/task/operations';
 import { selectAllTasks } from 'redux/task/selectors';
-// import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const CalendarPage = () => {
   const [today, setToday] = useState(moment());
@@ -19,12 +18,8 @@ const CalendarPage = () => {
   const [typeSelect, setTypeSelect] = useState('month');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const tasks = useSelector(selectAllTasks);
-  // console.log('CalendarPage ~ tasks:', tasks);
-  // const error = useSelector(selectTasksError);
-  // console.log('CalendarPage ~ error:', error);
-  // const user = useSelector(selectIsLoggedIn);
-  // console.log('CalendarPage ~ user:', user);
 
   useEffect(() => {
     navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
@@ -75,9 +70,17 @@ const CalendarPage = () => {
   };
 
   const typeMonthHendler = () => {
-    setTypeSelect('month');
-    navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
+    const desiredPath = `/calendar/month/${moment().format('YYYY-MM-DD')}`;
+    const currentPath = window.location.pathname;
+    const pathAfterCalendar = currentPath.slice(
+      currentPath.indexOf('/calendar')
+    );
+    if (pathAfterCalendar !== desiredPath) {
+      setTypeSelect('month');
+      navigate(desiredPath);
+    }
   };
+
   const typeDayHendler = () => {
     setTypeSelect('day');
     navigate(`/calendar/day/${moment().format('YYYY-MM-DD')}`);

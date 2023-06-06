@@ -14,7 +14,7 @@ import {
 import moment from 'moment';
 
 export const CalendarTable = ({ startDay, today, tasks }) => {
-  console.log('🚀 ~ tasks:', tasks);
+  //console.log('🚀 ~ tasks:', tasks);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   // const isDesktop = useMediaQuery({ minWidth: 1440 });
