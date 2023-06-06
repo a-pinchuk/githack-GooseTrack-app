@@ -55,7 +55,6 @@ export const Tooltip = styled.div`
   border-radius: 8px;
   padding: 20px 24px 20px 24px;
   box-shadow: ${theme.shadows.boxShadow};
-  width: 100px;
   z-index: 100;
 `;
 export const TooltipButton = styled.button`
