@@ -67,6 +67,7 @@ export const TooltipButton = styled.button`
   background-color: transparent;
   white-space: nowrap;
   padding: 0;
+  transition: color 250ms linear;
   cursor: pointer;
   &:hover {
     color: ${theme.colors.secondary};
@@ -74,7 +75,7 @@ export const TooltipButton = styled.button`
       stroke: ${theme.colors.secondary};
     }
   }
-  @media screen and (min-width: 375px) {
+  @media screen and (max-width: 375px) {
     font-size: ${theme.fontSizes.s};
   }
 `;

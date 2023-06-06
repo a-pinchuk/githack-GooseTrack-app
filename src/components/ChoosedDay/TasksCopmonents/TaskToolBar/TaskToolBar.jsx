@@ -8,7 +8,7 @@ import {
   TooltipButton,
   TooltipButtonItem,
 } from './TaskToolBarStyled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteTask } from 'redux/task/operations';
 import { Modal } from 'components/Modal/Modal';
 
@@ -35,7 +35,7 @@ export const TasklToolBar = ({ toolbarData, idData }) => {
             <TooltipButtonItem>
               <TooltipButton onClick={() => handleMoveCard(idData)}>
                 {toolbarData[0]}
-                <IconBthArrow style={{ margin: '0' }} />
+                <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
               </TooltipButton>
             </TooltipButtonItem>
             <TooltipButtonItem>

@@ -14,7 +14,7 @@ export const ColumnHeadBar = ({ title }) => {
   };
   return (
     <TaskHeaderBox>
-      <TaskHeaderTitle>{title}</TaskHeaderTitle>;
+      <TaskHeaderTitle>{title}</TaskHeaderTitle>
       <TaskHeaderBth onClick={handleOpenModal}>+</TaskHeaderBth>
       {modal && <Modal />}
     </TaskHeaderBox>
