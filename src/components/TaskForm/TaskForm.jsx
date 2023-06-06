@@ -10,7 +10,8 @@ import {
   CancelButton,
   RadioContainer,
 } from './TaskForm.styled';
-import { addTasks, updateTask } from 'redux/task/operations';
+// import { addTasks, updateTask } from 'redux/task/operations';
+import { updateTask } from 'redux/task/operations';
 import { ReactComponent as EditPen } from '../../images/editPen.svg';
 import { ReactComponent as AddIcon } from '../../images/addIcon.svg';
 
@@ -59,12 +60,13 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
         await updateTask({ id: initialData.id, ...taskData });
         // Update task in the collection
         // ...
-      } else {
-        // Task is being added
-        await addTasks(taskData);
-        // Add task to the collection
-        // ...
       }
+      // else {
+      //   // Task is being added
+      //   // await addTasks(taskData);
+      //   // Add task to the collection
+      //   // ...
+      // }
 
       // Task added/updated successfully, close modal
       handlerCloseModal();
