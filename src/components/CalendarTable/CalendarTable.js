@@ -1,9 +1,9 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import styled from 'styled-components';
 
 import {
   CalendarGridWrapper,
-  CellWrapper,
   RowInCeil,
   DayWrapper,
   CurrentDay,
@@ -12,9 +12,44 @@ import {
   TaskItem,
 } from './CalendarTable.styled';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
+
+const DayLink = styled(Link)`
+  min-width: 47px;
+  height: 94px;
+  padding: 5px 2px;
+  overflow: hidden;
+
+  text-decoration: none;
+
+  background-color: #ffff;
+
+  color: ${props =>
+    props.isSelectedMonth ? '#343434' : 'rgba(52, 52, 52, 0.3)'};
+
+  transition-property: all;
+  transition-duration: 100ms;
+  transition-timing-function: linear;
+
+  :hover {
+    transform: scale(1.05);
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 144px;
+    min-width: calc(100px-6px);
+    padding: 14px 4px 2px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 14px 8px 2px;
+    height: 125px;
+  }
+`;
 
 export const CalendarTable = ({ startDay, today, tasks }) => {
-  console.log('🚀 ~ tasks:', tasks);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   // const isDesktop = useMediaQuery({ minWidth: 1440 });
@@ -54,24 +89,13 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
     return dayTasksFiltered;
   };
 
-  //   {
-  // "_id": "647a36e401a3371dd3c043d8",
-  // "title": "My task  medium done 09:39-10:01",
-  // "date": "2023-06-04",
-  // "start": "09:39",
-  // "end": "10:01",
-  // "priority": "medium",
-  // "category": "done",
-  // "createdAt": "2023-06-02T18:37:25.130Z",
-  // "updatedAt": "2023-06-02T18:37:25.130Z"
-  // }
-
   return (
     <CalendarGridWrapper>
       {daysArray.map(dayItem => {
         const dayTasks = filterTask(dayItem); // Получаем отфильтрованные задачи для данного дня
         return (
-          <CellWrapper
+          <DayLink
+            to={`/calendar/day/${dayItem.format('YYYY-MM-DD')}`}
             key={dayItem.format('DDMMYYYY')}
             isSelectedMonth={isSelectedMonth(dayItem)}
           >
@@ -99,7 +123,7 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
                 )}
               </TaskList>
             )}
-          </CellWrapper>
+          </DayLink>
         );
       })}
     </CalendarGridWrapper>

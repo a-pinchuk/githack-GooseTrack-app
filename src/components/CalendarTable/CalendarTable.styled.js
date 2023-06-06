@@ -22,29 +22,6 @@ export const CalendarGridWrapper = styled.div`
   }
 `;
 
-export const CellWrapper = styled.div`
-  min-width: 47px;
-  height: 94px;
-  padding: 5px 2px;
-  overflow: hidden;
-
-  background-color: #ffff;
-
-  color: ${props =>
-    props.isSelectedMonth ? '#343434' : 'rgba(52, 52, 52, 0.3)'};
-
-  @media screen and (min-width: 768px) {
-    height: 144px;
-    min-width: calc(100px-6px);
-    padding: 14px 4px 2px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding: 14px 8px 2px;
-    height: 125px;
-  }
-`;
-
 export const RowInCeil = styled.div`
   display: flex;
   margin-bottom: 20px;
