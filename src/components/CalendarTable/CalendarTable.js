@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 
 const DayLink = styled(Link)`
   min-width: 47px;
-  height: 94px;
   padding: 5px 2px;
   overflow: hidden;
 
@@ -33,19 +32,17 @@ const DayLink = styled(Link)`
 
   :hover {
     transform: scale(1.05);
-
+    border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
 
   @media screen and (min-width: 768px) {
-    height: 144px;
     min-width: calc(100px-6px);
-    padding: 14px 4px 2px;
+    padding: 8px 4px 2px;
   }
 
   @media screen and (min-width: 1440px) {
     padding: 14px 8px 2px;
-    height: 125px;
   }
 `;
 

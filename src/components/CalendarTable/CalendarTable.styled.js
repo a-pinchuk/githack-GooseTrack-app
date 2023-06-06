@@ -7,6 +7,7 @@ export const CalendarGridWrapper = styled.div`
   grid-gap: 1px;
   max-width: 767px;
   margin: 0 auto;
+  height: 470px;
 
   border: 1px solid rgba(220, 227, 229, 0.8);
   overflow: hidden;
@@ -15,24 +16,26 @@ export const CalendarGridWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
+    height: 720px;
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
+    height: 625px;
   }
 `;
 
 export const RowInCeil = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 4px;
   justify-content: ${props =>
     props.justifyContent ? props.justifyContent : 'flex-start'};
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 20px;
+    margin-bottom: 1px;
   }
   @media screen and (min-width: 1440px) {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
 `;
 
