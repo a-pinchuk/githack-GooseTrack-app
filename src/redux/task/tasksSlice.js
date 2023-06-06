@@ -11,6 +11,7 @@ import {
 
 const pending = state => {
   state.isLoading = true;
+  state.successful = false;
 };
 
 const rejected = (state, action) => {
@@ -24,6 +25,7 @@ export const tasksSlice = createSlice({
     tasks: [],
     isLoading: false,
     error: null,
+    successful: false,
   },
 
   extraReducers: builder => {
@@ -43,38 +45,45 @@ export const tasksSlice = createSlice({
       .addCase(fetchAllTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         state.tasks = action.payload.data;
       })
       .addCase(fetchTaskById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         state.tasks = action.payload;
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.tasks.data.push(action.payload);
+        state.successful = true;
+        state.tasks.push(action.payload);
       })
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         const index = state.tasks.id === action.payload.id;
-        state.tasks.data.splice(index, 1);
+        state.tasks.splice(index, 1);
       })
       .addCase(updateTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         const index = state.tasks.id === action.payload.id;
         state.tasks[index] = action.payload;
       })
       .addCase(logOut.fulfilled, state => {
         state.tasks = [];
         state.error = null;
+        state.successful = false;
         state.isLoading = false;
       })
       .addCase(changeTaskCategory.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         const index = state.tasks.id === action.payload.id;
         state.tasks[index] = action.payload;
       });

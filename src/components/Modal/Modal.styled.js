@@ -19,17 +19,17 @@ export const ModalContainer = styled.div`
 
   background-color: ${p => p.theme.colors.background};
 
-  max-width: 335px;
-  min-height: 300px;
+  min-width: 100px;
+  min-height: 100px;
 
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: ${p => p.theme.shadows.modalShadow};
   border-radius: ${p => p.theme.radii.small};
 
-  @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
+  /* @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
     max-width: 468px;
     width: 468px;
-  }
+  } */
 `;
 
 export const CloseButton = styled.button`
