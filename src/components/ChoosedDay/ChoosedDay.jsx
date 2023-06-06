@@ -6,11 +6,13 @@ import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
 
 const ChoosedDay = () => {
+  console.log('ChoosedDay');
+
   const targetDate = '2023-06-01';
   const tasks = useSelector(selectAllTasks);
 
   const [sortedTasks, setSortedTasks] = useState(null);
-  console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
+  // console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
 
   // Функція для сортування масиву за полем "date"
   function sortByDate(array) {
@@ -47,7 +49,7 @@ const ChoosedDay = () => {
         toDo: sortByDate(toDoArray),
       };
     }
-    console.log('getCategorizedArrays fucn data ---> ', tasks);
+    // console.log('getCategorizedArrays fucn data ---> ', tasks);
 
     if (tasks && tasks.length > 0) {
       const categorizedArrays = getCategorizedArrays(tasks, targetDate);
