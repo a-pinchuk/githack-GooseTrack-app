@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
 
+import { Header } from './Header/Header';
+
 // const Layout = lazy(() => import('../components/Layout/Layout'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -30,7 +32,7 @@ export const App = () => {
     <Suspense>
       <Routes>
         <Route path="/" element={<PublicRoute />}>
-          <Route index element={<MainPage />} />
+          <Route index element={<MainPage />}/>
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
         </Route>
