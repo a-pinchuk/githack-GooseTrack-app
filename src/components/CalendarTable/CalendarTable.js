@@ -15,7 +15,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 const DayLink = styled(Link)`
-  min-width: 47px;
+  /* min-width: 47px; */
   padding: 5px 2px;
   overflow: hidden;
 
@@ -37,7 +37,7 @@ const DayLink = styled(Link)`
   }
 
   @media screen and (min-width: 768px) {
-    min-width: calc(100px-6px);
+    /* min-width: calc(100px-6px); */
     padding: 8px 4px 2px;
   }
 
@@ -56,11 +56,11 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   let maxLengthOfTaskTitle = null;
 
   if (isMobile) {
-    maxLengthOfTaskTitle = 4;
+    maxLengthOfTaskTitle = 3;
   } else if (isTablet) {
     maxLengthOfTaskTitle = 6;
   } else {
-    maxLengthOfTaskTitle = 10;
+    maxLengthOfTaskTitle = 12;
   }
 
   const cutString = str => {
