@@ -7,7 +7,7 @@ import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumn
 
 const ChoosedDay = () => {
   const targetDate = '2023-06-01';
-  const tasks = useSelector(selectAllTasks);
+  const { data: tasks } = useSelector(selectAllTasks);
   const [sortedTasks, setSortedTasks] = useState(null);
   console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
 
