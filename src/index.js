@@ -9,17 +9,18 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from 'redux/store';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/theme';
+import { Loader } from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <PersistGate loading="" persistor={persistor}>
+    <Provider store={store}>
+      <PersistGate loading={<Loader />} persistor={persistor}>
+        <ThemeProvider theme={theme}>
           <BrowserRouter basename="/githack-GooseTrack-app">
             <App />
           </BrowserRouter>
-        </PersistGate>
-      </Provider>
-    </ThemeProvider>
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );

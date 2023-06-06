@@ -9,14 +9,12 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import { persistedAuthSlice } from '../redux/auth/authSlice';
-import { persistedDateSlice } from './date/dateSlice';
 import { tasksSlice } from './task/tasksSlice';
 import { reviewsSlice } from './reviews/reviewsSlice';
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthSlice,
-    date: persistedDateSlice,
     tasks: tasksSlice.reducer,
     reviews: reviewsSlice.reducer,
   },
