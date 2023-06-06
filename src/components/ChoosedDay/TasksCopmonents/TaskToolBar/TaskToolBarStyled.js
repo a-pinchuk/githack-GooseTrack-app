@@ -69,7 +69,13 @@ export const TooltipButton = styled.button`
   padding: 0;
   cursor: pointer;
   &:hover {
-    fill: currentColor;
+    color: ${theme.colors.secondary};
+    svg {
+      stroke: ${theme.colors.secondary};
+    }
+  }
+  @media screen and (min-width: 375px) {
+    font-size: ${theme.fontSizes.s};
   }
 `;
 export const TooltipButtonItem = styled.li`
