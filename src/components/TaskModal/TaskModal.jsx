@@ -38,7 +38,7 @@ const TaskModal = ({ task_info, handlerCloseModal }) => {
     if (id) {
       loadTask(id);
     } else if (category) {
-      // todo Треба знайти час завершення останньої тски у вибраний день
+      // todo Треба знайти час завершення останньої тски у вибраний день!
       setInitialData({
         title: '',
         date: currentDay,
