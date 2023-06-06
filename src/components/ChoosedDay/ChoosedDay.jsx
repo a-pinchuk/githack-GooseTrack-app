@@ -1,22 +1,17 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectAllTasks } from 'redux/task/selectors';
-import { Container, Container1, Container2 } from './ChoosedDay.styled';
+import { Container } from './ChoosedDay.styled';
+import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
+import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
+import { useParams } from 'react-router-dom';
 
-export const ChoosedDay = () => {
-  // const { currentDay: targetDate } = useParams();
-  const targetDate = '2023-06-01';
+const ChoosedDay = () => {
+  const { currentDay: targetDate } = useParams();
   const tasks = useSelector(selectAllTasks);
-  const [sortedTasks, setSortedTasks] = useState(null);
-  console.log(sortedTasks);
 
-  // ----------------------------------------------------------------
-  // Функція для завантаження даних з URL
-  // async function loadData(url) {
-  //   const response = await fetch(url);
-  //   const data = await response.json();
-  //   return data.data;
-  // }
+  const [sortedTasks, setSortedTasks] = useState(null);
+  console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
 
   // Функція для сортування масиву за полем "date"
   function sortByDate(array) {
@@ -28,9 +23,7 @@ export const ChoosedDay = () => {
     return array.filter(item => item.date === targetDate);
   }
 
-  // Завантаження даних та отримання відсортованих масивів за конкретним днем
   useEffect(() => {
-    console.log(tasks);
     // Оновлена функція для отримання трьох масивів об'єктів за категорією та відсортованих за датою
     function getCategorizedArrays(data, targetDate) {
       const filteredData = filterByDate(data, targetDate);
@@ -51,29 +44,24 @@ export const ChoosedDay = () => {
 
       return {
         done: sortByDate(doneArray),
-        'in-progress': sortByDate(inProgressArray),
-        'to-do': sortByDate(toDoArray),
+        inProgress: sortByDate(inProgressArray),
+        toDo: sortByDate(toDoArray),
       };
     }
+    console.log('getCategorizedArrays fucn data ---> ', tasks);
 
-    const categorizedArrays = getCategorizedArrays(tasks, targetDate);
-    console.log(categorizedArrays);
-    setSortedTasks(categorizedArrays);
-  }, [tasks]);
-
-  // loadData('https://githack-goosetrack.onrender.com/api/tasks')
-  //   .then(() => {
-  //     const categorizedArrays = getCategorizedArrays(tasks, targetDate);
-  //     console.log(categorizedArrays);
-  //   })
-  //   .catch(error => {
-  //     console.error('Помилка завантаження даних:', error);
-  //   });
+    if (tasks && tasks.length > 0) {
+      const categorizedArrays = getCategorizedArrays(tasks, targetDate);
+      setSortedTasks(categorizedArrays);
+    }
+  }, [targetDate, tasks]);
 
   return (
     <div className={Container}>
-      <div className={Container1}>WeeksHeader</div>
-      <div className={Container2}>TaskColumnsList</div>
+      <DayCalendarHead />
+      {sortedTasks && <TasksColumnsList sortedTasksData={sortedTasks} />}
     </div>
   );
 };
+
+export default ChoosedDay;

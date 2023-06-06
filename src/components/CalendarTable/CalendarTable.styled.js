@@ -5,48 +5,37 @@ export const CalendarGridWrapper = styled.div`
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 1px;
-  max-width: 100%;
+  max-width: 767px;
+  margin: 0 auto;
+  height: 470px;
 
   border: 1px solid rgba(220, 227, 229, 0.8);
   overflow: hidden;
   background: rgba(220, 227, 229, 0.8);
   border-radius: 8px;
-`;
-
-export const CellWrapper = styled.div`
-  min-width: 47px;
-  height: 94px;
-  padding: 5px 2px;
-  overflow: hidden;
-
-  background-color: #ffff;
-
-  color: ${props =>
-    props.isSelectedMonth ? '#343434' : 'rgba(52, 52, 52, 0.3)'};
 
   @media screen and (min-width: 768px) {
-    height: 144px;
-    min-width: calc(100px-6px);
-    padding: 14px 4px 2px;
+    max-width: 768px;
+    height: 720px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 14px 8px 2px;
-    height: 125px;
+    max-width: 1440px;
+    height: 625px;
   }
 `;
 
 export const RowInCeil = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 4px;
   justify-content: ${props =>
     props.justifyContent ? props.justifyContent : 'flex-start'};
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 20px;
+    margin-bottom: 1px;
   }
   @media screen and (min-width: 1440px) {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
 `;
 
@@ -60,7 +49,7 @@ export const DayWrapper = styled.div`
 
   margin-right: 2px;
 
-  /* font-family: "Inter"; */
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -115,7 +104,7 @@ export const TaskList = styled.ul`
   padding: 0;
   margin: 0;
 
-  /* font-family: "Inter"; */
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 10px;

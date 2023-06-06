@@ -6,6 +6,7 @@ export const theme = {
     darkBlue: '#CAE8FF',
     bgBlue: '#DCEBF7',
     background: '#FFFFFF',
+    // background: '#f44336',
     white: '#FFFFFF',
     blackTitle: '#171820',
     black: '#111111',
@@ -17,6 +18,7 @@ export const theme = {
     lightRed: '#FFD2DD',
     greenValid: '#3CBC81',
     muted: '#F7F6F9',
+    closeButton: '#111111',
   },
   fonts: {
     body: 'Coolvetica',
@@ -53,5 +55,11 @@ export const theme = {
   },
   shadows: {
     boxShadow: '4px 2px 16px rgba(136, 165, 191, 0.48)',
+    modalShadow: '0px 4px 57px rgba(17, 17, 17, 0.05)',
+  },
+  breakpoints: {
+    mobile: '375px',
+    table: '768px',
+    desktop: '1440px',
   },
 };

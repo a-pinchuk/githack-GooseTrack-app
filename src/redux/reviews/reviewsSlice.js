@@ -2,10 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from 'redux/auth/operations';
 import {
   fetchAllReviews,
+  fetchUserReviews,
+  fetchUserReviewById,
   addReview,
   deleteReview,
   updateReview,
-  fetchReviewById,
 } from './operations';
 
 const pending = state => {
@@ -28,12 +29,14 @@ export const reviewsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchAllReviews.pending, pending)
-      .addCase(fetchReviewById.pending, pending)
+      .addCase(fetchUserReviews.pending, pending)
+      .addCase(fetchUserReviewById.pending, pending)
       .addCase(addReview.pending, pending)
       .addCase(deleteReview.pending, pending)
       .addCase(updateReview.pending, pending)
       .addCase(fetchAllReviews.rejected, rejected)
-      .addCase(fetchReviewById.rejected, rejected)
+      .addCase(fetchUserReviews.rejected, rejected)
+      .addCase(fetchUserReviewById.rejected, rejected)
       .addCase(addReview.rejected, rejected)
       .addCase(deleteReview.rejected, rejected)
       .addCase(updateReview.rejected, rejected)
@@ -42,7 +45,12 @@ export const reviewsSlice = createSlice({
         state.error = null;
         state.reviews = action.payload;
       })
-      .addCase(fetchReviewById.fulfilled, (state, action) => {
+      .addCase(fetchUserReviews.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.reviews = action.payload;
+      })
+      .addCase(fetchUserReviewById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.reviews = action.payload;
