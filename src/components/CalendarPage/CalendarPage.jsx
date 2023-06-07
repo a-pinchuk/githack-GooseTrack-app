@@ -4,7 +4,8 @@ import LogoutBtn from 'components/TestBtnLogout/LogoutBtn';
 import { useNavigate } from 'react-router';
 import moment from 'moment';
 
-import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
+// import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
+import { Header } from 'components/Header/Header';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -89,8 +90,7 @@ const CalendarPage = () => {
       }}
     >
       <LogoutBtn />
-
-      <TemporaryHeaderCalendar />
+      <Header/>
       <CalendarToolbar
         today={today}
         typeSelect={typeSelect}
