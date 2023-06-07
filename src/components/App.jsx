@@ -7,6 +7,7 @@ import UserForm from './UserForm/UserForm';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
+import { Loader } from './Loader/Loader';
 
 const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -17,14 +18,14 @@ const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return isRefreshing ? (
-    <h2>Loading...</h2>
-  ) : (
+
+  return (
     <>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<PublicRoute />}>
             <Route index element={<MainPage />} />
@@ -40,6 +41,7 @@ export const App = () => {
           </Route>
         </Routes>
       </Suspense>
+      {isRefreshing && <Loader />}
     </>
   );
 };

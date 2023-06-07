@@ -1,7 +1,8 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
-import { useNavigate } from 'react-router';
+import LogoutBtn from 'components/TestBtnLogout/LogoutBtn';
+import { useNavigate, useParams } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 
 import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
@@ -11,77 +12,63 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTasks } from 'redux/task/operations';
 import { selectAllTasks } from 'redux/task/selectors';
 
-// import { selectIsLoggedIn } from 'redux/auth/selectors';
-
 const CalendarPage = () => {
-  const [today, setToday] = useState(moment());
-  //console.log('CalendarPage ~ today:', today.format('YYYY-MM-DD'));
-  const [typeSelect, setTypeSelect] = useState('month');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { currentDay, currentDate } = useParams();
+  const { pathname } = useLocation();
+  const typeSelect = pathname.includes('/calendar/day') ? 'day' : 'month';
+
+  const workDate = currentDate || currentDay;
+
+  // * Task
   const tasks = useSelector(selectAllTasks);
-  // console.log('CalendarPage ~ tasks:', tasks);
-  // const error = useSelector(selectTasksError);
-  // console.log('CalendarPage ~ error:', error);
-  // const user = useSelector(selectIsLoggedIn);
-  // console.log('CalendarPage ~ user:', user);
 
   useEffect(() => {
-    navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
+    if (pathname === '/calendar') {
+      navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
+    }
+  }, [pathname, navigate]);
+
+  useEffect(() => {
     if (tasks.length === 0) {
+      // ! Якщо змінився місяць то треба фетчити таски
+      //Винести в окремий
       dispatch(fetchAllTasks());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
-
-  //const startDay = today.clone().startOf('month').startOf('week');
-  // console.log('CalendarPage ~ startDay:', startDay);
-  //const endDay = today.clone().endOf('month').endOf('week');
+  }, [dispatch, tasks]);
 
   const todayHandler = () => {
-    setToday(moment());
+    // Перейти на день
+    console.log('Перейти на день');
+    // setToday(moment());
   };
 
   const prevHandler = () => {
-    if (typeSelect === 'month') {
-      setToday(prev => {
-        const prevMonth = prev.clone().subtract(1, 'month');
-        navigate(`/calendar/month/${prevMonth.format('YYYY-MM-DD')}`);
-        return prevMonth;
-      });
-      return;
-    }
-    setToday(prev => {
-      const prevDay = prev.clone().subtract(1, 'day');
-      navigate(`/calendar/day/${prevDay.format('YYYY-MM-DD')}`);
-      return prevDay;
-    });
+    navigate(
+      `/calendar/${typeSelect}/${moment(workDate)
+        .subtract(1, typeSelect)
+        .format('YYYY-MM-DD')}`
+    );
   };
 
   const nextHandler = () => {
-    if (typeSelect === 'month') {
-      setToday(prev => {
-        const nextMonth = prev.clone().add(1, 'month');
-        navigate(`/calendar/month/${nextMonth.format('YYYY-MM-DD')}`);
-        return nextMonth;
-      });
-      return;
-    }
-    setToday(prev => {
-      const nextDay = prev.clone().add(1, 'day');
-      navigate(`/calendar/day/${nextDay.format('YYYY-MM-DD')}`);
-      return nextDay;
-    });
+    navigate(
+      `/calendar/${typeSelect}/${moment(workDate)
+        .add(1, typeSelect)
+        .format('YYYY-MM-DD')}`
+    );
   };
 
   const typeMonthHendler = () => {
-    setTypeSelect('month');
     navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
   };
+
   const typeDayHendler = () => {
-    setTypeSelect('day');
     navigate(`/calendar/day/${moment().format('YYYY-MM-DD')}`);
   };
+
   return (
     <div
       style={{
@@ -92,7 +79,7 @@ const CalendarPage = () => {
     >
       <TemporaryHeaderCalendar />
       <CalendarToolbar
-        today={today}
+        today={moment(workDate)}
         typeSelect={typeSelect}
         todayHandler={todayHandler}
         prevHandler={prevHandler}
