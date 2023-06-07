@@ -9,9 +9,21 @@ import {
   WrapTitleBurger,
   WrapThemeUserInfo,
 } from './Header.styled';
+import { useLocation } from 'react-router-dom';
+
+const getTypePage = pathname => {
+  if (pathname.includes('/account')) {
+    return 'acount';
+  } else if (pathname.includes('/calendar')) {
+    return 'calendar';
+  }
+};
 
 //todo need to go HandlelShowSider
 export const Header = () => {
+  const { pathname } = useLocation();
+  const typePage = getTypePage(pathname);
+
   const [showModal, setShowModal] = useState(false);
 
   const handlerCloseModal = () => {
@@ -21,14 +33,14 @@ export const Header = () => {
   return (
     <WrapHeader>
       <WrapTitleBurger>
-        <p>Title</p>
-        <BtnAddFeedback />
+        <p>{typePage === 'acount' ? 'User Profile' : 'Calendar'}</p>
+
+        <button type="button">Show Side bar</button>
       </WrapTitleBurger>
 
       <WrapThemeUserInfo>
-        <button type="button" onClick={() => setShowModal(true)}>
-          Feedback
-        </button>
+        <BtnAddFeedback onClick={() => setShowModal(true)} />
+
         <ThemeToggler />
         <UserInfo />
       </WrapThemeUserInfo>

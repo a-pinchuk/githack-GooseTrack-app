@@ -1,3 +1,3 @@
 export const BtnAddFeedback = () => {
-  return <p>BtnAddFeedback</p>;
+  return <button type="button">Feedback</button>;
 };
