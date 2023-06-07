@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as LogOutIcon } from '../../images/sideBar/log-out.svg';
 
 export const LogOutBtnStyled = styled.button`
   width: 141px;
@@ -27,4 +28,8 @@ export const LogOutBtnStyled = styled.button`
   :hover {
     background: #2b78ef;
   }
+`;
+
+export const LogOutIconStyled = styled(LogOutIcon)`
+  margin-left: 10px;
 `;

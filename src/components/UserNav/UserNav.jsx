@@ -1,4 +1,5 @@
 import {
+  LogoWrapper,
   StyledItem,
   StyledLink,
   StyledList,
@@ -13,19 +14,12 @@ import { ReactComponent as CalendarIcon } from '../../images/sideBar/calendar-ch
 export const UserNav = () => {
   return (
     <div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          marginBottom: '32px',
-        }}
-      >
+      <LogoWrapper>
         <img width="71px" height="68px" alt="goose-track-img" src={goose}></img>
         <TextLogo>
           G<TextLogoSpan>oo</TextLogoSpan>seTrack
         </TextLogo>
-      </div>
+      </LogoWrapper>
       <nav>
         <StyledList>
           <StyledItem>

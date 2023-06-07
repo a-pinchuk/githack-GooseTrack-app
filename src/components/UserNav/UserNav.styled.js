@@ -63,3 +63,10 @@ export const TextLogo = styled.p`
 export const TextLogoSpan = styled.span`
   font-style: italic;
 `;
+
+export const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+`;
