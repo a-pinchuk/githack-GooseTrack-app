@@ -1,58 +1,57 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
-import { Backdrop, CloseButton, ModalContainer } from './Modal.styled';
-import { ReactComponent as CloseIcon } from '../../images/x-close.svg';
+import React, { useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
-const modalRootElement = document.getElementById('modal-root');
+import {
+  Backdrop,
+  CloseButton,
+  ModalContainer,
+  MyCloseIcon,
+} from './Modal.styled';
 
-export const Modal = ({ children, toggleModal }) => {
-  // useMemo to prevent element creaction every render
-  const element = useMemo(() => document.createElement('div'), []);
-  // mount element by useEffect
-  useEffect(() => {
-    modalRootElement.appendChild(element);
-    // clear side effect and unmount component
-    return () => {
-      modalRootElement.removeChild(element);
-    };
-  });
-
-  // function to close Modal by pressing ESC button or by backdrop click
-  const handleModalClose = useCallback(
-    event => {
-      if (event.target === event.currentTarget || event.keyCode === 27) {
-        // Close modal on backdrop click
-        toggleModal();
+export const Modal = ({ children, handlerCloseModal }) => {
+  const handleKeyDown = useCallback(
+    evt => {
+      if (evt.code === 'Escape') {
+        handlerCloseModal();
       }
     },
-    [toggleModal]
+    [handlerCloseModal]
   );
-  // useEffect to close Modal by pressing ESC button
+
+  const handleBackdropClick = evt => {
+    if (evt.currentTarget === evt.target) {
+      handlerCloseModal();
+    }
+  };
+
+  // * useEffect
   useEffect(() => {
-    document.addEventListener('keydown', handleModalClose);
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
-      document.removeEventListener('keydown', handleModalClose);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleModalClose]);
+  }, [handleKeyDown]);
 
   useEffect(() => {
-    document.documentElement.style.overflow = 'hidden';
-    // Add a class to the root element or body to prevent scrolling
-    // Cleanup function to remove the class on unmount
+    document.body.classList.add('no-scroll');
+
     return () => {
-      document.documentElement.style.overflow = '';
+      document.body.classList.remove('no-scroll');
     };
   }, []);
 
-  return (
+  return createPortal(
     <>
-      <Backdrop onClick={handleModalClose}>
+      <Backdrop onClick={handleBackdropClick}>
         <ModalContainer>
-          <CloseButton onClick={toggleModal}>
-            <CloseIcon width="24" height="24"></CloseIcon>
+          <CloseButton onClick={handlerCloseModal}>
+            <MyCloseIcon width="24" height="24"></MyCloseIcon>
           </CloseButton>
           {children}
         </ModalContainer>
       </Backdrop>
-    </>
+    </>,
+    document.getElementById('modal-root')
   );
 };

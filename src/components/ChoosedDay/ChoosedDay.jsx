@@ -1,17 +1,22 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectAllTasks } from 'redux/task/selectors';
-import { Container, Container1, Container2 } from './ChoosedDay.styled';
+import { Container } from './ChoosedDay.styled';
+import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
+import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
+import { useParams } from 'react-router-dom';
 
 const ChoosedDay = () => {
-  const targetDate = '2023-06-01';
-  const tasks = useSelector(selectAllTasks);
-  const [sortedTasks, setSortedTasks] = useState(null);
-  console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
+  const { currentDay: targetDate } = useParams();
 
-  // Функція для сортування масиву за полем "date"
-  function sortByDate(array) {
-    return array.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const tasks = useSelector(selectAllTasks);
+
+  const [sortedTasks, setSortedTasks] = useState(null);
+  // console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
+
+  // Функція для сортування масиву за полем "start time"
+  function sortByStartTime(array) {
+    return array.sort((a, b) => b.start.localeCompare(a.start));
   }
 
   // Функція для фільтрації масиву об'єктів за конкретним днем
@@ -39,20 +44,23 @@ const ChoosedDay = () => {
       }
 
       return {
-        done: sortByDate(doneArray),
-        'in-progress': sortByDate(inProgressArray),
-        'to-do': sortByDate(toDoArray),
+        done: sortByStartTime(doneArray),
+        inProgress: sortByStartTime(inProgressArray),
+        toDo: sortByStartTime(toDoArray),
       };
     }
+    // console.log('getCategorizedArrays fucn data ---> ', tasks);
 
-    const categorizedArrays = getCategorizedArrays(tasks, targetDate);
-    setSortedTasks(categorizedArrays);
-  }, [tasks]);
+    if (tasks && tasks.length > 0) {
+      const categorizedArrays = getCategorizedArrays(tasks, targetDate);
+      setSortedTasks(categorizedArrays);
+    }
+  }, [targetDate, tasks]);
 
   return (
     <div className={Container}>
-      <div className={Container1}>WeeksHeader</div>
-      <div className={Container2}>TaskColumnsList</div>
+      <DayCalendarHead />
+      {sortedTasks && <TasksColumnsList sortedTasksData={sortedTasks} />}
     </div>
   );
 };

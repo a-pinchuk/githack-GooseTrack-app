@@ -1,4 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect, memo } from 'react';
+import {
+  format,
+  formatISO,
+  startOfWeek,
+  lastDayOfWeek,
+  eachDayOfInterval,
+} from 'date-fns';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import {
   WeeksItem,
   WeeksItemDay,
@@ -6,67 +15,81 @@ import {
   DivGridWeeks,
   WeeksItemDateName,
   SelectedDay,
+  NotSelectedDay,
 } from './DayCalendarHead.styled';
 
-import * as dateFns from 'date-fns';
-import {
-  currentDay,
-  currentMonth,
-  currentTime,
-  currentYear,
-} from 'Redux/calendar/calendar.slice';
+export const DayCalendarHead = () => {
+  const { currentDay: targetDate } = useParams();
+  console.log(targetDate);
+  const navigate = useNavigate();
 
-export const DayCalendarHead = props => {
-  const { CalendarDate } = props;
   const formatofWeek = 'eeee';
-  const time = useSelector(state => state.calendar.time);
-  const dispatch = useDispatch();
-  dispatch(currentTime(dateFns.getTime(CalendarDate)));
-  dispatch(currentDay(dateFns.getDate(CalendarDate)));
-  dispatch(currentMonth(dateFns.getMonth(CalendarDate)));
-  dispatch(currentYear(dateFns.getYear(CalendarDate)));
-  const startDate = dateFns.startOfWeek(CalendarDate, { weekStartsOn: 1 });
-  //Find the last day of week of lastDay
-  const endDate = dateFns.lastDayOfWeek(CalendarDate, { weekStartsOn: 1 });
-  //render all days
+  const [time, setTime] = useState(new Date());
 
-  const totalDate = dateFns.eachDayOfInterval({
-    start: startDate,
-    end: endDate,
-  });
-  let longWeeksString;
-  if (window.innerWidth <= 768) {
-    longWeeksString = 1;
-  } else {
-    longWeeksString = 3;
-  }
-  const curenttDayStyle = cureDayStyl => {
-    const dateNow = dateFns.formatISO(Date.now());
-    if (dateFns.formatISO(cureDayStyl).slice(0, 10) === dateNow.slice(0, 10)) {
-      return WeeksItemCurrent;
-    }
-    return WeeksItemDay;
+  useEffect(() => {
+    // Оновлюємо state `time` при зміні параметра `targetDate`
+    const calendarDate = new Date(targetDate);
+    setTime(calendarDate);
+  }, [targetDate]);
+
+  const startDate = startOfWeek(time, { weekStartsOn: 1 });
+  const endDate = lastDayOfWeek(time, { weekStartsOn: 1 });
+
+  const getTotalDate = () => {
+    // Отримуємо масив всіх дат у поточному тижні
+    return eachDayOfInterval({
+      start: startDate,
+      end: endDate,
+    });
   };
-  const selectedDay = dayWeeks => {
-    if (
-      dateFns.formatISO(dayWeeks).slice(0, 10) ===
-      dateFns.formatISO(time).slice(0, 10)
-    ) {
-      return SelectedDay;
-    }
+
+  const totalDate = getTotalDate();
+
+  let longWeeksString = window.innerWidth <= 768 ? 1 : 3;
+
+  const formatDate = date => formatISO(date).slice(0, 10);
+
+  const curenttDayStyle = cureDayStyl => formatDate(cureDayStyl) === targetDate;
+  const selectedDay = dayWeeks => formatDate(dayWeeks) === targetDate;
+  const handleChangDay = dayData =>
+    navigate(`/calendar/day/${formatDate(dayData)}`);
+
+  const renderDayComponent = (week, isSelected) => {
+    const dayComponent = curenttDayStyle(week) ? (
+      // Відображаємо поточний день з іншим стилем
+      <WeeksItemCurrent>{week.getDate()}</WeeksItemCurrent>
+    ) : (
+      // Відображаємо звичайний день
+      <WeeksItemDay>{week.getDate()}</WeeksItemDay>
+    );
+    return isSelected ? (
+      // Додаємо клас "SelectedDay" для виділення обраного дня
+      <SelectedDay onClick={() => handleChangDay(week)}>
+        {dayComponent}
+      </SelectedDay>
+    ) : (
+      // Додаємо клас "NotSelectedDay" для невиділеного дня
+      <NotSelectedDay onClick={() => handleChangDay(week)}>
+        {dayComponent}
+      </NotSelectedDay>
+    );
   };
+
+  const formatWeekName = week =>
+    format(week, formatofWeek).substring(0, longWeeksString);
+
   return (
-    <div className={DivGridWeeks}>
+    <DivGridWeeks>
       {totalDate.map(week => (
-        <div className={WeeksItem} key={week}>
-          <div className={WeeksItemDateName}>
-            {dateFns.format(week, formatofWeek).substring(0, longWeeksString)}
-          </div>
-          <div className={selectedDay(week)}>
-            <div className={curenttDayStyle(week)}>{week.getDate()}</div>
-          </div>
-        </div>
+        <WeeksItem key={week.getTime()}>
+          {/* Відображаємо назву дня тижня */}
+          <WeeksItemDateName>{formatWeekName(week)}</WeeksItemDateName>
+          {/* Відображаємо компонент дня */}
+          {renderDayComponent(week, selectedDay(week))}
+        </WeeksItem>
       ))}
-    </div>
+    </DivGridWeeks>
   );
 };
+
+export default memo(DayCalendarHead);

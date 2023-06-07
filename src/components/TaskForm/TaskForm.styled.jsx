@@ -1,4 +1,26 @@
-const { default: styled } = require('styled-components');
+import styled from 'styled-components';
+
+import { ReactComponent as EditPen } from '../../images/editPen.svg';
+import { ReactComponent as Plus } from '../../images/addIcon.svg';
+
+export const WrapForm = styled.div`
+  max-width: 303px;
+  padding: 10px;
+
+  padding: 48px 18px;
+
+  @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
+    padding: 40px 28px;
+    max-width: 396px;
+    width: 396px;
+  }
+`;
+
+export const Form = styled.form`
+  /* padding: '40px 28px';
+  display: 'block';
+  position: 'relative'; */
+`;
 
 export const Label = styled.label`
   display: inline-flex;
@@ -9,7 +31,6 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   margin-top: 8px;
-  /* width: 340px; */
   height: 46px;
   left: 0px;
   top: 0px;
@@ -32,6 +53,7 @@ export const FormGroup = styled.div`
 
 export const EditButton = styled.button`
   display: flex;
+  gap: 8px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -55,6 +77,13 @@ export const CancelButton = styled(EditButton)`
   color: #111111;
 `;
 
+export const WrapRadio = styled.div`
+  margin-top: 10px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 16px;
+`;
+
 export const RadioContainer = styled.div`
   display: flex;
   align-items: center;
@@ -76,34 +105,6 @@ export const RadioButtonsLabel = styled.label`
 `;
 
 export const RadioButtonCustom = styled.span`
-  /* position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 12px;
-  vertical-align: middle;
-  background-color: inherit;
-  color: transparent;
-  border: 1px solid transparent;
-  border-radius: 15px;
-
-  ${RadioButtonsInput}:checked + & {
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      width: 10px;
-      height: 10px;
-      background-color: #01a982;
-      border-radius: 12px;
-    }
-
-    border-color: #01a982;
-  }
-  transform: scale(0.6); */
-
   position: absolute;
   /* top: 0; */
   left: 0;
@@ -117,57 +118,32 @@ export const RadioButtonCustom = styled.span`
   ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
     background-color: #72c2f8;
     border-color: #2196f3;
-    /* &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      width: 10px;
-      height: 10px;
-      background-color: #72c2f8;
-      border-radius: 10px;
-    }
-    box-shadow: inset 0px 0px 0px 2px #2196f3;
-
-    border-color: #2196f3; */
   }
 
   ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
     background-color: #4caf50;
     border-color: #4caf50;
-    /* &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      width: 10px;
-      height: 10px;
-      background-color: #4caf50;
-      border-radius: 10px;
-    }
-    box-shadow: inset 0px 0px 0px 2px #4caf50;
-
-    border-color: #4caf50; */
   }
 
   ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
     background-color: #f44336;
     border-color: #f44336;
-    /* &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      width: 10px;
-      height: 10px;
-      background-color: #f44336;
-      border-radius: 10px;
-    }
-    box-shadow: inset 0px 0px 0px 2px #f44336;
-
-    border-color: #f44336; */
   }
+`;
+
+export const WrapButton = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const IconEditPen = styled(EditPen)`
+  width: 14.5px;
+  height: 14.5px;
+  fill: red;
+`;
+
+export const IconPlus = styled(Plus)`
+  width: 11.67px;
+  height: 11.67px;
+  fill: red;
 `;

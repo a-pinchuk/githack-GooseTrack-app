@@ -3,10 +3,23 @@ import {
   TaskListItem,
   TaskStatue,
   TaskText,
+  TextAvatar,
 } from './TaskColumnCardStyled';
 import { TasklToolBar } from '../TaskToolBar/TaskToolBar';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
-export const TaskColumnCard = ({ toolbarData, item }) => {
+export const TaskColumnCard = ({ toolbarData, item, handlerOpenModal }) => {
+  const userData = useSelector(selectUser);
+
+  const avaFunc = value => {
+    if (!value) {
+      return;
+    } else {
+      return value.slice(0, 1).toUpperCase();
+    }
+  };
+
   return (
     <TaskListItem>
       <TaskText>{item.title}</TaskText>
@@ -17,14 +30,22 @@ export const TaskColumnCard = ({ toolbarData, item }) => {
           justifyContent: 'space-between',
         }}
       >
-        <AvatorTaskList
-          src="https://n1s2.hsmedia.ru/6a/46/ae/6a46aeed947a183d67d1bc48211151bf/480x496_0xac120003_4430520541578509619.jpg"
-          alt="avator"
-          width="28"
-          height="28"
-        />
+        {!userData?.avatarUrl ? (
+          <TextAvatar>{avaFunc(userData?.name)}</TextAvatar>
+        ) : (
+          <AvatorTaskList
+            src={userData?.avatarUrl}
+            alt="avator"
+            width="28"
+            height="28"
+          />
+        )}
         <TaskStatue priority={item.priority}>{item.priority}</TaskStatue>
-        <TasklToolBar toolbarData={toolbarData} idData={item._id} />
+        <TasklToolBar
+          toolbarData={toolbarData}
+          idData={item._id}
+          handlerOpenModal={handlerOpenModal}
+        />
       </div>
     </TaskListItem>
   );
