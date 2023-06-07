@@ -1,22 +1,59 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+const { REACT_APP_API_URL } = process.env;
 
-axios.defaults.baseURL = 'https://githack-goosetrack.onrender.com/api';
+const instance = axios.create({
+  baseURL: REACT_APP_API_URL,
+});
+
+// axios.defaults.baseURL = 'https://githack-goosetrack.onrender.com/api';
 
 const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  if (token) {
+    return (instance.defaults.headers.common.Authorization = `Bearer ${token}`);
+  }
+  return (instance.defaults.headers.common.Authorization = '');
 };
 
+// interceptors for request
+// instance.interceptors.request.use(config => {
+//   const accessToken = localStorage.getItem('accessToken');
+//   config.headers.common.Authorization = `Bearer ${accessToken}`;
+//   return config;
+// });
+
+instance.interceptors.response.use(
+  response => response,
+  async error => {
+    try {
+      if (error.response.status === 401) {
+        const refreshToken = localStorage.getItem('refreshToken');
+        const { data } = await instance.post('/users/refresh', {
+          refreshToken,
+        });
+        setAuthHeader(data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
+
+        return instance(error.config);
+      }
+    } catch (err) {
+      return Promise.reject(err);
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
+  instance.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
   '/users/register',
   async ({ name, email, password }, thunkAPI) => {
     try {
-      const res = await axios.post('/users/register', {
+      const res = await instance.post('/users/register', {
         name,
         email,
         password,
@@ -35,8 +72,12 @@ export const logIn = createAsyncThunk(
   '/users/login',
   async ({ email, password }, thunkAPI) => {
     try {
-      const res = await axios.post('/users/login', { email, password });
-      setAuthHeader(res.data.token);
+      const { data: res } = await instance.post('/users/login', {
+        email,
+        password,
+      });
+      setAuthHeader(res.accessToken);
+      localStorage.setItem('refresh', res.refreshToken);
       Notify.success(`Welcome!!!`);
       console.log(res.data.email);
       return res.data;
@@ -49,7 +90,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    await instance.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -68,7 +109,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/current');
+      const res = await instance.get('/users/current');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -92,7 +133,7 @@ export const updateUserInfo = createAsyncThunk(
         console.log(pair[0] + ', ' + pair[1]);
       }
 
-      const response = await axios.patch(`/users/user/`, formData, {
+      const response = await instance.patch(`/users/user/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
