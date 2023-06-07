@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
@@ -24,28 +25,36 @@ import {
   ErrorMessage,
   StyledDataPicker,
 } from './UserForm.styled';
-import { useEffect, useState } from 'react';
 
 const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   const [selectedImage, setSelectedImage] = useState(null);
-  useEffect(() => {}, []);
+
   const handleAvatarUpload = event => {
-    formik.setFieldValue('avatar', event.currentTarget.files[0]);
+    setFieldValue('avatar', event.currentTarget.files[0]);
 
     const file = event.currentTarget.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      console.log(imageUrl);
       setSelectedImage(imageUrl);
     }
   };
   const handleDatePickerChange = date => {
-    formik.setFieldValue('birthday', date || user.birthday);
+    setFieldValue('birthday', date || user.birthday);
   };
-  const formik = useFormik({
+
+  const {
+    errors,
+    touched,
+    values,
+    handleSubmit,
+    handleBlur,
+    handleChange,
+    setFieldValue,
+    isSubmitting,
+  } = useFormik({
     initialValues: {
       avatar: user.avatar,
       name: user.name,
@@ -68,7 +77,7 @@ const UserForm = () => {
   });
   return (
     <Container>
-      <FormContainer onSubmit={formik.handleSubmit}>
+      <FormContainer onSubmit={handleSubmit}>
         <StyledAvatar>
           {selectedImage ? (
             <img src={selectedImage} alt="Avatar" />
@@ -100,15 +109,13 @@ const UserForm = () => {
               name="name"
               type="text"
               placeholder="User Name"
-              value={formik.values.name || ''}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.name && formik.touched.name ? 'InvalidInput' : ''
-              }
+              value={values.name || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.name && touched.name ? 'InvalidInput' : ''}
             />
-            {formik.errors.name && formik.touched.name && (
-              <ErrorMessage>{formik.errors.name}</ErrorMessage>
+            {errors.name && touched.name && (
+              <ErrorMessage>{errors.name}</ErrorMessage>
             )}
           </WrapperInput>
           <WrapperInput>
@@ -116,7 +123,6 @@ const UserForm = () => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
                 onChange={date => handleDatePickerChange(date)}
-                // value={formik.values.birthday}
                 name="birthday"
                 views={['year', 'month', 'day']}
               />
@@ -130,17 +136,13 @@ const UserForm = () => {
               type="email"
               name="email"
               placeholder="Email"
-              value={formik.values.email || ''}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.email && formik.touched.email
-                  ? 'InvalidInput'
-                  : ''
-              }
+              value={values.email || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.email && touched.email ? 'InvalidInput' : ''}
             />
-            {formik.errors.email && formik.touched.email && (
-              <ErrorMessage>{formik.errors.email}</ErrorMessage>
+            {errors.email && touched.email && (
+              <ErrorMessage>{errors.email}</ErrorMessage>
             )}
           </WrapperInput>
           <WrapperInput>
@@ -150,17 +152,13 @@ const UserForm = () => {
               placeholder=" 38 (097)..."
               name="phone"
               type="tel"
-              value={formik.values.phone || ''}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.phone && formik.touched.phone
-                  ? 'InvalidInput'
-                  : ''
-              }
+              value={values.phone || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.phone && touched.phone ? 'InvalidInput' : ''}
             />
-            {formik.errors.phone && formik.touched.phone && (
-              <ErrorMessage>{formik.errors.phone}</ErrorMessage>
+            {errors.phone && touched.phone && (
+              <ErrorMessage>{errors.phone}</ErrorMessage>
             )}
           </WrapperInput>
           <WrapperInput>
@@ -169,21 +167,17 @@ const UserForm = () => {
               placeholder="Add skype number"
               id="skype"
               name="skype"
-              value={formik.values.skype || ''}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.skype && formik.touched.skype
-                  ? 'InvalidInput'
-                  : ''
-              }
+              value={values.skype || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.skype && touched.skype ? 'InvalidInput' : ''}
             />
-            {formik.errors.skype && formik.touched.skype && (
-              <ErrorMessage>{formik.errors.skype}</ErrorMessage>
+            {errors.skype && touched.skype && (
+              <ErrorMessage>{errors.skype}</ErrorMessage>
             )}
           </WrapperInput>
         </Wrapper>
-        <Button disabled={formik.isSubmitting} type="submit">
+        <Button disabled={isSubmitting} type="submit">
           Save changes
         </Button>
       </FormContainer>

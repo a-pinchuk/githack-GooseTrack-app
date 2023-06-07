@@ -41,6 +41,7 @@ export const StyledDataPicker = styled(DatePicker)`
       border: 1px solid #11111126;
     }
   }
+
   .MuiButtonBase-root {
     color: rgb(126 123 123);
 
@@ -49,10 +50,6 @@ export const StyledDataPicker = styled(DatePicker)`
       color: ${p => p.theme.colors.secondary};
       background-color: white;
     }
-  }
-
-  .MuiDateCalendar-root {
-    background-color: black;
   }
 `;
 
