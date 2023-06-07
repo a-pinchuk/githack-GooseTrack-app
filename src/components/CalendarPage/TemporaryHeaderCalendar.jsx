@@ -1,6 +1,25 @@
 import React from 'react';
-
+// import { setNextDate, setPreviousDate } from 'redux/date/dateSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectDate } from 'redux/date/selectors';
 export const TemporaryHeaderCalendar = () => {
+  // const currentDate = useSelector(selectDate);
+  // const dispatch = useDispatch();
+
+  // function formatDate() {
+  //   const options = { day: 'numeric', month: 'short', year: 'numeric' };
+  //   const date = new Date(currentDate);
+  //   return date.toLocaleDateString('en-US', options);
+  // }
+
+  // const handlePreviousDate = () => {
+  //   dispatch(setPreviousDate());
+  // };
+
+  // const handleNextDate = () => {
+  //   dispatch(setNextDate());
+  // };
+
   return (
     <>
       <div
@@ -24,24 +43,6 @@ export const TemporaryHeaderCalendar = () => {
               backgroundColor: 'lightblue',
             }}
           ></div>
-        </div>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '38px',
-        }}
-      >
-        <div>
-          <button>MARCH 2023</button>
-          <button> {'<'}</button>
-          <button>{'>'}</button>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <button>Month</button>
-          <button>Day</button>
         </div>
       </div>
     </>

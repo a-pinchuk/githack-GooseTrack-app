@@ -119,10 +119,10 @@ export const refreshUser = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   '/users/user',
-  async ({ avatarUrl, name, email, phone, skype, birthday }, thunkAPI) => {
+  async ({ avatar, name, email, phone, skype, birthday }, thunkAPI) => {
     try {
       const formData = new FormData();
-      formData.append('avatar', avatarUrl);
+      formData.append('avatar', avatar);
       formData.append('name', name);
       formData.append('email', email);
       formData.append('phone', phone);
@@ -132,13 +132,6 @@ export const updateUserInfo = createAsyncThunk(
       for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
       }
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-
-      if (persistedToken === null) {
-        return thunkAPI.rejectWithValue('Unable to fetch user');
-      }
-      setAuthHeader(persistedToken);
 
       const response = await instance.patch(`/users/user/`, formData, {
         headers: {
