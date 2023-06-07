@@ -8,6 +8,7 @@ import { ReactComponent as Trash } from '../../../../images/tasksSvg/trash-04.sv
 export const BoxIconBth = styled.div`
   position: relative;
   z-index: 100;
+  height: 15px;
 `;
 
 export const IconBthArrow = styled(Arrow)`
@@ -55,7 +56,7 @@ export const Tooltip = styled.div`
   border-radius: 8px;
   padding: 20px 24px 20px 24px;
   box-shadow: ${theme.shadows.boxShadow};
-  width: 100px;
+
   z-index: 100;
 `;
 export const TooltipButton = styled.button`
@@ -68,11 +69,19 @@ export const TooltipButton = styled.button`
   background-color: transparent;
   white-space: nowrap;
   padding: 0;
+  transition: color 250ms linear;
   cursor: pointer;
   &:hover {
-    fill: currentColor;
+    color: ${theme.colors.secondary};
+    svg {
+      stroke: ${theme.colors.secondary};
+    }
+  }
+  @media screen and (max-width: 375px) {
+    font-size: ${theme.fontSizes.s};
   }
 `;
+
 export const TooltipButtonItem = styled.li`
   &:not(:last-child) {
     margin-bottom: 14px;

@@ -12,7 +12,7 @@ const LoginPage = () => {
       </FormWrapper>
 
       <AuthNavigate link="/register" text="Sign up" />
-
+<a href="http://localhost:3000/api/users/google">Login with Google</a>
       <ImgWrapper />
     </Container>
   );

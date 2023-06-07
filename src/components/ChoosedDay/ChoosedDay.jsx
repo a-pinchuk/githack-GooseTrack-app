@@ -8,14 +8,15 @@ import { useParams } from 'react-router-dom';
 
 const ChoosedDay = () => {
   const { currentDay: targetDate } = useParams();
+
   const tasks = useSelector(selectAllTasks);
 
   const [sortedTasks, setSortedTasks] = useState(null);
-  console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
+  // console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
 
-  // Функція для сортування масиву за полем "date"
-  function sortByDate(array) {
-    return array.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Функція для сортування масиву за полем "start time"
+  function sortByStartTime(array) {
+    return array.sort((a, b) => b.start.localeCompare(a.start));
   }
 
   // Функція для фільтрації масиву об'єктів за конкретним днем
@@ -43,12 +44,12 @@ const ChoosedDay = () => {
       }
 
       return {
-        done: sortByDate(doneArray),
-        inProgress: sortByDate(inProgressArray),
-        toDo: sortByDate(toDoArray),
+        done: sortByStartTime(doneArray),
+        inProgress: sortByStartTime(inProgressArray),
+        toDo: sortByStartTime(toDoArray),
       };
     }
-    console.log('getCategorizedArrays fucn data ---> ', tasks);
+    // console.log('getCategorizedArrays fucn data ---> ', tasks);
 
     if (tasks && tasks.length > 0) {
       const categorizedArrays = getCategorizedArrays(tasks, targetDate);
