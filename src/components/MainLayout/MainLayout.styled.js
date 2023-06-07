@@ -23,15 +23,29 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
+  position: relative;
+
   display: flex;
   height: 100vh;
 `;
 
 export const WrapLeftColumn = styled.div`
-  /* background-color: tomato; */
+  height: 100vh;
   width: 225px;
-  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     width: 289px;
+  }
+
+  @media screen and (max-width: ${props => props.theme.breakpoints.desktop}) {
+    position: absolute;
+
+    transition: all 250ms ease-in-out 0s;
+    z-index: 100;
+
+    left: ${p => {
+      return p.showSideBar ? '0' : '-1000px';
+    }};
   }
 `;
 

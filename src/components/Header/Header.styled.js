@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const HeaderTitle = styled.h3`
+  display: none;
+
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
@@ -11,8 +13,8 @@ export const HeaderTitle = styled.h3`
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
-  @media screen and (max-width: 1023px) {
-    display: none;
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    display: block;
   }
 `;
 
@@ -31,8 +33,9 @@ export const MobileMenuBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: red;
 
-  @media screen and (min-width: 1023px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     display: none;
   }
 `;

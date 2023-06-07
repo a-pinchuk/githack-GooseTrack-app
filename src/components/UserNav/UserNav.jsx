@@ -10,7 +10,7 @@ import goose from '../../images/sideBar/GOOSE.png';
 import { ReactComponent as UserIcon } from '../../images/sideBar/user-check.svg';
 import { ReactComponent as CalendarIcon } from '../../images/sideBar/calendar-check.svg';
 
-export const UserNav = () => {
+export const UserNav = ({ toogleShowSiderBar }) => {
   return (
     <div>
       <div
@@ -22,7 +22,7 @@ export const UserNav = () => {
         }}
       >
         <img width="71px" height="68px" alt="goose-track-img" src={goose}></img>
-        <TextLogo>
+        <TextLogo onClick={toogleShowSiderBar}>
           G<TextLogoSpan>oo</TextLogoSpan>seTrack
         </TextLogo>
       </div>
