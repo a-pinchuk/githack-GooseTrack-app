@@ -2,6 +2,7 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import LogoutBtn from 'components/TestBtnLogout/LogoutBtn';
 import { useNavigate } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 
 import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
@@ -16,24 +17,34 @@ const CalendarPage = () => {
   const [today, setToday] = useState(moment());
   //console.log('CalendarPage ~ today:', today.format('YYYY-MM-DD'));
   const [typeSelect, setTypeSelect] = useState('month');
+  console.log('CalendarPage ~ typeSelect:', typeSelect);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const tasks = useSelector(selectAllTasks);
 
-  const currentPath = window.location.pathname;
-  const pathAfterCalendar = currentPath.slice(currentPath.indexOf('/calendar'));
+  const pathWithoutDate = pathname.slice(0, pathname.lastIndexOf('/'));
 
   useEffect(() => {
-    if (pathAfterCalendar === '/calendar') {
+    if (pathname === '/calendar') {
       navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
     }
+    // if (pathWithoutDate === '/calendar/day') {
+    //   setTypeSelect('day');
+    // }
 
     if (tasks.length === 0) {
       dispatch(fetchAllTasks());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  useEffect(() => {
+    if (pathWithoutDate === '/calendar/day') {
+      setTypeSelect('day');
+    }
+  }, [pathWithoutDate]);
 
   //const startDay = today.clone().startOf('month').startOf('week');
   // console.log('CalendarPage ~ startDay:', startDay);
@@ -77,11 +88,7 @@ const CalendarPage = () => {
 
   const typeMonthHendler = () => {
     const desiredPath = `/calendar/month/${moment().format('YYYY-MM-DD')}`;
-    // const currentPath = window.location.pathname;
-    // const pathAfterCalendar = currentPath.slice(
-    //   currentPath.indexOf('/calendar')
-    // );
-    if (pathAfterCalendar !== desiredPath) {
+    if (pathname !== desiredPath) {
       setTypeSelect('month');
       navigate(desiredPath);
     }
