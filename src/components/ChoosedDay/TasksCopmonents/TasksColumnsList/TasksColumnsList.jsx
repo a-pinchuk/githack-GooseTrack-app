@@ -2,7 +2,6 @@ import { TasksColumn } from '../TasksColumn/TasksColumn';
 import { StretchContainer, TaskContainer } from './TasksColumnsListStyled';
 
 export const TasksColumnsList = ({ sortedTasksData }) => {
-  // consoles.log('TasksColumnsList component data --->', sortedTasksData);
   const { done, inProgress, toDo } = sortedTasksData;
 
   //Ключи заголовков колонок
