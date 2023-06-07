@@ -7,6 +7,9 @@ export const TaskItem = styled.li`
   border-radius: ${theme.radii.small};
   border: 1px solid #dce3e580;
   box-sizing: border-box;
+  //add
+  display: flex;
+  flex-direction: column;
   &:not(:last-child) {
     margin-right: 20px;
   }
@@ -17,6 +20,9 @@ export const TaskItem = styled.li`
     &:not(:last-child) {
       margin-right: 16px;
     }
+    //add
+    /* display: flex;
+    flex-direction: column; */
   }
 
   @media screen and (min-width: 1440px) {
