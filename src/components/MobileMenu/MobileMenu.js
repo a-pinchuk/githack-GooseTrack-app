@@ -1,49 +1,25 @@
-import { useDispatch } from "react-redux";
-import { logOut } from "redux/auth/operations";
-import { useState } from "react";
-import { Calendar } from 'images/icons/Calendar';
-import { UserIcon } from 'images/icons/UserIcon';
-import {
-  WrapAuth,
-  BtnLogout,
-  TitleUser,
-  NavList,
-  Nav,
-  WrapIcon,
-  HeroTitle,
-  StyledLink,
-  LinkWrapper,
-  MobileMenu,
-  BtnMenu,
-} from './SideBar.styled';
-import { LogoutIcon } from 'images/icons/LogoutIcon';
+import { UserIcon } from "images/icons/UserIcon";
+import { BtnLogout, ButtonClose, ButtonWrapper, ContentWrapper, HeroTitle, LinkWrapper, MobileContainer, Nav, NavList, StyledLink, TitleUser, WrapIcon } from "./MobileMenu.styled";
+import { LogoutIcon } from "images/icons/LogoutIcon";
+import { Calendar } from "images/icons/Calendar";
+import { IconClose } from "images/icons/Close";
 import goose1pxDesck from 'images/imagesGoose/goose1pxDescktop.png';
 import goose2pxDesck from 'images/imagesGoose/goose2pxDescktop.png';
 import goose1pxTable from 'images/imagesGoose/goose1pxTable.png';
 import goose2pxTable from 'images/imagesGoose/goose2pxTable.png';
 import goose1pxMobile from 'images/imagesGoose/goose1pxMobile.png';
 import goose2pxMobile from 'images/imagesGoose/goose2pxMobile.png';
-import { OpenMenuIcon } from "images/icons/OpenMenuIcon";
-export const SideBar = () => {
-  const [isActiveMenu, setIsActiveMenu] = useState(false);
+import { useState } from "react";
+export const MobileMenu = ({ toggleMenu }) => {
   const [activeBlock, setActiveBlock] = useState(null);
-  const dispatch = useDispatch();
-  const onBackHome = e => {
-    dispatch(logOut());
-  };
+
   const handleBlockClick = block => {
     setActiveBlock(block);
   };
-  const toggleMenu = () => {
-    setIsActiveMenu(!isActiveMenu);
-  };
-    return (
-      <header>
-        <BtnMenu onClick={toggleMenu}>
-          <OpenMenuIcon />
-        </BtnMenu>
-        {isActiveMenu && <MobileMenu toggleMenu={toggleMenu} />}
-        <WrapAuth>
+  return (
+    <MobileMenu>
+      <MobileContainer>
+        <ContentWrapper>
           <WrapIcon>
             <picture>
               <source
@@ -73,6 +49,9 @@ export const SideBar = () => {
               <img src={goose1pxMobile} alt="Retina" width="71" height="68" />
             </picture>
             <HeroTitle>GooseTrack</HeroTitle>
+            <ButtonClose>
+              <IconClose onClick={toggleMenu} />
+            </ButtonClose>
           </WrapIcon>
           <TitleUser>User Panel</TitleUser>
           <Nav>
@@ -84,7 +63,7 @@ export const SideBar = () => {
                 >
                   <UserIcon />
                   <StyledLink
-                    to="/account"
+                    to="/contacts"
                     active={activeBlock === 'block1' ? 'true' : undefined}
                     onClick={() => handleBlockClick('block1')}
                   >
@@ -109,10 +88,13 @@ export const SideBar = () => {
               </li>
             </NavList>
           </Nav>
-          <BtnLogout onClick={onBackHome}>
+        </ContentWrapper>
+        <ButtonWrapper>
+          <BtnLogout>
             Log out <LogoutIcon />
           </BtnLogout>
-        </WrapAuth>
-      </header>
-    );
-}
+        </ButtonWrapper>
+      </MobileContainer>
+    </MobileMenu>
+  );
+};

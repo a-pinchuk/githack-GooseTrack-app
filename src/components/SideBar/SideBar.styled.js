@@ -10,6 +10,26 @@ export const WrapAuth = styled.div`
   flex-direction: column;
   padding-bottom: 24px;
 `;
+   export const BtnMenu = styled.button`
+     border: none;
+     background-color: transparent;
+     margin-bottom: auto;
+     cursor: pointer;
+     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+     @media screen and (min-width: 1200px) {
+       display: none;
+     }
+     svg {
+       width: 24px;
+       height: 24px;
+     }
+     @media screen and (min-width: 768px) {
+       svg {
+         width: 34px;
+         height: 34px;
+       }
+     }
+   `;
 
 export const TitleUser = styled.p`
   color: rgba(52, 52, 52, 0.5);
@@ -127,41 +147,7 @@ export const BtnLogout = styled.button`
     line-height: 24px;
   }
 `;
-export const MobileMenu = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  z-index: 1;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  padding-left: 20px;
-  padding-right: 26px;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-  @media screen and (min-width: 1200px) {
-    display: none;
-  }
-`;
 
-export const MobileContainer = styled.div`
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  display: flex;
-`;
-
-export const ButtonClose = styled.button`
-  background-color: transparent;
-  border: none;
-  display: block;
-  margin-left: auto;
-  cursor: pointer;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-`;
 
 export const HeroTitle = styled.h1`
   font-weight: 400;

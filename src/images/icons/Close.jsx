@@ -1,4 +1,4 @@
-export const LogoutIcon = () => {
+export const IconClose = () => {
   return (
     <svg
       version="1.1"
@@ -10,18 +10,18 @@ export const LogoutIcon = () => {
       <title>x-close</title>
       <path
         fill="none"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-miterlimit="4"
-        stroke-width="2.3529"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeMiterlimit="4"
+        strokeWidth="2.3529"
         d="M23.294 8.235l-15.529 15.529"
       ></path>
       <path
         fill="none"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-miterlimit="4"
-        stroke-width="2.3529"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeMiterlimit="4"
+        strokeWidth="2.3529"
         d="M7.765 8.235l15.529 15.529"
       ></path>
     </svg>

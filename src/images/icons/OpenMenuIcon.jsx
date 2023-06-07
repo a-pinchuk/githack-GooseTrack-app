@@ -10,26 +10,29 @@ export const OpenMenuIcon = () => {
       <title>menu-01</title>
       <path
         fill="none"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-miterlimit="4"
-        stroke-width="2.3529"
+        stroke="#343434"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeMiterlimit="4"
+        strokeWidth="2.3529"
         d="M4 16h24"
       ></path>
       <path
         fill="none"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-miterlimit="4"
-        stroke-width="2.3529"
+        stroke="#343434"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeMiterlimit="4"
+        strokeWidth="2.3529"
         d="M4 8h24"
       ></path>
       <path
         fill="none"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-miterlimit="4"
-        stroke-width="2.3529"
+        stroke="#343434"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeMiterlimit="4"
+        strokeWidth="2.3529"
         d="M4 24h24"
       ></path>
     </svg>
