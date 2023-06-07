@@ -29,7 +29,7 @@ const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
@@ -37,7 +37,7 @@ const authSlice = createSlice({
         return {
           ...state,
           user: action.payload.user,
-          token: action.payload.token,
+          token: action.payload.accessToken,
           isLoggedIn: true,
         };
       })
