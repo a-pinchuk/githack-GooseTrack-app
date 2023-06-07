@@ -15,6 +15,7 @@ export const StyledDataPicker = styled(DatePicker)`
   }
 
   .MuiInputBase-root {
+    position: relative;
     font-family: 'Inter';
     font-size: 14px;
     font-weight: 600;
@@ -268,12 +269,13 @@ export const Button = styled.button`
   font-size: ${p => p.theme.fontSizes.s};
   text-align: center;
   color: ${p => p.theme.colors.white};
-  background-color: ${p => p.theme.colors.primary};
+  background-color: ${p =>
+    p.disabled ? p.theme.colors.muted : p.theme.colors.primary};
   border-radius: ${p => p.theme.radii.big};
   border: ${p => p.theme.borders.none};
   cursor: pointer;
-  &:hover,
-  &:focus {
+  &:hover(:not disabled),
+  &:focus(:not disabled) {
     background-color: ${p => p.theme.colors.secondary};
   }
 

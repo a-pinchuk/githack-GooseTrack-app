@@ -5,7 +5,6 @@ import { updateUserInfo } from '../../redux/auth/operations'; // Импорт в
 import { selectUser } from 'redux/auth/selectors';
 import moment from 'moment/moment';
 import { validationSchema } from './ValidationSchema.js';
-
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
@@ -61,18 +60,27 @@ const UserForm = () => {
       email: user.email,
       phone: user.phone,
       skype: user.skype,
-      birthday: user.birthday,
+      birthday: user.birthday || new Date(),
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      console.log(values);
-      const formattedDate = moment(values.birthday).format('DD/MM/YYYY');
-      const updatedValues = {
-        ...values,
-        birthday: formattedDate,
-      };
-      dispatch(updateUserInfo(updatedValues));
-      console.log('Form was submitted');
+
+    onSubmit: async values => {
+      try {
+        console.log(values);
+        const formattedDate = moment(values.birthday).format('DD/MM/YYYY');
+
+        const updatedValues = {
+          ...values,
+          birthday: formattedDate,
+        };
+
+        await dispatch(updateUserInfo(updatedValues));
+        // const userAvatarUrl = response.payload.user.avatarUrl;
+        // console.log(userAvatarUrl);
+        // setSelectedImage(null);
+      } catch (error) {
+        console.log(error.message);
+      }
     },
   });
   return (
@@ -85,12 +93,12 @@ const UserForm = () => {
             <AvatarDefault />
           )}
         </StyledAvatar>
+
         <Label htmlFor="avatar">
           <input
             id="avatar"
             name="avatar"
             type="file"
-            // value={formik.values.avatar || ''}
             onChange={handleAvatarUpload}
             style={{ display: 'none' }}
           />
@@ -102,8 +110,8 @@ const UserForm = () => {
 
         <Wrapper>
           <WrapperInput>
-            <Label htmlFor="name"></Label>
-            User Name
+            <Label htmlFor="name">User Name</Label>
+
             <Input
               id="name"
               name="name"
@@ -178,7 +186,7 @@ const UserForm = () => {
           </WrapperInput>
         </Wrapper>
         <Button disabled={isSubmitting} type="submit">
-          Save changes
+          {isSubmitting ? 'Submitting...' : 'Save changes'}
         </Button>
       </FormContainer>
     </Container>

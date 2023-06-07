@@ -16,7 +16,7 @@ export const theme = {
     mainRed: '#EA3D65',
     lightRed: '#FFD2DD',
     greenValid: '#3CBC81',
-    muted: '#F7F6F9',
+    muted: '#9AB4DD',
   },
   fonts: {
     body: 'Coolvetica',

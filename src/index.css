@@ -44,7 +44,6 @@ body.no-scroll {
 /* ----------- Стилі для календаря вибору дати ----------- */
 
 .MuiDialogContent-root {
-  border: 3px solid black;
   background-color: #3e85f3;
   border-radius: 16px;
 }
@@ -78,13 +77,12 @@ body.no-scroll {
   }
 }
 
-.MuiDateCalendar-root {
+/* .MuiDateCalendar-root {
   border: 3px solid red;
-}
+} */
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
   background-color: #3e85f3;
-  border: 3px solid orchid;
   border-radius: 16px;
 }
 
