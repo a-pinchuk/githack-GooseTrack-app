@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
 export const HeaderUserInfoSection = styled.div`
     display: flex;
 `;
@@ -34,6 +44,31 @@ export const HeaderUserPhoto = styled.img`
         width: 44px;
         height: 44px;
     
+        margin-left: 14px;
+    }
+`;
+
+export const TextAvatar = styled.p`
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 1.8px solid #3E85F3;
+  margin-left: 8px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: black;
+  font-weight: 12;
+  background-color: ${getRandomColor()};
+  
+    @media screen and (min-width: 767px) {
+        width: 44px;
+        height: 44px;
+
         margin-left: 14px;
     }
 `;
