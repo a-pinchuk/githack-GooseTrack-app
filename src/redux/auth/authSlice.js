@@ -69,7 +69,12 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const setAccessToken = token => {
+  return {
+    type: 'auth',
+    payload: token,
+  };
+};
 const persistConfig = {
   key: 'auth',
   whitelist: ['token', 'user'],

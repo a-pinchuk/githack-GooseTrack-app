@@ -45,8 +45,8 @@ export const register = createAsyncThunk(
         email,
         password,
       });
-      setAuthHeader(res.data.token);
-      localStorage.setItem('refresh', res.data.token);
+      setAuthHeader(res.data.accessToken);
+      localStorage.setItem('refresh', res.data.accessToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
@@ -64,8 +64,8 @@ export const logIn = createAsyncThunk(
         email,
         password,
       });
-      setAuthHeader(res.data.token);
-      localStorage.setItem('refresh', res.data.token);
+      setAuthHeader(res.data.accessToken);
+      localStorage.setItem('refresh', res.data.accessToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
