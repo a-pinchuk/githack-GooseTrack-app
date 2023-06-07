@@ -23,8 +23,7 @@ const DayLink = styled(Link)`
 
   background-color: #ffff;
 
-  color: ${props =>
-    props.isselectedmonth ? '#343434' : 'rgba(52, 52, 52, 0.3)'};
+  color: ${props => props.color};
 
   transition-property: all;
   transition-duration: 100ms;
@@ -94,7 +93,9 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
           <DayLink
             to={`/calendar/day/${dayItem.format('YYYY-MM-DD')}`}
             key={dayItem.format('DDMMYYYY')}
-            isselectedmonth={isSelectedMonth(dayItem).toString()}
+            color={
+              isSelectedMonth(dayItem) ? '#343434' : 'rgba(52, 52, 52, 0.3)'
+            }
           >
             <RowInCeil justifyContent={'flex-end'}>
               <ShowDayWrapper>
