@@ -1,6 +1,15 @@
 import { theme } from 'theme';
 import styled from 'styled-components';
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 export const TaskListItem = styled.li`
   border-radius: 8px;
   padding: 14px;
@@ -14,13 +23,34 @@ export const AvatorTaskList = styled.img`
   border: 1.8px solid ${theme.colors.primary};
   margin-right: 8px;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   overflow: hidden;
   display: block;
   height: auto;
   align-self: safe;
   justify-content: flex-start;
+`;
+
+export const TextAvatar = styled.p`
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 1.8px solid ${theme.colors.primary};
+  margin-right: 8px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  color: ${theme.colors.background};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ${theme.fonts.text};
+  font-weight: ${theme.fontWeights.medium};
+  background-color: ${getRandomColor()};
+
+  /* align-self: safe; */
+  /* justify-content: flex-start; */
 `;
 
 export const TaskStatue = styled.p`
@@ -67,37 +97,3 @@ export const TaskText = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
-
-// export const Tooltip = styled.div`
-// position: absolute;
-// top: 100%;
-// right: -15px;
-// background: ${theme.colors.background};
-// border-radius: 8px;
-// padding: 20px 24px 20px 24px;
-// box-shadow: ${theme.shadows.boxShadow};
-// width: 100px;
-// z-index: 100;
-
-// `;
-// export const TooltipButton = styled.button`
-// width: 100%;
-// display: flex;
-// align-items: center;
-// justify-content: space-between;
-// border: none;
-// background-color: transparent;
-// white-space: nowrap;
-// padding: 0;
-// cursor: pointer;
-// &:hover {
-// 	fill: currentColor;
-
-// }
-
-// `;
-// export const TooltipButtonItem = styled.li`
-// &:not(:last-child){
-// 	margin-bottom: 14px;
-// }
-// `

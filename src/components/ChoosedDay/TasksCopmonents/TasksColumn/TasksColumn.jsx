@@ -6,7 +6,7 @@ import { TaskModal } from 'components/TaskModal/TaskModal';
 
 import { TaskItem } from './TasksColumnStyled';
 
-export const TasksColumn = ({ taskData, title, category }) => {
+export const TasksColumn = ({ taskData, title, category, toolbarData }) => {
   const [showModal, setShowModal] = useState(false);
   const [task_info, setTask_info] = useState(null);
 
@@ -27,7 +27,7 @@ export const TasksColumn = ({ taskData, title, category }) => {
       <TaskItem>
         <ColumnHeadBar title={title} handlerOpenModal={handlerOpenModal} />
         <ColumnTasksList
-          toolbarData={['In progres', 'Done']}
+          toolbarData={toolbarData}
           taskData={taskData}
           handlerOpenModal={handlerOpenModal}
         />
