@@ -8,25 +8,24 @@ export const DaysWrapper = styled.div`
   height: 50px;
   max-width: 767px;
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
+  font-family: ${props => props.theme.fonts.heading};
+  font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${props => props.theme.fontSizes.m};
   line-height: 1.12;
 
   background: #ffffff;
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     height: 46px;
-    max-width: 768px;
+    max-width: 704px;
     margin-bottom: 14px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     height: 46px;
-    max-width: 1440px;
+    max-width: 1087px;
     margin-bottom: 15px;
   }
 `;
@@ -35,5 +34,8 @@ export const СellOfDay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${props => (props.isWeekend ? '#3E85F3' : '#343434')};
+  color: ${props =>
+    props.isWeekend
+      ? `${props.theme.colors.primary}`
+      : `${props.theme.colors.text}`};
 `;

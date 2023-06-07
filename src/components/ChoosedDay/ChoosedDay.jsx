@@ -4,11 +4,11 @@ import { selectAllTasks } from 'redux/task/selectors';
 import { Container } from './ChoosedDay.styled';
 import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
+import { useParams } from 'react-router-dom';
 
 const ChoosedDay = () => {
-  console.log('ChoosedDay');
+  const { currentDay: targetDate } = useParams();
 
-  const targetDate = '2023-06-01';
   const tasks = useSelector(selectAllTasks);
 
   const [sortedTasks, setSortedTasks] = useState(null);
@@ -55,7 +55,7 @@ const ChoosedDay = () => {
       const categorizedArrays = getCategorizedArrays(tasks, targetDate);
       setSortedTasks(categorizedArrays);
     }
-  }, [tasks]);
+  }, [targetDate, tasks]);
 
   return (
     <div className={Container}>

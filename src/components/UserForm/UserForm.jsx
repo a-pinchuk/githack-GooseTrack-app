@@ -6,7 +6,6 @@ import moment from 'moment/moment';
 import { ReactComponent as Avatar } from '../../images/avatar.svg';
 // import * as Yup from 'yup';
 
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -51,7 +50,6 @@ const UserForm = () => {
   const user = useSelector(selectUser);
 
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log('🚀 ~ selectedImage:', selectedImage);
 
   const handleAvatarUpload = event => {
     formik.setFieldValue('avatar', event.currentTarget.files[0]);
@@ -131,9 +129,11 @@ const UserForm = () => {
           <WrapperInput>
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={['DatePicker']}>
-                <DatePicker name="birthday" views={['year', 'month', 'day']} />
-              </DemoContainer>
+              <DatePicker
+                name="birthday"
+                views={['year', 'month', 'day']}
+                format="DD/MM/YYYY"
+              />
             </LocalizationProvider>
           </WrapperInput>
           <WrapperInput>
