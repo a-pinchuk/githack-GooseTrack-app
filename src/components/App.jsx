@@ -23,21 +23,23 @@ export const App = () => {
   return isRefreshing ? (
     <h2>Loading...</h2>
   ) : (
-    <Suspense>
-      <Routes>
-        <Route path="/" element={<PublicRoute />}>
-          <Route index element={<MainPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="login" element={<LoginPage />} />
-        </Route>
-        <Route path="/" element={<PrivateRoute />}>
-          <Route path="account" element={<UserForm />} />
-          <Route path="calendar" element={<CalendarPage />}>
-            <Route path="month/:currentDate" element={<ChoosedMonth />} />
-            <Route path="day/:currentDay" element={<ChoosedDay />} />
+    <>
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<PublicRoute />}>
+            <Route index element={<MainPage />} />
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<LoginPage />} />
           </Route>
-        </Route>
-      </Routes>
-    </Suspense>
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="account" element={<UserForm />} />
+            <Route path="calendar" element={<CalendarPage />}>
+              <Route path="month/:currentDate" element={<ChoosedMonth />} />
+              <Route path="day/:currentDay" element={<ChoosedDay />} />
+            </Route>
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   );
 };

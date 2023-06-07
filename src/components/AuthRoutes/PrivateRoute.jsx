@@ -1,3 +1,4 @@
+import { SideBar } from 'components/SideBar/SideBar';
 import { useAuth } from 'hooks/useAuth';
 import { Navigate, Outlet } from 'react-router-dom';
 // import { useAuth } from '../../hooks/useAuth';
@@ -12,9 +13,10 @@ export const PrivateRoute = () => {
   console.log('Private route');
 
   return isLoggedIn ? (
-    <>
+    <div style={{ display: 'flex' }}>
+      <SideBar></SideBar>
       <Outlet />
-    </>
+    </div>
   ) : (
     <Navigate to="/login" replace />
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import LogoutBtn from 'components/TestBtnLogout/LogoutBtn';
+
 import { useNavigate } from 'react-router';
 import moment from 'moment';
 
@@ -10,6 +10,7 @@ import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTasks } from 'redux/task/operations';
 import { selectAllTasks } from 'redux/task/selectors';
+
 // import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const CalendarPage = () => {
@@ -86,10 +87,9 @@ const CalendarPage = () => {
       style={{
         marginLeft: '32px',
         marginRight: '32px',
+        // display: 'flex',
       }}
     >
-      <LogoutBtn />
-
       <TemporaryHeaderCalendar />
       <CalendarToolbar
         today={today}
