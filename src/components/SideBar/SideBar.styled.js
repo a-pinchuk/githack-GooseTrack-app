@@ -4,7 +4,8 @@ import styled from 'styled-components';
 export const SideBox = styled.div`
   box-sizing: border-box;
 
-  width: 289px;
+  width: 100%;
+  height: 100%;
 
   background: #fff;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
