@@ -9,6 +9,7 @@ import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTasks } from 'redux/task/operations';
 import { selectAllTasks } from 'redux/task/selectors';
+import { CalendarContainer } from './CalendarPage.styled';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
@@ -68,13 +69,7 @@ const CalendarPage = () => {
   };
 
   return (
-    <div
-      style={{
-        marginLeft: '32px',
-        marginRight: '32px',
-        // display: 'flex',
-      }}
-    >
+    <CalendarContainer>
       <CalendarToolbar
         today={moment(workDate)}
         typeSelect={typeSelect}
@@ -87,7 +82,7 @@ const CalendarPage = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </CalendarContainer>
   );
 };
 

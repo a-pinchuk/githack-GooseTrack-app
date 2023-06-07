@@ -3,6 +3,7 @@ import moment from 'moment';
 import {
   LeftPaginatorBtn,
   PaginatorDate,
+  PaginatorWrapper,
   RightPaginatorBtn,
 } from './PeriodPaginator.styled';
 import { useParams } from 'react-router-dom';
@@ -14,12 +15,10 @@ export const PeriodPaginator = ({
   prevHandler,
   nextHandler,
 }) => {
-  //console.log(today);
   const { currentDay } = useParams();
-  // console.log('date:', currentDay);
 
   return (
-    <div>
+    <PaginatorWrapper>
       <PaginatorDate onClick={todayHandler}>
         {typeSelect === 'month'
           ? today.format('MMMM YYYY')
@@ -35,6 +34,6 @@ export const PeriodPaginator = ({
         {'<'}
       </LeftPaginatorBtn>
       <RightPaginatorBtn onClick={nextHandler}>{'>'}</RightPaginatorBtn>
-    </div>
+    </PaginatorWrapper>
   );
 };
