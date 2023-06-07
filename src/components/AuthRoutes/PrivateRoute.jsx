@@ -1,4 +1,3 @@
-import { SideBar } from 'components/SideBar/SideBar';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import { selectUserToken } from 'redux/auth/selectors';
@@ -14,7 +13,6 @@ export const PrivateRoute = () => {
 
   return userToken ? (
     <div style={{ display: 'flex' }}>
-      <SideBar></SideBar>
       <Outlet />
     </div>
   ) : (

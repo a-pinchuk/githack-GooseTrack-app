@@ -14,6 +14,7 @@ const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
+const MainLayout = lazy(() => import('./MainLayout/MainLayout'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -33,10 +34,12 @@ export const App = () => {
             <Route path="login" element={<LoginPage />} />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="account" element={<UserForm />} />
-            <Route path="calendar" element={<CalendarPage />}>
-              <Route path="month/:currentDate" element={<ChoosedMonth />} />
-              <Route path="day/:currentDay" element={<ChoosedDay />} />
+            <Route path="/" element={<MainLayout />}>
+              <Route path="account" element={<UserForm />} />
+              <Route path="calendar" element={<CalendarPage />}>
+                <Route path="month/:currentDate" element={<ChoosedMonth />} />
+                <Route path="day/:currentDay" element={<ChoosedDay />} />
+              </Route>
             </Route>
           </Route>
         </Routes>
