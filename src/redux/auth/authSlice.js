@@ -8,7 +8,9 @@ import {
   refreshUser,
   updateUserInfo,
 } from './operations';
-
+const token = localStorage.getItem('auth')
+  ? localStorage.getItem('auth')
+  : null;
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -20,7 +22,7 @@ const authSlice = createSlice({
       skype: '',
       birthday: '',
     },
-    token: null,
+    token,
     isLoggedIn: false,
     isRefreshing: false,
   },
@@ -42,6 +44,7 @@ const authSlice = createSlice({
         };
       })
       .addCase(logOut.fulfilled, state => {
+        localStorage.removeItem('auth');
         state.user = {
           name: '',
           email: '',
@@ -72,10 +75,11 @@ const authSlice = createSlice({
 
 const persistConfig = {
   key: 'auth',
+  whitelist: ['token', 'user'],
   storage,
 };
 
-export const persistedAuthSlice = persistReducer(
+export const persistedAuthReducer = persistReducer(
   persistConfig,
   authSlice.reducer
 );
