@@ -1,6 +1,60 @@
 import styled from 'styled-components';
-// import { ReactComponent as Avatar } from '../../images/avatar.svg';
+import { ReactComponent as Avatar } from '../../images/avatar.svg';
 import { ReactComponent as Cross } from '../../images/cross.svg';
+
+import { DatePicker } from '@mui/x-date-pickers';
+
+export const StyledDataPicker = styled(DatePicker)`
+  input {
+    padding-left: 0px;
+  }
+  input::placeholder {
+    font-family: ${p => p.theme.fonts.text};
+    font-size: ${p => p.theme.fontSizes.s};
+    color: #34343480;
+  }
+
+  .MuiInputBase-root {
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 600;
+    &:focus {
+      color: black;
+    }
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border: 1px solid #11111126;
+  }
+  .MuiOutlinedInput-root {
+    min-width: 250px;
+    height: 42px;
+    padding-left: 14px;
+    padding-right: 14px;
+    outline: none;
+    border: none;
+    border-radius: ${p => p.theme.radii.small};
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border: 1px solid #11111126;
+    }
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border: 1px solid #11111126;
+    }
+  }
+  .MuiButtonBase-root {
+    color: rgb(126 123 123);
+
+    &:hover,
+    &:focus {
+      color: ${p => p.theme.colors.secondary};
+      background-color: white;
+    }
+  }
+
+  .MuiDateCalendar-root {
+    background-color: black;
+  }
+`;
 
 export const Container = styled.div`
   max-width: 375px;
@@ -42,6 +96,12 @@ export const FormContainer = styled.form`
     padding-top: 60px;
     padding-bottom: 60px;
   }
+  .InvalidInput {
+    border: 1px solid ${p => p.theme.colors.redError};
+  }
+  .ErrorMsg {
+    color: green;
+  }
 `;
 
 export const StyledAvatar = styled.div`
@@ -68,6 +128,20 @@ export const StyledAvatar = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: ${p => p.theme.radii.round};
+  }
+`;
+
+export const AvatarDefault = styled(Avatar)`
+  position: absolute;
+  left: calc(50% - 25px);
+  top: 5px;
+  width: 50px;
+  height: 50px;
+  @media (min-width: 768px) {
+    left: calc(50% - 47px);
+    top: 45px;
+    width: 95px;
+    height: 95px;
   }
 `;
 
@@ -177,6 +251,10 @@ export const Input = styled.input`
   }
 `;
 
+export const ErrorMessage = styled.div`
+  color: ${p => p.theme.colors.redError};
+`;
+
 export const Button = styled.button`
   margin-left: auto;
   margin-right: auto;
@@ -201,6 +279,7 @@ export const Button = styled.button`
   &:focus {
     background-color: ${p => p.theme.colors.secondary};
   }
+
   @media (min-width: 768px) {
     width: 262px;
     height: 48px;
