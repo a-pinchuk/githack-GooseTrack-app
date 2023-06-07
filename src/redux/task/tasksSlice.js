@@ -77,7 +77,7 @@ export const tasksSlice = createSlice({
           elem => elem._id === action.payload.data._id
         );
 
-        state.tasks[index] = action.payload;
+        state.tasks[index] = action.payload.data;
       })
       .addCase(logOut.fulfilled, state => {
         state.tasks = [];
@@ -93,7 +93,7 @@ export const tasksSlice = createSlice({
           elem => elem._id === action.payload.data._id
         );
 
-        state.tasks[index] = action.payload;
+        state.tasks[index] = action.payload.data;
       });
   },
 });

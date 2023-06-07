@@ -28,7 +28,7 @@ export const Main = styled.main`
 `;
 
 export const WrapLeftColumn = styled.div`
-  background-color: tomato;
+  /* background-color: tomato; */
   width: 225px;
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 289px;

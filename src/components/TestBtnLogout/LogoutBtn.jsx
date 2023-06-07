@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Button } from '@mui/material';
 import { logOut } from '../../redux/auth/operations'; // Укажите правильный путь к вашему файлу с операциями
+import { LogOutBtnStyled } from './LogoutBtn.styled';
+import { ReactComponent as LogOutIcon } from '../../images/sideBar/log-out.svg';
 
 const LogoutBtn = () => {
   const dispatch = useDispatch();
@@ -11,9 +12,10 @@ const LogoutBtn = () => {
   };
 
   return (
-    <Button variant="outlined" color="secondary" onClick={handleLogout}>
+    <LogOutBtnStyled type="submit" onClick={handleLogout}>
       Logout
-    </Button>
+      <LogOutIcon style={{ marginLeft: '13.5px' }}></LogOutIcon>
+    </LogOutBtnStyled>
   );
 };
 
