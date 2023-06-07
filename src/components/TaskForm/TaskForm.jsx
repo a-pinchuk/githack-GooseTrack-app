@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
+  WrapForm,
+  Form,
   EditButton,
   FormGroup,
   Input,
@@ -9,179 +12,176 @@ import {
   RadioButtonCustom,
   CancelButton,
   RadioContainer,
+  WrapRadio,
+  WrapButton,
+  IconEditPen,
+  IconPlus,
 } from './TaskForm.styled';
-// import { addTasks, updateTask } from 'redux/task/operations';
-import { updateTask } from 'redux/task/operations';
-import { ReactComponent as EditPen } from '../../images/editPen.svg';
-import { ReactComponent as AddIcon } from '../../images/addIcon.svg';
 
+import { addTask, updateTask } from 'redux/task/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSuccessful, selectTasksError } from 'redux/task/selectors';
+
+const emptyTask = {
+  title: '',
+  start: '00:00',
+  end: '00:00',
+  priority: 'low',
+  category: 'in-progress',
+};
+
+//  const initialData = {
+//    title: 'My task 1',
+//    date: '2023-06-01',
+//    start: '09:10',
+//    end: '09:40',
+//    priority: 'low',
+//    category: 'in-progress',
+//    statusOperation: 'create',
+//  };
 export const TaskForm = ({ initialData, handlerCloseModal }) => {
-  const [titleValue, setTitleValue] = useState('title');
-  const [checkboxValue, setCheckboxValue] = useState('low');
-  const [startTimeValue, setStartTimeValue] = useState('09:00');
-  const [endTimeValue, setEndTimeValue] = useState('15:00');
+  const [informationTask, setInformationTask] = useState(emptyTask);
+  const [operation, setOperation] = useState('create');
+  const [dateSave, setDataSave] = useState(null);
+
+  const dispatch = useDispatch();
+  const successful = useSelector(selectSuccessful);
+  const error = useSelector(selectTasksError);
+
+  useEffect(() => {
+    const { statusOperation, _id, ...information } = initialData;
+    if (_id) information.id = _id;
+    setInformationTask(information);
+    setOperation(statusOperation);
+  }, [initialData]);
+
+  useEffect(() => {
+    if (!successful || !dateSave) return;
+
+    handlerCloseModal();
+  }, [dateSave, successful, handlerCloseModal]);
+
+  useEffect(() => {
+    if (!error || !dateSave) return;
+    Notify.failure(`Data save error`);
+  }, [error, dateSave]);
 
   const handleChange = event => {
     const { name, value } = event.target;
-    console.log(value);
-
-    switch (name) {
-      case 'title':
-        setTitleValue(value);
-        break;
-      case 'startTime':
-        setStartTimeValue(value);
-        break;
-      case 'endTime':
-        setEndTimeValue(value);
-        break;
-      case 'priority':
-        setCheckboxValue(value);
-        break;
-      default:
-        break;
-    }
+    setInformationTask(prev => {
+      return { ...prev, [name]: value };
+    });
   };
 
-  const handleAddTask = async () => {
-    const taskData = {
-      title: titleValue,
-      date: initialData.date,
-      start: startTimeValue,
-      end: endTimeValue,
-      priority: checkboxValue,
-      category: initialData.category,
-    };
-
-    try {
-      // must be replaced with if(initialData.id)
-      if (true) {
-        // Task is being updated
-        await updateTask({ id: initialData.id, ...taskData });
-        // Update task in the collection
-        // ...
-      }
-      // else {
-      //   // Task is being added
-      //   // await addTasks(taskData);
-      //   // Add task to the collection
-      //   // ...
-      // }
-
-      // Task added/updated successfully, close modal
-      handlerCloseModal();
-    } catch (error) {
-      // Show error message to the user
-      console.error(error);
-      // Display error message to the user
-      // ...
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (operation === 'edit') {
+      dispatch(updateTask(informationTask));
+    } else {
+      dispatch(addTask(informationTask));
     }
+    setDataSave(Date.now());
   };
 
   return (
-    <form
-      style={{ padding: '40px 28px', display: 'block', position: 'relative' }}
-      onSubmit={handleAddTask}
-    >
-      <Label>
-        Title
-        <Input
-          type="text"
-          placeholder="Enter text"
-          name="title"
-          value={titleValue}
-          onChange={handleChange}
-          required
-        />
-      </Label>
-      <FormGroup>
+    <WrapForm>
+      <Form onSubmit={handleSubmit}>
         <Label>
-          Start
+          Title
           <Input
-            id="time"
-            type="time"
-            name="startTime"
-            value={startTimeValue}
+            type="text"
+            placeholder="Enter text"
+            name="title"
+            value={informationTask.title}
             onChange={handleChange}
             required
           />
         </Label>
-        <Label>
-          End
-          <Input
-            type="time"
-            name="endTime"
-            value={endTimeValue}
-            onChange={handleChange}
-            required
-          />
-        </Label>
-      </FormGroup>
-      <div
-        style={{
-          marginTop: '10px',
-          marginBottom: '32px',
-          display: 'flex',
-          gap: '16px',
-        }}
-      >
-        <RadioContainer>
-          <RadioButtonsLabel>
-            <RadioButtonsInput
-              type="radio"
-              value="low"
-              name="priority"
-              checked={checkboxValue === 'low'}
+        <FormGroup>
+          <Label>
+            Start
+            <Input
+              id="time"
+              type="time"
+              name="start"
+              value={informationTask.start}
               onChange={handleChange}
+              required
             />
-            <RadioButtonCustom />
-            Low
-          </RadioButtonsLabel>
-        </RadioContainer>
-        <RadioContainer>
-          <RadioButtonsLabel>
-            <RadioButtonsInput
-              type="radio"
-              value="medium"
-              name="priority"
-              checked={checkboxValue === 'medium'}
+          </Label>
+          <Label>
+            End
+            <Input
+              type="time"
+              name="end"
+              value={informationTask.end}
               onChange={handleChange}
+              required
             />
-            <RadioButtonCustom />
-            Medium
-          </RadioButtonsLabel>
-        </RadioContainer>
-        <RadioContainer>
-          <RadioButtonsLabel>
-            <RadioButtonsInput
-              type="radio"
-              value="high"
-              name="priority"
-              checked={checkboxValue === 'high'}
-              onChange={handleChange}
-            />
-            <RadioButtonCustom />
-            High
-          </RadioButtonsLabel>
-        </RadioContainer>
-      </div>
-      {/* must be replaced with initialData.id */}
-      {false ? (
-        <EditButton type="submit">
-          <EditPen width="14.5px" height="14.5px"></EditPen>
-          <span style={{ marginLeft: '9.63px' }}>Edit</span>
-        </EditButton>
-      ) : (
-        <div style={{ display: 'flex', gap: '8px' }}>
+          </Label>
+        </FormGroup>
+
+        <WrapRadio>
+          <RadioContainer>
+            <RadioButtonsLabel>
+              <RadioButtonsInput
+                type="radio"
+                value="low"
+                name="priority"
+                checked={informationTask.priority === 'low'}
+                onChange={handleChange}
+              />
+              <RadioButtonCustom />
+              Low
+            </RadioButtonsLabel>
+          </RadioContainer>
+          <RadioContainer>
+            <RadioButtonsLabel>
+              <RadioButtonsInput
+                type="radio"
+                value="medium"
+                name="priority"
+                checked={informationTask.priority === 'medium'}
+                onChange={handleChange}
+              />
+              <RadioButtonCustom />
+              Medium
+            </RadioButtonsLabel>
+          </RadioContainer>
+          <RadioContainer>
+            <RadioButtonsLabel>
+              <RadioButtonsInput
+                type="radio"
+                value="high"
+                name="priority"
+                checked={informationTask.priority === 'high'}
+                onChange={handleChange}
+              />
+              <RadioButtonCustom />
+              High
+            </RadioButtonsLabel>
+          </RadioContainer>
+        </WrapRadio>
+
+        {/* must be replaced with initialData.id */}
+        {operation === 'edit' ? (
           <EditButton type="submit">
-            <AddIcon width="11.67px" height="11.67px"></AddIcon>
-            <span style={{ marginLeft: '9.63px' }}>Add</span>
+            <IconEditPen />
+            Edit
           </EditButton>
-          <CancelButton type="button" onClick={handlerCloseModal}>
-            Cancel
-          </CancelButton>
-        </div>
-      )}
-    </form>
+        ) : (
+          <WrapButton>
+            <EditButton type="submit">
+              <IconPlus />
+              Add
+            </EditButton>
+
+            <CancelButton type="button" onClick={handlerCloseModal}>
+              Cancel
+            </CancelButton>
+          </WrapButton>
+        )}
+      </Form>
+    </WrapForm>
   );
 };

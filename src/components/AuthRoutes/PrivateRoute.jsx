@@ -1,6 +1,6 @@
-import { useAuth } from 'hooks/useAuth';
+import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
-// import { useAuth } from '../../hooks/useAuth';
+import { selectUserToken } from 'redux/auth/selectors';
 
 /**
  * - If the route is private and the user is logged in, render the component
@@ -8,10 +8,10 @@ import { Navigate, Outlet } from 'react-router-dom';
  */
 
 export const PrivateRoute = () => {
-  const { isLoggedIn } = useAuth();
+  const userToken = useSelector(selectUserToken);
   console.log('Private route');
 
-  return isLoggedIn ? (
+  return userToken ? (
     <>
       <Outlet />
     </>

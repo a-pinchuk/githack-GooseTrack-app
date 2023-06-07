@@ -1,7 +1,11 @@
 import { TaskColumnCard } from '../TaskColumnCard/TaskColumnCard';
 import { TaskListBox } from './ColumnTasksListStyled';
 
-export const ColumnTasksList = ({ toolbarData, taskData }) => {
+export const ColumnTasksList = ({
+  toolbarData,
+  taskData,
+  handlerOpenModal,
+}) => {
   return (
     <>
       <TaskListBox>
@@ -12,6 +16,7 @@ export const ColumnTasksList = ({ toolbarData, taskData }) => {
               item={item}
               toolbarData={toolbarData}
               data={taskData}
+              handlerOpenModal={handlerOpenModal}
             />
           );
         })}
