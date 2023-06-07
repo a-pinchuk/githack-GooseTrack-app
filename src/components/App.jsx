@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
 import { Loader } from './Loader/Loader';
+// import { setAccessToken } from 'redux/auth/authSlice';
 
 const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -19,6 +20,11 @@ const MainLayout = lazy(() => import('./MainLayout/MainLayout'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  // useEffect(() => {
+  //   const accessToken = window.location?.search.split('=')[1];
+
+  //   dispatch(setAccessToken(accessToken));
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(refreshUser());
