@@ -7,7 +7,7 @@ import {
 export const ColumnHeadBar = ({ title, handlerOpenModal }) => {
   return (
     <TaskHeaderBox>
-      <TaskHeaderTitle>{title}</TaskHeaderTitle>;
+      <TaskHeaderTitle>{title}</TaskHeaderTitle>
       <TaskHeaderBth onClick={() => handlerOpenModal({})}>+</TaskHeaderBth>
     </TaskHeaderBox>
   );
