@@ -1,4 +1,5 @@
 import React from 'react';
+import Avatar from '@mui/material/Avatar';
 
 import {
   ReviewCardContainer,
@@ -15,7 +16,13 @@ export const ReviewCard = props => {
     <ReviewCardContainer>
       <HeaderContainer>
         <AvatarWrapper>
-          <img src={props.src} alt="User avatar" />
+          {props.src ? (
+            <img src={props.src} alt="User avatar" />
+          ) : (
+            <Avatar sx={{ width: 50, height: 50 }}>
+              {props.name.charAt(0).toUpperCase()}
+            </Avatar>
+          )}
         </AvatarWrapper>
 
         <div>
