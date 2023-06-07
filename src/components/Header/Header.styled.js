@@ -1,24 +1,44 @@
 import styled from 'styled-components';
 
-export const WrapHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 24px 0 24px;
+export const HeaderTitle = styled.h3`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    padding: 24px 32px 0 32px;
-  }
+  color: var(--primary-text);
+  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
+    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    padding: 40px 32px 0 32px;
+  @media screen and (max-width: 1023px) {
+    display: none;
   }
 `;
 
-export const WrapTitleBurger = styled.div`
+export const HeaderSection = styled.div`
   display: flex;
+  align-items: center;
 `;
 
-export const WrapThemeUserInfo = styled.div`
+export const MobileMenuBtn = styled.button`
+  fill: var(--primary-text);
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+
   display: flex;
-  gap: 14px;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 1023px) {
+    display: none;
+  }
+`;
+
+export const RighSectiontHeader = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 `;
