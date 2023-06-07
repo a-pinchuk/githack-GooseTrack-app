@@ -1,9 +1,11 @@
-import { ButtonBox, ButtonTask } from "./AddTasksBthStyled"
+import { ButtonBox, ButtonTask } from './AddTasksBthStyled';
 
-export const AddTasksBth = () => {
-	return(
-		<ButtonBox>
-		<ButtonTask><span>+</span>Add task</ButtonTask>
-		</ButtonBox>
-	)
-}
+export const AddTasksBth = ({ handlerOpenModal }) => {
+  return (
+    <ButtonBox>
+      <ButtonTask onClick={() => handlerOpenModal({})}>
+        <span>+</span>Add task
+      </ButtonTask>
+    </ButtonBox>
+  );
+};

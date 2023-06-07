@@ -8,8 +8,9 @@ import {
   TooltipButton,
   TooltipButtonItem,
 } from './TaskToolBarStyled';
+// import { cleanDigitSectionValue } from '@mui/x-date-pickers/internals/hooks/useField/useField.utils';
 
-export const TasklToolBar = ({ toolbarData, idData }) => {
+export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
   const [isVisible, setIsVisible] = useState(false);
   const handleMoveCard = id => {
     console.log(id);
@@ -18,7 +19,7 @@ export const TasklToolBar = ({ toolbarData, idData }) => {
     <BoxIconBth onMouseLeave={() => setIsVisible(false)}>
       <div></div>
       <IconBthArrow onClick={() => setIsVisible(true)} $isactive={isVisible} />
-      <IconBthPencil />
+      <IconBthPencil onClick={() => handlerOpenModal({ id: idData })} />
       <IconBthTrash />
       {isVisible && (
         <Tooltip>
