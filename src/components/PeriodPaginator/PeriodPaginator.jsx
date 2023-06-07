@@ -14,6 +14,7 @@ export const PeriodPaginator = ({
   prevHandler,
   nextHandler,
 }) => {
+  console.log(today);
   const { currentDay } = useParams();
   // console.log('date:', currentDay);
 
