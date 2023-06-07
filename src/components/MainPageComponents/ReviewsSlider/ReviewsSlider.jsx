@@ -67,20 +67,20 @@ const settings = {
 };
 
 export const ReviewsSlider = () => {
-  const { data } = useSelector(selectAllReviews);
+  const reviews = useSelector(selectAllReviews);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllReviews());
   }, [dispatch]);
 
-  const lastTenReviews = data.slice(-10);
+  const lastTenReviews = reviews?.data?.slice(-10);
 
   return (
     <ReviewsContainer>
       <h2>REVIEWS</h2>
       <Slider className="slider" {...settings}>
-        {lastTenReviews.map(review => (
+        {lastTenReviews?.map(review => (
           <ReviewCard
             key={review._id}
             src={review.owner.avatarUrl || defaultAvatar}
