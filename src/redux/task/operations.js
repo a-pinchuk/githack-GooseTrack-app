@@ -59,6 +59,7 @@ export const deleteTask = createAsyncThunk(
 export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async ({ id, title, date, start, end, priority, category }, thunkAPI) => {
+    console.log({ id, title, date, start, end, priority, category });
     try {
       const response = await axios.put(`/tasks/${id}`, {
         title,
