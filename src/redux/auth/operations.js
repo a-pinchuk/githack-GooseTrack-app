@@ -1,13 +1,11 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-const { REACT_APP_API_URL } = process.env;
+// const { REACT_APP_API_URL } = process.env;
 
-const instance = axios.create({
-  baseURL: REACT_APP_API_URL,
+export const instance = axios.create({
+  baseURL: 'https://githack-goosetrack.onrender.com/api',
 });
-
-// axios.defaults.baseURL = 'https://githack-goosetrack.onrender.com/api';
 
 const setAuthHeader = token => {
   if (token) {
@@ -15,13 +13,6 @@ const setAuthHeader = token => {
   }
   return (instance.defaults.headers.common.Authorization = '');
 };
-
-// interceptors for request
-// instance.interceptors.request.use(config => {
-//   const accessToken = localStorage.getItem('accessToken');
-//   config.headers.common.Authorization = `Bearer ${accessToken}`;
-//   return config;
-// });
 
 instance.interceptors.response.use(
   response => response,
@@ -37,17 +28,13 @@ instance.interceptors.response.use(
 
         return instance(error.config);
       }
-    } catch (err) {
-      return Promise.reject(err);
+    } catch (error) {
+      return Promise.reject(error);
     }
 
     return Promise.reject(error);
   }
 );
-
-const clearAuthHeader = () => {
-  instance.defaults.headers.common.Authorization = '';
-};
 
 export const register = createAsyncThunk(
   '/users/register',
@@ -59,6 +46,7 @@ export const register = createAsyncThunk(
         password,
       });
       setAuthHeader(res.data.token);
+      localStorage.setItem('refresh', res.data.token);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
@@ -72,14 +60,13 @@ export const logIn = createAsyncThunk(
   '/users/login',
   async ({ email, password }, thunkAPI) => {
     try {
-      const { data: res } = await instance.post('/users/login', {
+      const res = await instance.post('/users/login', {
         email,
         password,
       });
-      setAuthHeader(res.accessToken);
-      localStorage.setItem('refresh', res.refreshToken);
+      setAuthHeader(res.data.token);
+      localStorage.setItem('refresh', res.data.token);
       Notify.success(`Welcome!!!`);
-      console.log(res.data.email);
       return res.data;
     } catch (error) {
       Notify.failure(`Bad request`);
@@ -91,7 +78,7 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
     await instance.post('/users/logout');
-    clearAuthHeader();
+    setAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
