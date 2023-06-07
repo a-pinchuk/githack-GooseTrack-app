@@ -15,7 +15,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // const initialData = {
 //   category: 'in-progress',
 // };
-const TaskModal = ({ task_info, handlerCloseModal }) => {
+export const TaskModal = ({ task_info, handlerCloseModal }) => {
   const [errorFetch, setErrorFetch] = useState(false);
 
   const [initialData, setInitialData] = useState(null);
@@ -34,7 +34,6 @@ const TaskModal = ({ task_info, handlerCloseModal }) => {
     const loadTask = async id => {
       //TODO - read task from bac-end
       const taks = await fetchTaskById(id);
-      console.log('taks', taks);
       if (!taks) {
         setErrorFetch(true);
         return;
@@ -73,5 +72,3 @@ const TaskModal = ({ task_info, handlerCloseModal }) => {
     </>
   );
 };
-
-export default TaskModal;

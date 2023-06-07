@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router';
 import moment from 'moment';
 
 import { TemporaryHeaderCalendar } from './TemporaryHeaderCalendar';
-import TestModalDelete from 'components/TestModalDelete/TestModalDelete';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -90,8 +89,6 @@ const CalendarPage = () => {
       }}
     >
       <LogoutBtn />
-
-      <TestModalDelete />
 
       <TemporaryHeaderCalendar />
       <CalendarToolbar

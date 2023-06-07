@@ -10,9 +10,13 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
 
   return (
     <TaskContainer>
-      <TasksColumn title={title[0]} taskData={done} />
-      <TasksColumn title={title[1]} taskData={inProgress} />
-      <TasksColumn title={title[2]} taskData={toDo} />
+      <TasksColumn title={title[0]} taskData={done} category="to-do" />
+      <TasksColumn
+        title={title[1]}
+        taskData={inProgress}
+        category="in-progress"
+      />
+      <TasksColumn title={title[2]} taskData={toDo} category="done" />
     </TaskContainer>
   );
 };

@@ -4,11 +4,11 @@ import {
   TaskHeaderTitle,
 } from './ColumnHeadBarStyled';
 
-export const ColumnHeadBar = ({ title }) => {
+export const ColumnHeadBar = ({ title, handlerOpenModal }) => {
   return (
     <TaskHeaderBox>
       <TaskHeaderTitle>{title}</TaskHeaderTitle>;
-      <TaskHeaderBth>+</TaskHeaderBth>
+      <TaskHeaderBth onClick={() => handlerOpenModal({})}>+</TaskHeaderBth>
     </TaskHeaderBox>
   );
 };

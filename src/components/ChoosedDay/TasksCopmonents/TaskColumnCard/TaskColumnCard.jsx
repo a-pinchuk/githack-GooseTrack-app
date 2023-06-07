@@ -6,7 +6,7 @@ import {
 } from './TaskColumnCardStyled';
 import { TasklToolBar } from '../TaskToolBar/TaskToolBar';
 
-export const TaskColumnCard = ({ toolbarData, item }) => {
+export const TaskColumnCard = ({ toolbarData, item, handlerOpenModal }) => {
   return (
     <TaskListItem>
       <TaskText>{item.title}</TaskText>
@@ -24,7 +24,11 @@ export const TaskColumnCard = ({ toolbarData, item }) => {
           height="28"
         />
         <TaskStatue priority={item.priority}>{item.priority}</TaskStatue>
-        <TasklToolBar toolbarData={toolbarData} idData={item._id} />
+        <TasklToolBar
+          toolbarData={toolbarData}
+          idData={item._id}
+          handlerOpenModal={handlerOpenModal}
+        />
       </div>
     </TaskListItem>
   );

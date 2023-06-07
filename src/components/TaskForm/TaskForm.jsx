@@ -57,7 +57,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
 
   useEffect(() => {
     if (!successful || !dateSave) return;
-    console.log('Close window');
+
     handlerCloseModal();
   }, [dateSave, successful, handlerCloseModal]);
 
@@ -75,7 +75,6 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-
     if (operation === 'edit') {
       dispatch(updateTask(informationTask));
     } else {
