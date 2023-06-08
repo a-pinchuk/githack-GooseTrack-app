@@ -1,4 +1,6 @@
 import React from 'react';
+import Feedback from '../Feedback/Feedback';
+// import BtnOpenFeedback from '../Feedback/Feedback';
 // import { setNextDate, setPreviousDate } from 'redux/date/dateSlice';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { selectDate } from 'redux/date/selectors';
@@ -19,7 +21,6 @@ export const TemporaryHeaderCalendar = () => {
   // const handleNextDate = () => {
   //   dispatch(setNextDate());
   // };
-
   return (
     <>
       <div
@@ -33,7 +34,7 @@ export const TemporaryHeaderCalendar = () => {
       >
         <h2 style={{ margin: '0' }}>Calendar</h2>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <button style={{ marginRight: '10px' }}>Feedback</button>
+          <Feedback style={{ marginRight: '10px' }}>Feedback</Feedback>
           <button style={{ marginRight: '10px' }}>iconMoon</button>
           <div
             style={{
