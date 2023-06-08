@@ -6,9 +6,12 @@ export const WrapAuth = styled.div`
   height: 900px;
   padding-top: 32px;
   padding-left: 24px;
-  display: flex;
+  display: none;
   flex-direction: column;
   padding-bottom: 24px;
+  @media screen and (min-width: 1200px) {
+    display: flex;
+  }
 `;
    export const BtnMenu = styled.button`
      border: none;
