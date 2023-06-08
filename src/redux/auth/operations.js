@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { CleanHands } from '@mui/icons-material';
 // const { REACT_APP_API_URL } = process.env;
 
 export const instance = axios.create({
@@ -17,22 +18,26 @@ const setAuthHeader = token => {
 instance.interceptors.response.use(
   response => response,
   async error => {
-    try {
-      if (error.response.status === 401) {
-        const refreshToken = localStorage.getItem('refreshToken');
-        console.log(refreshToken);
-        const res = await instance.post('/users/refresh', {
-          refreshToken,
-        });
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      // Треба, щоб коли розлогінювались не намагались підʼєднатися знову
+      if (originalRequest.url === '/users/logout') return Promise.reject(error);
+
+      originalRequest._retry = true;
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const res = await instance.post('/users/refresh', { refreshToken });
+
         setAuthHeader(res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
-
-        return instance(error.config);
+        originalRequest.headers[
+          'Authorization'
+        ] = `Bearer ${res.data.accessToken}`;
+        return instance(originalRequest);
+      } catch (err) {
+        return Promise.reject(err);
       }
-    } catch (error) {
-      return Promise.reject(error);
     }
-
     return Promise.reject(error);
   }
 );
@@ -47,7 +52,7 @@ export const register = createAsyncThunk(
         password,
       });
       setAuthHeader(res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.refreshToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
@@ -66,7 +71,7 @@ export const logIn = createAsyncThunk(
         password,
       });
       setAuthHeader(res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.refreshToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
@@ -78,9 +83,14 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
-    await instance.post('/users/logout');
+    const result = await instance.post('/users/logout');
     setAuthHeader();
+    return result;
   } catch (error) {
+    if (error.response.status === 401) {
+      setAuthHeader();
+      return;
+    }
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -117,9 +127,9 @@ export const updateUserInfo = createAsyncThunk(
       formData.append('skype', skype);
       formData.append('birthday', birthday);
 
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      }
+      // for (var pair of formData.entries()) {
+      //   console.log(pair[0] + ', ' + pair[1]);
+      // }
 
       const response = await instance.patch(`/users/user/`, formData, {
         headers: {

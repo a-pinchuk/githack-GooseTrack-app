@@ -6,7 +6,8 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
 
   //Ключи заголовков колонок
   const dataTitle = Object.keys(sortedTasksData);
-  console.log(dataTitle);
+  // console.log(dataTitle);
+
   //Функция коррекции заголовков
   const correctTitle = value => {
     if (value === 'done') {
@@ -23,7 +24,7 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
     }
     return value.substr(0, 2) + '-' + value.substr(2, 8).toLowerCase();
   };
-  console.log(toolTitle(dataTitle[0]));
+  // console.log(toolTitle(dataTitle[0]));
 
   return (
     <TaskContainer>
