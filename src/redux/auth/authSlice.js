@@ -42,7 +42,7 @@ const authSlice = createSlice({
         };
       })
       .addCase(logOut.fulfilled, state => {
-        console.log('111111111111');
+        // todo очистити стейт задач
         state.user = {
           name: '',
           email: '',

@@ -19,6 +19,9 @@ instance.interceptors.response.use(
   response => response,
   async error => {
     try {
+      // Треба, щоб коли розлогінювались не намагались підʼєднатися знову
+      if (error.config.url === '/users/logout') return Promise.reject(error);
+
       if (error.response.status === 401) {
         const refreshToken = localStorage.getItem('refreshToken');
         console.log(refreshToken);
@@ -78,21 +81,16 @@ export const logIn = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
-  console.log('logOut');
   try {
     await instance.post('/users/logout');
-    console.log('logOut1');
-  } catch (error) {
-    console.log('logOut2');
-    //Це я зробив осознано. Коментар іхз наступного рядку не знімати!!!!!!!!!!!!!!!
-    //Логаут повинен виконуватись завжди
-    // return thunkAPI.rejectWithValue(error.message);
-  } finally {
     setAuthHeader();
-    console.log('logOut3');
+  } catch (error) {
+    if (error.response.status === 401) {
+      setAuthHeader();
+      return;
+    }
+    return thunkAPI.rejectWithValue(error.message);
   }
-  console.log('logOut4');
-  return true;
 });
 
 export const currentUser = createAsyncThunk(
