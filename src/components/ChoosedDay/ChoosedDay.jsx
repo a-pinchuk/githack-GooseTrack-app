@@ -6,13 +6,18 @@ import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
 import { useParams } from 'react-router-dom';
 
+const emptySortedTask = {
+  done: [],
+  inProgress: [],
+  toDo: [],
+};
+
 const ChoosedDay = () => {
   const { currentDay: targetDate } = useParams();
 
   const tasks = useSelector(selectAllTasks);
 
-  const [sortedTasks, setSortedTasks] = useState(null);
-  // console.log('Component ChoosedDay - sortedTasks : ', sortedTasks);
+  const [sortedTasks, setSortedTasks] = useState(emptySortedTask);
 
   // Функція для сортування масиву за полем "start time"
   function sortByStartTime(array) {
@@ -49,7 +54,6 @@ const ChoosedDay = () => {
         toDo: sortByStartTime(toDoArray),
       };
     }
-    // console.log('getCategorizedArrays fucn data ---> ', tasks);
 
     if (tasks && tasks.length > 0) {
       const categorizedArrays = getCategorizedArrays(tasks, targetDate);

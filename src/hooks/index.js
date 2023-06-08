@@ -1,2 +1,3 @@
-export * from 'hooks/useAuth';
-export * from 'hooks/useResponse';
+export * from './useAuth';
+export * from './useResponse';
+export * from './useTasks';

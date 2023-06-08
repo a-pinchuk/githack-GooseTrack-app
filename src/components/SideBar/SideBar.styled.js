@@ -24,3 +24,12 @@ export const SideBox = styled.div`
     padding: 32px 24px 24px 24px;
   }
 `;
+
+export const ButtonCloseBar = styled.button`
+  background-color: green;
+  display: block;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    display: none;
+  }
+`;

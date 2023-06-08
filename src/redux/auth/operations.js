@@ -81,7 +81,9 @@ export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
     await instance.post('/users/logout');
     setAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    //Це я зробив осознано. Коментар іхз наступного рядку не знімати!!!!!!!!!!!!!!!
+    //Логаут повинен виконуватись завжди
+    // return thunkAPI.rejectWithValue(error.message);
   }
 });
 

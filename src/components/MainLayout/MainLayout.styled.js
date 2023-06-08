@@ -8,7 +8,7 @@ export const Container = styled.div`
 
   margin: 0;
 
-  /* margin-left: auto;
+  /* marginLf rhfot , djyb cnbks lkz vj,skrb yfgbcfkb-left: auto;
   margin-right: auto; */
 
   @media screen and (min-width: ${props => props.theme.breakpoints.mobile}) {
@@ -25,19 +25,30 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
+  position: relative;
+
   display: flex;
   height: 100vh;
   /* justify-content: center; */
 `;
 
 export const WrapLeftColumn = styled.div`
-  /* background-color: tomato; */
-  /* transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
-  transition: transform 0.3s ease-in-out; */
-  display: flex;
+  height: 100vh;
   width: 225px;
-  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     width: 289px;
+  }
+
+  @media screen and (max-width: ${props => props.theme.breakpoints.desktop}) {
+    position: absolute;
+
+    transition: all 250ms ease-in-out 0s;
+    z-index: 100;
+
+    left: ${p => {
+      return p.showSideBar ? '0' : '-1000px';
+    }};
   }
 `;
 

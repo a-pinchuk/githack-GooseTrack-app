@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { ReactComponent as UserIcon } from '../../images/sideBar/user-check.svg';
 import { ReactComponent as CalendarIcon } from '../../images/sideBar/calendar-check.svg';
-// import { RxCross1 } from 'react-icons/rx';
 import { ReactComponent as CloseIcon } from '../../images/x-close.svg';
 
 export const StyledLink = styled(NavLink)`

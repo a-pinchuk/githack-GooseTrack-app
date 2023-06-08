@@ -12,16 +12,8 @@ import {
   UserPanel,
 } from './UserNav.styled';
 import goose from '../../images/sideBar/GOOSE.png';
-import { toggleSidebar } from 'redux/sidebar/sidebarSlice';
-import { useDispatch } from 'react-redux';
 
-export const UserNav = () => {
-  const dispatch = useDispatch();
-
-  const handleSideBar = () => {
-    dispatch(toggleSidebar());
-  };
-
+export const UserNav = ({ toogleShowSiderBar }) => {
   return (
     <div>
       <LogoWrapper>
@@ -30,7 +22,7 @@ export const UserNav = () => {
           G<TextLogoSpan>oo</TextLogoSpan>seTrack
         </TextLogo>
         <CloseBtnIcon
-          onClick={handleSideBar}
+          onClick={toogleShowSiderBar}
           stroke="currentColor"
         ></CloseBtnIcon>
       </LogoWrapper>

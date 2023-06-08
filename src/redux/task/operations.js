@@ -3,9 +3,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchAllTasks = createAsyncThunk(
   'tasks/fetchAllTasks',
-  async (_, thunkAPI) => {
+  async (date, thunkAPI) => {
     try {
-      const response = await instance.get('/tasks');
+      let filter = `?month=${date}`;
+      if (date) {
+      }
+
+      const response = await instance.get(`/tasks${filter}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -59,7 +63,6 @@ export const deleteTask = createAsyncThunk(
 export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async ({ id, title, date, start, end, priority, category }, thunkAPI) => {
-    console.log({ id, title, date, start, end, priority, category });
     try {
       const response = await instance.put(`/tasks/${id}`, {
         title,
