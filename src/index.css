@@ -44,7 +44,7 @@ body.no-scroll {
 /* ----------- Стилі для календаря вибору дати ----------- */
 
 .MuiDialogContent-root {
-  background-color: #3e85f3;
+  background-color: #3e85f3 !important;
   border-radius: 16px;
 }
 .MuiDialogContent-root:first-of-type {
@@ -64,22 +64,44 @@ body.no-scroll {
   }
 }
 .MuiDateCalendar-root {
-  .MuiPaper-root,
+  /* .MuiPaper-root, */
   .MuiButtonBase-root,
-  .MuiPickersCalendarHeader-switchViewIcon,
-  .MuiPickersArrowSwitcher-root,
-  .MuiSvgIcon-root,
-  .MuiDayCalendar-weekDayLabel,
   .MuiPickersDay-today {
-    fill: #fff !important;
+    fill: #fff;
     color: #fff !important;
-    background-color: #3e85f3;
+  }
+}
+/* Числа місяця */
+.MuiDateCalendar-root {
+  .MuiPaper-root,
+  .MuiButtonBase-root {
+    color: white;
+    &:hover,
+    &:focus {
+      background-color: #1f79d2;
+    }
+  }
+}
+/* Дні місяця */
+.MuiDateCalendar-root {
+  .MuiDayCalendar-weekDayLabel {
+    color: white;
   }
 }
 
-/* .MuiDateCalendar-root {
-  border: 3px solid red;
-} */
+/* перемикачі місяця року */
+.MuiDateCalendar-root {
+  .MuiPickersCalendarHeader-switchViewIcon,
+  .MuiPickersArrowSwitcher-root,
+  .MuiSvgIcon-root {
+    color: white;
+  }
+}
+
+.MuiPickersLayout-contentWrapper {
+  background-color: #2b78ef;
+  border-radius: 16px;
+}
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
   background-color: #3e85f3;

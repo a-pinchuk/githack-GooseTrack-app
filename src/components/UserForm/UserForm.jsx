@@ -29,7 +29,7 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
@@ -40,8 +40,10 @@ const UserForm = () => {
       setSelectedImage(imageUrl);
     }
   };
+  // const today = moment().format('DD/MM/YYYY');
   const handleDatePickerChange = date => {
-    setFieldValue('birthday', date || user.birthday);
+    const formattedDate = moment(date).format('DD/MM/YYYY');
+    setFieldValue('birthday', formattedDate);
   };
 
   const {
@@ -55,7 +57,7 @@ const UserForm = () => {
     isSubmitting,
   } = useFormik({
     initialValues: {
-      avatar: user.avatar,
+      avatar: user.avatarUrl,
       name: user.name,
       email: user.email,
       phone: user.phone,
@@ -67,17 +69,14 @@ const UserForm = () => {
     onSubmit: async values => {
       try {
         console.log(values);
-        const formattedDate = moment(values.birthday).format('DD/MM/YYYY');
+        // const formattedDate = moment(values.birthday).format('DD/MM/YYYY');
 
-        const updatedValues = {
-          ...values,
-          birthday: formattedDate,
-        };
+        // const updatedValues = {
+        //   ...values,
+        //   birthday: formattedDate,
+        // };
 
-        await dispatch(updateUserInfo(updatedValues));
-        // const userAvatarUrl = response.payload.user.avatarUrl;
-        // console.log(userAvatarUrl);
-        // setSelectedImage(null);
+        await dispatch(updateUserInfo(values));
       } catch (error) {
         console.log(error.message);
       }
@@ -130,9 +129,10 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
-                onChange={date => handleDatePickerChange(date)}
+                onChange={handleDatePickerChange}
                 name="birthday"
                 views={['year', 'month', 'day']}
+                format="DD/MM/YYYY"
               />
             </LocalizationProvider>
           </WrapperInput>
@@ -153,6 +153,7 @@ const UserForm = () => {
               <ErrorMessage>{errors.email}</ErrorMessage>
             )}
           </WrapperInput>
+
           <WrapperInput>
             <Label htmlFor="phone">Phone</Label>
             <Input

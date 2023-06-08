@@ -13,15 +13,12 @@ export const StyledDataPicker = styled(DatePicker)`
     font-size: ${p => p.theme.fontSizes.s};
     color: #34343480;
   }
-
+  /* Input value */
   .MuiInputBase-root {
     position: relative;
     font-family: 'Inter';
     font-size: 14px;
     font-weight: 600;
-    &:focus {
-      color: black;
-    }
   }
   .MuiOutlinedInput-notchedOutline {
     border: 1px solid #11111126;
@@ -36,16 +33,15 @@ export const StyledDataPicker = styled(DatePicker)`
     border-radius: ${p => p.theme.radii.small};
 
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: 1px solid #11111126;
+      border: 1px solid #111111;
     }
     &:hover .MuiOutlinedInput-notchedOutline {
-      border: 1px solid #11111126;
+      border: 1px solid #111111;
     }
   }
-
+  /* icon */
   .MuiButtonBase-root {
     color: rgb(126 123 123);
-
     &:hover,
     &:focus {
       color: ${p => p.theme.colors.secondary};
@@ -56,7 +52,6 @@ export const StyledDataPicker = styled(DatePicker)`
 
 export const Container = styled.div`
   max-width: 375px;
-  border: 1px solid red;
   padding-top: 151px;
   padding-bottom: 40px;
   padding-left: 20px;
@@ -141,6 +136,12 @@ export const AvatarDefault = styled(Avatar)`
     width: 95px;
     height: 95px;
   }
+  @media (min-width: 1440px) {
+    left: calc(50% - 47px);
+    top: 65px;
+    width: 95px;
+    height: 95px;
+  }
 `;
 
 export const Plus = styled(Cross)`
@@ -150,10 +151,8 @@ export const Plus = styled(Cross)`
   width: 14px;
   height: 14px;
   font-size: 12px;
-  &:hover,
-  &:focus {
-    fill: red;
-  }
+  cursor: pointer;
+
   @media (min-width: 768px) {
     width: 24px;
     height: 24px;
@@ -183,7 +182,7 @@ export const Title = styled.div`
   text-align: center;
 `;
 
-// Обгортка Input без fvatar
+// Обгортка Inputs without avatar
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -242,7 +241,7 @@ export const Input = styled.input`
   }
   &:hover,
   &:focus {
-    border: 1px solid #11111126;
+    border: 1px solid #111111;
   }
   @media (min-width: 768px) {
     height: 46px;
