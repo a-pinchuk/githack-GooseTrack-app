@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
+import {
+  Form as FormikForm,
+  Field as FormikField,
+  ErrorMessage as FormikErrorMessage,
+} from 'formik';
 
-export const StyledForm = styled(Form)`
+export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
   padding: 40px 24px;
@@ -12,17 +16,9 @@ export const StyledForm = styled(Form)`
   @media screen and (min-width: 768px) {
     padding: 40px;
   }
-
-  .ValidInput {
-    border: ${p => p.theme.borders.normal} rgba(220, 227, 229, 0.6);
-  }
-
-  .InvalidInput {
-    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.redError};
-  }
 `;
 
-export const StyledTitle = styled.p`
+export const Title = styled.p`
   margin-top: 0;
   margin-bottom: 32px;
 
@@ -43,10 +39,6 @@ export const StyledTitle = styled.p`
 `;
 
 export const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: ${p => p.theme.fontSizes.xs};
@@ -74,21 +66,42 @@ export const Label = styled.label`
       margin-bottom: 48px;
     }
   }
+
+  &.is-valid {
+    color: ${p => p.theme.colors.greenValid};
+  }
+
+  &.is-invalid {
+    color: ${p => p.theme.colors.redError};
+  }
+
+  & p {
+    margin: 0;
+    padding: 0;
+    margin-top: 8px;
+    margin-left: 18px;
+    color: ${p => p.theme.colors.greenValid};
+  }
+
+  & .error-success {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `;
 
-export const StyledErrorMessage = styled(ErrorMessage)`
-  color: ${p => p.theme.colors.redError};
-`;
-
-export const StyledField = styled(Field)`
+export const Field = styled(FormikField)`
   box-sizing: border-box;
   width: 100%;
   padding: 14px;
 
   font-size: ${p => p.theme.fontSizes.s};
+  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 1.29px;
 
   color: ${p => p.theme.colors.black};
+  outline: none;
   border: ${p => p.theme.borders.normal} rgba(17, 17, 17, 0.15);
   border-radius: 8px;
 
@@ -109,25 +122,55 @@ export const StyledField = styled(Field)`
       line-height: 1.12;
     }
   }
+
+  &:hover,
+  &:focus {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.black};
+  }
+
+  &.is-valid {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenValid};
+  }
+
+  &.is-invalid {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.redError};
+  }
 `;
 
 export const PasswordInputWrapper = styled.div`
   position: relative;
+  margin-top: 8px;
 `;
 
-export const StyledVisibilityBtn = styled.button`
+export const InputWrapper = styled.div`
+  position: relative;
+  margin-top: 8px;
+`;
+
+export const VisibilityBtn = styled.button`
   position: absolute;
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
 
+  padding: 0;
   background: transparent;
   border: none;
   outline: none;
   cursor: pointer;
+
+  & svg.is-valid {
+    stroke: ${p => p.theme.colors.greenValid};
+    fill: ${p => p.theme.colors.greenValid};
+  }
+
+  & svg.is-invalid {
+    stroke: ${p => p.theme.colors.redError};
+    fill: ${p => p.theme.colors.redError};
+  }
 `;
 
-export const StyledButton = styled.button`
+export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,4 +209,10 @@ export const Svg = styled.svg`
     height: 20px;
     width: 20px;
   }
+`;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+  margin-left: 18px;
+  margin-top: 8px;
+  color: ${p => p.theme.colors.redError};
 `;
