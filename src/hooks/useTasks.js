@@ -15,6 +15,10 @@ export const useTasks = () => {
   const prevNumMonth = useRef(null);
 
   const tasks = useSelector(selectAllTasks);
+  const fetchTaskById = id => {
+    const foundTask = tasks.find(task => task._id === id);
+    return foundTask;
+  };
 
   useEffect(() => {
     if (!workDate) setIsNotDoneTask(false);
@@ -40,5 +44,5 @@ export const useTasks = () => {
     }
   }, [numActiveMonth, workDate, dispatch]);
 
-  return { tasks, isNotDoneTask };
+  return { tasks, isNotDoneTask, fetchTaskById };
 };
