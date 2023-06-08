@@ -78,12 +78,16 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
-    await instance.post('/users/logout');
-    setAuthHeader();
+    //Тимчасово поки не розберуся
+    const result = await instance.post('/users/logout1');
+    return result;
   } catch (error) {
+    //Отут треба перевіряти якщо 401 помилка, то вже розлогинився і треба тут логоут зробити
     //Це я зробив осознано. Коментар іхз наступного рядку не знімати!!!!!!!!!!!!!!!
     //Логаут повинен виконуватись завжди
     // return thunkAPI.rejectWithValue(error.message);
+  } finally {
+    setAuthHeader();
   }
 });
 

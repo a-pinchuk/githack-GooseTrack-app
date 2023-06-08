@@ -2,8 +2,9 @@ import { Modal } from 'components/Modal/Modal';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchTaskById } from 'services/apiTasks';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+import { fetchTaskById } from 'services/apiTasks';
 
 // ! task_info
 // Edit task
