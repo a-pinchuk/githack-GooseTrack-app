@@ -12,7 +12,7 @@ export const PeriodTypeBtn = styled.button`
   border-radius: ${props => props.theme.radii.small};
   font-family: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.normal};
-  font-size: ${props => props.theme.fontSizes.m};
+  font-size: ${props => props.theme.fontSizes.s};
   line-height: 1.125;
   text-align: center;
   color: ${props => props.theme.colors.primary};
@@ -22,6 +22,10 @@ export const PeriodTypeBtn = styled.button`
     props.isActive
       ? props.theme.colors.darkBlue
       : props.theme.colors.lightBlue};
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+    font-size: ${props => props.theme.fontSizes.m};
+  }
 `;
 
 export const MonthPeriodTypeBtn = styled(PeriodTypeBtn)`
