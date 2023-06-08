@@ -9,15 +9,24 @@ export const AddFeedbackModal = ({ handlerCloseModal }) => {
   console.log('allReviews:', allReviews);
 
   const reviews = [
-    { name: 'Alex', rating: 5, feedback: 'qweqweqweqweqwe' },
-    { name: 'Suoer Mario', rating: 4, feedback: 'asdasdasdasd' },
+    {
+      name: 'Alex',
+      rating: 5,
+      feedback:
+        'qweqweqwweqweq wweqweqwweqweqwwe  qweqwweqweqw  weqweqwweqweqw weqweqwweqweqww eqweqwweqweq wweqweqwweqw eqweqweqwe',
+    },
+    {
+      name: 'Super Mario',
+      rating: 4,
+      feedback: 'asdassdfsdf sddfsdfsdfsdfsdfsdfsdfs sdfsdfdasdasd',
+    },
   ];
 
   return (
     <Modal handlerCloseModal={handlerCloseModal}>
       <div
         style={{
-          outline: '1px solid purple',
+          // outline: '1px solid purple',
           height: '673px',
           padding: '32px',
           width: '468px',

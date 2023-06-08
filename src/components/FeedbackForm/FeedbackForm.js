@@ -26,11 +26,11 @@ export function FeedbackForm() {
 
   return (
     <div>
-      <p>Rating</p>
+      <p style={{ margin: '0 0 8px' }}>Rating</p>
       <Box
         sx={{
           '& > legend': { mt: 1 },
-          marginBottom: '20px',
+          marginBottom: '24px',
         }}
       >
         <StyledRating
@@ -47,7 +47,14 @@ export function FeedbackForm() {
         />
       </Box>
       <form onSubmit={handleFeedbackSubmit}>
-        <label htmlFor="feedback" style={{ outline: '1px solid green' }}>
+        <label
+          htmlFor="feedback"
+          style={
+            {
+              // outline: '1px solid green'
+            }
+          }
+        >
           <span>Review</span>
         </label>
         <textarea
@@ -56,7 +63,7 @@ export function FeedbackForm() {
           style={{
             width: '404px',
             height: '127px',
-            outline: '1px solid blue',
+            // outline: '1px solid blue',
             backgroundColor: '#F7F7F7',
             borderRadius: '8px',
             padding: '14px 18px',
@@ -76,6 +83,7 @@ export function FeedbackForm() {
             backgroundColor: '#3E85F3',
             color: '#FFFFFF',
             marginBottom: '32px',
+            border: '0',
           }}
         >
           Save
