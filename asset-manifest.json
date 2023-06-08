@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/githack-GooseTrack-app/static/css/main.1cf29bed.css",
-    "main.js": "/githack-GooseTrack-app/static/js/main.d2889af2.js",
+    "main.js": "/githack-GooseTrack-app/static/js/main.d8807852.js",
     "static/js/84.2626a7db.chunk.js": "/githack-GooseTrack-app/static/js/84.2626a7db.chunk.js",
     "static/js/525.c582f24b.chunk.js": "/githack-GooseTrack-app/static/js/525.c582f24b.chunk.js",
-    "static/js/516.2c16b0fc.chunk.js": "/githack-GooseTrack-app/static/js/516.2c16b0fc.chunk.js",
+    "static/js/516.db145d04.chunk.js": "/githack-GooseTrack-app/static/js/516.db145d04.chunk.js",
     "static/js/500.f1c3456d.chunk.js": "/githack-GooseTrack-app/static/js/500.f1c3456d.chunk.js",
     "static/js/543.6f05e502.chunk.js": "/githack-GooseTrack-app/static/js/543.6f05e502.chunk.js",
     "static/css/79.9a3137d3.chunk.css": "/githack-GooseTrack-app/static/css/79.9a3137d3.chunk.css",
@@ -49,10 +49,10 @@
     "static/media/x-close.svg": "/githack-GooseTrack-app/static/media/x-close.7999662d7169f2ea4ad3b8f7c5619cbf.svg",
     "static/media/addIcon.svg": "/githack-GooseTrack-app/static/media/addIcon.bbf7129492a6df4bbe3ee57c7159ae1d.svg",
     "main.1cf29bed.css.map": "/githack-GooseTrack-app/static/css/main.1cf29bed.css.map",
-    "main.d2889af2.js.map": "/githack-GooseTrack-app/static/js/main.d2889af2.js.map",
+    "main.d8807852.js.map": "/githack-GooseTrack-app/static/js/main.d8807852.js.map",
     "84.2626a7db.chunk.js.map": "/githack-GooseTrack-app/static/js/84.2626a7db.chunk.js.map",
     "525.c582f24b.chunk.js.map": "/githack-GooseTrack-app/static/js/525.c582f24b.chunk.js.map",
-    "516.2c16b0fc.chunk.js.map": "/githack-GooseTrack-app/static/js/516.2c16b0fc.chunk.js.map",
+    "516.db145d04.chunk.js.map": "/githack-GooseTrack-app/static/js/516.db145d04.chunk.js.map",
     "500.f1c3456d.chunk.js.map": "/githack-GooseTrack-app/static/js/500.f1c3456d.chunk.js.map",
     "543.6f05e502.chunk.js.map": "/githack-GooseTrack-app/static/js/543.6f05e502.chunk.js.map",
     "79.9a3137d3.chunk.css.map": "/githack-GooseTrack-app/static/css/79.9a3137d3.chunk.css.map",
@@ -62,6 +62,6 @@
   },
   "entrypoints": [
     "static/css/main.1cf29bed.css",
-    "static/js/main.d2889af2.js"
+    "static/js/main.d8807852.js"
   ]
 }
