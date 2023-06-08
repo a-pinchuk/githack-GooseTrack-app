@@ -20,11 +20,12 @@ instance.interceptors.response.use(
     try {
       if (error.response.status === 401) {
         const refreshToken = localStorage.getItem('refreshToken');
-        const { data } = await instance.post('/users/refresh', {
+        console.log(refreshToken);
+        const res = await instance.post('/users/refresh', {
           refreshToken,
         });
-        setAuthHeader(data.accessToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
+        setAuthHeader(res.data.accessToken);
+        localStorage.setItem('refreshToken', res.data.refreshToken);
 
         return instance(error.config);
       }
@@ -46,7 +47,7 @@ export const register = createAsyncThunk(
         password,
       });
       setAuthHeader(res.data.accessToken);
-      localStorage.setItem('refresh', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.accessToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
@@ -65,7 +66,7 @@ export const logIn = createAsyncThunk(
         password,
       });
       setAuthHeader(res.data.accessToken);
-      localStorage.setItem('refresh', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.accessToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
@@ -80,12 +81,13 @@ export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
     await instance.post('/users/logout');
     setAuthHeader();
   } catch (error) {
-    // Always logout
+    //Це я зробив осознано. Коментар іхз наступного рядку не знімати!!!!!!!!!!!!!!!
+    //Логаут повинен виконуватись завжди
     // return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-export const refreshUser = createAsyncThunk(
+export const currentUser = createAsyncThunk(
   '/users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
@@ -126,8 +128,10 @@ export const updateUserInfo = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
+      Notify.success(`User information was updated`);
       return response.data;
     } catch (e) {
+      Notify.failure(`Something was wronge`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }

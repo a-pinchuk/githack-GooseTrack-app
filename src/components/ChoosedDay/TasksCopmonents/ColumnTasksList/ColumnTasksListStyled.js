@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TaskListBox = styled.ul`
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 374px;
   padding-right: 10px;
   padding-left: 18px;
@@ -9,4 +9,6 @@ export const TaskListBox = styled.ul`
   position: relative;
   /* overflow: visible; */
   z-index: 0;
+  //add
+  flex-grow: 1;
 `;

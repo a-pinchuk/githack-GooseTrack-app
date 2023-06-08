@@ -11,12 +11,14 @@ import {
 import { persistedAuthReducer } from '../redux/auth/authSlice';
 import { tasksSlice } from './task/tasksSlice';
 import { reviewsSlice } from './reviews/reviewsSlice';
+import { sidebarReducer } from './sidebar/sidebarSlice';
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     tasks: tasksSlice.reducer,
     reviews: reviewsSlice.reducer,
+    sidebar: sidebarReducer,
   },
 
   middleware(getDefaultMiddleware) {

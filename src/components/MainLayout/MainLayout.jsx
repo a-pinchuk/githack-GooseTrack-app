@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
@@ -17,20 +17,26 @@ import {
 const MainLayout = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [showSideBar, setShowSideBar] = useState(false);
 
   useEffect(() => {
     if (user.email) return;
     dispatch(updateUserInfo);
   }, [user.email, dispatch]);
 
+  const toogleShowSiderBar = () => {
+    setShowSideBar(prev => !prev);
+  };
+
   return (
     <Container>
       <Main>
-        <WrapLeftColumn>
-          <SideBar />
+        <WrapLeftColumn showSideBar={showSideBar}>
+          <SideBar toogleShowSiderBar={toogleShowSiderBar} />
         </WrapLeftColumn>
+
         <WrapRightColumn>
-          <Header />
+          <Header toogleShowSiderBar={toogleShowSiderBar} />
           <Outlet />
         </WrapRightColumn>
       </Main>

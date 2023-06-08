@@ -11,14 +11,10 @@ import { ReviewsContainer } from './ReviewsSlider.styled';
 
 import sprite from 'icons/sprite.svg';
 
-import defaultAvatar from 'images/mainPage/defaultAvatar.jpeg';
-
-const SlickLeft = ({ currentSlide, slideCount, ...props }) => (
+const SlickRight = ({ currentSlide, slideCount, ...props }) => (
   <div
     {...props}
-    className={
-      'slick-prev slick-arrow' + (currentSlide === 0 ? ' slick-disabled' : '')
-    }
+    className={'slick-prev slick-arrow'}
     aria-hidden="true"
     aria-disabled={false}
     type="button"
@@ -29,18 +25,14 @@ const SlickLeft = ({ currentSlide, slideCount, ...props }) => (
   </div>
 );
 
-const SlickRight = ({ currentSlide, slideCount, ...props }) => (
+const SlickLeft = ({ currentSlide, slideCount, ...props }) => (
   <div
     {...props}
-    className={
-      'slick-next slick-arrow' +
-      (currentSlide === slideCount - 1 ? ' slick-disabled' : '')
-    }
+    className={'slick-next slick-arrow'}
     aria-hidden="true"
     aria-disabled={false}
     type="button"
   >
-    {' '}
     <svg height="6" width="39" className="svg-arrow">
       <use href={sprite + '#arrow-left-slider'}></use>
     </svg>
@@ -83,7 +75,7 @@ export const ReviewsSlider = () => {
         {lastTenReviews?.map(review => (
           <ReviewCard
             key={review._id}
-            src={review.owner.avatarUrl || defaultAvatar}
+            src={review.owner.avatarUrl}
             num={review.rating}
             name={review.owner.name}
           >
@@ -91,11 +83,11 @@ export const ReviewsSlider = () => {
           </ReviewCard>
         ))}
 
-        <ReviewCard src={defaultAvatar} num={4} name="Olena Doe">
+        <ReviewCard src={''} num={4} name="Olena Doe">
           GooseTrack is impressive, the calendar view and filter options make it
           easy to stay organized and focused. Highly recommended.
         </ReviewCard>
-        <ReviewCard src={defaultAvatar} num={5} name="Alexander Hubbard">
+        <ReviewCard src={''} num={5} name="Alexander Hubbard">
           GooseTrack is incredibly helpful, the sidebar with account management,
           calendar, and filter options make navigation seamless. Great for
           staying organized.

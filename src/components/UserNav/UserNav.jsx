@@ -1,42 +1,43 @@
 import {
+  CalendarIconStyled,
+  CloseBtnIcon,
+  GooseImg,
+  LogoWrapper,
   StyledItem,
   StyledLink,
   StyledList,
   TextLogo,
   TextLogoSpan,
+  UserIconStyled,
+  UserPanel,
 } from './UserNav.styled';
 import goose from '../../images/sideBar/GOOSE.png';
 
-import { ReactComponent as UserIcon } from '../../images/sideBar/user-check.svg';
-import { ReactComponent as CalendarIcon } from '../../images/sideBar/calendar-check.svg';
-
-export const UserNav = () => {
+export const UserNav = ({ toogleShowSiderBar }) => {
   return (
     <div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          marginBottom: '32px',
-        }}
-      >
-        <img width="71px" height="68px" alt="goose-track-img" src={goose}></img>
+      <LogoWrapper>
+        <GooseImg alt="goose-track-img" src={goose}></GooseImg>
         <TextLogo>
           G<TextLogoSpan>oo</TextLogoSpan>seTrack
         </TextLogo>
-      </div>
+        <CloseBtnIcon
+          onClick={toogleShowSiderBar}
+          stroke="currentColor"
+        ></CloseBtnIcon>
+      </LogoWrapper>
       <nav>
+        <UserPanel>User Panel</UserPanel>
         <StyledList>
           <StyledItem>
             <StyledLink to="account">
-              <UserIcon stroke="currentColor"></UserIcon>
+              <UserIconStyled stroke="currentColor"></UserIconStyled>
               My account
             </StyledLink>
           </StyledItem>
           <StyledItem>
             <StyledLink to="calendar">
-              <CalendarIcon stroke="currentColor"></CalendarIcon>
+              <CalendarIconStyled stroke="currentColor"></CalendarIconStyled>
               Calendar
             </StyledLink>
           </StyledItem>
