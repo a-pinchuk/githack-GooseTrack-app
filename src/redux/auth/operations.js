@@ -82,8 +82,8 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
-    //Тимчасово поки не розберуся
-    const result = await instance.post('/users/logout1');
+    const result = await instance.post('/users/logout');
+    setAuthHeader();
     return result;
   } catch (error) {
     if (error.response.status === 401) {
