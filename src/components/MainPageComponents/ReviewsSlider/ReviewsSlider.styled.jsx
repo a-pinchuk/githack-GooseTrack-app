@@ -83,35 +83,10 @@ export const ReviewsContainer = styled.section`
   }
 
   & .slick-arrow.slick-prev {
-    /* display: flex;
-    align-items: center; */
-    /* 
-    width: 39px;
-    height: 50px; */
     left: calc(50% + 15px);
-
-    /* cursor: pointer; */
-
-    @media screen and (min-width: 768px) {
-      /* width: 47px;
-      height: 61px; */
-    }
   }
 
   & .slick-arrow.slick-next {
-    /* width: 39px;
-    height: 50px; */
     right: calc(50% + 15px);
-
-    /* cursor: pointer; */
-
-    & svg.svg-arrow {
-      /* margin-left: auto; */
-    }
-
-    @media screen and (min-width: 768px) {
-      /* width: 47px;
-      height: 61px; */
-    }
   }
 `;
