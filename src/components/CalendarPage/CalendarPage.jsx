@@ -5,13 +5,9 @@ import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllTasks } from 'redux/task/operations';
-import { selectAllTasks } from 'redux/task/selectors';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const { currentDay, currentDate } = useParams();
   const { pathname } = useLocation();
@@ -19,22 +15,11 @@ const CalendarPage = () => {
 
   const workDate = currentDate || currentDay;
 
-  // * Task
-  const tasks = useSelector(selectAllTasks);
-
   useEffect(() => {
-    if (pathname === '/calendar') {
+    if (pathname === '/calendar' || pathname === '/calendar/') {
       navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
     }
   }, [pathname, navigate]);
-
-  useEffect(() => {
-    if (tasks.length === 0) {
-      // ! Якщо змінився місяць то треба фетчити таски
-      //Винести в окремий
-      dispatch(fetchAllTasks());
-    }
-  }, [dispatch, tasks]);
 
   const todayHandler = () => {
     // Перейти на день
@@ -59,7 +44,8 @@ const CalendarPage = () => {
   };
 
   const typeMonthHendler = () => {
-    navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
+    // navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
+    navigate(`/calendar/month/${workDate}`);
   };
 
   const typeDayHendler = () => {
@@ -71,7 +57,6 @@ const CalendarPage = () => {
       style={{
         marginLeft: '32px',
         marginRight: '32px',
-        // display: 'flex',
       }}
     >
       <CalendarToolbar

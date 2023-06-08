@@ -19,8 +19,7 @@ import {
 } from './DayCalendarHead.styled';
 
 export const DayCalendarHead = () => {
-  const { currentDay: targetDate } = useParams();
-  console.log(targetDate);
+  const { currentDay: targetDate } = useParams();  
   const navigate = useNavigate();
 
   const formatofWeek = 'eeee';

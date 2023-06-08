@@ -1,11 +1,19 @@
 import LogoutBtn from 'components/TestBtnLogout/LogoutBtn';
 import { UserNav } from 'components/UserNav/UserNav';
-import { SideBox } from './SideBar.styled';
+import { LogoSiderBar } from 'components/LogoSiderBar/LogoSiderBar';
+import { SideBox, ButtonCloseBar } from './SideBar.styled';
 
 export const SideBar = ({ toogleShowSiderBar }) => {
   return (
     <SideBox>
-      <UserNav toogleShowSiderBar={toogleShowSiderBar} />
+      <div>
+        <LogoSiderBar />
+        <ButtonCloseBar type="button" onClick={toogleShowSiderBar}>
+          X
+        </ButtonCloseBar>
+        <UserNav />
+      </div>
+
       <LogoutBtn />
     </SideBox>
   );

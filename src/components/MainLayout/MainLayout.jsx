@@ -24,8 +24,7 @@ const MainLayout = () => {
     dispatch(updateUserInfo);
   }, [user.email, dispatch]);
 
-  const toogleShowSiderBar = () => {
-    console.log('toogleShowSiderBar');
+  const toogleShowSiderBar = () => {    
     setShowSideBar(prev => !prev);
   };
 
