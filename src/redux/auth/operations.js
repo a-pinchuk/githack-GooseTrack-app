@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { CleanHands } from '@mui/icons-material';
 // const { REACT_APP_API_URL } = process.env;
 
 export const instance = axios.create({
@@ -19,10 +20,14 @@ instance.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
+      // Треба, щоб коли розлогінювались не намагались підʼєднатися знову
+      if (originalRequest.url === '/users/logout') return Promise.reject(error);
+
       originalRequest._retry = true;
       const refreshToken = localStorage.getItem('refreshToken');
       try {
         const res = await instance.post('/users/refresh', { refreshToken });
+
         setAuthHeader(res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
         originalRequest.headers[
@@ -78,16 +83,15 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
-    //Тимчасово поки не розберуся
-    const result = await instance.post('/users/logout1');
+    const result = await instance.post('/users/logout');
+    setAuthHeader();
     return result;
   } catch (error) {
-    //Отут треба перевіряти якщо 401 помилка, то вже розлогинився і треба тут логоут зробити
-    //Це я зробив осознано. Коментар іхз наступного рядку не знімати!!!!!!!!!!!!!!!
-    //Логаут повинен виконуватись завжди
-    // return thunkAPI.rejectWithValue(error.message);
-  } finally {
-    setAuthHeader();
+    if (error.response.status === 401) {
+      setAuthHeader();
+      return;
+    }
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 
@@ -123,9 +127,9 @@ export const updateUserInfo = createAsyncThunk(
       formData.append('skype', skype);
       formData.append('birthday', birthday);
 
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      }
+      // for (var pair of formData.entries()) {
+      //   console.log(pair[0] + ', ' + pair[1]);
+      // }
 
       const response = await instance.patch(`/users/user/`, formData, {
         headers: {

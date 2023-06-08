@@ -17,7 +17,6 @@ const pending = state => {
 const rejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-  console.log('Error', action.payload);
 };
 
 export const tasksSlice = createSlice({

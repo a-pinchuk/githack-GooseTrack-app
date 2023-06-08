@@ -6,10 +6,10 @@ export const Container = styled.div`
   padding-left: 0;
   padding-right: 0;
 
-  margin: 0;
+  /* margin: 0; */
 
-  /* marginLf rhfot , djyb cnbks lkz vj,skrb yfgbcfkb-left: auto;
-  margin-right: auto; */
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.mobile}) {
     max-width: ${props => props.theme.breakpoints.mobile};
