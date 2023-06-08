@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
+import {
+  Form as FormikForm,
+  Field as FormikField,
+  ErrorMessage as FormikErrorMessage,
+} from 'formik';
 
-export const StyledForm = styled(Form)`
+export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
   padding: 40px 24px;
@@ -20,9 +24,19 @@ export const StyledForm = styled(Form)`
   .InvalidInput {
     border: ${p => p.theme.borders.normal} ${p => p.theme.colors.redError};
   }
+
+  .is-valid {
+    border: none;
+    color: ${p => p.theme.colors.greenValid};
+  }
+
+  .is-invalid {
+    border: none;
+    color: ${p => p.theme.colors.redError};
+  }
 `;
 
-export const StyledTitle = styled.p`
+export const Title = styled.p`
   margin-top: 0;
   margin-bottom: 32px;
 
@@ -74,13 +88,21 @@ export const Label = styled.label`
       margin-bottom: 48px;
     }
   }
+
+  /* span {
+    &.ValidInput {
+      border: none;
+      color: ${p => p.theme.colors.greenValid};
+    }
+
+    &.InvalidInput {
+      border: none;
+      color: ${p => p.theme.colors.redError};
+    }
+  } */
 `;
 
-export const StyledErrorMessage = styled(ErrorMessage)`
-  color: ${p => p.theme.colors.redError};
-`;
-
-export const StyledField = styled(Field)`
+export const Field = styled(FormikField)`
   box-sizing: border-box;
   width: 100%;
   padding: 14px;
@@ -109,13 +131,19 @@ export const StyledField = styled(Field)`
       line-height: 1.12;
     }
   }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.black};
+  }
 `;
 
 export const PasswordInputWrapper = styled.div`
   position: relative;
 `;
 
-export const StyledVisibilityBtn = styled.button`
+export const VisibilityBtn = styled.button`
   position: absolute;
   right: 18px;
   top: 50%;
@@ -127,7 +155,7 @@ export const StyledVisibilityBtn = styled.button`
   cursor: pointer;
 `;
 
-export const StyledButton = styled.button`
+export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,4 +194,9 @@ export const Svg = styled.svg`
     height: 20px;
     width: 20px;
   }
+`;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+  margin-left: 18px;
+  color: ${p => p.theme.colors.redError};
 `;

@@ -5,14 +5,14 @@ import { Formik } from 'formik';
 
 import { logIn } from 'redux/auth/operations';
 import {
-  StyledForm,
-  StyledTitle,
-  StyledButton,
+  Form,
+  Title,
   Label,
-  StyledField,
-  StyledErrorMessage,
+  Field,
+  ErrorMessage,
   PasswordInputWrapper,
-  StyledVisibilityBtn,
+  VisibilityBtn,
+  Button,
   Svg,
 } from './LoginForm.styled';
 
@@ -50,61 +50,76 @@ export const LoginForm = () => {
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting, values, errors, touched }) => (
-        <StyledForm>
-          <StyledTitle>Log In</StyledTitle>
-          <Label>
-            Email
-            <StyledField
-              className={
-                errors.email && touched.email ? 'InvalidInput' : 'ValidInput'
-              }
-              type="email"
-              name="email"
-              placeholder="Enter email"
-              title="Email must be in the format username@domain.com"
-              value={values.email}
-            />
-            <StyledErrorMessage name="email" component="div" />
-          </Label>
-          <Label>
-            Password
-            <PasswordInputWrapper>
-              <StyledField
+      {({ isSubmitting, values, errors, touched, dirty }) => {
+        const isValid =
+          touched.email && errors.email
+            ? 'is-invalid'
+            : touched.email
+            ? 'is-valid'
+            : '';
+        console.log(isValid);
+        console.log(errors);
+        console.log(touched);
+        console.log(dirty);
+        console.log(dirty.email);
+        return (
+          <Form>
+            <Title>Log In</Title>
+            <Label>
+              <span className={isValid}>Email</span>
+              <Field
                 className={
-                  errors.password && touched.password
+                  errors.email && touched.email && dirty.email
                     ? 'InvalidInput'
                     : 'ValidInput'
                 }
-                type={passwordType}
-                name="password"
-                placeholder="Enter password"
-                title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long."
-                value={values.password}
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                title="Email must be in the format username@domain.com"
+                value={values.email}
               />
+              <ErrorMessage name="email" component="div" />
+            </Label>
+            <Label>
+              Password
+              <PasswordInputWrapper>
+                <Field
+                  className={
+                    errors.password && touched.password
+                      ? 'InvalidInput'
+                      : 'ValidInput'
+                  }
+                  type={passwordType}
+                  name="password"
+                  placeholder="Enter password"
+                  title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long."
+                  value={values.password}
+                />
 
-              <StyledVisibilityBtn type="button" onClick={togglePassword}>
-                {passwordType === 'password' ? (
-                  <svg height="20" width="20" fill="#111111">
-                    <use href={sprite + '#icon-hide'}></use>
-                  </svg>
-                ) : (
-                  <svg height="20" width="20" fill="#111111">
-                    <use href={sprite + '#icon-show'}></use>
-                  </svg>
-                )}
-              </StyledVisibilityBtn>
-            </PasswordInputWrapper>
-            <StyledErrorMessage name="password" component="div" />
-          </Label>
-          <StyledButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting' : 'Log in'}
-            <Svg>
-              <use href={sprite + '#icon-enter'}></use>
-            </Svg>
-          </StyledButton>
-        </StyledForm>
-      )}
+                <VisibilityBtn type="button" onClick={togglePassword}>
+                  {passwordType === 'password' ? (
+                    <svg height="20" width="20" fill="#111111">
+                      <use href={sprite + '#icon-hide'}></use>
+                    </svg>
+                  ) : (
+                    <svg height="20" width="20" fill="#111111">
+                      <use href={sprite + '#icon-show'}></use>
+                    </svg>
+                  )}
+                </VisibilityBtn>
+              </PasswordInputWrapper>
+              <ErrorMessage name="password" component="div" />
+            </Label>
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting' : 'Log in'}
+              <Svg>
+                <use href={sprite + '#icon-enter'}></use>
+              </Svg>
+            </Button>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };
