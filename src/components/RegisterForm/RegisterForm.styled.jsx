@@ -116,7 +116,7 @@ export const Field = styled(FormikField)`
     font-size: ${p => p.theme.fontSizes.s};
     line-height: 1.29;
     color: rgba(17, 17, 17, 0.15);
- 
+
     @media screen and (min-width: 768px) {
       font-size: ${p => p.theme.fontSizes.m};
       line-height: 1.12;
@@ -192,11 +192,18 @@ export const Button = styled.button`
   background-color: ${p => p.theme.colors.primary};
   cursor: pointer;
 
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
     padding-top: 16px;
     padding-bottom: 16px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: ${p => p.theme.colors.secondary};
   }
 `;
 
