@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { ReactComponent as UserIcon } from '../../images/sideBar/user-check.svg';
 import { ReactComponent as CalendarIcon } from '../../images/sideBar/calendar-check.svg';
+// import { RxCross1 } from 'react-icons/rx';
+import { ReactComponent as CloseIcon } from '../../images/x-close.svg';
 
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
@@ -36,6 +38,15 @@ export const StyledLink = styled(NavLink)`
     line-height: calc(19 / 16);
     /* gap: 10px; */
   }
+`;
+
+export const UserPanel = styled.p`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: calc(15 / 12);
+  color: rgba(52, 52, 52, 0.5);
 `;
 
 export const StyledList = styled.ul`
@@ -105,25 +116,44 @@ export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 64px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 50px;
+  }
 `;
 
 export const MobileMenuCloseBtn = styled.button`
   fill: var(--primary-text);
   background-color: transparent;
   border: none;
-  width: 40px;
-  height: 40px;
+
+  width: 24px;
+  height: 24px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 
-  @media screen and (min-width: 375px) {
-    width: 24px;
-    height: 24px;
+  margin-left: 35px;
+
+  @media screen and (min-width: 768px) {
+    width: 33px;
+    height: 33px;
   }
+
+  @media screen and (min-width: 1440px) {
+    width: 40px;
+    height: 40px;
+  }
+`;
+
+export const CloseBtnIcon = styled(CloseIcon)`
+  width: 24px;
+  height: 24px;
+  margin-left: 35px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 33px;
@@ -136,10 +166,8 @@ export const MobileMenuCloseBtn = styled.button`
 `;
 
 export const UserIconStyled = styled(UserIcon)`
-  @media screen and (min-width: 375px) {
-    width: 20px;
-    height: 20px;
-  }
+  width: 20px;
+  height: 20px;
 
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -148,10 +176,9 @@ export const UserIconStyled = styled(UserIcon)`
 `;
 
 export const CalendarIconStyled = styled(CalendarIcon)`
-  @media screen and (min-width: 375px) {
-    width: 20px;
-    height: 20px;
-  }
+  width: 20px;
+  height: 20px;
+
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;

@@ -27,12 +27,14 @@ export const Container = styled.div`
 export const Main = styled.main`
   display: flex;
   height: 100vh;
+  /* justify-content: center; */
 `;
 
 export const WrapLeftColumn = styled.div`
   /* background-color: tomato; */
   /* transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
   transition: transform 0.3s ease-in-out; */
+  display: flex;
   width: 225px;
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 289px;

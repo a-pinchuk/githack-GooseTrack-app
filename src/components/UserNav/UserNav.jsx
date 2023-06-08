@@ -1,27 +1,22 @@
 import {
   CalendarIconStyled,
+  CloseBtnIcon,
   GooseImg,
   LogoWrapper,
-  MobileMenuCloseBtn,
   StyledItem,
   StyledLink,
   StyledList,
   TextLogo,
   TextLogoSpan,
   UserIconStyled,
+  UserPanel,
 } from './UserNav.styled';
 import goose from '../../images/sideBar/GOOSE.png';
-
-// import { ReactComponent as UserIcon } from '../../images/sideBar/user-check.svg';
-// import { ReactComponent as CalendarIcon } from '../../images/sideBar/calendar-check.svg';
 import { toggleSidebar } from 'redux/sidebar/sidebarSlice';
 import { useDispatch } from 'react-redux';
-import { RxCross1 } from 'react-icons/rx';
 
 export const UserNav = () => {
   const dispatch = useDispatch();
-
-  // const isOpen = useSelector(state => state.sidebar.isOpen);
 
   const handleSideBar = () => {
     dispatch(toggleSidebar());
@@ -34,11 +29,13 @@ export const UserNav = () => {
         <TextLogo>
           G<TextLogoSpan>oo</TextLogoSpan>seTrack
         </TextLogo>
-        <MobileMenuCloseBtn onClick={handleSideBar}>
-          <RxCross1 size={30} color="var(--primary-text)" />
-        </MobileMenuCloseBtn>
+        <CloseBtnIcon
+          onClick={handleSideBar}
+          stroke="currentColor"
+        ></CloseBtnIcon>
       </LogoWrapper>
       <nav>
+        <UserPanel>User Panel</UserPanel>
         <StyledList>
           <StyledItem>
             <StyledLink to="account">

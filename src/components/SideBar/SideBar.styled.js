@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 export const SideBox = styled.div`
   box-sizing: border-box;
-  max-width: 295px;
+
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
 
   background: #fff;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
@@ -15,9 +15,6 @@ export const SideBox = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   padding: 24px 20px;
-
-  @media screen and (min-width: 375px) {
-  }
 
   @media screen and (min-width: 768px) {
     padding: 24px 32px;
