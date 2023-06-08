@@ -42,6 +42,7 @@ const authSlice = createSlice({
         };
       })
       .addCase(logOut.fulfilled, state => {
+        console.log('111111111111');
         state.user = {
           name: '',
           email: '',
@@ -52,6 +53,7 @@ const authSlice = createSlice({
         };
         state.token = null;
         state.isLoggedIn = false;
+        state.isRefreshing = false;
       })
       .addCase(currentUser.pending, state => {
         state.isRefreshing = true;

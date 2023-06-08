@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { CleanHands } from '@mui/icons-material';
 // const { REACT_APP_API_URL } = process.env;
 
 export const instance = axios.create({
@@ -77,14 +78,21 @@ export const logIn = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
+  console.log('logOut');
   try {
     await instance.post('/users/logout');
-    setAuthHeader();
+    console.log('logOut1');
   } catch (error) {
+    console.log('logOut2');
     //Це я зробив осознано. Коментар іхз наступного рядку не знімати!!!!!!!!!!!!!!!
     //Логаут повинен виконуватись завжди
     // return thunkAPI.rejectWithValue(error.message);
+  } finally {
+    setAuthHeader();
+    console.log('logOut3');
   }
+  console.log('logOut4');
+  return true;
 });
 
 export const currentUser = createAsyncThunk(
@@ -119,9 +127,9 @@ export const updateUserInfo = createAsyncThunk(
       formData.append('skype', skype);
       formData.append('birthday', birthday);
 
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      }
+      // for (var pair of formData.entries()) {
+      //   console.log(pair[0] + ', ' + pair[1]);
+      // }
 
       const response = await instance.patch(`/users/user/`, formData, {
         headers: {
