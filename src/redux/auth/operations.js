@@ -17,22 +17,22 @@ const setAuthHeader = token => {
 instance.interceptors.response.use(
   response => response,
   async error => {
-    try {
-      if (error.response.status === 401) {
-        const refreshToken = localStorage.getItem('refreshToken');
-        console.log(refreshToken);
-        const res = await instance.post('/users/refresh', {
-          refreshToken,
-        });
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const res = await instance.post('/users/refresh', { refreshToken });
         setAuthHeader(res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
-
-        return instance(error.config);
+        originalRequest.headers[
+          'Authorization'
+        ] = `Bearer ${res.data.accessToken}`;
+        return instance(originalRequest);
+      } catch (err) {
+        return Promise.reject(err);
       }
-    } catch (error) {
-      return Promise.reject(error);
     }
-
     return Promise.reject(error);
   }
 );
@@ -47,7 +47,7 @@ export const register = createAsyncThunk(
         password,
       });
       setAuthHeader(res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.refreshToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
@@ -66,7 +66,7 @@ export const logIn = createAsyncThunk(
         password,
       });
       setAuthHeader(res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.refreshToken);
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
