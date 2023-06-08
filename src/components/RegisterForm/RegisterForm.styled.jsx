@@ -116,7 +116,7 @@ export const Field = styled(FormikField)`
     font-size: ${p => p.theme.fontSizes.s};
     line-height: 1.29;
     color: rgba(17, 17, 17, 0.15);
-
+ 
     @media screen and (min-width: 768px) {
       font-size: ${p => p.theme.fontSizes.m};
       line-height: 1.12;

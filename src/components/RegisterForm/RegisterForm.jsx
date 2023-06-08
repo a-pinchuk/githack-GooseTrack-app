@@ -76,6 +76,7 @@ export const RegisterForm = () => {
               Name
               <InputWrapper>
                 <Field
+                  className={isValid('name')}
                   type="text"
                   name="name"
                   placeholder="Enter your name"
@@ -100,6 +101,7 @@ export const RegisterForm = () => {
               Email
               <InputWrapper>
                 <Field
+                  className={isValid('email')}
                   type="email"
                   name="email"
                   placeholder="Enter email"
@@ -126,6 +128,7 @@ export const RegisterForm = () => {
               Password
               <PasswordInputWrapper>
                 <Field
+                  className={isValid('password')}
                   type={passwordType}
                   name="password"
                   placeholder="Enter password"

@@ -66,6 +66,7 @@ export const LoginForm = () => {
               Email
               <InputWrapper>
                 <Field
+                  className={isValid('email')}
                   type="email"
                   name="email"
                   placeholder="Enter email"
@@ -93,11 +94,7 @@ export const LoginForm = () => {
               Password
               <PasswordInputWrapper>
                 <Field
-                  className={
-                    errors.password && touched.password
-                      ? 'InvalidInput'
-                      : 'ValidInput'
-                  }
+                  className={isValid('password')}
                   type={passwordType}
                   name="password"
                   placeholder="Enter password"
