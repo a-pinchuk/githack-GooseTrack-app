@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const SideBox = styled.div`
   box-sizing: border-box;
-
+  max-width: 295px;
   width: 100%;
   height: 100%;
 
@@ -14,5 +14,16 @@ export const SideBox = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 32px 24px 24px 24px;
+  padding: 24px 20px;
+
+  @media screen and (min-width: 375px) {
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 24px 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 32px 24px 24px 24px;
+  }
 `;

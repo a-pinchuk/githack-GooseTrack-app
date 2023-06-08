@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
 import { selectUser } from 'redux/auth/selectors';
+import { useMediaQuery } from 'react-responsive';
 
 import { SideBar } from 'components/SideBar/SideBar';
 import { Header } from 'components/Header/Header';
@@ -18,6 +19,9 @@ const MainLayout = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
+  const isOpen = useSelector(state => state.sidebar.isOpen);
+  const isMobile = useMediaQuery({ maxWidth: 1439 });
+
   useEffect(() => {
     if (user.email) return;
     dispatch(updateUserInfo);
@@ -26,9 +30,17 @@ const MainLayout = () => {
   return (
     <Container>
       <Main>
-        <WrapLeftColumn>
-          <SideBar />
-        </WrapLeftColumn>
+        {isMobile ? (
+          isOpen && (
+            <WrapLeftColumn>
+              <SideBar />
+            </WrapLeftColumn>
+          )
+        ) : (
+          <WrapLeftColumn>
+            <SideBar />
+          </WrapLeftColumn>
+        )}
         <WrapRightColumn>
           <Header />
           <Outlet />
