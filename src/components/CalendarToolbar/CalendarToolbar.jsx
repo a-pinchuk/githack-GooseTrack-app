@@ -15,10 +15,6 @@ export const CalendarToolbar = props => {
     typeDayHendler,
   } = props;
 
-  // const [date, setDate] = useState(today);
-  // console.log('CalendarToolbar ~ setDate:', setDate);
-  // console.log('CalendarToolbar ~ date:', date);
-
   return (
     <>
       <ToolbarWrapper>

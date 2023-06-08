@@ -1,14 +1,13 @@
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
-
-import { RxHamburgerMenu } from 'react-icons/rx';
 import { useTasks } from 'hooks';
-import BtnAddFeedback from './BtnAddFeedback/BtnAddFeedback';
-import ThemeToggler from './ThemeToggler/ThemeToggler';
-import UserInfo from './UserInfo/UserInfo';
+import { useState } from 'react';
 import { AddFeedbackModal } from 'components/AddFeedbackModal/AddFeedbackModal';
 
 import './ThemeTogglerColors.css';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import BtnAddFeedback from './BtnAddFeedback/BtnAddFeedback';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
+import UserInfo from './UserInfo/UserInfo';
 
 import {
   HeaderTitle,
@@ -58,6 +57,7 @@ export const Header = ({ toogleShowSiderBar }) => {
 
       <RighSectiontHeader>
         <BtnAddFeedback handlerShowModal={handlerShowModal} />
+
         <ThemeToggler />
         <UserInfo />
       </RighSectiontHeader>

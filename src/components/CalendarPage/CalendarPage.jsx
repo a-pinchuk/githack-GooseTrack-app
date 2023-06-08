@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
+import { CalendarContainer } from './CalendarPage.styled';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
@@ -53,12 +54,7 @@ const CalendarPage = () => {
   };
 
   return (
-    <div
-      style={{
-        marginLeft: '32px',
-        marginRight: '32px',
-      }}
-    >
+    <CalendarContainer>
       <CalendarToolbar
         today={moment(workDate)}
         typeSelect={typeSelect}
@@ -71,7 +67,7 @@ const CalendarPage = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </CalendarContainer>
   );
 };
 

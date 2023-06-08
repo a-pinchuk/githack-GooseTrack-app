@@ -24,7 +24,7 @@ const MainLayout = () => {
     dispatch(updateUserInfo);
   }, [user.email, dispatch]);
 
-  const toogleShowSiderBar = () => {    
+  const toogleShowSiderBar = () => {
     setShowSideBar(prev => !prev);
   };
 
@@ -34,6 +34,7 @@ const MainLayout = () => {
         <WrapLeftColumn showSideBar={showSideBar}>
           <SideBar toogleShowSiderBar={toogleShowSiderBar} />
         </WrapLeftColumn>
+
         <WrapRightColumn>
           <Header toogleShowSiderBar={toogleShowSiderBar} />
           <Outlet />

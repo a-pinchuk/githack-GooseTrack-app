@@ -17,7 +17,93 @@
   box-sizing: border-box;
 }
 
+/*Кастомный тул бар*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #e7e5e5;
+  border-radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body.no-scroll {
   overflow: hidden;
   overflow-y: hidden;
+}
+
+/* ----------- Стилі для календаря вибору дати ----------- */
+
+.MuiDialogContent-root {
+  background-color: #3e85f3;
+  border-radius: 16px;
+}
+.MuiDialogContent-root:first-of-type {
+  background-color: #3e85f3;
+  border-radius: 16px;
+}
+.MuiPickersLayout-root {
+  width: 327px;
+  height: 100%;
+  background-color: #3e85f3;
+  border-radius: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    width: 373px;
+  }
+}
+.MuiDateCalendar-root {
+  .MuiPaper-root,
+  .MuiButtonBase-root,
+  .MuiPickersCalendarHeader-switchViewIcon,
+  .MuiPickersArrowSwitcher-root,
+  .MuiSvgIcon-root,
+  .MuiDayCalendar-weekDayLabel,
+  .MuiPickersDay-today {
+    fill: #fff !important;
+    color: #fff !important;
+    background-color: #3e85f3;
+  }
+}
+
+/* .MuiDateCalendar-root {
+  border: 3px solid red;
+} */
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
+  background-color: #3e85f3;
+  border-radius: 16px;
+}
+
+.MuiPickersDay-today {
+  border: 1px solid #fff !important;
+}
+.MuiTypography-root {
+  color: white;
+}
+.MuiTypography-root.MuiDatePickerToolbar-title {
+  font-size: 0px;
+  margin: 0px;
+}
+
+.MuiTypography-root.MuiTypography-overline {
+  display: none;
+}
+
+.MuiPickersLayout-root.MuiPickersLayout-actionBar {
+  visibility: hidden !important;
+}
+.MuiButtonBase-root.MuiButton-root {
+  visibility: hidden !important;
 }

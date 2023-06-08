@@ -8,7 +8,7 @@ export const ReviewCardContainer = styled.div`
   padding: 24px;
 
   width: 335px;
-  min-height: 194px;
+  height: 194px;
 
   font-family: ${p => p.theme.fonts.text};
 
@@ -18,7 +18,7 @@ export const ReviewCardContainer = styled.div`
   @media screen and (max-width: 374px) {
     width: 99%;
     height: auto;
-    padding-bottom: 0;
+    padding: 10px;
   }
 
   @media screen and (min-width: 768px) {
@@ -26,7 +26,7 @@ export const ReviewCardContainer = styled.div`
     flex-direction: column;
 
     width: 580px;
-    min-height: 187px;
+    height: 187px;
 
     padding: 32px;
   }
