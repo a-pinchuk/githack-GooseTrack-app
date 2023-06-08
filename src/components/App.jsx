@@ -6,7 +6,7 @@ import MainPage from 'pages/MainPage/MainPage';
 import UserForm from './UserForm/UserForm';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
-import { refreshUser } from 'redux/auth/operations';
+import { currentUser } from 'redux/auth/operations';
 import { Loader } from './Loader/Loader';
 // import { setAccessToken } from 'redux/auth/authSlice';
 
@@ -27,7 +27,7 @@ export const App = () => {
   // }, [dispatch]);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(currentUser());
   }, [dispatch]);
 
   return (
