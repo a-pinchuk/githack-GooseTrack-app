@@ -10,6 +10,7 @@ import {
   Label,
   Field,
   ErrorMessage,
+  InputWrapper,
   PasswordInputWrapper,
   VisibilityBtn,
   Button,
@@ -50,38 +51,45 @@ export const LoginForm = () => {
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting, values, errors, touched, dirty }) => {
-        const isValid =
-          touched.email && errors.email
+      {({ isSubmitting, values, errors, touched }) => {
+        const isValid = field =>
+          touched[field] && errors[field]
             ? 'is-invalid'
-            : touched.email
+            : touched[field]
             ? 'is-valid'
             : '';
-        console.log(isValid);
-        console.log(errors);
-        console.log(touched);
-        console.log(dirty);
-        console.log(dirty.email);
+
         return (
           <Form>
             <Title>Log In</Title>
-            <Label>
-              <span className={isValid}>Email</span>
-              <Field
-                className={
-                  errors.email && touched.email && dirty.email
-                    ? 'InvalidInput'
-                    : 'ValidInput'
-                }
-                type="email"
-                name="email"
-                placeholder="Enter email"
-                title="Email must be in the format username@domain.com"
-                value={values.email}
-              />
+            <Label className={isValid('email')}>
+              Email
+              <InputWrapper>
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  title="Email must be in the format username@domain.com"
+                  value={values.email}
+                />
+
+                {isValid('email') === 'is-valid' && (
+                  <svg height="20" width="20" className="error-success">
+                    <use href={sprite + '#icon-input-success'}></use>
+                  </svg>
+                )}
+                {isValid('email') === 'is-invalid' && (
+                  <svg height="20" width="20" className="error-success">
+                    <use href={sprite + '#icon-input-error'}></use>
+                  </svg>
+                )}
+              </InputWrapper>
+              {isValid('email') === 'is-valid' && (
+                <p>This is a CORRECT email</p>
+              )}
               <ErrorMessage name="email" component="div" />
             </Label>
-            <Label>
+            <Label className={isValid('password')}>
               Password
               <PasswordInputWrapper>
                 <Field
@@ -99,16 +107,29 @@ export const LoginForm = () => {
 
                 <VisibilityBtn type="button" onClick={togglePassword}>
                   {passwordType === 'password' ? (
-                    <svg height="20" width="20" fill="#111111">
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('password')}
+                    >
                       <use href={sprite + '#icon-hide'}></use>
                     </svg>
                   ) : (
-                    <svg height="20" width="20" fill="#111111">
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('password')}
+                    >
                       <use href={sprite + '#icon-show'}></use>
                     </svg>
                   )}
                 </VisibilityBtn>
               </PasswordInputWrapper>
+              {isValid('password') === 'is-valid' && (
+                <p>This is a CORRECT password</p>
+              )}
               <ErrorMessage name="password" component="div" />
             </Label>
             <Button type="submit" disabled={isSubmitting}>

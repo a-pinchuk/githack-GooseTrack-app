@@ -16,24 +16,6 @@ export const Form = styled(FormikForm)`
   @media screen and (min-width: 768px) {
     padding: 40px;
   }
-
-  .ValidInput {
-    border: ${p => p.theme.borders.normal} rgba(220, 227, 229, 0.6);
-  }
-
-  .InvalidInput {
-    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.redError};
-  }
-
-  .is-valid {
-    border: none;
-    color: ${p => p.theme.colors.greenValid};
-  }
-
-  .is-invalid {
-    border: none;
-    color: ${p => p.theme.colors.redError};
-  }
 `;
 
 export const Title = styled.p`
@@ -57,10 +39,6 @@ export const Title = styled.p`
 `;
 
 export const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: ${p => p.theme.fontSizes.xs};
@@ -89,17 +67,28 @@ export const Label = styled.label`
     }
   }
 
-  /* span {
-    &.ValidInput {
-      border: none;
-      color: ${p => p.theme.colors.greenValid};
-    }
+  &.is-valid {
+    color: ${p => p.theme.colors.greenValid};
+  }
 
-    &.InvalidInput {
-      border: none;
-      color: ${p => p.theme.colors.redError};
-    }
-  } */
+  &.is-invalid {
+    color: ${p => p.theme.colors.redError};
+  }
+
+  & p {
+    margin: 0;
+    padding: 0;
+    margin-top: 8px;
+    margin-left: 18px;
+    color: ${p => p.theme.colors.greenValid};
+  }
+
+  & .error-success {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `;
 
 export const Field = styled(FormikField)`
@@ -108,9 +97,11 @@ export const Field = styled(FormikField)`
   padding: 14px;
 
   font-size: ${p => p.theme.fontSizes.s};
+  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 1.29px;
 
   color: ${p => p.theme.colors.black};
+  outline: none;
   border: ${p => p.theme.borders.normal} rgba(17, 17, 17, 0.15);
   border-radius: 8px;
 
@@ -134,13 +125,26 @@ export const Field = styled(FormikField)`
 
   &:hover,
   &:focus {
-    outline: none;
     border: ${p => p.theme.borders.normal} ${p => p.theme.colors.black};
+  }
+
+  &.is-valid {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenValid};
+  }
+
+  &.is-invalid {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.redError};
   }
 `;
 
 export const PasswordInputWrapper = styled.div`
   position: relative;
+  margin-top: 8px;
+`;
+
+export const InputWrapper = styled.div`
+  position: relative;
+  margin-top: 8px;
 `;
 
 export const VisibilityBtn = styled.button`
@@ -149,10 +153,21 @@ export const VisibilityBtn = styled.button`
   top: 50%;
   transform: translateY(-50%);
 
+  padding: 0;
   background: transparent;
   border: none;
   outline: none;
   cursor: pointer;
+
+  & svg.is-valid {
+    stroke: ${p => p.theme.colors.greenValid};
+    fill: ${p => p.theme.colors.greenValid};
+  }
+
+  & svg.is-invalid {
+    stroke: ${p => p.theme.colors.redError};
+    fill: ${p => p.theme.colors.redError};
+  }
 `;
 
 export const Button = styled.button`
@@ -198,5 +213,6 @@ export const Svg = styled.svg`
 
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
+  margin-top: 8px;
   color: ${p => p.theme.colors.redError};
 `;
