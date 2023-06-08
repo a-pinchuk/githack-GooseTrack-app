@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setAccessToken } from 'redux/auth/authSlice';
+import { updateAccessToken } from 'redux/auth/authSlice';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 import { Container, FormWrapper, ImgWrapper } from './LoginPage.styled';
@@ -10,7 +10,7 @@ const LoginPage = () => {
   useEffect(() => {
     const accessToken = window.location?.search.split('=')[1];
 
-    dispatch(setAccessToken(accessToken));
+    dispatch(updateAccessToken(accessToken));
   }, [dispatch]);
   return (
     <Container>

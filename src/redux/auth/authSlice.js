@@ -24,7 +24,11 @@ const authSlice = createSlice({
     isLoggedIn: false,
     isRefreshing: false,
   },
-  reducers: {},
+  reducers: {
+    updateAccessToken: (state, action) => {
+      state.token = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
@@ -33,7 +37,6 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        console.log(action.payload);
         return {
           ...state,
           user: action.payload.user,
@@ -70,14 +73,7 @@ const authSlice = createSlice({
       });
   },
 });
-
-export const setAccessToken = token => {
-  return {
-    type: 'auth',
-    payload: token,
-  };
-};
-
+export const { updateAccessToken } = authSlice.actions;
 const persistConfig = {
   key: 'auth',
   whitelist: ['token', 'user'],
