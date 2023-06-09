@@ -1,24 +1,25 @@
 import { FeedbackForm } from 'components/FeedbackForm/FeedbackForm';
 import { FeedbackList } from 'components/FeedbackList/FeedbackList';
 import { Modal } from 'components/Modal/Modal';
-import { useSelector } from 'react-redux';
-import { selectAllReviews } from 'redux/reviews/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectAllReviews } from 'redux/reviews/selectors';
 
 export const AddFeedbackModal = ({ handlerCloseModal }) => {
-  const allReviews = useSelector(selectAllReviews);
-  console.log('allReviews:', allReviews);
+  // const allReviews = useSelector(selectAllReviews);
+  // console.log('allReviews:', allReviews);
 
   const reviews = [
     {
-      name: 'Alex',
+      name: 'Super Mario',
       rating: 5,
       feedback:
-        'qweqweqwweqweq wweqweqwweqweqwwe  qweqwweqweqw  weqweqwweqweqw weqweqwweqweqww eqweqwweqweq wweqweqwweqw eqweqweqwe',
+        'Eos eu tantas nonumes accusam, id mutat noluisse pertinacia pro! Laboramus mnesarchum philosophia eu per. Usu ne nulla errem gloriatur, te quo sapientem suavitate? Altera disputando concludaturque te mel, at vix sint veniam, ipsum molestie efficiantur in sed. His dicit dolorum omnesque ne, ei timeam consetetur sit, mea affert vocent qualisque at!',
     },
     {
       name: 'Super Mario',
-      rating: 4,
-      feedback: 'asdassdfsdf sddfsdfsdfsdfsdfsdfsdfs sdfsdfdasdasd',
+      rating: 3,
+      feedback:
+        'Eos eu tantas nonumes accusam, id mutat noluisse pertinacia pro! Laboramus mnesarchum philosophia eu per. Usu ne nulla errem gloriatur, te quo sapientem suavitate? Altera disputando concludaturque te mel, at vix sint veniam, ipsum molestie efficiantur in sed. His dicit dolorum omnesque ne, ei timeam consetetur sit, mea affert vocent qualisque at!',
     },
   ];
 
