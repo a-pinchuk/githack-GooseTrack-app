@@ -115,12 +115,22 @@ code {
 
 /* ----------- Стилі для календаря вибору дати ----------- */
 
-.MuiDialogContent-root {
-  background-color: #3e85f3 !important;
+.MuiPaper-root {
+  /* background-color: #3e85f3 ; */
   border-radius: 16px;
 }
+.MuiDialog-paper {
+  border: 2px solid yellow;
+  /* background-color: #3e85f3 !important; */
+}
+
+.MuiDialogContent-root {
+  /* background-color: #3e85f3 !important; */
+  border-radius: 16px;
+  border: 2px solid black;
+}
 .MuiDialogContent-root:first-of-type {
-  background-color: #3e85f3;
+  /* background-color: #3e85f3; */
   border-radius: 16px;
 }
 .MuiPickersLayout-root {
@@ -170,15 +180,22 @@ code {
   }
 }
 
+.MuiPickersLayout-root {
+  border: 2px solid red;
+  width: 327px;
+  /* border-radius: 16px;
+  background-color: #3e85f3; */
+}
 .MuiPickersLayout-contentWrapper {
-  background-color: #2b78ef;
-  border-radius: 16px;
+  border: 2px solid green;
+  /* border-radius: 16px;
+  background-color: #3e85f3; */
 }
 
-.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
+/* .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
   background-color: #3e85f3;
   border-radius: 16px;
-}
+} */
 
 .MuiPickersDay-today {
   border: 1px solid #fff !important;

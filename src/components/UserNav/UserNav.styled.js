@@ -7,7 +7,7 @@ import { ReactComponent as CloseIcon } from '../../images/x-close.svg';
 
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
-  /* display: block; */
+
   width: 100%;
   height: 100%;
   display: inline-flex;
@@ -25,17 +25,15 @@ export const StyledLink = styled(NavLink)`
   :hover {
     color: #3e85f3;
   }
-  @media screen and (min-width: 375px) {
-    font-size: 14px;
-    line-height: 17px;
-    padding: 10px 0px 10px 14px;
-  }
+
+  font-size: 14px;
+  line-height: 17px;
+  padding: 10px 0px 10px 14px;
 
   @media screen and (min-width: 768px) {
     padding: 18.5px 0px 18.5px 25px;
     font-size: 16px;
     line-height: calc(19 / 16);
-    /* gap: 10px; */
   }
 `;
 
@@ -70,10 +68,9 @@ export const StyledItem = styled.li`
     background: #e3f3ff;
   }
 
-  @media screen and (min-width: 375px) {
-    width: 185px;
-    height: 40px;
-  }
+  width: 185px;
+  height: 40px;
+  /* } */
 
   @media screen and (min-width: 768px) {
     width: 225px;
@@ -87,18 +84,16 @@ export const TextLogo = styled.p`
   font-weight: 400;
   font-size: 24px;
   line-height: 24px;
-  /* identical to box height, or 100% */
 
   color: #3e85f3;
 
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
-  @media screen and (min-width: 375px) {
-    font-size: 16px;
-    line-height: calc(22 / 16);
-    margin: 0;
-  }
+  font-size: 16px;
+  line-height: calc(22 / 16);
+  margin: 0;
+  /* } */
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -119,32 +114,6 @@ export const LogoWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;
-  }
-`;
-
-export const MobileMenuCloseBtn = styled.button`
-  fill: var(--primary-text);
-  background-color: transparent;
-  border: none;
-
-  width: 24px;
-  height: 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  margin-left: 35px;
-
-  @media screen and (min-width: 768px) {
-    width: 33px;
-    height: 33px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 40px;
-    height: 40px;
   }
 `;
 
@@ -185,10 +154,8 @@ export const CalendarIconStyled = styled(CalendarIcon)`
 `;
 
 export const GooseImg = styled.img`
-  @media screen and (min-width: 375px) {
-    width: 36px;
-    height: 100%;
-  }
+  width: 36px;
+  height: 100%;
 
   @media screen and (min-width: 768px) {
     width: 60px;

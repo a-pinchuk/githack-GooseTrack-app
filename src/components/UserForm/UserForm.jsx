@@ -7,7 +7,7 @@ import moment from 'moment/moment';
 import { validationSchema } from './ValidationSchema.js';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
+import dayjs from 'dayjs';
 import {
   Container,
   FormContainer,
@@ -40,11 +40,18 @@ const UserForm = () => {
       setSelectedImage(imageUrl);
     }
   };
-  // const today = moment().format('DD/MM/YYYY');
+
   const handleDatePickerChange = date => {
-    const formattedDate = moment(date).format('DD/MM/YYYY');
+    console.log('date', date.$d);
+    const formattedDate = moment(date.$d).format('DD/MM/YYYY');
+    console.log('formattedDate', formattedDate);
     setFieldValue('birthday', formattedDate);
   };
+
+  const dateValue =
+    user.birthday instanceof Date
+      ? dayjs(user.birthday) // Преобразуем дату в объект Dayjs
+      : dayjs(user.birthday, 'DD/MM/YYYY'); // Если user.birthday - строка в формате 'DD/MM/YYYY'
 
   const {
     errors,
@@ -57,12 +64,12 @@ const UserForm = () => {
     isSubmitting,
   } = useFormik({
     initialValues: {
-      avatar: user.avatarUrl,
+      avatar: null,
       name: user.name,
       email: user.email,
       phone: user.phone,
       skype: user.skype,
-      birthday: user.birthday || new Date(),
+      birthday: user.birthday,
     },
     validationSchema: validationSchema,
 
@@ -129,6 +136,7 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
+                defaultValue={dateValue || dayjs()}
                 onChange={handleDatePickerChange}
                 name="birthday"
                 views={['year', 'month', 'day']}
