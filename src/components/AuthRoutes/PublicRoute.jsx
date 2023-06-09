@@ -10,7 +10,6 @@ import { selectUserToken } from 'redux/auth/selectors';
 export const PublicRoute = () => {
   const location = useLocation();
   const userToken = useSelector(selectUserToken);
-  console.log('Public route');
 
   return !userToken ? (
     <Outlet />

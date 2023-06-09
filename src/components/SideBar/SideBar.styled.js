@@ -1,4 +1,3 @@
-// import LogoutBtn from 'components/TestBtnLogout/LogoutBtn';
 import styled from 'styled-components';
 
 export const SideBox = styled.div`
