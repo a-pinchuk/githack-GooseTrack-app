@@ -64,7 +64,7 @@ const UserForm = () => {
     isSubmitting,
   } = useFormik({
     initialValues: {
-      avatar: user.avatarUrl,
+      avatar: null,
       name: user.name,
       email: user.email,
       phone: user.phone,
