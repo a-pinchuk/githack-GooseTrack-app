@@ -14,6 +14,7 @@ export const theme = {
     mainYellow: '#F3B249',
     lightYellow: '#FCF0D4',
     redError: '#DA1414',
+    redErrorLight: '#E74A3B',
     mainRed: '#EA3D65',
     lightRed: '#FFD2DD',
     greenValid: '#3CBC81',

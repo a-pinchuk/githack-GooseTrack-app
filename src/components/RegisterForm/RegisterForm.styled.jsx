@@ -72,7 +72,7 @@ export const Label = styled.label`
   }
 
   &.is-invalid {
-    color: ${p => p.theme.colors.redError};
+    color: ${p => p.theme.colors.redErrorLight};
   }
 
   & p {
@@ -133,7 +133,7 @@ export const Field = styled(FormikField)`
   }
 
   &.is-invalid {
-    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.redError};
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.redErrorLight};
   }
 `;
 
@@ -165,8 +165,8 @@ export const VisibilityBtn = styled.button`
   }
 
   & svg.is-invalid {
-    stroke: ${p => p.theme.colors.redError};
-    fill: ${p => p.theme.colors.redError};
+    stroke: ${p => p.theme.colors.redErrorLight};
+    fill: ${p => p.theme.colors.redErrorLight};
   }
 `;
 
@@ -191,8 +191,6 @@ export const Button = styled.button`
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.primary};
   cursor: pointer;
-
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
