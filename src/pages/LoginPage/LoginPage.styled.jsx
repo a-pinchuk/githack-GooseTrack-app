@@ -17,10 +17,11 @@ export const Container = styled.div`
     display: block;
     margin-top: 8px;
 
-    text-align: center;
+    font-family: ${p => p.theme.fonts.text};
     font-weight: ${p => p.theme.fontWeights.medium};
     font-size: ${p => p.theme.fontSizes.xs};
     line-height: 1.16;
+    text-align: center;
 
     color: ${p => p.theme.colors.primary};
     text-decoration: underline;
