@@ -1,2 +1,0 @@
-html[data-theme=light]{--background:#fff;--section:#f2f2f2;--primary-text:#111;--secondary-text:#324e59;--button-background:#181818}html[data-theme=dark]{--background:#121212;--section:#181818;--primary-text:#fff;--secondary-text:#b3b3b3;--button-background:#324e59}body{background:var(--background);transition:background-color .4s}
-/*# sourceMappingURL=399.7c2ed1d1.chunk.css.map*/
