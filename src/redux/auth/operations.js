@@ -5,8 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // const { REACT_APP_API_URL } = process.env;
 
 export const instance = axios.create({
-  // baseURL: 'https://githack-goosetrack.onrender.com/api',
-  baseURL: 'http://127.0.0.1:4000/api',
+  baseURL: 'https://githack-goosetrack.onrender.com/api',
 });
 
 const setAuthHeader = token => {
