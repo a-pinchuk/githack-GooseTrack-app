@@ -1,19 +1,23 @@
 /* Изменения темы */
 
 html[data-theme="light"] {
-    --background: #FFFFFF;
-    --section: #f2f2f2;
+    --background: #EAEAEA;
+    --second-backgrond: #FFFFFF;
+    --third-background: #FFFFFF;
     --primary-text: #111111;
-    --secondary-text: #324e59;
-    --button-background: #181818;
+    --second-text: #34343480;
+    --third-text: #343434;
+    --background-button: #E3F3FF;
 }
-  
+
 html[data-theme="dark"] {
-    --background: #121212;
-    --section: #181818;
-    --primary-text: white;
-    --secondary-text: #b3b3b3;
-    --button-background: #324e59;
+    --background: #171820;
+    --second-backgrond: #21222C;
+    --third-background: #13151A;
+    --primary-text: #FFFFFF;
+    --second-text: #FFFFFF;
+    --third-text: #FFFFFF;
+    --background-button: #3E85F3;
 }
 
 

@@ -3,7 +3,7 @@ import { useTasks } from 'hooks';
 import { useState } from 'react';
 import { AddFeedbackModal } from 'components/AddFeedbackModal/AddFeedbackModal';
 
-import './ThemeTogglerColors.css';
+// import './ThemeTogglerColors.css';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import BtnAddFeedback from './BtnAddFeedback/BtnAddFeedback';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
@@ -44,7 +44,7 @@ export const Header = ({ toogleShowSiderBar }) => {
   return (
     <HeaderSection>
       <MobileMenuBtn onClick={toogleShowSiderBar}>
-        <RxHamburgerMenu size={30} color="var(--primary-text)" />
+        <RxHamburgerMenu size={30}/>
       </MobileMenuBtn>
 
       {isNotDoneTask ? (
