@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Header = styled.header`
-  /* font-family: 'Coolvetica'; */
   height: 812px;
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
@@ -36,6 +35,7 @@ export const Header = styled.header`
     margin-top: 0;
     margin-bottom: 0;
 
+    font-family: 'Coolvetica';
     font-weight: 400;
     font-size: 44px;
     line-height: 1.09;
@@ -50,10 +50,10 @@ export const Header = styled.header`
       font-size: ${p => p.theme.fontSizes.xl};
       line-height: ${p => p.theme.lineHeights.body};
     }
-  }
 
-  span {
-    font-style: italic;
+    span {
+      font-style: italic;
+    }
   }
 `;
 
@@ -75,8 +75,8 @@ export const ImageWrapper = styled.div`
 
   img {
     display: block;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
   }
 `;
 
