@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/githack-GooseTrack-app/static/css/main.f56dcbde.css",
-    "main.js": "/githack-GooseTrack-app/static/js/main.bcffb92b.js",
+    "main.css": "/githack-GooseTrack-app/static/css/main.6a009a44.css",
+    "main.js": "/githack-GooseTrack-app/static/js/main.5e1113ee.js",
     "static/js/84.2626a7db.chunk.js": "/githack-GooseTrack-app/static/js/84.2626a7db.chunk.js",
     "static/js/525.e28a85ad.chunk.js": "/githack-GooseTrack-app/static/js/525.e28a85ad.chunk.js",
     "static/js/516.bec4ce61.chunk.js": "/githack-GooseTrack-app/static/js/516.bec4ce61.chunk.js",
@@ -24,11 +24,17 @@
     "static/media/tablet_sidebar.png": "/githack-GooseTrack-app/static/media/tablet_sidebar.717a2fd2841aeec0ea2f.png",
     "static/media/desktop_sidebar.png": "/githack-GooseTrack-app/static/media/desktop_sidebar.e607ea37835ca1ee59b9.png",
     "static/media/desktop_signupPage@2x.png": "/githack-GooseTrack-app/static/media/desktop_signupPage@2x.35ba0fb08b79a7ed2283.png",
+    "static/media/CoolveticaRg-Italic.woff2": "/githack-GooseTrack-app/static/media/CoolveticaRg-Italic.8e3f5b5c51cd3a1ff695.woff2",
     "static/media/mobile_calendar.png": "/githack-GooseTrack-app/static/media/mobile_calendar.28ecb5a92631a4450b9d.png",
+    "static/media/CoolveticaRg-Regular.woff2": "/githack-GooseTrack-app/static/media/CoolveticaRg-Regular.d90557c05cb24f7c604b.woff2",
     "static/media/mobile_all@2x.png": "/githack-GooseTrack-app/static/media/mobile_all@2x.61ccaa1e1513ab364e52.png",
     "static/media/tablet_all.png": "/githack-GooseTrack-app/static/media/tablet_all.eb7aa6a6de76e222daae.png",
     "static/media/desktop_all.png": "/githack-GooseTrack-app/static/media/desktop_all.d3e6968540090423460a.png",
+    "static/media/inter-v12-latin-700.woff2": "/githack-GooseTrack-app/static/media/inter-v12-latin-700.54321e26b8bf4739a16d.woff2",
+    "static/media/inter-v12-latin-600.woff2": "/githack-GooseTrack-app/static/media/inter-v12-latin-600.8f1e0300e8d26fa8919d.woff2",
+    "static/media/inter-v12-latin-500.woff2": "/githack-GooseTrack-app/static/media/inter-v12-latin-500.c72c72b70c82b1f4bacf.woff2",
     "static/media/GOOSE.png": "/githack-GooseTrack-app/static/media/GOOSE.b57ebbcece04b5553a77.png",
+    "static/media/inter-v12-latin-regular.woff2": "/githack-GooseTrack-app/static/media/inter-v12-latin-regular.be7cb18dc7caf47cf7e9.woff2",
     "static/media/mobile_sidebar.png": "/githack-GooseTrack-app/static/media/mobile_sidebar.a8aec82e1a25f4fc83b1.png",
     "static/media/desktop_loginPage.png": "/githack-GooseTrack-app/static/media/desktop_loginPage.c22df0aabc507f79b771.png",
     "static/media/desktop_signupPage.png": "/githack-GooseTrack-app/static/media/desktop_signupPage.8ae5d8ef26184e1f82f6.png",
@@ -51,8 +57,8 @@
     "static/media/cross.svg": "/githack-GooseTrack-app/static/media/cross.47bc89769b79c42953b932d95fa06159.svg",
     "static/media/x-close.svg": "/githack-GooseTrack-app/static/media/x-close.7999662d7169f2ea4ad3b8f7c5619cbf.svg",
     "static/media/addIcon.svg": "/githack-GooseTrack-app/static/media/addIcon.bbf7129492a6df4bbe3ee57c7159ae1d.svg",
-    "main.f56dcbde.css.map": "/githack-GooseTrack-app/static/css/main.f56dcbde.css.map",
-    "main.bcffb92b.js.map": "/githack-GooseTrack-app/static/js/main.bcffb92b.js.map",
+    "main.6a009a44.css.map": "/githack-GooseTrack-app/static/css/main.6a009a44.css.map",
+    "main.5e1113ee.js.map": "/githack-GooseTrack-app/static/js/main.5e1113ee.js.map",
     "84.2626a7db.chunk.js.map": "/githack-GooseTrack-app/static/js/84.2626a7db.chunk.js.map",
     "525.e28a85ad.chunk.js.map": "/githack-GooseTrack-app/static/js/525.e28a85ad.chunk.js.map",
     "516.bec4ce61.chunk.js.map": "/githack-GooseTrack-app/static/js/516.bec4ce61.chunk.js.map",
@@ -63,7 +69,7 @@
     "836.4d2e5e4d.chunk.js.map": "/githack-GooseTrack-app/static/js/836.4d2e5e4d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f56dcbde.css",
-    "static/js/main.bcffb92b.js"
+    "static/css/main.6a009a44.css",
+    "static/js/main.5e1113ee.js"
   ]
 }
