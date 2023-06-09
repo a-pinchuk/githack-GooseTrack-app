@@ -9,9 +9,12 @@ export const StyledDataPicker = styled(DatePicker)`
     padding-left: 0px;
   }
   input::placeholder {
-    font-family: ${p => p.theme.fonts.text};
-    font-size: ${p => p.theme.fontSizes.s};
-    color: #34343480;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    color: black;
+    opacity: 1;
   }
   /* Input value */
   .MuiInputBase-root {

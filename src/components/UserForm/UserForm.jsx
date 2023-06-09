@@ -42,16 +42,15 @@ const UserForm = () => {
   };
 
   const handleDatePickerChange = date => {
-    console.log('date', date.$d);
     const formattedDate = moment(date.$d).format('DD/MM/YYYY');
-    console.log('formattedDate', formattedDate);
     setFieldValue('birthday', formattedDate);
   };
 
-  const dateValue =
-    user.birthday instanceof Date
-      ? dayjs(user.birthday) // Преобразуем дату в объект Dayjs
-      : dayjs(user.birthday, 'DD/MM/YYYY'); // Если user.birthday - строка в формате 'DD/MM/YYYY'
+  const currentDate = dayjs().format('DD/MM/YYYY');
+  // const dateValue =
+  //   user.birthday instanceof Date
+  //     ? dayjs(user.birthday) // Преобразуем дату в объект Dayjs
+  //     : dayjs(user.birthday, 'DD/MM/YYYY'); // Если user.birthday - строка в формате 'DD/MM/YYYY'
 
   const {
     errors,
@@ -75,14 +74,7 @@ const UserForm = () => {
 
     onSubmit: async values => {
       try {
-        console.log(values);
-        // const formattedDate = moment(values.birthday).format('DD/MM/YYYY');
-
-        // const updatedValues = {
-        //   ...values,
-        //   birthday: formattedDate,
-        // };
-
+        // console.log(values);
         await dispatch(updateUserInfo(values));
       } catch (error) {
         console.log(error.message);
@@ -107,6 +99,7 @@ const UserForm = () => {
             type="file"
             onChange={handleAvatarUpload}
             style={{ display: 'none' }}
+            accept="image/png, image/jpeg"
           />
           <Plus />
         </Label>
@@ -136,7 +129,12 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
-                defaultValue={dateValue || dayjs()}
+                // defaultValue={dateValue}
+                slotProps={{
+                  textField: {
+                    placeholder: `${currentDate}`,
+                  },
+                }}
                 onChange={handleDatePickerChange}
                 name="birthday"
                 views={['year', 'month', 'day']}
