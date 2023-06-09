@@ -1,3 +1,6 @@
+import './components/Header/ThemeTogglerColors.css'
+
+
 export const theme = {
   colors: {
     primary: '#3E85F3',
@@ -18,6 +21,29 @@ export const theme = {
     greenValid: '#3CBC81',
     muted: '#F7F6F9',
     closeButton: '#111111',
+
+
+    background_mode: 'var(--background)',
+    // #EAEAEA   ---->>>>>   #171820 
+
+    second_backgrond_mode: 'var(--second-backgrond)',
+    // #FFFFFF   ---->>>>>   #21222C
+
+    third_background_mode: 'var(--third-background)',
+    // #FFFFFF   ---->>>>>   #13151A
+    
+    primary_text_mode: 'var(--primary-text)',
+    // #111111  ---->>>>>   #FFFFFF
+
+    second_text_mode: 'var(--second-text)',
+    // #34343480  ---->>>>>   #FFFFFF
+
+    third_text_mode: 'var(--third-text)',
+    // #343434  ---->>>>>   #FFFFFF
+
+    background_button: 'var(--background-button)',
+    // #E3F3FF  ---->>>>>   #3E85F3
+    
   },
   fonts: {
     body: 'Coolvetica',

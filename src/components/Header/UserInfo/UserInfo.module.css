@@ -1,4 +1,4 @@
-.HeaderUserInfoSection {
+/* .HeaderUserInfoSection {
     display: flex;
 }
 
@@ -14,12 +14,12 @@
         font-size: 14px;
         margin-left: 8px;
     }
-}
+} */
 
 
 /* Аватарка пользователя */
 
-.HeaderUserPhoto {
+/* .HeaderUserPhoto {
     background-color: #FFFFFF;
     box-sizing: border-box;
 
@@ -37,4 +37,4 @@
 
         margin-left: 14px;
     }
-}
+} */

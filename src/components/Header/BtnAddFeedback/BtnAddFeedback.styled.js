@@ -7,12 +7,12 @@ export const AddFeedbackBtn = styled.a`
   width: 97px;
   height: 32px;
 
-  background: #3e85f3;
+  background: ${props => props.theme.colors.primary};
   border-radius: 10px;
 
-  font-family: 'Inter';
+  font-family: ${props => props.theme.fonts.heading};
   font-style: normal;
-  font-weight: 600;
+  font-weight: ${props => props.theme.fontWeights.medium};
   font-size: 12px;
   line-height: 16px;
 
@@ -20,7 +20,7 @@ export const AddFeedbackBtn = styled.a`
   text-decoration: none;
   cursor: pointer;
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 130px;
     height: 42px;
   }
