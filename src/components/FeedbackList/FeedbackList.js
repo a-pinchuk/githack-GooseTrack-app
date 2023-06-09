@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
@@ -9,6 +9,7 @@ import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
 
 import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
 import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
+import { ReviewItem } from 'components/Review/ReviewItem';
 
 export const IconBthPencil = styled(Pencil)`
   cursor: pointer;
@@ -70,6 +71,13 @@ function stringAvatar(name) {
 }
 
 export const FeedbackList = ({ reviews }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleReviewClick = () => {
+    console.log('Expanded');
+    setExpanded(!expanded);
+  };
+
   return (
     <ul
       style={{
@@ -85,7 +93,7 @@ export const FeedbackList = ({ reviews }) => {
 
         backgroundColor: 'rgba(227, 243, 255, 0.5)',
         borderRadius: ' 8px',
-        overflow: 'scroll',
+        overflow: 'auro',
         margin: '0',
       }}
     >
@@ -93,10 +101,12 @@ export const FeedbackList = ({ reviews }) => {
         <li
           key={i}
           style={{
-            // outline: '1px solid pink',
+            outline: '1px solid pink',
             width: '100%',
             display: 'flex',
+            maxHeight: '130px',
           }}
+          onClick={handleReviewClick}
         >
           <div
             style={{
@@ -153,9 +163,7 @@ export const FeedbackList = ({ reviews }) => {
               </Box>
             </div>
 
-            <p style={{ paddingLeft: '12px', margin: '0' }}>
-              {review.feedback}
-            </p>
+            <ReviewItem text={review.feedback} maxLength={40} />
           </div>
         </li>
       ))}

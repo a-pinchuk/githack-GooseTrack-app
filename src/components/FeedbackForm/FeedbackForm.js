@@ -5,6 +5,8 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -17,11 +19,36 @@ const StyledRating = styled(Rating)({
 
 export function FeedbackForm() {
   const [value, setValue] = React.useState(0);
-  console.log('value:', value);
+  const [review, setReview] = useState(() => storageValueReview());
+
+  function storageValueReview() {
+    const review = localStorage.getItem('review');
+
+    if (review) {
+      return JSON.parse(review);
+    }
+
+    return '';
+  }
+
+  useEffect(() => {
+    localStorage.setItem('review', JSON.stringify(review));
+  }, [review]);
 
   const handleFeedbackSubmit = e => {
     e.preventDefault();
     console.log('FeedBack Submit');
+  };
+
+  useEffect(() => {
+    const review = JSON.parse(localStorage.getItem('review'));
+    if (review) {
+      setReview(setReview);
+    }
+  }, []);
+
+  const handleTextareaChange = e => {
+    setReview(e.target.value);
   };
 
   return (
@@ -60,6 +87,8 @@ export function FeedbackForm() {
         <textarea
           id="feedback"
           placeholder="Enter text"
+          name="review"
+          value={review}
           style={{
             width: '404px',
             height: '127px',
@@ -70,6 +99,7 @@ export function FeedbackForm() {
             marginTop: '8px',
             marginBottom: '18px',
           }}
+          onChange={handleTextareaChange}
         ></textarea>
         <button
           type="submit"
