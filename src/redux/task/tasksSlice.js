@@ -7,6 +7,7 @@ import {
   deleteTask,
   updateTask,
   changeTaskCategory,
+  clearTasks,
 } from './operations.js';
 
 const pending = state => {
@@ -94,6 +95,10 @@ export const tasksSlice = createSlice({
         );
 
         state.tasks[index] = action.payload.data;
+      })
+      .addCase(clearTasks.fulfilled, state => {
+        state.tasks = [];
       });
+    //
   },
 });
