@@ -15,8 +15,10 @@ export const validationSchema = Yup.object().shape({
     ),
   birthday: Yup.string(),
   email: Yup.string().email('Invalid email').required('Email is required'),
-  phone: Yup.string().matches(regexPhone, {
-    message: 'Invalid phone number',
-  }),
-  skype: Yup.string().max(16, 'No more than 16 characters'),
+  phone: Yup.string()
+    .matches(regexPhone, {
+      message: 'Invalid phone number',
+    })
+    .notRequired(),
+  skype: Yup.string().max(16, 'No more than 16 characters').notRequired(),
 });

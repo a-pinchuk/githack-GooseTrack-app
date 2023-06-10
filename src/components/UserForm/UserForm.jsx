@@ -23,7 +23,10 @@ import {
   AvatarDefault,
   ErrorMessage,
   StyledDataPicker,
+  StyledInputMask,
 } from './UserForm.styled';
+
+import InputMask from 'react-input-mask';
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -42,6 +45,7 @@ const UserForm = () => {
   };
 
   const handleDatePickerChange = date => {
+    console.log(date.$d);
     const formattedDate = moment(date.$d).format('DD/MM/YYYY');
     setFieldValue('birthday', formattedDate);
   };
@@ -74,7 +78,7 @@ const UserForm = () => {
 
     onSubmit: async values => {
       try {
-        // console.log(values);
+        console.log(values);
         await dispatch(updateUserInfo(values));
       } catch (error) {
         console.log(error.message);
@@ -162,16 +166,19 @@ const UserForm = () => {
 
           <WrapperInput>
             <Label htmlFor="phone">Phone</Label>
-            <Input
+            <StyledInputMask
+              mask="3\8 (099) 999 99 99"
               id="phone"
               placeholder=" 38 (097)..."
               name="phone"
               type="tel"
+              inputMode="numeric"
               value={values.phone || ''}
               onChange={handleChange}
               onBlur={handleBlur}
               className={errors.phone && touched.phone ? 'InvalidInput' : ''}
             />
+
             {errors.phone && touched.phone && (
               <ErrorMessage>{errors.phone}</ErrorMessage>
             )}
