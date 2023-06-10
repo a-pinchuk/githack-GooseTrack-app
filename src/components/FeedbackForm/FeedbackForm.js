@@ -98,7 +98,7 @@ export function FeedbackForm({
           icon={<FavoriteIcon fontSize="inherit" width="24px" />}
           emptyIcon={<FavoriteBorderIcon fontSize="inherit" width="24px" />}
           onChange={handleRatingChange}
-          sx={{ display: 'flex', gap: '2px' }}
+          sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
         />
       </Box>
       <form onSubmit={handleFeedbackSubmit}>
