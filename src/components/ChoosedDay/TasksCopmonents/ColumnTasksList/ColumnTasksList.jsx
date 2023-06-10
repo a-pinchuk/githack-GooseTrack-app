@@ -9,21 +9,37 @@ export const ColumnTasksList = ({
   title,
 }) => {
   const [disableDrag, setDisableDrag] = useState(true);
-  console.log(taskData, title);
-  const handleScroll = () => {};
+
   const handleDisableScrollBar = () => {
     setDisableDrag(false);
   };
   const handleEnableScrollBar = () => {
     setDisableDrag(true);
   };
+
+  useEffect(() => {
+    const handleWindowWheel = e => {
+      if (!disableDrag) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('wheel', handleWindowWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWindowWheel);
+    };
+  }, [disableDrag]);
   return (
     <>
-      <TaskListBox style={{ touchAction: disableDrag ? 'auto' : 'none' }}>
+      <TaskListBox
+        style={{
+          touchAction: disableDrag ? 'auto' : 'none',
+        }}
+      >
         {taskData?.map(item => {
           return (
             <TaskColumnCard
-              onClick={handleScroll}
               disableDrag={handleDisableScrollBar}
               enableDrag={handleEnableScrollBar}
               key={item._id}
