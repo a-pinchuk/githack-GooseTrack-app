@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
@@ -8,6 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
 import { useAuth } from 'hooks';
+
 import {
   Container,
   FormContainer,
@@ -29,9 +30,13 @@ import {
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  console.log('🚀 ~ user:', user);
+  // console.log('🚀 ~ user:', user);
 
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
+
+  useEffect(() => {
+    console.log('Mouting phase: same when componentDidMount runs');
+  }, []);
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
@@ -70,11 +75,10 @@ const UserForm = () => {
       skype: user.skype || '',
       birthday: user.birthday || '',
     },
-    // validationSchema: validationSchema,
+    validationSchema: validationSchema,
 
     onSubmit: async values => {
       try {
-        console.log(values);
         await dispatch(updateUserInfo(values));
       } catch (error) {
         console.log(error.message);
@@ -129,7 +133,6 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
-                // defaultValue={dateValue}
                 slotProps={{
                   textField: {
                     placeholder: `${currentDate}`,

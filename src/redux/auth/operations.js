@@ -120,7 +120,6 @@ export const currentUser = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
   '/users/user',
   async ({ avatar, name, email, phone, skype, birthday }, thunkAPI) => {
-    console.log('🚀 ~ phone:', phone);
     try {
       const formData = new FormData();
       formData.append('avatar', avatar);
