@@ -9,7 +9,7 @@ import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
 import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
 import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
 import { ReviewItem } from 'components/ReviewItem/ReviewItem';
-import { IconButton, createTheme } from '@mui/material';
+import { IconButton } from '@mui/material';
 import {
   IconButtonContainer,
   ReviewerName,

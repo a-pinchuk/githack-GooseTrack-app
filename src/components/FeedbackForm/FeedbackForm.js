@@ -34,6 +34,8 @@ export function FeedbackForm({
   const [review, setReview] = useState('');
 
   useEffect(() => {
+    console.log('useEffect:');
+
     if (isEditFeedbackOpen) {
       setValue(rating);
       setReview(feedback);
@@ -44,9 +46,13 @@ export function FeedbackForm({
     console.log('storedRating:', storedRating);
     if (storedReview) {
       setReview(JSON.parse(storedReview));
+    } else {
+      setReview('');
     }
     if (storedRating) {
       setValue(JSON.parse(storedRating));
+    } else {
+      setValue(0);
     }
   }, [feedback, isEditFeedbackOpen, rating]);
 
