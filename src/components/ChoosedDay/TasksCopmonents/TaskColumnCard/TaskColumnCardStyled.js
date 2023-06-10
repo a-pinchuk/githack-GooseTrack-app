@@ -17,6 +17,7 @@ export const TaskListItem = styled.li`
   padding: 14px;
   margin-bottom: 18px;
   background-color: ${theme.colors.muted};
+
 `;
 
 export const AvatorTaskList = styled.img`

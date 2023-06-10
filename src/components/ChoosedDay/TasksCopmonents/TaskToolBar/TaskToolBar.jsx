@@ -19,7 +19,13 @@ import { Portal } from '../Portal/Portal';
 import { correctToolBarTitle } from '../helper/helper';
 // import { cleanDigitSectionValue } from '@mui/x-date-pickers/internals/hooks/useField/useField.utils';
 
-export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
+export const TasklToolBar = ({
+  toolbarData,
+  idData,
+  handlerOpenModal,
+  disableDrag,
+  enableDrag,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const erorr = useSelector(selectTasksError);
   const successful = useSelector(selectSuccessful);
@@ -38,37 +44,30 @@ export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
   });
   console.log(styles);
 
-  console.log('DATATITLE--->', toolbarData);
-  //   console.log('DATATITLEFunc--->', correctTitle(toolbarData[2]));
+  const handleOpenToolBar = () => {
+    setIsVisible(true);
+    disableDrag();
+  };
 
-  const handleMoveOne = () => {
+  const handleMoveCard = (id, value) => {
     if (successful) {
       dispatch(
         changeTaskCategory({
-          id: idData,
-          category: toolbarData[0],
+          id: id,
+          category: value,
         })
       );
       setIsVisible(false);
+      enableDrag();
     }
     if (erorr) {
       Notify.failure(`wrong category`);
     }
   };
 
-  const handleMoveTow = () => {
-    if (successful) {
-      dispatch(
-        changeTaskCategory({
-          id: idData,
-          category: toolbarData[1],
-        })
-      );
-      setIsVisible(false);
-    }
-    if (erorr) {
-      Notify.failure(`wrong category`);
-    }
+  const handleMouseLeave = () => {
+    setIsVisible(false);
+    enableDrag();
   };
 
   const handleDeleted = id => {
@@ -83,10 +82,10 @@ export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
 
   return (
     <div>
-      <BoxIconBth onMouseLeave={() => setIsVisible(false)}>
+      <BoxIconBth onMouseLeave={handleMouseLeave}>
         <IconBthArrow
           ref={setReferenceElement}
-          onClick={() => setIsVisible(true)}
+          onClick={handleOpenToolBar}
           $isactive={isVisible}
         />
         <IconBthPencil onClick={() => handlerOpenModal({ id: idData })} />
@@ -104,13 +103,17 @@ export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
             >
               <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
                 <TooltipButtonItem>
-                  <TooltipButton onClick={() => handleMoveOne(idData)}>
+                  <TooltipButton
+                    onClick={() => handleMoveCard(idData, toolbarData[0])}
+                  >
                     {correctToolBarTitle(toolbarData[0])}
                     <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
                   </TooltipButton>
                 </TooltipButtonItem>
                 <TooltipButtonItem>
-                  <TooltipButton onClick={() => handleMoveTow(idData)}>
+                  <TooltipButton
+                    onClick={() => handleMoveCard(idData, toolbarData[1])}
+                  >
                     {correctToolBarTitle(toolbarData[1])}
                     <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
                   </TooltipButton>
