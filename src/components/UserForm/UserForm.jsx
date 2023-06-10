@@ -165,7 +165,7 @@ const UserForm = () => {
           <WrapperInput>
             <Label htmlFor="phone">Phone</Label>
             <StyledInputMask
-              mask="3\8 (099) 999 99 99"
+              mask="99 (999) 999 99 99"
               id="phone"
               placeholder=" 38 (097)..."
               name="phone"
