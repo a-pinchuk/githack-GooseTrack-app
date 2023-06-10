@@ -26,8 +26,6 @@ import {
   StyledInputMask,
 } from './UserForm.styled';
 
-import InputMask from 'react-input-mask';
-
 const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
