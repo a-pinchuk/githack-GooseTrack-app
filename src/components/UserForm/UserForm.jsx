@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
-import { selectUser } from 'redux/auth/selectors';
 import moment from 'moment/moment';
-import { validationSchema } from './ValidationSchema.js';
+import { validationSchema } from './ValidationSchema';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
+import { useAuth } from 'hooks';
+
 import {
   Container,
   FormContainer,
@@ -23,13 +24,19 @@ import {
   AvatarDefault,
   ErrorMessage,
   StyledDataPicker,
+  StyledInputMask,
 } from './UserForm.styled';
 
 const UserForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const { user } = useAuth();
+  // console.log('🚀 ~ user:', user);
 
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
+
+  useEffect(() => {
+    console.log('Mouting phase: same when componentDidMount runs');
+  }, []);
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
@@ -42,16 +49,13 @@ const UserForm = () => {
   };
 
   const handleDatePickerChange = date => {
-    console.log('date', date.$d);
+    if (!date) setFieldValue('birthday', '');
+    console.log(date.$d);
     const formattedDate = moment(date.$d).format('DD/MM/YYYY');
-    console.log('formattedDate', formattedDate);
     setFieldValue('birthday', formattedDate);
   };
 
-  const dateValue =
-    user.birthday instanceof Date
-      ? dayjs(user.birthday) // Преобразуем дату в объект Dayjs
-      : dayjs(user.birthday, 'DD/MM/YYYY'); // Если user.birthday - строка в формате 'DD/MM/YYYY'
+  const currentDate = dayjs().format('DD/MM/YYYY');
 
   const {
     errors,
@@ -66,23 +70,15 @@ const UserForm = () => {
     initialValues: {
       avatar: null,
       name: user.name,
-      email: user.email,
-      phone: user.phone,
-      skype: user.skype,
-      birthday: user.birthday,
+      email: user.email || '',
+      phone: user.phone || '',
+      skype: user.skype || '',
+      birthday: user.birthday || '',
     },
     validationSchema: validationSchema,
 
     onSubmit: async values => {
       try {
-        console.log(values);
-        // const formattedDate = moment(values.birthday).format('DD/MM/YYYY');
-
-        // const updatedValues = {
-        //   ...values,
-        //   birthday: formattedDate,
-        // };
-
         await dispatch(updateUserInfo(values));
       } catch (error) {
         console.log(error.message);
@@ -107,6 +103,7 @@ const UserForm = () => {
             type="file"
             onChange={handleAvatarUpload}
             style={{ display: 'none' }}
+            accept="image/png, image/jpeg"
           />
           <Plus />
         </Label>
@@ -136,7 +133,11 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
-                defaultValue={dateValue || dayjs()}
+                slotProps={{
+                  textField: {
+                    placeholder: `${currentDate}`,
+                  },
+                }}
                 onChange={handleDatePickerChange}
                 name="birthday"
                 views={['year', 'month', 'day']}
@@ -164,16 +165,19 @@ const UserForm = () => {
 
           <WrapperInput>
             <Label htmlFor="phone">Phone</Label>
-            <Input
+            <StyledInputMask
+              mask="99 (999) 999 99 99"
               id="phone"
               placeholder=" 38 (097)..."
               name="phone"
               type="tel"
+              inputMode="numeric"
               value={values.phone || ''}
               onChange={handleChange}
               onBlur={handleBlur}
               className={errors.phone && touched.phone ? 'InvalidInput' : ''}
             />
+
             {errors.phone && touched.phone && (
               <ErrorMessage>{errors.phone}</ErrorMessage>
             )}

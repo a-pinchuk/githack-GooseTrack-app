@@ -114,23 +114,24 @@ code {
 }
 
 /* ----------- Стилі для календаря вибору дати ----------- */
-
-.MuiPaper-root {
-  /* background-color: #3e85f3 ; */
+.MuiDialog-container > .MuiPaper-root {
+  background-color: #3e85f3;
   border-radius: 16px;
 }
-.MuiDialog-paper {
-  border: 2px solid yellow;
-  /* background-color: #3e85f3 !important; */
-}
-
+/* .MuiDialog-paper {
+  border: 2px solid yellow; */
+/* background-color: #3e85f3 !important; */
+/* } */
 .MuiDialogContent-root {
-  /* background-color: #3e85f3 !important; */
+  background-color: #3e85f3 !important;
   border-radius: 16px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 .MuiDialogContent-root:first-of-type {
-  /* background-color: #3e85f3; */
+  border-radius: 16px;
+  overflow: hidden;
+}
+.MuiPickersPopper-root > .MuiPaper-root {
   border-radius: 16px;
 }
 .MuiPickersLayout-root {
@@ -146,7 +147,6 @@ code {
   }
 }
 .MuiDateCalendar-root {
-  /* .MuiPaper-root, */
   .MuiButtonBase-root,
   .MuiPickersDay-today {
     fill: #fff;
@@ -170,7 +170,6 @@ code {
     color: white;
   }
 }
-
 /* перемикачі місяця року */
 .MuiDateCalendar-root {
   .MuiPickersCalendarHeader-switchViewIcon,
@@ -179,23 +178,6 @@ code {
     color: white;
   }
 }
-
-.MuiPickersLayout-root {
-  border: 2px solid red;
-  width: 327px;
-  /* border-radius: 16px;
-  background-color: #3e85f3; */
-}
-.MuiPickersLayout-contentWrapper {
-  border: 2px solid green;
-  /* border-radius: 16px;
-  background-color: #3e85f3; */
-}
-
-/* .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
-  background-color: #3e85f3;
-  border-radius: 16px;
-} */
 
 .MuiPickersDay-today {
   border: 1px solid #fff !important;
@@ -207,14 +189,13 @@ code {
   font-size: 0px;
   margin: 0px;
 }
-
 .MuiTypography-root.MuiTypography-overline {
   display: none;
 }
 
-.MuiPickersLayout-root.MuiPickersLayout-actionBar {
-  visibility: hidden !important;
+.MuiPickersLayout-root > .MuiPickersToolbar-root {
+  display: none;
 }
-.MuiButtonBase-root.MuiButton-root {
-  visibility: hidden !important;
+.MuiPickersLayout-root > .MuiDialogActions-root {
+  display: none;
 }
