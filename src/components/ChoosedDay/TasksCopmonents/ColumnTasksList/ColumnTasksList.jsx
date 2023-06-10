@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TaskColumnCard } from '../TaskColumnCard/TaskColumnCard';
 import { TaskListBox } from './ColumnTasksListStyled';
-import { correctTitle } from '../helper/helper';
+// import { correctTitle } from '../helper/helper';
 export const ColumnTasksList = ({
   toolbarData,
   taskData,
   handlerOpenModal,
-  title,
+  // title,
 }) => {
   const [disableDrag, setDisableDrag] = useState(true);
 
