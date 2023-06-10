@@ -1,19 +1,26 @@
 import styled from 'styled-components';
 
 export const Main = styled.div`
-  width: 335px;
+  max-width: 335px;
 
   margin-left: auto;
   margin-right: auto;
   margin-top: 64px;
   margin-bottom: 64px;
 
+  @media screen and (max-width: 345px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 704px;
+    max-width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 1184px;
+    max-width: 1184px;
 
     margin-bottom: 100px;
   }
@@ -24,7 +31,7 @@ export const Section = styled.section`
   flex-direction: column;
   align-items: center;
 
-  width: 335px;
+  max-width: 335px;
 
   &:not(:last-child) {
     margin-bottom: 64px;
@@ -32,6 +39,7 @@ export const Section = styled.section`
 
   @media screen and (min-width: 768px) {
     width: 704px;
+    max-width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -40,6 +48,7 @@ export const Section = styled.section`
     align-items: center;
 
     width: 1184px;
+    max-width: 1184px;
 
     &:nth-child(2) {
       flex-direction: row-reverse;
@@ -48,7 +57,7 @@ export const Section = styled.section`
 `;
 
 export const InfoBox = styled.div`
-  width: 335px;
+  max-width: 335px;
 
   margin-left: auto;
   margin-right: auto;
@@ -56,6 +65,7 @@ export const InfoBox = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 275px;
+    max-width: 275px;
 
     margin-left: 0;
     margin-bottom: 48px;
@@ -68,7 +78,7 @@ export const InfoBox = styled.div`
 `;
 
 export const InfoBoxReverse = styled.div`
-  width: 335px;
+  max-width: 335px;
 
   margin-left: auto;
   margin-right: auto;
@@ -76,6 +86,7 @@ export const InfoBoxReverse = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 275px;
+    max-width: 275px;
 
     margin-right: 0;
     margin-bottom: 48px;
@@ -155,7 +166,7 @@ export const Text = styled.p`
   margin-top: 0;
   margin-bottom: 0;
 
-  width: 335px;
+  max-width: 335px;
 
   font-family: ${p => p.theme.fonts.text};
   font-weight: ${p => p.theme.fontWeights.normal};
@@ -166,6 +177,7 @@ export const Text = styled.p`
 
   @media screen and (min-width: 768px) {
     width: 275px;
+    max-width: 275px;
   }
 `;
 
@@ -173,4 +185,10 @@ export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
 `;

@@ -6,9 +6,20 @@ import { ReactComponent as Pencil } from '../../../../images/tasksSvg/pencil-01.
 import { ReactComponent as Trash } from '../../../../images/tasksSvg/trash-04.svg';
 
 export const BoxIconBth = styled.div`
-  position: relative;
+  /* position: relative; */
   z-index: 100;
   height: 15px;
+
+  &::after {
+    content: '';
+    display: block;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    background: transparent;
+    width: 100%;
+    height: 10px;
+  }
 `;
 
 export const IconBthArrow = styled(Arrow)`
@@ -49,15 +60,17 @@ export const IconBthTrash = styled(Trash)`
 `;
 
 export const Tooltip = styled.div`
-  position: absolute;
-  top: 100%;
   right: -15px;
   background: ${theme.colors.background};
   border-radius: 8px;
   padding: 20px 24px 20px 24px;
   box-shadow: ${theme.shadows.boxShadow};
-
+  height: 90.78px;
   z-index: 100;
+  width: 115px;
+  @media screen and (min-width: 375px) {
+    width: 157px;
+  }
 `;
 export const TooltipButton = styled.button`
   width: 100%;

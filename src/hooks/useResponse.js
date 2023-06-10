@@ -7,9 +7,12 @@ export const useResponse = () => {
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
+  const viewportHeight = window.innerHeight;
+
   return {
     isDesktop,
     isTablet,
     isMobile,
+    viewportHeight,
   };
 };

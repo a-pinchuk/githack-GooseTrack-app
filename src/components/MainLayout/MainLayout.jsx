@@ -14,10 +14,14 @@ import {
   WrapRightColumn,
 } from './MainLayout.styled';
 
+import { useMediaQuery } from 'react-responsive';
+
 const MainLayout = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [showSideBar, setShowSideBar] = useState(false);
+
+  const isMobile = useMediaQuery({ maxWidth: 1439 });
 
   useEffect(() => {
     if (user.email) return;
@@ -31,9 +35,13 @@ const MainLayout = () => {
   return (
     <Container>
       <Main>
-        <WrapLeftColumn showSideBar={showSideBar}>
-          <SideBar toogleShowSiderBar={toogleShowSiderBar} />
-        </WrapLeftColumn>
+        {isMobile ? (
+          <WrapLeftColumn showSideBar={showSideBar}>
+            <SideBar toogleShowSiderBar={toogleShowSiderBar} />
+          </WrapLeftColumn>
+        ) : (
+          <SideBar />
+        )}
 
         <WrapRightColumn>
           <Header toogleShowSiderBar={toogleShowSiderBar} />

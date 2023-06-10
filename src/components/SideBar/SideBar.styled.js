@@ -4,7 +4,7 @@ export const SideBox = styled.div`
   box-sizing: border-box;
 
   width: 100%;
-  min-height: 100vh;
+  height: inherit;
 
   background: #fff;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
@@ -16,11 +16,13 @@ export const SideBox = styled.div`
   padding: 24px 20px;
 
   @media screen and (min-width: 768px) {
+    min-width: 289px;
     padding: 24px 32px;
   }
 
   @media screen and (min-width: 1440px) {
     padding: 32px 24px 24px 24px;
+    max-width: 289px;
   }
 `;
 
