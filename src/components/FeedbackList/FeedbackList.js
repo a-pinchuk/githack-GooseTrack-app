@@ -10,6 +10,7 @@ import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
 import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
 import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
 import { ReviewItem } from 'components/ReviewItem/ReviewItem';
+import { IconButton } from '@mui/material';
 
 export const IconBthPencil = styled(Pencil)`
   cursor: pointer;
@@ -17,7 +18,7 @@ export const IconBthPencil = styled(Pencil)`
   height: 16px;
   stroke: black;
   transition: stroke 250ms linear;
-  margin-right: 10px;
+
   &:hover {
     stroke: #3e85f3;
   }
@@ -70,7 +71,7 @@ function stringAvatar(name) {
   };
 }
 
-export const FeedbackList = ({ reviews }) => {
+export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
   return (
     <ul
       style={{
@@ -132,8 +133,17 @@ export const FeedbackList = ({ reviews }) => {
                   right: '0',
                 }}
               >
-                <IconBthPencil />
-                <IconBthTrash />
+                <IconButton
+                  aria-label="edit"
+                  onClick={() =>
+                    toggleEditFeedback(review.rating, review.feedback)
+                  }
+                >
+                  <IconBthPencil />
+                </IconButton>
+                <IconButton aria-label="delete">
+                  <IconBthTrash />
+                </IconButton>
               </div>
               <Box
                 sx={{
