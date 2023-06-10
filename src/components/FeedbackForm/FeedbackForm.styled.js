@@ -9,7 +9,8 @@ export const RatingText = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: rgba(52, 52, 52, 0.8);
+  color: ${p => p.theme.colors.modal_form_label};
+
   margin: 0 0 8px;
 `;
 
@@ -18,18 +19,20 @@ export const LabelText = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: rgba(52, 52, 52, 0.8);
+  color: ${p => p.theme.colors.modal_form_label};
+
   margin: 0 0 8px;
 `;
 
 export const StyledTextArea = styled.textarea`
   width: 100%;
   height: 127px;
-  background-color: #f7f7f7;
-  border-width: 0;
+  background-color: ${p => p.theme.colors.textarea_bg};
+  border: ${p => p.theme.colors.textarea_border};
   border-radius: 8px;
   padding: 14px 18px;
   margin-bottom: 14px;
+  color: ${p => p.theme.colors.second_text_mode};
 
   :focus {
     outline: none;
@@ -42,7 +45,8 @@ export const StyledTextArea = styled.textarea`
     font-weight: 600;
     font-size: 14px;
     line-height: 1.29;
-    color: #343434;
+    color: ${p => p.theme.colors.second_text_mode};
+    /* color: ${p => p.theme.colors.primary_text_mode}; */
   }
 
   @media screen and (min-width: 768px) {

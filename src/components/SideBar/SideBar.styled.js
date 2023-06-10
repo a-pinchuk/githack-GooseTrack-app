@@ -6,8 +6,8 @@ export const SideBox = styled.div`
   width: 100%;
   height: inherit;
 
-  background: #fff;
-  border-right: 1px solid rgba(220, 227, 229, 0.5);
+  background-color: ${props => props.theme.colors.third_background_mode};
+
   border-radius: 0px;
   display: flex;
   flex-direction: column;
@@ -15,12 +15,12 @@ export const SideBox = styled.div`
   justify-content: space-between;
   padding: 24px 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     min-width: 289px;
     padding: 24px 32px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding: 32px 24px 24px 24px;
     max-width: 289px;
   }

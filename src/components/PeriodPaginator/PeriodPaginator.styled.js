@@ -38,10 +38,11 @@ export const PaginatorDate = styled.button`
 export const PaginatorBtn = styled.button`
   width: 38px;
   height: 34px;
-  background-color: ${props => props.theme.colors.white};
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  background-color: ${props => props.theme.colors.second_backgrond_mode};
+  border: ${p => p.theme.colors.calendar_out_border};
   border-radius: ${props => props.theme.radii.small};
   cursor: pointer;
+  color: ${p => p.theme.colors.primary_text_mode};
 `;
 
 export const LeftPaginatorBtn = styled(PaginatorBtn)`

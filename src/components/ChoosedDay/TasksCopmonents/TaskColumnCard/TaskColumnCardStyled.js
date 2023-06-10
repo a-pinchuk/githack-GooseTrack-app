@@ -13,11 +13,10 @@ function getRandomColor() {
 export const TaskListItem = styled.li`
   border-radius: 8px;
   padding: 14px;
-  border: 1px solid #dce3e580;
+  border: ${theme.colors.calendar_out_border};
   padding: 14px;
   margin-bottom: 18px;
-  background-color: ${theme.colors.muted};
-
+  background-color: ${theme.colors.task_list_item_background};
 `;
 
 export const AvatorTaskList = styled.img`
@@ -83,7 +82,7 @@ export const TaskStatue = styled.p`
 `;
 
 export const TaskText = styled.p`
-  color: ${theme.colors.black};
+  color: ${theme.colors.primary_text_mode};
   font-family: ${theme.fonts.heading};
   font-weight: ${theme.fontWeights.normal};
   line-height: 1.28;

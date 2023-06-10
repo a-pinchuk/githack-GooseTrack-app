@@ -13,8 +13,8 @@ export const DaysWrapper = styled.div`
   font-size: ${props => props.theme.fontSizes.m};
   line-height: 1.12;
 
-  background: #ffffff;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  background: ${p => p.theme.colors.second_backgrond_mode};
+  border: ${p => p.theme.colors.calendar_out_border};
   border-radius: 8px;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
@@ -37,5 +37,5 @@ export const СellOfDay = styled.div`
   color: ${props =>
     props.isWeekend
       ? `${props.theme.colors.primary}`
-      : `${props.theme.colors.text}`};
+      : `${props.theme.colors.third_text_mode}`};
 `;

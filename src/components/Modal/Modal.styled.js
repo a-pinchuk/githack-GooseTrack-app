@@ -17,12 +17,13 @@ export const Backdrop = styled.div`
 export const ModalContainer = styled.div`
   position: relative;
 
-  background-color: ${p => p.theme.colors.background};
+  background-color: ${p => p.theme.colors.modal_window};
+  border: none;
 
   min-width: 100px;
   min-height: 100px;
 
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  /* border: 1px solid rgba(220, 227, 229, 0.8); */
   box-shadow: ${p => p.theme.shadows.modalShadow};
   border-radius: ${p => p.theme.radii.small};
 
@@ -40,6 +41,7 @@ export const CloseButton = styled.button`
   border: none;
   cursor: pointer;
   z-index: 999;
+  stroke: white;
 
   @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
     top: 18px;
@@ -53,5 +55,5 @@ export const CloseButton = styled.button`
 `;
 
 export const MyCloseIcon = styled(CloseIcon)`
-  stroke: ${p => p.theme.colors.closeButton};
+  stroke: ${p => p.theme.colors.primary_text_mode};
 `;
