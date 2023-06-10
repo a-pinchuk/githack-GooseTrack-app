@@ -21,7 +21,11 @@ export const ListItem = styled.li`
 `;
 
 export const AvatarContainer = styled.div`
-  width: 40px;
+  width: 32px;
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+  }
 `;
 
 export const StyledReviewContainer = styled.div`
@@ -41,6 +45,11 @@ export const ReviewerName = styled.p`
   font-size: 14px;
   line-height: 1.29;
   color: #343434;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.12;
+  }
 `;
 
 export const IconButtonContainer = styled.div`

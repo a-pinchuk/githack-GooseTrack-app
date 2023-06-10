@@ -1,7 +1,7 @@
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
 import { ReactComponent as FullLittleStar } from 'images/littleStarFull.svg';
 import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
@@ -9,7 +9,7 @@ import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
 import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
 import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
 import { ReviewItem } from 'components/ReviewItem/ReviewItem';
-import { IconButton } from '@mui/material';
+import { IconButton, createTheme } from '@mui/material';
 import {
   IconButtonContainer,
   ReviewerName,
@@ -86,7 +86,17 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
       {reviews.map((review, i) => (
         <ListItem key={i}>
           <AvatarContainer>
-            <Avatar {...stringAvatar(review.name)} />
+            <Avatar
+              {...stringAvatar(review.name)}
+              sx={{
+                width: '32px',
+                height: '32px',
+                '@media (min-width: 768px)': {
+                  width: '40px',
+                  height: '40px',
+                },
+              }}
+            />
           </AvatarContainer>
           <FeedBackContainer>
             <ReviewHeader>
