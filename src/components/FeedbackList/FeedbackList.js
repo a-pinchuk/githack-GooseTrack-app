@@ -27,7 +27,8 @@ export const IconBthPencil = styled(Pencil)`
   stroke: black;
   transition: stroke 250ms linear;
 
-  &:hover {
+  :hover,
+  :focus {
     stroke: #3e85f3;
   }
 `;
@@ -38,7 +39,9 @@ export const IconBthTrash = styled(Trash)`
   height: 16px;
   stroke: black;
   transition: stroke 250ms linear;
-  &:hover {
+
+  :hover,
+  :focus {
     stroke: #3e85f3;
   }
 `;
@@ -90,6 +93,7 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
               <ReviewerName>{review.name}</ReviewerName>
               <IconButtonContainer>
                 <IconButton
+                  sx={{ padding: '4px' }}
                   aria-label="edit"
                   onClick={() =>
                     toggleEditFeedback(review.rating, review.feedback)
@@ -97,7 +101,7 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
                 >
                   <IconBthPencil />
                 </IconButton>
-                <IconButton aria-label="delete">
+                <IconButton aria-label="delete" sx={{ padding: '4px' }}>
                   <IconBthTrash />
                 </IconButton>
               </IconButtonContainer>

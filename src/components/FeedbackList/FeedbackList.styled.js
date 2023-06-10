@@ -34,11 +34,19 @@ export const StyledReviewContainer = styled.div`
 
 export const ReviewerName = styled.p`
   margin: 0 0 8px;
+
+  font-family: 'Inter';
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  color: #343434;
 `;
 
 export const IconButtonContainer = styled.div`
   display: flex;
   position: absolute;
+  gap: 4px;
   top: 0;
   right: 0;
 `;

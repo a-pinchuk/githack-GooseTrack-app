@@ -8,6 +8,7 @@ import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 import {
   FormContainer,
+  LabelText,
   RatingText,
   StyledButton,
   StyledEditButton,
@@ -96,7 +97,7 @@ export function FeedbackForm({
       </Box>
       <form onSubmit={handleFeedbackSubmit}>
         <label htmlFor="feedback">
-          <span>Review</span>
+          <LabelText>Review</LabelText>
         </label>
         <StyledTextArea
           id="feedback"
