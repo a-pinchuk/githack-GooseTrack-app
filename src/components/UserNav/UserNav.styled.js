@@ -21,9 +21,9 @@ export const StyledLink = styled(NavLink)`
   font-size: 16px;
   line-height: calc(19 / 16);
 
-  color: rgba(52, 52, 52, 0.5);
+  color: ${props => props.theme.colors.second_text_mode};
   :hover {
-    color: #3e85f3;
+    color: ${props => props.theme.colors.hover_button};
   }
 
   font-size: 14px;
@@ -43,7 +43,7 @@ export const UserPanel = styled.p`
   font-weight: 600;
   font-size: 12px;
   line-height: calc(15 / 12);
-  color: rgba(52, 52, 52, 0.5);
+  color: ${props => props.theme.colors.second_text_mode};
 `;
 
 export const StyledList = styled.ul`
@@ -60,12 +60,10 @@ export const StyledItem = styled.li`
   width: 241px;
   height: 56px;
 
-  background: #fff;
-
   border-radius: 8px;
 
   :hover {
-    background: #e3f3ff;
+    background: ${props => props.theme.colors.background_button};
   }
 
   width: 185px;
@@ -85,7 +83,7 @@ export const TextLogo = styled.p`
   font-size: 24px;
   line-height: 24px;
 
-  color: #3e85f3;
+  color: ${props => props.theme.colors.hover_button};
 
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
@@ -122,6 +120,7 @@ export const CloseBtnIcon = styled(CloseIcon)`
   height: 24px;
   margin-left: 35px;
   cursor: pointer;
+  color: ${props => props.theme.colors.primary_text_mode};
 
   @media screen and (min-width: 768px) {
     width: 33px;

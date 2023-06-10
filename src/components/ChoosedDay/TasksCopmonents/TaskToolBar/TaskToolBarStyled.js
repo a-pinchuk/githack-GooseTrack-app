@@ -16,7 +16,9 @@ export const IconBthArrow = styled(Arrow)`
   width: 16px;
   height: 16px;
   stroke: ${({ $isactive }) =>
-    $isactive ? `${theme.colors.secondary}` : `${theme.colors.black}`};
+    $isactive
+      ? `${theme.colors.secondary}`
+      : `${theme.colors.primary_text_mode}`};
   transition: stroke 250ms linear;
   margin-right: 10px;
 
@@ -29,7 +31,7 @@ export const IconBthPencil = styled(Pencil)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: ${theme.colors.black};
+  stroke: ${theme.colors.primary_text_mode};
   transition: stroke 250ms linear;
   margin-right: 10px;
   &:hover {
@@ -41,7 +43,7 @@ export const IconBthTrash = styled(Trash)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: ${theme.colors.black};
+  stroke: ${theme.colors.primary_text_mode};
   transition: stroke 250ms linear;
   &:hover {
     stroke: ${theme.colors.secondary};

@@ -1,27 +1,44 @@
 /* Изменения темы */
 
-html[data-theme="light"] {
-    --background: #EAEAEA;
-    --second-backgrond: #FFFFFF;
-    --third-background: #FFFFFF;
-    --primary-text: #111111;
-    --second-text: #34343480;
-    --third-text: #343434;
-    --background-button: #E3F3FF;
+html[data-theme='light'] {
+  --background: #eaeaea;
+  --second-backgrond: #ffffff;
+  --third-background: #ffffff;
+  --primary-text: #111111;
+  --second-text: #34343480;
+  --third-text: #343434;
+  --background-button: #e3f3ff;
+  --color-button-content-hover: #3e85f3;
+  --user-label-color: #111111;
+  --user-input-border: 1px solid rgba(17, 17, 17, 0.1);
+  --calendar-out-border: 1px solid rgba(220, 227, 229, 0.8);
+  --calendar-inner-background: rgba(220, 227, 229, 0.8);
+  --period-type-btn-active: #cae8ff;
+  --period-type-btn-not-active: #e3f3ff;
+  --period-type-btn-active-content: #3e85f3;
+  --task-list-item-background: #ffffff;
 }
 
-html[data-theme="dark"] {
-    --background: #171820;
-    --second-backgrond: #21222C;
-    --third-background: #13151A;
-    --primary-text: #FFFFFF;
-    --second-text: #FFFFFF;
-    --third-text: #FFFFFF;
-    --background-button: #3E85F3;
+html[data-theme='dark'] {
+  --background: #171820;
+  --second-backgrond: #21222c;
+  --third-background: #13151a;
+  --primary-text: #ffffff;
+  --second-text: #ffffff;
+  --third-text: #ffffff;
+  --background-button: #3e85f3;
+  --color-button-content-hover: #ffffff;
+  --user-label-color: rgba(250, 250, 250, 0.3);
+  --user-input-border: 1px solid rgba(255, 255, 255, 0.15);
+  --calendar-out-border: 1px solid rgba(255, 255, 255, 0.15);
+  --calendar-inner-background: rgba(255, 255, 255, 0.15);
+  --period-type-btn-active: #3e85f3;
+  --period-type-btn-not-active: #21222c;
+  --period-type-btn-active-content: #ffffff;
+  --task-list-item-background: #111111;
 }
-
 
 body {
-    background: var(--background);
-    transition: background-color 400ms;
+  background: var(--background);
+  /* transition: background-color 400ms;     */
 }

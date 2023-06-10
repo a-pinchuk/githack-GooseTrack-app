@@ -5,7 +5,7 @@ export const TaskItem = styled.li`
   flex: 0 0 100%;
   padding-right: 10px;
   border-radius: ${theme.radii.small};
-  border: 1px solid #dce3e580;
+  border: ${p => p.theme.colors.calendar_out_border};
   box-sizing: border-box;
   //add
   display: flex;

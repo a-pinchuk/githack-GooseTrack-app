@@ -7,6 +7,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 export const StyledDataPicker = styled(DatePicker)`
   input {
     padding-left: 0px;
+    color: ${p => p.theme.colors.primary_text_mode};
   }
   input::placeholder {
     font-family: ${p => p.theme.fonts.text};
@@ -56,7 +57,7 @@ export const Container = styled.div`
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #eaeaea;
+  background-color: ${p => p.theme.colors.background_mode};
   @media (min-width: 768px) {
     min-width: 768px;
     padding-top: 132px;
@@ -78,7 +79,7 @@ export const FormContainer = styled.form`
   padding-bottom: 40px;
   padding-left: 18px;
   padding-right: 18px;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.colors.second_backgrond_mode};
   border-radius: ${p => p.theme.radii.big};
 
   @media (min-width: 768px) {
@@ -169,7 +170,7 @@ export const Heading = styled.div`
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.s};
-  color: ${p => p.theme.colors.balack};
+  color: ${p => p.theme.colors.primary_text_mode};
   text-align: center;
 `;
 
@@ -178,7 +179,7 @@ export const Title = styled.div`
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.xs};
-  color: ${p => p.theme.colors.text};
+  color: ${p => p.theme.colors.user_label_color};
   text-align: center;
 `;
 
@@ -214,7 +215,7 @@ export const Label = styled.label`
   font-weight: 400;
   margin-bottom: 8px;
   line-height: ${p => p.theme.lineHeights.heading};
-  color: ${p => p.theme.colors.black};
+  color: ${p => p.theme.colors.user_label_color};
 `;
 
 export const Input = styled.input`
@@ -223,7 +224,7 @@ export const Input = styled.input`
   padding-left: 14px;
   padding-right: 14px;
   outline: none;
-  border: 1px solid #11111126;
+  border: ${p => p.theme.colors.user_input_border};
   border-radius: ${p => p.theme.radii.small};
   ${props =>
     props.value &&
@@ -234,10 +235,14 @@ export const Input = styled.input`
     color: black;
   
   `}
+  color: ${p => p.theme.colors.primary_text_mode};
+
+  background-color: transparent;
+
   &::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
-    color: #34343480;
+    color: ${p => p.theme.colors.primary_text_mode};
   }
   &:hover,
   &:focus {

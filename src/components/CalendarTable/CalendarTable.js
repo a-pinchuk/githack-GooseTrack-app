@@ -21,7 +21,8 @@ const DayLink = styled(Link)`
 
   text-decoration: none;
 
-  background-color: #ffff;
+  background-color: ${p => p.theme.colors.second_backgrond_mode};
+  /* border: ${p => p.theme.colors.calendar_out_border}; */
 
   color: ${props => props.color};
 

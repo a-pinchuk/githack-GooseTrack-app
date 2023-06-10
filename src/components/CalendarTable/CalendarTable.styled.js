@@ -166,10 +166,12 @@ export const CalendarGridWrapper = styled.div`
   max-width: 767px;
   margin: 0 auto;
   height: 470px;
+  border: ${p => p.theme.colors.calendar_out_border};
 
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  /* border: 1px solid rgba(220, 227, 229, 0.8); */
   overflow: hidden;
   background-color: rgba(220, 227, 229, 0.8);
+  background-color: ${p => p.theme.colors.calendar_inner_background};
   border-radius: ${props => props.theme.radii.small};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
@@ -206,6 +208,8 @@ export const DayWrapper = styled.div`
   flex-direction: column;
 
   margin-right: 2px;
+
+  color: ${p => p.theme.colors.primary_text_mode};
 
   font-family: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.bold};
