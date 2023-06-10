@@ -7,6 +7,7 @@ export const TaskItem = styled.li`
   border-radius: ${theme.radii.small};
   border: 1px solid #dce3e580;
   box-sizing: border-box;
+  background-color: ${theme.colors.background};
   //add
   display: flex;
   flex-direction: column;
