@@ -8,7 +8,9 @@ export const StyledFeedbackList = styled.ul`
   width: 100%;
   height: 292px;
   list-style: none;
-  background-color: rgba(227, 243, 255, 0.5);
+  /* background-color: rgba(227, 243, 255, 0.5); */
+  background-color: ${p => p.theme.colors.reviews_list};
+
   border-radius: 8px;
   overflow: auto;
   margin: 0;
@@ -18,6 +20,7 @@ export const ListItem = styled.li`
   width: 100%;
   display: flex;
   height: auto;
+  /* color: white; */
 `;
 
 export const AvatarContainer = styled.div`
@@ -40,7 +43,7 @@ export const ReviewerName = styled.p`
   font-weight: 700;
   font-size: 14px;
   line-height: 1.29;
-  color: #343434;
+  color: ${p => p.theme.colors.third_text_mode};
 `;
 
 export const IconButtonContainer = styled.div`
@@ -53,6 +56,7 @@ export const IconButtonContainer = styled.div`
 
 export const FeedBackContainer = styled.div`
   width: 324px;
+  color: wheat;
 `;
 
 export const ReviewHeader = styled.div`

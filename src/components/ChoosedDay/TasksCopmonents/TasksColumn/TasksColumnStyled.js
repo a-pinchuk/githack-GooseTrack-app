@@ -7,7 +7,7 @@ export const TaskItem = styled.li`
   border-radius: ${theme.radii.small};
   border: ${p => p.theme.colors.calendar_out_border};
   box-sizing: border-box;
-  background-color: ${theme.colors.background};
+  background-color: ${theme.colors.task_item_bg};
   //add
   display: flex;
   flex-direction: column;

@@ -11,5 +11,5 @@ export const Review = styled.p`
   font-size: 12px;
   line-height: 1.33;
 
-  color: rgba(17, 17, 17, 0.7);
+  color: ${p => p.theme.colors.reviews_content};
 `;
