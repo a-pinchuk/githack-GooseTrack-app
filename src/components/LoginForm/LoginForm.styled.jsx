@@ -13,6 +13,11 @@ export const Form = styled(FormikForm)`
   background-color: ${p => p.theme.colors.background};
   border-radius: ${p => p.theme.radii.small};
 
+  @media screen and (max-width: 345px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
   @media screen and (min-width: 768px) {
     padding: 40px;
   }

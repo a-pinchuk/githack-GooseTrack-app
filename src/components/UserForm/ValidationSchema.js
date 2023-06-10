@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-const regexName = /^\S[\S\s]{0,16}\S$/;
+const regexName = /^\S[\S\s]{0,28}\S$/;
 const regexPhone = /^38\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
 
 export const validationSchema = Yup.object().shape({
@@ -13,10 +13,15 @@ export const validationSchema = Yup.object().shape({
         return value && value.replace(/\s/g, '').length >= 2;
       }
     ),
-  birthday: Yup.string(),
+  birthday: Yup.string().notRequired(),
   email: Yup.string().email('Invalid email').required('Email is required'),
-  phone: Yup.string().matches(regexPhone, {
-    message: 'Invalid phone number',
-  }),
-  skype: Yup.string().max(16, 'No more than 16 characters'),
+  phone: Yup.string()
+    .matches(regexPhone, {
+      message: 'Invalid phone number',
+    })
+    .notRequired(),
+  skype: Yup.string()
+    .max(16, 'No more than 16 characters')
+    .nullable()
+    .notRequired(),
 });

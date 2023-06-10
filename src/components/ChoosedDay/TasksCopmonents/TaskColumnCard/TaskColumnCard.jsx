@@ -9,7 +9,13 @@ import { TasklToolBar } from '../TaskToolBar/TaskToolBar';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
-export const TaskColumnCard = ({ toolbarData, item, handlerOpenModal }) => {
+export const TaskColumnCard = ({
+  toolbarData,
+  item,
+  handlerOpenModal,
+  disableDrag,
+  enableDrag,
+}) => {
   const userData = useSelector(selectUser);
 
   const avaFunc = value => {
@@ -42,6 +48,8 @@ export const TaskColumnCard = ({ toolbarData, item, handlerOpenModal }) => {
         )}
         <TaskStatue priority={item.priority}>{item.priority}</TaskStatue>
         <TasklToolBar
+          disableDrag={disableDrag}
+          enableDrag={enableDrag}
           toolbarData={toolbarData}
           idData={item._id}
           handlerOpenModal={handlerOpenModal}

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as Avatar } from '../../images/avatar.svg';
 import { ReactComponent as Cross } from '../../images/cross.svg';
 
+import InputMask from 'react-input-mask';
 import { DatePicker } from '@mui/x-date-pickers';
 
 export const StyledDataPicker = styled(DatePicker)`
@@ -12,7 +13,9 @@ export const StyledDataPicker = styled(DatePicker)`
   input::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
+    font-weight: 400 !important;
     color: #34343480;
+    opacity: 1;
   }
   /* Input value */
   .MuiInputBase-root {
@@ -253,8 +256,45 @@ export const Input = styled.input`
   }
 `;
 
+export const StyledInputMask = styled(InputMask)`
+  min-width: 250px;
+  height: 42px;
+  padding-left: 14px;
+  padding-right: 14px;
+  outline: none;
+  border: 1px solid #11111126;
+  border-radius: ${p => p.theme.radii.small};
+  ${props =>
+    props.value &&
+    `
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight:600;
+    color: black;
+  
+  `}
+  &::placeholder {
+    font-family: ${p => p.theme.fonts.text};
+    font-size: ${p => p.theme.fontSizes.s};
+    color: #34343480;
+  }
+  &:hover,
+  &:focus {
+    border: 1px solid #111111;
+  }
+  @media (min-width: 768px) {
+    height: 46px;
+  }
+`;
 export const ErrorMessage = styled.div`
   color: ${p => p.theme.colors.redError};
+  font-size: 12px;
+  margin-top: 3px;
+  margin-left: 8px;
+  @media (min-width: 768px) {
+    margin-top: 4px;
+    font-size: 14px;
+  }
 `;
 
 export const Button = styled.button`
@@ -276,6 +316,9 @@ export const Button = styled.button`
   background-color: ${p =>
     p.disabled ? p.theme.colors.muted : p.theme.colors.primary};
   border-radius: ${p => p.theme.radii.big};
+  border-radius: ${p =>
+    p.disabled ? p.theme.radii.big : p.theme.colors.primary};
+
   border: ${p => p.theme.borders.none};
   cursor: pointer;
   &:hover(:not disabled),

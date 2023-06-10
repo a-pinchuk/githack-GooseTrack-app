@@ -5,6 +5,15 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
+import { useState, useEffect } from 'react';
+import {
+  FormContainer,
+  LabelText,
+  RatingText,
+  StyledButton,
+  StyledEditButton,
+  StyledTextArea,
+} from './FeedbackForm.styled';
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -15,25 +24,61 @@ const StyledRating = styled(Rating)({
   },
 });
 
-export function FeedbackForm() {
-  const [value, setValue] = React.useState(0);
-  console.log('value:', value);
+export function FeedbackForm({
+  feedback,
+  rating,
+  toggleEditFeedback,
+  isEditFeedbackOpen,
+}) {
+  const [value, setValue] = useState(0);
+  const [review, setReview] = useState('');
+
+  useEffect(() => {
+    if (isEditFeedbackOpen) {
+      setValue(rating);
+      setReview(feedback);
+      return;
+    }
+    const storedReview = localStorage.getItem('review');
+    const storedRating = localStorage.getItem('rating');
+    console.log('storedRating:', storedRating);
+    if (storedReview) {
+      setReview(JSON.parse(storedReview));
+    }
+    if (storedRating) {
+      setValue(JSON.parse(storedRating));
+    }
+  }, [feedback, isEditFeedbackOpen, rating]);
 
   const handleFeedbackSubmit = e => {
     e.preventDefault();
-    console.log('FeedBack Submit');
+    if (isEditFeedbackOpen) {
+      console.log('EDIT');
+      toggleEditFeedback();
+      return;
+    }
+    console.log('Feedback Submit');
+  };
+
+  const handleTextareaChange = e => {
+    setReview(e.target.value);
+    if (isEditFeedbackOpen) {
+      return;
+    }
+    localStorage.setItem('review', JSON.stringify(review));
+  };
+
+  const handleRatingChange = (e, newValue) => {
+    setValue(newValue);
+    if (isEditFeedbackOpen) {
+      return;
+    }
+    localStorage.setItem('rating', JSON.stringify(newValue));
   };
 
   return (
-    <div>
-      <p
-        style={{
-          margin: '0 0 8px',
-          color: `${p => p.theme.colors.modal_form_label}`,
-        }}
-      >
-        Rating
-      </p>
+    <FormContainer>
+      <RatingText>Rating</RatingText>
       <Box
         sx={{
           '& > legend': { mt: 1 },
@@ -43,59 +88,35 @@ export function FeedbackForm() {
         <StyledRating
           name="customized-color"
           value={value}
-          // getLabelText={value => `${value} Heart${value !== 1 ? 's' : ''}`}
           precision={1}
           icon={<FavoriteIcon fontSize="inherit" width="24px" />}
           emptyIcon={<FavoriteBorderIcon fontSize="inherit" width="24px" />}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
+          onChange={handleRatingChange}
           sx={{ display: 'flex', gap: '2px' }}
         />
       </Box>
       <form onSubmit={handleFeedbackSubmit}>
-        <label
-          htmlFor="feedback"
-          style={
-            {
-              // outline: '1px solid green'
-            }
-          }
-        >
-          <span>Review</span>
+        <label htmlFor="feedback">
+          <LabelText>Review</LabelText>
         </label>
-        <textarea
+        <StyledTextArea
           id="feedback"
           placeholder="Enter text"
-          style={{
-            width: '404px',
-            height: '127px',
-            // outline: '1px solid blue',
-            backgroundColor: '#F7F7F7',
-            borderRadius: '8px',
-            padding: '14px 18px',
-            marginTop: '8px',
-            marginBottom: '18px',
-          }}
-        ></textarea>
-        <button
-          type="submit"
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '15px',
-            borderRadius: '8px',
-            backgroundColor: '#3E85F3',
-            color: '#FFFFFF',
-            marginBottom: '32px',
-            border: '0',
-          }}
-        >
-          Save
-        </button>
+          name="review"
+          value={review}
+          onChange={handleTextareaChange}
+        ></StyledTextArea>
+        {isEditFeedbackOpen ? (
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <StyledEditButton type="submit">Edit</StyledEditButton>
+            <StyledEditButton onClick={toggleEditFeedback} type="button">
+              Cancel
+            </StyledEditButton>
+          </div>
+        ) : (
+          <StyledButton type="submit">Save</StyledButton>
+        )}
       </form>
-    </div>
+    </FormContainer>
   );
 }
