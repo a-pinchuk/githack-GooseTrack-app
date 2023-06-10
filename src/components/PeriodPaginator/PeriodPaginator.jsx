@@ -17,21 +17,21 @@ export const PeriodPaginator = ({
   prevHandler,
   nextHandler,
 }) => {
-  const { currentDay } = useParams();
+  const { currentDate, currentDay } = useParams();
 
   return (
     <PaginatorWrapper>
-      <PaginatorDate onClick={todayHandler}>
+      <PaginatorDate typeSelect={typeSelect} onClick={todayHandler}>
         {typeSelect === 'month'
           ? today.format('MMMM YYYY')
-          : today.format('D  MMMM YYYY ')}
+          : today.format('D MMM YYYY ')}
       </PaginatorDate>
       <div>
         <LeftPaginatorBtn
           onClick={prevHandler}
           disabled={
             currentDay === moment().format('YYYY-MM-DD') ||
-            currentDay === moment().format('YYYY-MM')
+            currentDate === moment().format('YYYY-MM-DD')
           }
         >
           <IconArrowRLeft />
