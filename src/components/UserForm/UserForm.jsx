@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
-import { selectUser } from 'redux/auth/selectors';
 import moment from 'moment/moment';
-import { validationSchema } from './ValidationSchema.js';
+import { validationSchema } from './ValidationSchema';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
+import { useAuth } from 'hooks';
 import {
   Container,
   FormContainer,
@@ -28,7 +28,8 @@ import {
 
 const UserForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const { user } = useAuth();
+  console.log('🚀 ~ user:', user);
 
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
 
@@ -43,16 +44,13 @@ const UserForm = () => {
   };
 
   const handleDatePickerChange = date => {
+    if (!date) setFieldValue('birthday', '');
     console.log(date.$d);
     const formattedDate = moment(date.$d).format('DD/MM/YYYY');
     setFieldValue('birthday', formattedDate);
   };
 
   const currentDate = dayjs().format('DD/MM/YYYY');
-  // const dateValue =
-  //   user.birthday instanceof Date
-  //     ? dayjs(user.birthday) // Преобразуем дату в объект Dayjs
-  //     : dayjs(user.birthday, 'DD/MM/YYYY'); // Если user.birthday - строка в формате 'DD/MM/YYYY'
 
   const {
     errors,
@@ -67,12 +65,12 @@ const UserForm = () => {
     initialValues: {
       avatar: null,
       name: user.name,
-      email: user.email,
-      phone: user.phone,
-      skype: user.skype,
-      birthday: user.birthday,
+      email: user.email || '',
+      phone: user.phone || '',
+      skype: user.skype || '',
+      birthday: user.birthday || '',
     },
-    validationSchema: validationSchema,
+    // validationSchema: validationSchema,
 
     onSubmit: async values => {
       try {

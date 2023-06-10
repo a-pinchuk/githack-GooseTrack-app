@@ -8,6 +8,8 @@ export const instance = axios.create({
   baseURL: 'https://githack-goosetrack.onrender.com/api',
 });
 
+const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+
 const setAuthHeader = token => {
   if (token) {
     return (instance.defaults.headers.common.Authorization = `Bearer ${token}`);
@@ -118,16 +120,17 @@ export const currentUser = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
   '/users/user',
   async ({ avatar, name, email, phone, skype, birthday }, thunkAPI) => {
+    console.log('🚀 ~ phone:', phone);
     try {
       const formData = new FormData();
       formData.append('avatar', avatar);
       formData.append('name', name);
       formData.append('email', email);
-      formData.append('phone', phone);
-      formData.append('skype', skype);
-      formData.append('birthday', birthday);
+      formData.append('phone', phone || '');
+      formData.append('skype', skype || '');
+      formData.append('birthday', dateRegex.test(birthday) ? birthday : '');
 
-      const response = await instance.patch(`/users/user/`, formData, {
+      const response = await instance.patch(`/users/user`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
