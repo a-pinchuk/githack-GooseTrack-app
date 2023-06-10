@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   BoxIconBth,
@@ -28,10 +28,15 @@ export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
   //Вытащить Тултип наверх----------------------------
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 1440px)').matches
+  );
+  console.log('Query', matches);
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    placement: 'right-start',
+    placement: matches ? 'right-start' : 'bottom',
   });
+  console.log(styles);
 
   console.log('DATATITLE--->', toolbarData);
   //   console.log('DATATITLEFunc--->', correctTitle(toolbarData[2]));
@@ -70,39 +75,51 @@ export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
     dispatch(deleteTask(id));
   };
 
+  useEffect(() => {
+    window
+      .matchMedia('(min-width: 1440px)')
+      .addEventListener('change', e => setMatches(e.matches));
+  }, []);
+
   return (
-    <BoxIconBth onMouseLeave={() => setIsVisible(false)}>
-      <IconBthArrow
-        ref={setReferenceElement}
-        onClick={() => setIsVisible(true)}
-        $isactive={isVisible}
-      />
-      <IconBthPencil onClick={() => handlerOpenModal({ id: idData })} />
-      <IconBthTrash onClick={() => handleDeleted(idData)} />
-      {isVisible && (
-        <Portal>
-          <Tooltip
-            ref={setPopperElement}
-            style={{ ...styles.popper, top: '25px', left: '-10px' }}
-            {...attributes.popper}
-          >
-            <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
-              <TooltipButtonItem>
-                <TooltipButton onClick={() => handleMoveOne(idData)}>
-                  {correctToolBarTitle(toolbarData[0])}
-                  <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
-                </TooltipButton>
-              </TooltipButtonItem>
-              <TooltipButtonItem>
-                <TooltipButton onClick={() => handleMoveTow(idData)}>
-                  {correctToolBarTitle(toolbarData[1])}
-                  <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
-                </TooltipButton>
-              </TooltipButtonItem>
-            </ul>
-          </Tooltip>
-        </Portal>
-      )}
-    </BoxIconBth>
+    <div>
+      <BoxIconBth onMouseLeave={() => setIsVisible(false)}>
+        <IconBthArrow
+          ref={setReferenceElement}
+          onClick={() => setIsVisible(true)}
+          $isactive={isVisible}
+        />
+        <IconBthPencil onClick={() => handlerOpenModal({ id: idData })} />
+        <IconBthTrash onClick={() => handleDeleted(idData)} />
+        {isVisible && (
+          <Portal>
+            <Tooltip
+              ref={setPopperElement}
+              style={{
+                ...styles.popper,
+                top: matches ? '25px' : '10px',
+                left: matches ? '-15px' : '',
+              }}
+              {...attributes.popper}
+            >
+              <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
+                <TooltipButtonItem>
+                  <TooltipButton onClick={() => handleMoveOne(idData)}>
+                    {correctToolBarTitle(toolbarData[0])}
+                    <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
+                  </TooltipButton>
+                </TooltipButtonItem>
+                <TooltipButtonItem>
+                  <TooltipButton onClick={() => handleMoveTow(idData)}>
+                    {correctToolBarTitle(toolbarData[1])}
+                    <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
+                  </TooltipButton>
+                </TooltipButtonItem>
+              </ul>
+            </Tooltip>
+          </Portal>
+        )}
+      </BoxIconBth>
+    </div>
   );
 };

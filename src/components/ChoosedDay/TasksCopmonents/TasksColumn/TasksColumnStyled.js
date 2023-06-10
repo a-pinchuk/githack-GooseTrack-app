@@ -17,7 +17,7 @@ export const TaskItem = styled.li`
 
   max-height: 568px;
   @media screen and (min-width: 768px) {
-    flex: 0 0 46%;
+    flex: 0 0 47%;
     &:not(:last-child) {
       margin-right: 16px;
     }

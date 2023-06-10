@@ -9,6 +9,7 @@ export const BoxIconBth = styled.div`
   /* position: relative; */
   z-index: 100;
   height: 15px;
+
   &::after {
     content: '';
     display: block;
@@ -59,15 +60,17 @@ export const IconBthTrash = styled(Trash)`
 `;
 
 export const Tooltip = styled.div`
-  /* position: absolute; */
-  /* top: 100%;
-  right: -15px; */
+  right: -15px;
   background: ${theme.colors.background};
   border-radius: 8px;
   padding: 20px 24px 20px 24px;
   box-shadow: ${theme.shadows.boxShadow};
   height: 90.78px;
   z-index: 100;
+  width: 115px;
+  @media screen and (min-width: 375px) {
+    width: 157px;
+  }
 `;
 export const TooltipButton = styled.button`
   width: 100%;
