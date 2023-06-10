@@ -16,6 +16,7 @@ import { selectTasksError } from 'redux/task/selectors';
 import { selectSuccessful } from 'redux/task/selectors';
 import { usePopper } from 'react-popper';
 import { Portal } from '../Portal/Portal';
+import { correctToolBarTitle } from '../helper/helper';
 // import { cleanDigitSectionValue } from '@mui/x-date-pickers/internals/hooks/useField/useField.utils';
 
 export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
@@ -31,6 +32,9 @@ export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'right-start',
   });
+
+  console.log('DATATITLE--->', toolbarData);
+  //   console.log('DATATITLEFunc--->', correctTitle(toolbarData[2]));
 
   const handleMoveOne = () => {
     if (successful) {
@@ -85,13 +89,13 @@ export const TasklToolBar = ({ toolbarData, idData, handlerOpenModal }) => {
             <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
               <TooltipButtonItem>
                 <TooltipButton onClick={() => handleMoveOne(idData)}>
-                  {toolbarData[0]}
+                  {correctToolBarTitle(toolbarData[0])}
                   <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
                 </TooltipButton>
               </TooltipButtonItem>
               <TooltipButtonItem>
                 <TooltipButton onClick={() => handleMoveTow(idData)}>
-                  {toolbarData[1]}
+                  {correctToolBarTitle(toolbarData[1])}
                   <IconBthArrow style={{ margin: '0', marginLeft: '8px' }} />
                 </TooltipButton>
               </TooltipButtonItem>
