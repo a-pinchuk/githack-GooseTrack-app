@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+
+import { useViewportHeight } from 'hooks';
 
 import {
   Header,
@@ -14,25 +16,12 @@ import goose2 from 'images/mainPage/desktop/desktop_goose_mainPage@2x.png';
 import sprite from 'icons/sprite.svg';
 
 export const AuthSection = () => {
-  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
-  console.log(viewportHeight);
-
-  useEffect(() => {
-    const updateViewportHeight = () => {
-      setViewportHeight(window.innerHeight);
-    };
-
-    window.addEventListener('resize', updateViewportHeight);
-
-    return () => {
-      window.removeEventListener('resize', updateViewportHeight);
-    };
-  }, []);
+  const viewportHeight = useViewportHeight();
 
   return (
     <Header height={viewportHeight}>
       <ContentWrapper height={viewportHeight}>
-        <ImageWrapper height={viewportHeight}>
+        <ImageWrapper>
           <img
             srcSet={`${goose1} 1x, ${goose2} 2x`}
             src={goose1}
