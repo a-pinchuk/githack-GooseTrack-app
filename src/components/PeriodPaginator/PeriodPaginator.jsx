@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import {
+  IconArrowRLeft,
+  IconArrowRight,
   LeftPaginatorBtn,
   PaginatorDate,
   PaginatorWrapper,
@@ -24,16 +26,20 @@ export const PeriodPaginator = ({
           ? today.format('MMMM YYYY')
           : today.format('D  MMMM YYYY ')}
       </PaginatorDate>
-      <LeftPaginatorBtn
-        onClick={prevHandler}
-        disabled={
-          currentDay === moment().format('YYYY-MM-DD') ||
-          currentDay === moment().format('YYYY-MM')
-        }
-      >
-        {'<'}
-      </LeftPaginatorBtn>
-      <RightPaginatorBtn onClick={nextHandler}>{'>'}</RightPaginatorBtn>
+      <div>
+        <LeftPaginatorBtn
+          onClick={prevHandler}
+          disabled={
+            currentDay === moment().format('YYYY-MM-DD') ||
+            currentDay === moment().format('YYYY-MM')
+          }
+        >
+          <IconArrowRLeft />
+        </LeftPaginatorBtn>
+        <RightPaginatorBtn onClick={nextHandler}>
+          <IconArrowRight />
+        </RightPaginatorBtn>
+      </div>
     </PaginatorWrapper>
   );
 };

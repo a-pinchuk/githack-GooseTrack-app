@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import { ReactComponent as ArrowRightBtn } from '../../images/arrow-right.svg';
+import { ReactComponent as ArrowLeftBtn } from '../../images/arrow-left.svg';
+
 export const PaginatorWrapper = styled.div`
   width: 100%;
   height: 30px;
@@ -15,7 +18,7 @@ export const PaginatorWrapper = styled.div`
 `;
 
 export const PaginatorDate = styled.button`
-  width: 200px;
+  width: 150px;
   height: 30px;
   padding: 6px 12px;
   background-color: ${props => props.theme.colors.primary};
@@ -29,6 +32,7 @@ export const PaginatorDate = styled.button`
   text-transform: uppercase;
   color: ${props => props.theme.colors.white};
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+    width: 168px;
     height: 34px;
     padding: 8px 12px;
     font-size: ${props => props.theme.fontSizes.m};
@@ -36,6 +40,9 @@ export const PaginatorDate = styled.button`
 `;
 
 export const PaginatorBtn = styled.button`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: 38px;
   height: 34px;
   background-color: ${props => props.theme.colors.white};
@@ -53,4 +60,21 @@ export const LeftPaginatorBtn = styled(PaginatorBtn)`
 export const RightPaginatorBtn = styled(PaginatorBtn)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+`;
+
+export const IconArrowRight = styled(ArrowRightBtn)`
+  width: 18px;
+  height: 18px;
+  /* fill: ${props => props.theme.colors.black}; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+`;
+export const IconArrowRLeft = styled(ArrowLeftBtn)`
+  width: 18px;
+  height: 18px;
+  //fill: ${props => props.theme.colors.black};
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
 `;
