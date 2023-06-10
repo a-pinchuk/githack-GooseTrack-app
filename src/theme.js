@@ -69,6 +69,15 @@ export const theme = {
 
     task_list_item_background: 'var(--task-list-item-background)',
     // FFFFFF ---->>>>>   #111111
+
+    modal_window: 'var(--modal-window)',
+    // #FFFFFF   ---->>>>>   #171820
+
+    modal_form_content: 'var(--modal-form-content)',
+    // rgba(52, 52, 52, 0.8) ---->>>>>   #FFFFFF
+
+    modal_form_label: 'var(--modal-form-label)',
+    // rgba(52, 52, 52, 0.8) ---->>>>>   #rgba(250, 250, 250, 0.3);
   },
   fonts: {
     body: 'Coolvetica',

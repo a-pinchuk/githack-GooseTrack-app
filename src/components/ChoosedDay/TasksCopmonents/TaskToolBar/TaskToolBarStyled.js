@@ -54,8 +54,9 @@ export const Tooltip = styled.div`
   position: absolute;
   top: 100%;
   right: -15px;
-  background: ${theme.colors.background};
+  background: ${theme.colors.modal_window};
   border-radius: 8px;
+  border: ${theme.colors.user_input_border};
   padding: 20px 24px 20px 24px;
   box-shadow: ${theme.shadows.boxShadow};
 
@@ -73,6 +74,8 @@ export const TooltipButton = styled.button`
   padding: 0;
   transition: color 250ms linear;
   cursor: pointer;
+  color: ${theme.colors.second_text_mode};
+
   &:hover {
     color: ${theme.colors.secondary};
     svg {
@@ -88,4 +91,5 @@ export const TooltipButtonItem = styled.li`
   &:not(:last-child) {
     margin-bottom: 14px;
   }
+  color: ${theme.colors.second_text_mode};
 `;

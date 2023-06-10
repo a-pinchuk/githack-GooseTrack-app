@@ -26,7 +26,14 @@ export function FeedbackForm() {
 
   return (
     <div>
-      <p style={{ margin: '0 0 8px' }}>Rating</p>
+      <p
+        style={{
+          margin: '0 0 8px',
+          color: `${p => p.theme.colors.modal_form_label}`,
+        }}
+      >
+        Rating
+      </p>
       <Box
         sx={{
           '& > legend': { mt: 1 },

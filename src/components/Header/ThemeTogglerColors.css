@@ -17,6 +17,9 @@ html[data-theme='light'] {
   --period-type-btn-not-active: #e3f3ff;
   --period-type-btn-active-content: #3e85f3;
   --task-list-item-background: #ffffff;
+  --modal-window: #ffffff;
+  --modal-form-content: rgba(52, 52, 52, 0.8);
+  --modal-form-label: #rgba(52, 52, 52, 0.8);
 }
 
 html[data-theme='dark'] {
@@ -36,6 +39,9 @@ html[data-theme='dark'] {
   --period-type-btn-not-active: #21222c;
   --period-type-btn-active-content: #ffffff;
   --task-list-item-background: #111111;
+  --modal-window: #171820;
+  --modal-form-content: #ffffff;
+  --modal-form-label: #rgba(250, 250, 250, 0.3);
 }
 
 body {
