@@ -28,12 +28,12 @@ export const Main = styled.main`
   position: relative;
 
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
   /* justify-content: center; */
 `;
 
 export const WrapLeftColumn = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 225px;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
