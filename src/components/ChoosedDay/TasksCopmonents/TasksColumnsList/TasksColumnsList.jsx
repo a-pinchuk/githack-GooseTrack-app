@@ -9,8 +9,6 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
   //Ключи заголовков колонок
   const dataTitle = Object.keys(sortedTasksData);
   // console.log(dataTitle);
-  console.log('DATATITLE--->', dataTitle);
-  console.log('DATATITLEFunc--->', correctTitle(dataTitle[2]));
 
   return (
     <TaskContainer>

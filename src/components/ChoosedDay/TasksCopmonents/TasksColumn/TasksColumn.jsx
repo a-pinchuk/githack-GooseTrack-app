@@ -16,6 +16,8 @@ export const TasksColumn = ({ taskData, title, category, toolbarData }) => {
 
   const handlerOpenModal = task => {
     const { id } = task;
+    console.log('TASK', task);
+    console.log('ID', id);
     if (!id) task.category = category;
 
     setTask_info(task);
@@ -30,6 +32,7 @@ export const TasksColumn = ({ taskData, title, category, toolbarData }) => {
           toolbarData={toolbarData}
           taskData={taskData}
           handlerOpenModal={handlerOpenModal}
+          title={title}
         />
         <AddTasksBth handlerOpenModal={handlerOpenModal} />
       </TaskItem>
