@@ -9,17 +9,19 @@ import {
   updateUserInfo,
 } from './operations';
 
+const emptyUser = {
+  name: '',
+  email: '',
+  avatarUrl: '',
+  phone: '',
+  skype: '',
+  birthday: '',
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: {
-      name: '',
-      email: '',
-      avatarUrl: '',
-      phone: '',
-      skype: '',
-      birthday: '',
-    },
+    user: emptyUser,
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -46,14 +48,7 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, state => {
         // todo очистити стейт задач
-        state.user = {
-          name: '',
-          email: '',
-          avatarUrl: '',
-          phone: '',
-          skype: '',
-          birthday: '',
-        };
+        state.user = emptyUser;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -74,7 +69,9 @@ const authSlice = createSlice({
       });
   },
 });
+
 export const { updateAccessToken } = authSlice.actions;
+
 const persistConfig = {
   key: 'auth',
   whitelist: ['token', 'user'],

@@ -127,10 +127,6 @@ export const updateUserInfo = createAsyncThunk(
       formData.append('skype', skype);
       formData.append('birthday', birthday);
 
-      // for (var pair of formData.entries()) {
-      //   console.log(pair[0] + ', ' + pair[1]);
-      // }
-
       const response = await instance.patch(`/users/user/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

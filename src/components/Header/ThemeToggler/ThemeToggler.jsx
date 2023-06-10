@@ -18,7 +18,7 @@ const ThemeToggler = () => {
     function DarkButton() {
         return (
             <ThemeModeBtn onClick={handleDarkClick}> 
-                <FiMoon size={30} color='#3E85F3' /> 
+                <FiMoon size={30}/> 
             </ThemeModeBtn>
         )
     };
@@ -26,7 +26,7 @@ const ThemeToggler = () => {
     function LightButton() {
         return (
             <ThemeModeBtn onClick={handleLightClick}> 
-                <BiSun size={30} color='#3E85F3' />
+                <BiSun size={30}/>
             </ThemeModeBtn>
         )
     };

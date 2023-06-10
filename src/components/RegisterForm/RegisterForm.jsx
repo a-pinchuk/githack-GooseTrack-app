@@ -5,14 +5,15 @@ import { Formik } from 'formik';
 
 import { register } from 'redux/auth/operations';
 import {
-  StyledForm,
-  StyledTitle,
-  StyledButton,
+  Form,
+  Title,
   Label,
-  StyledField,
-  StyledErrorMessage,
+  Field,
+  ErrorMessage,
+  InputWrapper,
   PasswordInputWrapper,
-  StyledVisibilityBtn,
+  VisibilityBtn,
+  Button,
   Svg,
 } from './RegisterForm.styled';
 
@@ -60,75 +61,117 @@ export const RegisterForm = () => {
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting, values, errors, touched }) => (
-        <StyledForm>
-          <StyledTitle>Sign Up</StyledTitle>
-          <Label>
-            Name
-            <StyledField
-              className={
-                errors.name && touched.name ? 'InvalidInput' : 'ValidInput'
-              }
-              type="text"
-              name="name"
-              placeholder="Enter your name"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              value={values.name}
-            />
-            <StyledErrorMessage name="name" component="div" />
-          </Label>
-          <Label>
-            Email
-            <StyledField
-              className={
-                errors.email && touched.email ? 'InvalidInput' : 'ValidInput'
-              }
-              type="email"
-              name="email"
-              placeholder="Enter email"
-              title="Email must be in the format username@domain.com"
-              value={values.email}
-            />
-            <StyledErrorMessage name="email" component="div" />
-          </Label>
-          <Label>
-            Password
-            <PasswordInputWrapper>
-              <StyledField
-                className={
-                  errors.password && touched.password
-                    ? 'InvalidInput'
-                    : 'ValidInput'
-                }
-                type={passwordType}
-                name="password"
-                placeholder="Enter password"
-                title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long."
-                value={values.password}
-              />
+      {({ isSubmitting, values, errors, touched }) => {
+        const isValid = field =>
+          touched[field] && errors[field]
+            ? 'is-invalid'
+            : touched[field]
+            ? 'is-valid'
+            : '';
 
-              <StyledVisibilityBtn type="button" onClick={togglePassword}>
-                {passwordType === 'password' ? (
-                  <svg height="20" width="20" fill="#111111">
-                    <use href={sprite + '#icon-hide'}></use>
-                  </svg>
-                ) : (
-                  <svg height="20" width="20" fill="#111111">
-                    <use href={sprite + '#icon-show'}></use>
+        return (
+          <Form>
+            <Title>Sign Up</Title>
+            <Label className={isValid('name')}>
+              Name
+              <InputWrapper>
+                <Field
+                  className={isValid('name')}
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                  value={values.name}
+                />
+                {isValid('name') === 'is-valid' && (
+                  <svg height="20" width="20" className="error-success">
+                    <use href={sprite + '#icon-input-success'}></use>
                   </svg>
                 )}
-              </StyledVisibilityBtn>
-            </PasswordInputWrapper>
-            <StyledErrorMessage name="password" component="div" />
-          </Label>
-          <StyledButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting' : 'Sign Up'}
-            <Svg>
-              <use href={sprite + '#icon-enter'}></use>
-            </Svg>
-          </StyledButton>
-        </StyledForm>
-      )}
+                {isValid('name') === 'is-invalid' && (
+                  <svg height="20" width="20" className="error-success">
+                    <use href={sprite + '#icon-input-error'}></use>
+                  </svg>
+                )}
+              </InputWrapper>
+              {isValid('name') === 'is-valid' && <p>This is a CORRECT name</p>}
+              <ErrorMessage name="name" component="div" />
+            </Label>
+            <Label className={isValid('email')}>
+              Email
+              <InputWrapper>
+                <Field
+                  className={isValid('email')}
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  title="Email must be in the format username@domain.com"
+                  value={values.email}
+                />
+                {isValid('email') === 'is-valid' && (
+                  <svg height="20" width="20" className="error-success">
+                    <use href={sprite + '#icon-input-success'}></use>
+                  </svg>
+                )}
+                {isValid('email') === 'is-invalid' && (
+                  <svg height="20" width="20" className="error-success">
+                    <use href={sprite + '#icon-input-error'}></use>
+                  </svg>
+                )}
+              </InputWrapper>
+              {isValid('email') === 'is-valid' && (
+                <p>This is a CORRECT email</p>
+              )}
+              <ErrorMessage name="email" component="div" />
+            </Label>
+            <Label className={isValid('password')}>
+              Password
+              <PasswordInputWrapper>
+                <Field
+                  className={isValid('password')}
+                  type={passwordType}
+                  name="password"
+                  placeholder="Enter password"
+                  title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long."
+                  value={values.password}
+                />
+
+                <VisibilityBtn type="button" onClick={togglePassword}>
+                  {passwordType === 'password' ? (
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('password')}
+                    >
+                      <use href={sprite + '#icon-hide'}></use>
+                    </svg>
+                  ) : (
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('password')}
+                    >
+                      <use href={sprite + '#icon-show'}></use>
+                    </svg>
+                  )}
+                </VisibilityBtn>
+              </PasswordInputWrapper>
+              {isValid('password') === 'is-valid' && (
+                <p>This is a CORRECT password</p>
+              )}
+              <ErrorMessage name="password" component="div" />
+            </Label>
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting' : 'Sign Up'}
+              <Svg>
+                <use href={sprite + '#icon-enter'}></use>
+              </Svg>
+            </Button>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };

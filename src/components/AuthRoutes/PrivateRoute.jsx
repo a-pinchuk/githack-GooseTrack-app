@@ -9,7 +9,6 @@ import { selectUserToken } from 'redux/auth/selectors';
 
 export const PrivateRoute = () => {
   const userToken = useSelector(selectUserToken);
-  console.log('Private route');
 
   return userToken ? (
     <div style={{ display: 'flex' }}>

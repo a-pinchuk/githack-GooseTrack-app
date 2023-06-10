@@ -91,3 +91,10 @@ export const changeTaskCategory = createAsyncThunk(
     }
   }
 );
+
+export const clearTasks = createAsyncThunk(
+  'tasks/clearTasks',
+  async (_, thunkAPI) => {
+    return true;
+  }
+);
