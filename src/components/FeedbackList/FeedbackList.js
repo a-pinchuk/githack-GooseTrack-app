@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
@@ -11,6 +10,15 @@ import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
 import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
 import { ReviewItem } from 'components/ReviewItem/ReviewItem';
 import { IconButton } from '@mui/material';
+import {
+  IconButtonContainer,
+  ReviewerName,
+  AvatarContainer,
+  StyledFeedbackList,
+  ListItem,
+  FeedBackContainer,
+  ReviewHeader,
+} from './FeedbackList.styled';
 
 export const IconBthPencil = styled(Pencil)`
   cursor: pointer;
@@ -39,7 +47,6 @@ function stringToColor(string) {
   let hash = 0;
   let i;
 
-  /* eslint-disable no-bitwise */
   for (i = 0; i < string.length; i += 1) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
@@ -50,7 +57,6 @@ function stringToColor(string) {
     const value = (hash >> (i * 8)) & 0xff;
     color += `00${value.toString(16)}`.slice(-2);
   }
-  /* eslint-enable no-bitwise */
 
   return color;
 }
@@ -73,66 +79,16 @@ function stringAvatar(name) {
 
 export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
   return (
-    <ul
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        padding: '16px',
-
-        // outline: '1px solid tomato',
-        width: '100%',
-        height: '292px',
-        listStyle: 'none',
-
-        backgroundColor: 'rgba(227, 243, 255, 0.5)',
-        borderRadius: ' 8px',
-        overflow: 'auto',
-        margin: '0',
-      }}
-    >
+    <StyledFeedbackList>
       {reviews.map((review, i) => (
-        <li
-          key={i}
-          style={{
-            // outline: '1px solid pink',
-            width: '100%',
-            display: 'flex',
-            height: 'auto',
-          }}
-        >
-          <div
-            style={{
-              //   outline: '1px solid red',
-              width: '40px',
-            }}
-          >
+        <ListItem key={i}>
+          <AvatarContainer>
             <Avatar {...stringAvatar(review.name)} />
-          </div>
-          <div
-            style={{
-              //   outline: '1px solid orange',
-              width: '324px',
-            }}
-          >
-            <div
-              style={{
-                // outline: '1px solid tomato',
-                display: 'flex',
-                flexDirection: 'column',
-                paddingLeft: '12px',
-                position: 'relative',
-              }}
-            >
-              <p style={{ margin: '0 0 8px' }}>{review.name}</p>
-              <div
-                style={{
-                  display: 'flex',
-                  position: 'absolute',
-                  top: '0',
-                  right: '0',
-                }}
-              >
+          </AvatarContainer>
+          <FeedBackContainer>
+            <ReviewHeader>
+              <ReviewerName>{review.name}</ReviewerName>
+              <IconButtonContainer>
                 <IconButton
                   aria-label="edit"
                   onClick={() =>
@@ -144,7 +100,7 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
                 <IconButton aria-label="delete">
                   <IconBthTrash />
                 </IconButton>
-              </div>
+              </IconButtonContainer>
               <Box
                 sx={{
                   //   width: '400px',
@@ -163,12 +119,12 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
                   sx={{ display: 'flex', gap: '8px' }}
                 />
               </Box>
-            </div>
+            </ReviewHeader>
 
             <ReviewItem text={review.feedback} maxLength={150} />
-          </div>
-        </li>
+          </FeedBackContainer>
+        </ListItem>
       ))}
-    </ul>
+    </StyledFeedbackList>
   );
 };

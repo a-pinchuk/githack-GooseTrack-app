@@ -6,6 +6,13 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
+import {
+  FormContainer,
+  RatingText,
+  StyledButton,
+  StyledEditButton,
+  StyledTextArea,
+} from './FeedbackForm.styled';
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -69,8 +76,8 @@ export function FeedbackForm({
   };
 
   return (
-    <div>
-      <p style={{ margin: '0 0 8px' }}>Rating</p>
+    <FormContainer>
+      <RatingText>Rating</RatingText>
       <Box
         sx={{
           '& > legend': { mt: 1 },
@@ -91,80 +98,24 @@ export function FeedbackForm({
         <label htmlFor="feedback">
           <span>Review</span>
         </label>
-        <textarea
+        <StyledTextArea
           id="feedback"
           placeholder="Enter text"
           name="review"
           value={review}
-          style={{
-            width: '404px',
-            height: '127px',
-            backgroundColor: '#F7F7F7',
-            borderRadius: '8px',
-            padding: '14px 18px',
-            marginTop: '8px',
-            marginBottom: '18px',
-          }}
           onChange={handleTextareaChange}
-        ></textarea>
+        ></StyledTextArea>
         {isEditFeedbackOpen ? (
           <div style={{ display: 'flex', gap: '8px' }}>
-            <button
-              type="submit"
-              style={{
-                width: '50%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '15px',
-                borderRadius: '8px',
-                backgroundColor: '#3E85F3',
-                color: '#FFFFFF',
-                marginBottom: '32px',
-                border: '0',
-              }}
-            >
-              Edit
-            </button>
-            <button
-              onClick={toggleEditFeedback}
-              type="button"
-              style={{
-                width: '50%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '15px',
-                borderRadius: '8px',
-                backgroundColor: '#3E85F3',
-                color: '#FFFFFF',
-                marginBottom: '32px',
-                border: '0',
-              }}
-            >
+            <StyledEditButton type="submit">Edit</StyledEditButton>
+            <StyledEditButton onClick={toggleEditFeedback} type="button">
               Cancel
-            </button>
+            </StyledEditButton>
           </div>
         ) : (
-          <button
-            type="submit"
-            style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '15px',
-              borderRadius: '8px',
-              backgroundColor: '#3E85F3',
-              color: '#FFFFFF',
-              marginBottom: '32px',
-              border: '0',
-            }}
-          >
-            Save
-          </button>
+          <StyledButton type="submit">Save</StyledButton>
         )}
       </form>
-    </div>
+    </FormContainer>
   );
 }

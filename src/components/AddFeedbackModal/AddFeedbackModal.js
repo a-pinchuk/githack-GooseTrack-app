@@ -2,6 +2,7 @@ import { FeedbackForm } from 'components/FeedbackForm/FeedbackForm';
 import { FeedbackList } from 'components/FeedbackList/FeedbackList';
 import { Modal } from 'components/Modal/Modal';
 import { useState } from 'react';
+import { ModalContent } from './AddFeedbackModal.styled';
 // import { useSelector } from 'react-redux';
 // import { selectAllReviews } from 'redux/reviews/selectors';
 
@@ -41,14 +42,7 @@ export const AddFeedbackModal = ({ handlerCloseModal }) => {
 
   return (
     <Modal handlerCloseModal={handlerCloseModal}>
-      <div
-        style={{
-          // outline: '1px solid purple',
-          height: 'auto',
-          padding: '32px',
-          width: '468px',
-        }}
-      >
+      <ModalContent>
         {isEditFeedbackOpen ? (
           <FeedbackForm
             feedback={feedback}
@@ -66,7 +60,7 @@ export const AddFeedbackModal = ({ handlerCloseModal }) => {
             />
           </>
         )}
-      </div>
+      </ModalContent>
     </Modal>
   );
 };
