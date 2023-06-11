@@ -10,9 +10,9 @@ export const instance = axios.create({
 
 const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
 
-const setAuthHeader = token => {
-  if (token) {
-    return (instance.defaults.headers.common.Authorization = `Bearer ${token}`);
+const setAuthHeader = accessToken => {
+  if (accessToken) {
+    return (instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`);
   }
   return (instance.defaults.headers.common.Authorization = '');
 };
@@ -139,6 +139,40 @@ export const updateUserInfo = createAsyncThunk(
     } catch (e) {
       Notify.failure(`Something was wronge`);
       return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const forgotPassword = createAsyncThunk(
+  '/users/forgot',
+  async (email, thunkAPI) => {
+    try {
+      const res = await instance.post('/users/forgot', {
+        email,
+      });
+      Notify.success(`Success`);
+      return res.data;
+    } catch (error) {
+      Notify.failure(`Bad request`);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  '/users/reset-password',
+  async ({ accessToken, newpassword }, thunkAPI) => {
+    try {
+      const res = await instance.post('/users/reset-password', {
+        accessToken,
+        newpassword,
+      });
+
+      Notify.success(`Success`);
+      return res.data;
+    } catch (error) {
+      Notify.failure(`Bad request`);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
