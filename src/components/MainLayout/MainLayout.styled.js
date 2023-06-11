@@ -28,7 +28,7 @@ export const Main = styled.main`
   position: relative;
 
   display: flex;
-  /* height: 100vh; */
+  height: 100vh;
   /* justify-content: center; */
 `;
 
