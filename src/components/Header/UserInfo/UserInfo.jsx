@@ -3,38 +3,40 @@ import {
   HeaderUserName,
   HeaderUserPhoto,
   TextAvatar,
-  //   AvatorTaskList,
 } from './UserInfo.style';
-// import userPhoto from '../image/Sample_User_Icon.png';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { NavLink } from 'react-router-dom';
+import { useAuth } from 'hooks';
+import { useEffect, useState } from 'react';
 
 const UserInfo = () => {
-  const user = useSelector(selectUser);
+  const { user } = useAuth();
+  const [avatar, setAvatar] = useState(null);
 
-  const avaFunc = value => {
-    if (!value) {
-      return;
+  useEffect(() => {
+    if (!user?.name) {
+      setAvatar(null);
     } else {
-      return value.slice(0, 1).toUpperCase();
+      setAvatar(user?.name.slice(0, 1).toUpperCase());
     }
-  };
+  }, [user?.name]);
 
   return (
-    <HeaderUserInfoSection>
-      <HeaderUserName>{user.name}</HeaderUserName>
+    <NavLink to="/account" style={{ textDecoration: 'none' }}>
+      <HeaderUserInfoSection>
+        <HeaderUserName>{user.name}</HeaderUserName>
 
-      {!user?.avatarUrl ? (
-        <TextAvatar>{avaFunc(user?.name)}</TextAvatar>
-      ) : (
-        <HeaderUserPhoto
-          src={user?.avatarUrl}
-          alt="avator"
-          width="28"
-          height="28"
-        />
-      )}
-    </HeaderUserInfoSection>
+        {!user?.avatarUrl ? (
+          <TextAvatar>{avatar}</TextAvatar>
+        ) : (
+          <HeaderUserPhoto
+            src={user?.avatarUrl}
+            alt="avator"
+            width="28"
+            height="28"
+          />
+        )}
+      </HeaderUserInfoSection>
+    </NavLink>
   );
 };
 

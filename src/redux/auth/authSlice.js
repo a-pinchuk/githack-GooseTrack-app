@@ -65,7 +65,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(updateUserInfo.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
       });
   },
 });
