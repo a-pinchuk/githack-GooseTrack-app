@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
-const regexName = /^\S[\S\s]{0,28}\S$/;
+
+const regexName = /^[^\s][\S\s]{0,15}[^\s]$/;
 const regexPhone = /^38\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
 
 export const validationSchema = Yup.object().shape({
@@ -8,9 +9,11 @@ export const validationSchema = Yup.object().shape({
     .matches(regexName, 'Name must be between 2 and 16 characters')
     .test(
       'name-validation',
-      'Name must be at least 2 characters long',
+      'Name must be between 2 and 16 characters',
       value => {
-        return value && value.replace(/\s/g, '').length >= 2;
+        return (
+          value && value.replace(/\s/g, '').length >= 2 && value.length <= 16
+        );
       }
     ),
   birthday: Yup.string().notRequired(),
@@ -21,7 +24,16 @@ export const validationSchema = Yup.object().shape({
     })
     .notRequired(),
   skype: Yup.string()
-    .max(16, 'No more than 16 characters')
     .nullable()
-    .notRequired(),
+    .notRequired()
+    .test('skype-validation', 'No more than 16 characters', value => {
+      if (value && value.replace(/\s/g, '').length >= 17) {
+        throw new Yup.ValidationError(
+          'No more than 16 characters',
+          value,
+          'skype'
+        );
+      }
+      return true;
+    }),
 });

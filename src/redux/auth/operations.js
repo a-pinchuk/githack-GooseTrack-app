@@ -134,7 +134,7 @@ export const updateUserInfo = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-      Notify.success(`User information was updated`);
+      Notify.success(`${response.data.user.name} profile was updated`);
       return response.data;
     } catch (e) {
       Notify.failure(`Something was wronge`);
