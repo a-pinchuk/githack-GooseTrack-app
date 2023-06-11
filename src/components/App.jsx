@@ -8,7 +8,8 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { currentUser } from 'redux/auth/operations';
 import { Loader } from './Loader/Loader';
-
+import { useSearchParams } from 'react-router-dom/dist';
+import { updateAccessToken } from 'redux/auth/authSlice';
 const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -22,10 +23,21 @@ const MainLayout = lazy(() => import('./MainLayout/MainLayout'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
+    const accessToken = searchParams.get('accessToken');
+    const refreshToken = searchParams.get('refreshToken');
+
+    if (accessToken) {
+      dispatch(updateAccessToken(accessToken));
+    }
+
+    if (refreshToken) {
+      localStorage.setItem('refreshToken', refreshToken);
+    }
     dispatch(currentUser());
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
 
   return (
     <>
