@@ -43,12 +43,12 @@ export const Header = ({ toogleShowSiderBar }) => {
   };
 
   return (
-    <HeaderSection>
+    <HeaderSection showMotivationTitle={typePage === 'day' && isNotDoneTask}>
       <MobileMenuBtn onClick={toogleShowSiderBar}>
-        <RxHamburgerMenu size={30} />
+        <RxHamburgerMenu size={34} />
       </MobileMenuBtn>
 
-      {isNotDoneTask ? (
+      {typePage === 'day' && isNotDoneTask ? (
         <GooseTitle />
       ) : (
         <HeaderTitle>
@@ -57,7 +57,9 @@ export const Header = ({ toogleShowSiderBar }) => {
       )}
 
       <RighSectiontHeader>
-        <BtnAddFeedback handlerShowModal={handlerShowModal} />
+        {typePage !== 'acount' && (
+          <BtnAddFeedback handlerShowModal={handlerShowModal} />
+        )}
 
         <ThemeToggler />
         <UserInfo />

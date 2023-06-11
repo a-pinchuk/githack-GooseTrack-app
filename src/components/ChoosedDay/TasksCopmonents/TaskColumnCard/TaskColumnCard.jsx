@@ -52,6 +52,7 @@ export const TaskColumnCard = ({
           enableDrag={enableDrag}
           toolbarData={toolbarData}
           idData={item._id}
+          item={item}
           handlerOpenModal={handlerOpenModal}
         />
       </div>

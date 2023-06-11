@@ -23,5 +23,7 @@ export const AddFeedbackBtn = styled.a`
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 130px;
     height: 42px;
+    font-size: 14px;
+    line-height: 18px;
   }
 `;
