@@ -4,7 +4,7 @@ export const TaskContainer = styled.ul`
   /* display: flex; */
   width: 100%;
   margin: 0 auto;
-  height: calc(100vh - 80px);
+  /* height: calc(100vh - 80px); */
   list-style: none;
   padding: 0;
   justify-content: center;
@@ -12,6 +12,7 @@ export const TaskContainer = styled.ul`
   @media screen and (min-width: 1440px) {
     justify-content: center;
     align-items: flex-start;
+    overflow-x: hidden;
   }
 `;
 

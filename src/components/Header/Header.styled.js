@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const HeaderSection = styled.div`
   display: flex;
-  align-items: start;
+  align-items: center;
   padding-top: 24px;
   padding-bottom: 64px;
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding-top: 40px;
     padding-bottom: ${p => (p.showMotivationTitle ? '16px' : '32px')};
+    align-items: ${p => (p.showMotivationTitle ? 'start' : 'center')};
   }
 `;
 
