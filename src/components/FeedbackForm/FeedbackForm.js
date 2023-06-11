@@ -1,5 +1,6 @@
 import { ReactComponent as FavoriteIcon } from 'images/fullStar.svg';
 import { ReactComponent as FavoriteBorderIcon } from 'images/emptyStar.svg';
+import { useDispatch } from 'react-redux';
 
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -7,13 +8,18 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 import {
+  CharactersQuantityText,
   FormContainer,
   LabelText,
   RatingText,
   StyledButton,
   StyledEditButton,
   StyledTextArea,
+  CharactersQuantityTextContainer,
+  StyledCancelButton,
 } from './FeedbackForm.styled';
+
+import { addReview, updateReview } from '../../redux/reviews/operations';
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -29,43 +35,69 @@ export function FeedbackForm({
   rating,
   toggleEditFeedback,
   isEditFeedbackOpen,
+  id,
 }) {
   const [value, setValue] = useState(0);
   const [review, setReview] = useState('');
+  const [characterCount, setCharacterCount] = useState(0);
+
+  // const { }=useSelector()
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isEditFeedbackOpen) {
       setValue(rating);
       setReview(feedback);
+      setCharacterCount(feedback.length);
       return;
     }
     const storedReview = localStorage.getItem('review');
     const storedRating = localStorage.getItem('rating');
-    console.log('storedRating:', storedRating);
+
     if (storedReview) {
       setReview(JSON.parse(storedReview));
+      setCharacterCount(JSON.parse(storedReview).length);
+    } else {
+      setReview('');
     }
     if (storedRating) {
       setValue(JSON.parse(storedRating));
+    } else {
+      setValue(0);
     }
   }, [feedback, isEditFeedbackOpen, rating]);
 
   const handleFeedbackSubmit = e => {
     e.preventDefault();
     if (isEditFeedbackOpen) {
-      console.log('EDIT');
+      dispatch(updateReview({ id, rating: value, comment: review }));
       toggleEditFeedback();
+
       return;
     }
-    console.log('Feedback Submit');
+
+    dispatch(
+      addReview({
+        rating: value,
+        comment: review,
+      })
+    );
+    setValue(null);
+    setReview('');
+    setCharacterCount(0);
+    localStorage.setItem('review', JSON.stringify(''));
+    localStorage.setItem('rating', JSON.stringify(null));
   };
 
   const handleTextareaChange = e => {
-    setReview(e.target.value);
+    const inputValue = e.target.value;
+    setReview(inputValue);
+    setCharacterCount(inputValue.length);
     if (isEditFeedbackOpen) {
       return;
     }
-    localStorage.setItem('review', JSON.stringify(review));
+    localStorage.setItem('review', JSON.stringify(inputValue));
   };
 
   const handleRatingChange = (e, newValue) => {
@@ -75,6 +107,8 @@ export function FeedbackForm({
     }
     localStorage.setItem('rating', JSON.stringify(newValue));
   };
+
+  const isReviewValid = review.length <= 300;
 
   return (
     <FormContainer>
@@ -92,7 +126,7 @@ export function FeedbackForm({
           icon={<FavoriteIcon fontSize="inherit" width="24px" />}
           emptyIcon={<FavoriteBorderIcon fontSize="inherit" width="24px" />}
           onChange={handleRatingChange}
-          sx={{ display: 'flex', gap: '2px' }}
+          sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
         />
       </Box>
       <form onSubmit={handleFeedbackSubmit}>
@@ -105,16 +139,36 @@ export function FeedbackForm({
           name="review"
           value={review}
           onChange={handleTextareaChange}
+          isReviewValid={isReviewValid}
         ></StyledTextArea>
+        <CharactersQuantityTextContainer>
+          {characterCount > 0 && (
+            <CharactersQuantityText isReviewValid={isReviewValid}>
+              Characters entered: {characterCount}
+            </CharactersQuantityText>
+          )}
+        </CharactersQuantityTextContainer>
+
         {isEditFeedbackOpen ? (
           <div style={{ display: 'flex', gap: '8px' }}>
-            <StyledEditButton type="submit">Edit</StyledEditButton>
-            <StyledEditButton onClick={toggleEditFeedback} type="button">
-              Cancel
+            <StyledEditButton
+              type="submit"
+              disabled={!isReviewValid || !value || !review}
+              isReviewValid={isReviewValid}
+            >
+              Edit
             </StyledEditButton>
+            <StyledCancelButton onClick={toggleEditFeedback} type="button">
+              Cancel
+            </StyledCancelButton>
           </div>
         ) : (
-          <StyledButton type="submit">Save</StyledButton>
+          <StyledButton
+            type="submit"
+            disabled={!isReviewValid || !value || !review}
+          >
+            Save
+          </StyledButton>
         )}
       </form>
     </FormContainer>

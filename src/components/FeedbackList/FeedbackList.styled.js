@@ -6,7 +6,8 @@ export const StyledFeedbackList = styled.ul`
   gap: 20px;
   padding: 16px;
   width: 100%;
-  height: 292px;
+  height: auto;
+  max-height: 292px;
   list-style: none;
   /* background-color: rgba(227, 243, 255, 0.5); */
   background-color: ${p => p.theme.colors.reviews_list};
@@ -24,7 +25,11 @@ export const ListItem = styled.li`
 `;
 
 export const AvatarContainer = styled.div`
-  width: 40px;
+  width: 32px;
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+  }
 `;
 
 export const StyledReviewContainer = styled.div`
@@ -43,6 +48,11 @@ export const ReviewerName = styled.p`
   font-weight: 700;
   font-size: 14px;
   line-height: 1.29;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.12;
+  }
   color: ${p => p.theme.colors.third_text_mode};
 `;
 
@@ -64,4 +74,20 @@ export const ReviewHeader = styled.div`
   flex-direction: column;
   padding-left: 12px;
   position: relative;
+`;
+
+export const UserAvatar = styled.img`
+  height: auto;
+  width: 100%;
+`;
+
+export const UserAvatarWrapper = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;

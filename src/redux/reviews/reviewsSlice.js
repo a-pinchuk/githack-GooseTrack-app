@@ -57,19 +57,27 @@ export const reviewsSlice = createSlice({
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.reviews.data.push(action.payload);
+        state.reviews.push(action.payload);
       })
       .addCase(deleteReview.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.reviews.id === action.payload.id;
-        state.reviews.data.splice(index, 1);
+
+        const index = state.reviews.findIndex(review => {
+          return review._id === action.payload.data._id;
+        });
+
+        state.reviews.splice(index, 1);
       })
       .addCase(updateReview.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.reviews.id === action.payload.id;
-        state.reviews[index] = action.payload;
+
+        const index = state.reviews.findIndex(review => {
+          return review._id === action.payload.data._id;
+        });
+
+        state.reviews[index] = action.payload.data;
       })
       .addCase(logOut.fulfilled, state => {
         state.reviews = [];
