@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { updateAccessToken } from 'redux/auth/authSlice';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
-import { Container, FormWrapper, ImgWrapper } from './LoginPage.styled';
+import { Container, FormWrapper, ImgWrapper, Link } from './LoginPage.styled';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -19,9 +19,10 @@ const LoginPage = () => {
       </FormWrapper>
 
       <AuthNavigate link="/register" text="Sign up" />
-      <a href="https://githack-goosetrack.onrender.com/api/users/google">
+
+      <Link href="https://githack-goosetrack.onrender.com/api/users/google">
         Login with Google
-      </a>
+      </Link>
       <ImgWrapper />
     </Container>
   );
