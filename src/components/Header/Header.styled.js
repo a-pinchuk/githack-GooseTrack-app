@@ -8,7 +8,7 @@ export const HeaderSection = styled.div`
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding-top: 40px;
     padding-bottom: ${p => (p.showMotivationTitle ? '16px' : '32px')};
-    align-items: start;
+    align-items: ${p => (p.showMotivationTitle ? 'start' : 'center')};
   }
 `;
 

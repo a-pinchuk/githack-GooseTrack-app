@@ -65,14 +65,6 @@ export const Label = styled.label`
     }
   }
 
-  &:nth-of-type(2) {
-    margin-bottom: 32px;
-
-    @media screen and (min-width: 768px) {
-      margin-bottom: 48px;
-    }
-  }
-
   &.is-valid {
     color: ${p => p.theme.colors.greenValid};
   }
@@ -225,13 +217,14 @@ export const Svg = styled.svg`
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
   margin-top: 8px;
+
   color: ${p => p.theme.colors.redError};
 `;
 
 export const ResetPasswordLink = styled(Link)`
   display: block;
 
-  margin-top: 8px;
+  margin-bottom: 32px;
 
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.medium};
@@ -239,25 +232,15 @@ export const ResetPasswordLink = styled(Link)`
   line-height: ${p => p.theme.lineHeights.body};
   text-decoration: none;
 
-  /* font-family: ${p => p.theme.fonts.text};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xs};
-  line-height: 1.16; */
-  /* text-align: center; */
-
   color: ${p => p.theme.colors.primary};
-  /* text-decoration: underline; */
 
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
   @media screen and (min-width: 768px) {
+    margin-bottom: 48px;
+
     font-size: ${p => p.theme.fontSizes.s};
     line-height: 1.21;
   }
-  /* 
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    line-height: 1.33;
-  } */
 `;
