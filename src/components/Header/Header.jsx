@@ -9,11 +9,18 @@ import BtnAddFeedback from './BtnAddFeedback/BtnAddFeedback';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import UserInfo from './UserInfo/UserInfo';
 
+import HeaderGoose from '../../images/header/Goose_header.png'
+
 import {
   HeaderTitle,
   HeaderSection,
   MobileMenuBtn,
   RighSectiontHeader,
+  HeaderSectionTask,
+  HeaderTaskImg,
+  HeaderTaskTitle,
+  HeaderTaskParagraph,
+  HeaderTaskSpan,
 } from './Header.styled';
 
 const getTypePage = pathname => {
@@ -48,7 +55,13 @@ export const Header = ({ toogleShowSiderBar }) => {
       </MobileMenuBtn>
 
       {isNotDoneTask ? (
-        <HeaderTitle>Calendar - DAY</HeaderTitle>
+        <HeaderSectionTask>
+          <HeaderTaskImg src={HeaderGoose} alt="Header Goose"></HeaderTaskImg>
+          <HeaderTaskTitle> 
+            Calendar <br/> 
+            <HeaderTaskParagraph> <HeaderTaskSpan>Let go</HeaderTaskSpan>   of the past and focus on the present!  </HeaderTaskParagraph>
+          </HeaderTaskTitle>
+        </HeaderSectionTask>
       ) : (
         <HeaderTitle>
           {typePage === 'acount' ? 'User Profile' : 'Calendar'}
