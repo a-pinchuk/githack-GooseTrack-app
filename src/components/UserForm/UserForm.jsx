@@ -27,6 +27,7 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
+  const [isFormDirty, setIsFormDirty] = useState(false);
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
@@ -40,35 +41,8 @@ const UserForm = () => {
     if (!date) setFieldValue('birthday', '');
     const formattedDate = moment(date.$d).format('DD/MM/YYYY');
     setFieldValue('birthday', formattedDate);
+    setIsFormDirty(true);
   };
-  const currentDate = moment().format('DD/MM/YYYY');
-  const {
-    errors,
-    touched,
-    values,
-    handleSubmit,
-    handleBlur,
-    handleChange,
-    setFieldValue,
-    isSubmitting,
-  } = useFormik({
-    initialValues: {
-      avatar: null,
-      name: user.name,
-      email: user.email,
-      phone: user.phone,
-      skype: user.skype,
-      birthday: user.birthday,
-    },
-    validationSchema: validationSchema,
-    onSubmit: async values => {
-      try {
-        await dispatch(updateUserInfo(values));
-      } catch (error) {
-        console.log(error.message);
-      }
-    },
-  });
   const formatPhoneNumber = value => {
     const phoneNumber = value.replace(/[^\d]/g, ''); // Видаляємо всі нецифрові символи
     const countryCode = phoneNumber.slice(0, 2);
@@ -91,11 +65,46 @@ const UserForm = () => {
     }
     return formattedPhoneNumber.trim(); // Видаляємо зайві пробіли з початку та кінця рядка
   };
+
   const handlePhoneNumberChange = event => {
     const formattedPhoneNumber = formatPhoneNumber(event.target.value);
     setFieldValue('phone', formattedPhoneNumber);
+    setIsFormDirty(true);
   };
-  const isFormDirty = Object.keys(touched).length > 0;
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setFieldValue(name, value);
+    setIsFormDirty(true);
+  };
+  const currentDate = moment().format('DD/MM/YYYY');
+  const {
+    errors,
+    touched,
+    values,
+    handleSubmit,
+    handleBlur,
+    setFieldValue,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      avatar: null,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      skype: user.skype,
+      birthday: user.birthday,
+    },
+    validationSchema: validationSchema,
+    onSubmit: async values => {
+      try {
+        await dispatch(updateUserInfo(values));
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+  });
+
   return (
     <Container>
       <FormContainer onSubmit={handleSubmit}>
@@ -128,7 +137,7 @@ const UserForm = () => {
               type="text"
               placeholder="User Name"
               value={values.name || ''}
-              onChange={handleChange}
+              onChange={handleInputChange}
               onBlur={handleBlur}
               className={errors.name && touched.name ? 'InvalidInput' : ''}
             />
@@ -162,7 +171,7 @@ const UserForm = () => {
               name="email"
               placeholder="Email"
               value={values.email || ''}
-              onChange={handleChange}
+              onChange={handleInputChange}
               onBlur={handleBlur}
               className={errors.email && touched.email ? 'InvalidInput' : ''}
             />
@@ -196,7 +205,7 @@ const UserForm = () => {
               id="skype"
               name="skype"
               value={values.skype || ''}
-              onChange={handleChange}
+              onChange={handleInputChange}
               onBlur={handleBlur}
               className={errors.skype && touched.skype ? 'InvalidInput' : ''}
             />
