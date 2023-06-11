@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { updateAccessToken } from 'redux/auth/authSlice';
-import { PasswordRecoveryForm } from 'components/PasswordRecoveryForm/PasswordRecoveryForm';
+import { PasswordForm } from 'components/PasswordRecoveryForm/PasswordForm';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 
-import { Container, FormWrapper } from './PasswordRecoveryPage.styled';
+import { Container, FormWrapper } from './PasswordPage.styled';
 
-const PasswordRecoveryPage = () => {
+const PasswordPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,12 +19,12 @@ const PasswordRecoveryPage = () => {
   return (
     <Container>
       <FormWrapper>
-        <PasswordRecoveryForm />
+        <PasswordForm />
       </FormWrapper>
 
-      <AuthNavigate link="/login" text="Log In" />
+      <AuthNavigate link="/login" text="Go back" />
     </Container>
   );
 };
 
-export default PasswordRecoveryPage;
+export default PasswordPage;
