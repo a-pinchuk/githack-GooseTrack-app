@@ -56,4 +56,8 @@ export const CloseButton = styled.button`
 
 export const MyCloseIcon = styled(CloseIcon)`
   stroke: ${p => p.theme.colors.primary_text_mode};
+  :hover {
+    stroke: rgb(62, 133, 243);
+    transition: stroke 250ms linear 0s;
+  }
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const colorWhite = '#fff';
-const colorGray = '#343434';
+// const colorGray = '#343434';
 const colorBlue = '#3e85f3';
 const fontFamily = 'Inter';
 const fontWeightBold = 600;

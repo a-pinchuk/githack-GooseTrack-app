@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PaginatorWrapper = styled.div`
   width: 100%;
-  height: 30px;
+  height: 34px;
   display: flex;
   justify-content: space-between;
 
@@ -10,13 +10,13 @@ export const PaginatorWrapper = styled.div`
     width: 290px;
     height: 34px;
     justify-content: flex-start;
-    gap: 8px;
+    /* gap: 8px; */
   }
 `;
 
 export const PaginatorDate = styled.button`
   width: 200px;
-  height: 30px;
+  height: 34px;
   padding: 6px 12px;
   background-color: ${props => props.theme.colors.primary};
   border: ${props => props.theme.borders.none};
@@ -28,6 +28,7 @@ export const PaginatorDate = styled.button`
   text-align: center;
   text-transform: uppercase;
   color: ${props => props.theme.colors.white};
+  margin-right: auto;
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     height: 34px;
     padding: 8px 12px;

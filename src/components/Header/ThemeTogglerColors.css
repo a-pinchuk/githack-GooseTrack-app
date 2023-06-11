@@ -25,6 +25,7 @@ html[data-theme='light'] {
   --textarea-border: none;
   --reviews-list: rgba(227, 243, 255, 0.5);
   --reviews-content: rgba(17, 17, 17, 0.7);
+  --scrollbar-bg: grey;
 }
 
 html[data-theme='dark'] {
@@ -52,9 +53,35 @@ html[data-theme='dark'] {
   --textarea-border: 1px solid rgba(255, 255, 255, 0.15);
   --reviews-list: #21222c;
   --reviews-content: rgba(255, 255, 255, 0.7);
+  --scrollbar-bg: #2d3037;
 }
 
 body {
   background: var(--background);
   /* transition: background-color 400ms;     */
+}
+html {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg);
+    border-radius: 12px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    /* height: 112px; */
+    background: var(--second-backgrond);
+    border-radius: 12px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-bg);
+  }
 }
