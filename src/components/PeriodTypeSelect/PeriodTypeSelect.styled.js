@@ -15,13 +15,16 @@ export const PeriodTypeBtn = styled.button`
   font-size: ${props => props.theme.fontSizes.s};
   line-height: 1.125;
   text-align: center;
-  color: ${props => props.theme.colors.primary};
+  color: ${props =>
+    props.isActive
+      ? props.theme.colors.period_type_btn_active_content
+      : props.theme.colors.primary};
   cursor: pointer;
 
   background-color: ${props =>
     props.isActive
-      ? props.theme.colors.darkBlue
-      : props.theme.colors.lightBlue};
+      ? props.theme.colors.period_type_btn_active
+      : props.theme.colors.period_type_btn_not_active};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     font-size: ${props => props.theme.fontSizes.m};

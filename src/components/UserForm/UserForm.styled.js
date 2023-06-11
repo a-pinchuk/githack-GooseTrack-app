@@ -2,16 +2,20 @@ import styled from 'styled-components';
 import { ReactComponent as Avatar } from '../../images/avatar.svg';
 import { ReactComponent as Cross } from '../../images/cross.svg';
 
+import InputMask from 'react-input-mask';
 import { DatePicker } from '@mui/x-date-pickers';
 
 export const StyledDataPicker = styled(DatePicker)`
   input {
     padding-left: 0px;
+    color: ${p => p.theme.colors.primary_text_mode};
   }
   input::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
-    color: #34343480;
+    color: ${p => p.theme.colors.primary_text_mode};
+    font-weight: 400 !important;
+    opacity: 1;
   }
   /* Input value */
   .MuiInputBase-root {
@@ -24,12 +28,14 @@ export const StyledDataPicker = styled(DatePicker)`
     border: 1px solid #11111126;
   }
   .MuiOutlinedInput-root {
+    /* border: none; */
     min-width: 250px;
     height: 42px;
     padding-left: 14px;
     padding-right: 14px;
     outline: none;
-    border: none;
+
+    /* border: ${p => p.theme.colors.user_input_border}; */
     border-radius: ${p => p.theme.radii.small};
 
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
@@ -39,34 +45,25 @@ export const StyledDataPicker = styled(DatePicker)`
       border: 1px solid #111111;
     }
   }
-  /* icon */
-  .MuiButtonBase-root {
-    color: rgb(126 123 123);
-    &:hover,
-    &:focus {
-      color: ${p => p.theme.colors.secondary};
-      background-color: white;
-    }
-  }
 `;
 
 export const Container = styled.div`
   max-width: 375px;
-  padding-top: 151px;
+  /* padding-top: 151px; */
   padding-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #eaeaea;
+  /* padding-left: 20px; */
+  /* padding-right: 20px; */
+  background-color: ${p => p.theme.colors.background_mode};
   @media (min-width: 768px) {
     min-width: 768px;
-    padding-top: 132px;
+    /* padding-top: 132px; */
     padding-bottom: 38px;
-    padding-left: 32px;
-    padding-right: 32px;
+    /* padding-left: 32px; */
+    /* padding-right: 32px; */
   }
   @media (min-width: 1440px) {
     max-width: 100%;
-    padding-top: 40px;
+    /* padding-top: 40px; */
     padding-bottom: 32px;
   }
 `;
@@ -78,7 +75,7 @@ export const FormContainer = styled.form`
   padding-bottom: 40px;
   padding-left: 18px;
   padding-right: 18px;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.colors.second_backgrond_mode};
   border-radius: ${p => p.theme.radii.big};
 
   @media (min-width: 768px) {
@@ -169,7 +166,7 @@ export const Heading = styled.div`
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.s};
-  color: ${p => p.theme.colors.balack};
+  color: ${p => p.theme.colors.primary_text_mode};
   text-align: center;
 `;
 
@@ -178,7 +175,7 @@ export const Title = styled.div`
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.xs};
-  color: ${p => p.theme.colors.text};
+  color: ${p => p.theme.colors.user_label_color};
   text-align: center;
 `;
 
@@ -214,10 +211,45 @@ export const Label = styled.label`
   font-weight: 400;
   margin-bottom: 8px;
   line-height: ${p => p.theme.lineHeights.heading};
-  color: ${p => p.theme.colors.black};
+  color: ${p => p.theme.colors.user_label_color};
 `;
 
 export const Input = styled.input`
+  min-width: 250px;
+  height: 42px;
+  padding-left: 14px;
+  padding-right: 14px;
+  outline: none;
+
+  border: ${p => p.theme.colors.user_input_border};
+  border-radius: ${p => p.theme.radii.small};
+
+  ${props =>
+    props.value &&
+    `
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight:600;
+    color: black;
+  
+  `}
+  color: ${p => p.theme.colors.primary_text_mode};
+  background-color: transparent;
+  &::placeholder {
+    font-family: ${p => p.theme.fonts.text};
+    font-size: ${p => p.theme.fontSizes.s};
+    color: ${p => p.theme.colors.primary_text_mode};
+  }
+  &:hover,
+  &:focus {
+    border: 1px solid #111111;
+  }
+  @media (min-width: 768px) {
+    height: 46px;
+  }
+`;
+
+export const StyledInputMask = styled(InputMask)`
   min-width: 250px;
   height: 42px;
   padding-left: 14px;
@@ -247,9 +279,15 @@ export const Input = styled.input`
     height: 46px;
   }
 `;
-
 export const ErrorMessage = styled.div`
   color: ${p => p.theme.colors.redError};
+  font-size: 12px;
+  margin-top: 3px;
+  margin-left: 8px;
+  @media (min-width: 768px) {
+    margin-top: 4px;
+    font-size: 14px;
+  }
 `;
 
 export const Button = styled.button`
@@ -269,10 +307,11 @@ export const Button = styled.button`
   text-align: center;
   color: ${p => p.theme.colors.white};
   background-color: ${p =>
-    p.disabled ? p.theme.colors.muted : p.theme.colors.primary};
+    p.disabled ? p.theme.colors.background_mode : p.theme.colors.primary};
   border-radius: ${p => p.theme.radii.big};
+
   border: ${p => p.theme.borders.none};
-  cursor: pointer;
+  cursor: ${p => (p.disabled ? 'default' : 'pointer')};
   &:hover(:not disabled),
   &:focus(:not disabled) {
     background-color: ${p => p.theme.colors.secondary};

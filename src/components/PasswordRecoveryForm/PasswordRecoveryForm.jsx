@@ -14,26 +14,25 @@ import {
   PasswordInputWrapper,
   VisibilityBtn,
   Button,
-  Svg,
-  ResetPasswordLink,
-} from './LoginForm.styled';
+} from './PasswordRecoveryForm.styled';
 
 import sprite from 'icons/sprite.svg';
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('This is an ERROR email')
-    .required('Email is required'),
   password: Yup.string()
     .required('Password is required')
     .min(6, 'Password must be at least 6 characters long')
     .matches(/^\S*$/, 'Password must not contain spaces'),
+  passwordConfirm: Yup.string()
+    .required('Password confirmation is required')
+    .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const LoginForm = () => {
+export const PasswordRecoveryForm = () => {
   const dispatch = useDispatch();
 
   const [passwordType, setPasswordType] = useState('password');
+  const [confirmPasswordType, setConfirmPasswordType] = useState('password');
 
   const togglePassword = () => {
     if (passwordType === 'password') {
@@ -43,9 +42,17 @@ export const LoginForm = () => {
     setPasswordType('password');
   };
 
+  const toggleConfirmPassword = () => {
+    if (confirmPasswordType === 'password') {
+      setConfirmPasswordType('text');
+      return;
+    }
+    setConfirmPasswordType('password');
+  };
+
   return (
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{ password: '', passwordConfirm: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting }) => {
         await dispatch(logIn(values));
@@ -62,35 +69,8 @@ export const LoginForm = () => {
 
         return (
           <Form>
-            <Title>Log In</Title>
-            <Label className={isValid('email')}>
-              Email
-              <InputWrapper>
-                <Field
-                  className={isValid('email')}
-                  type="email"
-                  name="email"
-                  placeholder="Enter email"
-                  title="Email must be in the format username@domain.com"
-                  value={values.email}
-                />
+            <Title>Password recovery</Title>
 
-                {isValid('email') === 'is-valid' && (
-                  <svg height="20" width="20" className="error-success">
-                    <use href={sprite + '#icon-input-success'}></use>
-                  </svg>
-                )}
-                {isValid('email') === 'is-invalid' && (
-                  <svg height="20" width="20" className="error-success">
-                    <use href={sprite + '#icon-input-error'}></use>
-                  </svg>
-                )}
-              </InputWrapper>
-              {isValid('email') === 'is-valid' && (
-                <p>This is a CORRECT email</p>
-              )}
-              <ErrorMessage name="email" component="div" />
-            </Label>
             <Label className={isValid('password')}>
               Password
               <PasswordInputWrapper>
@@ -129,17 +109,50 @@ export const LoginForm = () => {
                 <p>This is a CORRECT password</p>
               )}
               <ErrorMessage name="password" component="div" />
-              
-              <ResetPasswordLink to="/password">
-                Forgot your password ?
-              </ResetPasswordLink>
+            </Label>
+
+            <Label className={isValid('passwordConfirm')}>
+              Confirm Password
+              <PasswordInputWrapper>
+                <Field
+                  className={isValid('passwordConfirm')}
+                  type={confirmPasswordType}
+                  name="passwordConfirm"
+                  placeholder="Confirm password"
+                  title="Please confirm your password"
+                  value={values.passwordConfirm}
+                />
+
+                <VisibilityBtn type="button" onClick={toggleConfirmPassword}>
+                  {confirmPasswordType === 'password' ? (
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('passwordConfirm')}
+                    >
+                      <use href={sprite + '#icon-hide'}></use>
+                    </svg>
+                  ) : (
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('passwordConfirm')}
+                    >
+                      <use href={sprite + '#icon-show'}></use>
+                    </svg>
+                  )}
+                </VisibilityBtn>
+              </PasswordInputWrapper>
+              {isValid('passwordConfirm') === 'is-valid' && (
+                <p>This is a CORRECT password confirmation</p>
+              )}
+              <ErrorMessage name="passwordConfirm" component="div" />
             </Label>
 
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting' : 'Log in'}
-              <Svg>
-                <use href={sprite + '#icon-enter'}></use>
-              </Svg>
+              {isSubmitting ? 'Submitting' : 'Send'}
             </Button>
           </Form>
         );

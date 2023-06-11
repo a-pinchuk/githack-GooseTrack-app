@@ -8,9 +8,11 @@ export const instance = axios.create({
   baseURL: 'https://githack-goosetrack.onrender.com/api',
 });
 
-const setAuthHeader = token => {
-  if (token) {
-    return (instance.defaults.headers.common.Authorization = `Bearer ${token}`);
+const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+
+const setAuthHeader = accessToken => {
+  if (accessToken) {
+    return (instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`);
   }
   return (instance.defaults.headers.common.Authorization = '');
 };
@@ -99,7 +101,7 @@ export const currentUser = createAsyncThunk(
   '/users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
@@ -123,20 +125,54 @@ export const updateUserInfo = createAsyncThunk(
       formData.append('avatar', avatar);
       formData.append('name', name);
       formData.append('email', email);
-      formData.append('phone', phone);
-      formData.append('skype', skype);
-      formData.append('birthday', birthday);
+      formData.append('phone', phone || '');
+      formData.append('skype', skype || '');
+      formData.append('birthday', dateRegex.test(birthday) ? birthday : '');
 
-      const response = await instance.patch(`/users/user/`, formData, {
+      const response = await instance.patch(`/users/user`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      Notify.success(`User information was updated`);
+      Notify.success(`${response.data.user.name} profile was updated`);
       return response.data;
     } catch (e) {
       Notify.failure(`Something was wronge`);
       return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const forgotPassword = createAsyncThunk(
+  '/users/forgot',
+  async (email, thunkAPI) => {
+    try {
+      const res = await instance.post('/users/forgot', {
+        email,
+      });
+      Notify.success(`Success`);
+      return res.data;
+    } catch (error) {
+      Notify.failure(`Bad request`);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  '/users/reset-password',
+  async ({ accessToken, newpassword }, thunkAPI) => {
+    try {
+      const res = await instance.post('/users/reset-password', {
+        accessToken,
+        newpassword,
+      });
+
+      Notify.success(`Success`);
+      return res.data;
+    } catch (error) {
+      Notify.failure(`Bad request`);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

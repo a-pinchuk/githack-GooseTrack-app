@@ -27,7 +27,9 @@ export const IconBthArrow = styled(Arrow)`
   width: 16px;
   height: 16px;
   stroke: ${({ $isactive }) =>
-    $isactive ? `${theme.colors.secondary}` : `${theme.colors.black}`};
+    $isactive
+      ? `${theme.colors.secondary}`
+      : `${theme.colors.primary_text_mode}`};
   transition: stroke 250ms linear;
   margin-right: 10px;
 
@@ -40,7 +42,7 @@ export const IconBthPencil = styled(Pencil)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: ${theme.colors.black};
+  stroke: ${theme.colors.primary_text_mode};
   transition: stroke 250ms linear;
   margin-right: 10px;
   &:hover {
@@ -52,7 +54,7 @@ export const IconBthTrash = styled(Trash)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: ${theme.colors.black};
+  stroke: ${theme.colors.primary_text_mode};
   transition: stroke 250ms linear;
   &:hover {
     stroke: ${theme.colors.secondary};
@@ -61,8 +63,9 @@ export const IconBthTrash = styled(Trash)`
 
 export const Tooltip = styled.div`
   right: -15px;
-  background: ${theme.colors.background};
+  background: ${theme.colors.modal_window};
   border-radius: 8px;
+  border: ${theme.colors.user_input_border};
   padding: 20px 24px 20px 24px;
   box-shadow: ${theme.shadows.boxShadow};
   height: 90.78px;
@@ -84,6 +87,8 @@ export const TooltipButton = styled.button`
   padding: 0;
   transition: color 250ms linear;
   cursor: pointer;
+  color: ${theme.colors.second_text_mode};
+
   &:hover {
     color: ${theme.colors.secondary};
     svg {
@@ -99,4 +104,5 @@ export const TooltipButtonItem = styled.li`
   &:not(:last-child) {
     margin-bottom: 14px;
   }
+  color: ${theme.colors.second_text_mode};
 `;

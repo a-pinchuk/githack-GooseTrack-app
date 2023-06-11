@@ -2,9 +2,6 @@ import { Modal } from 'components/Modal/Modal';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-import { fetchTaskById } from 'services/apiTasks';
 
 // ! task_info
 // Edit task
@@ -17,33 +14,14 @@ import { fetchTaskById } from 'services/apiTasks';
 //   category: 'in-progress',
 // };
 export const TaskModal = ({ task_info, handlerCloseModal }) => {
-  const [errorFetch, setErrorFetch] = useState(false);
-
   const [initialData, setInitialData] = useState(null);
   const { currentDay } = useParams();
 
   useEffect(() => {
-    if (errorFetch) {
-      Notify.failure(`Error fetch task`);
-      handlerCloseModal();
-    }
-  }, [errorFetch, handlerCloseModal]);
+    const { _id, category } = task_info;
 
-  useEffect(() => {
-    const { id, category } = task_info;
-
-    const loadTask = async id => {
-      //TODO - read task from bac-end
-      const taks = await fetchTaskById(id);
-      if (!taks) {
-        setErrorFetch(true);
-        return;
-      }
-      setInitialData({ ...taks.data, statusOperation: 'edit' });
-    };
-
-    if (id) {
-      loadTask(id);
+    if (_id) {
+      setInitialData({ ...task_info, statusOperation: 'edit' });
     } else if (category) {
       // todo Треба знайти час завершення останньої тски у вибраний день!
       setInitialData({

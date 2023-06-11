@@ -13,10 +13,12 @@ export const Review = styled.p`
   font-size: 12px;
   line-height: 1.33;
 
-  color: rgba(17, 17, 17, 0.7);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.29;
   }
+
+  color: ${p => p.theme.colors.reviews_content};
+
 `;

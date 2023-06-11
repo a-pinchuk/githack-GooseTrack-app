@@ -15,9 +15,8 @@ export const TasksColumn = ({ taskData, title, category, toolbarData }) => {
   };
 
   const handlerOpenModal = task => {
-    const { id } = task;
-    if (!id) task.category = category;
-
+    const { _id } = task;
+    if (!_id) task.category = category;
     setTask_info(task);
     setShowModal(true);
   };
@@ -30,6 +29,7 @@ export const TasksColumn = ({ taskData, title, category, toolbarData }) => {
           toolbarData={toolbarData}
           taskData={taskData}
           handlerOpenModal={handlerOpenModal}
+          title={title}
         />
         <AddTasksBth handlerOpenModal={handlerOpenModal} />
       </TaskItem>

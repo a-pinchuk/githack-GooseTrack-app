@@ -31,7 +31,7 @@ export const IconBthPencil = styled(Pencil)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: black;
+  stroke: ${p => p.theme.colors.primary_text_mode};
   transition: stroke 250ms linear;
 
   :hover,
@@ -44,7 +44,8 @@ export const IconBthTrash = styled(Trash)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: black;
+  stroke: ${p => p.theme.colors.primary_text_mode};
+
   transition: stroke 250ms linear;
 
   :hover,
