@@ -11,7 +11,7 @@ const LoginPage = () => {
 
       <AuthNavigate link="/register" text="Sign up" />
 
-      <Link href="http://localhost:3000/api/users/google">
+      <Link href="https://githack-goosetrack.onrender.com/api/users/google">
         Login with Google
       </Link>
       <ImgWrapper />
