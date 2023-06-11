@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from 'theme';
 
 export const FormContainer = styled.div`
   margin: 0;
@@ -9,7 +10,7 @@ export const RatingText = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: ${p => p.theme.colors.modal_form_label};
+  color: ${theme.colors.modal_form_label};
 
   margin: 0 0 8px;
 `;
@@ -19,7 +20,7 @@ export const LabelText = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: ${p => p.theme.colors.modal_form_label};
+  color: ${theme.colors.modal_form_label};
 
   margin: 0 0 8px;
 `;
@@ -27,8 +28,8 @@ export const LabelText = styled.p`
 export const StyledTextArea = styled.textarea`
   width: 100%;
   height: 127px;
-  background-color: ${p => p.theme.colors.textarea_bg};
-  border: ${p => p.theme.colors.textarea_border};
+  background-color: ${theme.colors.textarea_bg};
+  border: ${theme.colors.textarea_border};
   border-radius: 8px;
   padding: 14px 18px;
   font-family: 'Inter';
@@ -41,7 +42,6 @@ export const StyledTextArea = styled.textarea`
   margin-bottom: 14px;
   color: ${p => p.theme.colors.second_text_mode};
 
-
   :focus {
     outline: none;
     border-width: 1px;
@@ -53,7 +53,7 @@ export const StyledTextArea = styled.textarea`
     font-weight: 600;
     font-size: 14px;
     line-height: 1.29;
-    color: ${p => p.theme.colors.second_text_mode};
+    color: ${theme.colors.second_text_mode};
     /* color: ${p => p.theme.colors.primary_text_mode}; */
   }
 `;
@@ -99,7 +99,8 @@ export const StyledEditButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${props => (props.disabled ? '#FAFBF9' : '#e5edfa')};
+  background-color: ${props =>
+    props.disabled ? '#FAFBF9' : theme.colors.second_backgrond_mode};
   color: #343434;
 
   border: 0;
@@ -132,7 +133,7 @@ export const StyledCancelButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: #e5edfa;
+  background-color: ${theme.colors.second_backgrond_mode};
   color: #343434;
 
   border: 0;

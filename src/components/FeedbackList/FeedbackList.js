@@ -1,13 +1,10 @@
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
 
 import { ReactComponent as FullLittleStar } from 'images/littleStarFull.svg';
 import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
 
-import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
-import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
 import { ReviewItem } from 'components/ReviewItem/ReviewItem';
 import { IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,38 +18,14 @@ import {
   ReviewHeader,
   UserAvatar,
   UserAvatarWrapper,
+  IconBthPencil,
+  IconBthTrash,
 } from './FeedbackList.styled';
 
 import { deleteReview, fetchUserReviews } from 'redux/reviews/operations';
 import { selectAllReviews } from 'redux/reviews/selectors';
 import { useEffect } from 'react';
-
-export const IconBthPencil = styled(Pencil)`
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-  stroke: ${p => p.theme.colors.primary_text_mode};
-  transition: stroke 250ms linear;
-
-  :hover,
-  :focus {
-    stroke: #3e85f3;
-  }
-`;
-
-export const IconBthTrash = styled(Trash)`
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-  stroke: ${p => p.theme.colors.primary_text_mode};
-
-  transition: stroke 250ms linear;
-
-  :hover,
-  :focus {
-    stroke: #3e85f3;
-  }
-`;
+import { theme } from 'theme';
 
 function stringToColor(string) {
   let hash = 0;
@@ -161,8 +134,18 @@ export const FeedbackList = ({ toggleEditFeedback }) => {
                   value={review.rating}
                   readOnly
                   precision={1}
-                  icon={<FullLittleStar fontSize="inherit" />}
-                  emptyIcon={<EmptyLittleStar fontSize="inherit" />}
+                  icon={
+                    <FullLittleStar
+                      fontSize="inherit"
+                      style={{ fill: '#FFAC33' }}
+                    />
+                  }
+                  emptyIcon={
+                    <EmptyLittleStar
+                      fontSize="inherit"
+                      style={{ fill: `${theme.colors.empty_star}` }}
+                    />
+                  }
                   sx={{ display: 'flex', gap: '8px' }}
                 />
               </Box>

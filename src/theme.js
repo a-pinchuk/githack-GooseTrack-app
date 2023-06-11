@@ -93,6 +93,8 @@ export const theme = {
     reviews_content: 'var(--reviews-content)',
 
     // rgba(17, 17, 17, 0.7); ---->>>>>  gba(255, 255, 255, 0.7);
+
+    empty_star: 'var(--empty-star)',
   },
   fonts: {
     body: 'Coolvetica',

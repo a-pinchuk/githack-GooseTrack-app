@@ -25,6 +25,7 @@ html[data-theme='light'] {
   --textarea-border: none;
   --reviews-list: rgba(227, 243, 255, 0.5);
   --reviews-content: rgba(17, 17, 17, 0.7);
+  --empty-star: #cec9c1;
 }
 
 html[data-theme='dark'] {
@@ -52,6 +53,7 @@ html[data-theme='dark'] {
   --textarea-border: 1px solid rgba(255, 255, 255, 0.15);
   --reviews-list: #21222c;
   --reviews-content: rgba(255, 255, 255, 0.7);
+  --empty-star: #353647;
 }
 
 body {
