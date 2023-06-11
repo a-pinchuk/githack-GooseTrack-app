@@ -13,8 +13,8 @@ export const StyledDataPicker = styled(DatePicker)`
   input::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
+    color: ${p => p.theme.colors.primary_text_mode};
     font-weight: 400 !important;
-    color: #34343480;
     opacity: 1;
   }
   /* Input value */
@@ -28,12 +28,14 @@ export const StyledDataPicker = styled(DatePicker)`
     border: 1px solid #11111126;
   }
   .MuiOutlinedInput-root {
+    /* border: none; */
     min-width: 250px;
     height: 42px;
     padding-left: 14px;
     padding-right: 14px;
     outline: none;
-    border: none;
+
+    /* border: ${p => p.theme.colors.user_input_border}; */
     border-radius: ${p => p.theme.radii.small};
 
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
@@ -43,34 +45,25 @@ export const StyledDataPicker = styled(DatePicker)`
       border: 1px solid #111111;
     }
   }
-  /* icon */
-  .MuiButtonBase-root {
-    color: rgb(126 123 123);
-    &:hover,
-    &:focus {
-      color: ${p => p.theme.colors.secondary};
-      background-color: white;
-    }
-  }
 `;
 
 export const Container = styled.div`
   max-width: 375px;
-  padding-top: 151px;
+  /* padding-top: 151px; */
   padding-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px; */
+  /* padding-right: 20px; */
   background-color: ${p => p.theme.colors.background_mode};
   @media (min-width: 768px) {
     min-width: 768px;
-    padding-top: 132px;
+    /* padding-top: 132px; */
     padding-bottom: 38px;
-    padding-left: 32px;
-    padding-right: 32px;
+    /* padding-left: 32px; */
+    /* padding-right: 32px; */
   }
   @media (min-width: 1440px) {
     max-width: 100%;
-    padding-top: 40px;
+    /* padding-top: 40px; */
     padding-bottom: 32px;
   }
 `;
@@ -227,8 +220,10 @@ export const Input = styled.input`
   padding-left: 14px;
   padding-right: 14px;
   outline: none;
+
   border: ${p => p.theme.colors.user_input_border};
   border-radius: ${p => p.theme.radii.small};
+
   ${props =>
     props.value &&
     `
@@ -239,9 +234,7 @@ export const Input = styled.input`
   
   `}
   color: ${p => p.theme.colors.primary_text_mode};
-
   background-color: transparent;
-
   &::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
@@ -314,13 +307,11 @@ export const Button = styled.button`
   text-align: center;
   color: ${p => p.theme.colors.white};
   background-color: ${p =>
-    p.disabled ? p.theme.colors.muted : p.theme.colors.primary};
+    p.disabled ? p.theme.colors.background_mode : p.theme.colors.primary};
   border-radius: ${p => p.theme.radii.big};
-  border-radius: ${p =>
-    p.disabled ? p.theme.radii.big : p.theme.colors.primary};
 
   border: ${p => p.theme.borders.none};
-  cursor: pointer;
+  cursor: ${p => (p.disabled ? 'default' : 'pointer')};
   &:hover(:not disabled),
   &:focus(:not disabled) {
     background-color: ${p => p.theme.colors.secondary};
