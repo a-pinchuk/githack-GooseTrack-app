@@ -7,11 +7,11 @@ import { fetchAllReviews } from 'redux/reviews/operations';
 import { selectAllReviews } from 'redux/reviews/selectors';
 import { ReviewCard } from './ReviewCard';
 
-import { ReviewsContainer } from './ReviewsSlider.styled';
+import { ReviewsContainer, ArrowContainer } from './ReviewsSlider.styled';
 
 import sprite from 'icons/sprite.svg';
 
-const SlickRight = ({ currentSlide, slideCount, ...props }) => (
+const SlickRight = props => (
   <div
     {...props}
     className={'slick-prev slick-arrow'}
@@ -25,7 +25,7 @@ const SlickRight = ({ currentSlide, slideCount, ...props }) => (
   </div>
 );
 
-const SlickLeft = ({ currentSlide, slideCount, ...props }) => (
+const SlickLeft = props => (
   <div
     {...props}
     className={'slick-next slick-arrow'}
@@ -46,6 +46,8 @@ const settings = {
   slidesToShow: 2,
   slidesToScroll: 1,
   adaptiveHeight: true,
+  // autoplay: true,
+  // autoplaySpeed: 9000,
   responsive: [
     {
       breakpoint: 1439,
@@ -93,6 +95,7 @@ export const ReviewsSlider = () => {
           staying organized.
         </ReviewCard>
       </Slider>
+      <ArrowContainer />
     </ReviewsContainer>
   );
 };

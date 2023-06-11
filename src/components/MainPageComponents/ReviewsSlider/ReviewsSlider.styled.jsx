@@ -92,3 +92,18 @@ export const ReviewsContainer = styled.section`
     right: calc(50% + 15px);
   }
 `;
+
+export const ArrowContainer = styled.div`
+  margin-top: 8px;
+
+  height: 50px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 18px;
+    height: 61px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 32px;
+  }
+`;
