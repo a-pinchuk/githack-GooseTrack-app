@@ -11,7 +11,7 @@ export const HeaderTitle = styled.h3`
 
   color: ${props => props.theme.colors.primary_text_mode};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
-  0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     display: block;
