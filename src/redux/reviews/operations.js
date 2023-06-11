@@ -17,8 +17,8 @@ export const fetchUserReviews = createAsyncThunk(
   'reviews/fetchUserReviews',
   async (_, thunkAPI) => {
     try {
-      const response = await instance.get('/reviews/my-reviews');
-      return response.data;
+      const response = await instance.get('/reviews/my-reviews?limit=30');
+      return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -45,7 +45,7 @@ export const addReview = createAsyncThunk(
         rating,
         comment,
       });
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,5 +1,6 @@
 import { ReactComponent as FavoriteIcon } from 'images/fullStar.svg';
 import { ReactComponent as FavoriteBorderIcon } from 'images/emptyStar.svg';
+import { useDispatch } from 'react-redux';
 
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -18,6 +19,8 @@ import {
   StyledCancelButton,
 } from './FeedbackForm.styled';
 
+import { addReview, updateReview } from '../../redux/reviews/operations';
+
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
     color: '#ff6d75',
@@ -32,10 +35,15 @@ export function FeedbackForm({
   rating,
   toggleEditFeedback,
   isEditFeedbackOpen,
+  id,
 }) {
   const [value, setValue] = useState(0);
   const [review, setReview] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+
+  // const { }=useSelector()
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isEditFeedbackOpen) {
@@ -63,11 +71,23 @@ export function FeedbackForm({
   const handleFeedbackSubmit = e => {
     e.preventDefault();
     if (isEditFeedbackOpen) {
-      console.log('EDIT');
+      dispatch(updateReview({ id, rating: value, comment: review }));
       toggleEditFeedback();
+
       return;
     }
-    console.log('Feedback Submit');
+
+    dispatch(
+      addReview({
+        rating: value,
+        comment: review,
+      })
+    );
+    setValue(null);
+    setReview('');
+    setCharacterCount(0);
+    localStorage.setItem('review', JSON.stringify(''));
+    localStorage.setItem('rating', JSON.stringify(null));
   };
 
   const handleTextareaChange = e => {
@@ -133,7 +153,7 @@ export function FeedbackForm({
           <div style={{ display: 'flex', gap: '8px' }}>
             <StyledEditButton
               type="submit"
-              disabled={!isReviewValid}
+              disabled={!isReviewValid || !value || !review}
               isReviewValid={isReviewValid}
             >
               Edit
@@ -143,7 +163,10 @@ export function FeedbackForm({
             </StyledCancelButton>
           </div>
         ) : (
-          <StyledButton type="submit" disabled={!isReviewValid}>
+          <StyledButton
+            type="submit"
+            disabled={!isReviewValid || !value || !review}
+          >
             Save
           </StyledButton>
         )}

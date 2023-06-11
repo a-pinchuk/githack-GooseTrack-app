@@ -6,7 +6,8 @@ export const StyledFeedbackList = styled.ul`
   gap: 20px;
   padding: 16px;
   width: 100%;
-  height: 292px;
+  height: auto;
+  max-height: 292px;
   list-style: none;
   background-color: rgba(227, 243, 255, 0.5);
   border-radius: 8px;
@@ -69,4 +70,20 @@ export const ReviewHeader = styled.div`
   flex-direction: column;
   padding-left: 12px;
   position: relative;
+`;
+
+export const UserAvatar = styled.img`
+  height: auto;
+  width: 100%;
+`;
+
+export const UserAvatarWrapper = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;

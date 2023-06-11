@@ -3,7 +3,9 @@ const { default: styled } = require('styled-components');
 export const Review = styled.p`
   padding-left: 12px;
   margin: 0;
-  height: auto;
+  height: ${props => (props.expanded ? 'auto' : '78px')};
+  /* height: auto; */
+
   cursor: pointer;
 
   font-family: 'Inter';

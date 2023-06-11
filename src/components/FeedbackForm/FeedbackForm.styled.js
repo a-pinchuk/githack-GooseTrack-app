@@ -173,6 +173,7 @@ export const CharactersQuantityTextContainer = styled.div`
   display: flex;
   align-items: flex-start;
   height: 14px;
+  margin-bottom: 4px;
   @media screen and (min-width: 1440px) {
     height: 18px;
   }
