@@ -14,9 +14,7 @@ import {
   PasswordInputWrapper,
   VisibilityBtn,
   Button,
-  Svg,
-  ResetPasswordLink,
-} from './LoginForm.styled';
+} from './PasswordRecoveryForm.styled';
 
 import sprite from 'icons/sprite.svg';
 
@@ -28,12 +26,16 @@ const validationSchema = Yup.object().shape({
     .required('Password is required')
     .min(6, 'Password must be at least 6 characters long')
     .matches(/^\S*$/, 'Password must not contain spaces'),
+  passwordConfirm: Yup.string()
+    .required('Password confirmation is required')
+    .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const LoginForm = () => {
+export const PasswordRecoveryForm = () => {
   const dispatch = useDispatch();
 
   const [passwordType, setPasswordType] = useState('password');
+  const [confirmPasswordType, setConfirmPasswordType] = useState('password');
 
   const togglePassword = () => {
     if (passwordType === 'password') {
@@ -43,9 +45,17 @@ export const LoginForm = () => {
     setPasswordType('password');
   };
 
+  const toggleConfirmPassword = () => {
+    if (confirmPasswordType === 'password') {
+      setConfirmPasswordType('text');
+      return;
+    }
+    setConfirmPasswordType('password');
+  };
+
   return (
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{ email: '', password: '', passwordConfirm: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting }) => {
         await dispatch(logIn(values));
@@ -62,7 +72,8 @@ export const LoginForm = () => {
 
         return (
           <Form>
-            <Title>Log In</Title>
+            <Title>Password recovery</Title>
+
             <Label className={isValid('email')}>
               Email
               <InputWrapper>
@@ -91,8 +102,9 @@ export const LoginForm = () => {
               )}
               <ErrorMessage name="email" component="div" />
             </Label>
+
             <Label className={isValid('password')}>
-              Password
+              New Password
               <PasswordInputWrapper>
                 <Field
                   className={isValid('password')}
@@ -129,17 +141,50 @@ export const LoginForm = () => {
                 <p>This is a CORRECT password</p>
               )}
               <ErrorMessage name="password" component="div" />
-              
-              <ResetPasswordLink to="/password">
-                Forgot your password ?
-              </ResetPasswordLink>
+            </Label>
+
+            <Label className={isValid('passwordConfirm')}>
+              Confirm Password
+              <PasswordInputWrapper>
+                <Field
+                  className={isValid('passwordConfirm')}
+                  type={confirmPasswordType}
+                  name="passwordConfirm"
+                  placeholder="Confirm password"
+                  title="Please confirm your password"
+                  value={values.passwordConfirm}
+                />
+
+                <VisibilityBtn type="button" onClick={toggleConfirmPassword}>
+                  {confirmPasswordType === 'password' ? (
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('passwordConfirm')}
+                    >
+                      <use href={sprite + '#icon-hide'}></use>
+                    </svg>
+                  ) : (
+                    <svg
+                      height="20"
+                      width="20"
+                      stroke="#111111"
+                      className={isValid('passwordConfirm')}
+                    >
+                      <use href={sprite + '#icon-show'}></use>
+                    </svg>
+                  )}
+                </VisibilityBtn>
+              </PasswordInputWrapper>
+              {isValid('passwordConfirm') === 'is-valid' && (
+                <p>This is a CORRECT password confirmation</p>
+              )}
+              <ErrorMessage name="passwordConfirm" component="div" />
             </Label>
 
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting' : 'Log in'}
-              <Svg>
-                <use href={sprite + '#icon-enter'}></use>
-              </Svg>
+              {isSubmitting ? 'Submitting' : 'Reset Password'}
             </Button>
           </Form>
         );
