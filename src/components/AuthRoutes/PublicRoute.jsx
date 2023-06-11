@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { selectUserToken } from 'redux/auth/selectors';
+import { selectAccessToken } from 'redux/auth/selectors';
 
 /**
  * - If the route is restricted and the user is logged in, render a <Navigate> to redirectTo
@@ -9,9 +9,9 @@ import { selectUserToken } from 'redux/auth/selectors';
 
 export const PublicRoute = () => {
   const location = useLocation();
-  const userToken = useSelector(selectUserToken);
+  const userAccessToken = useSelector(selectAccessToken);
 
-  return !userToken ? (
+  return !userAccessToken ? (
     <Outlet />
   ) : (
     <Navigate to={location?.state?.from ?? '/calendar'} replace />

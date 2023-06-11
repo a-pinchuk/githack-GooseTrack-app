@@ -22,34 +22,34 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: emptyUser,
-    token: null,
+    accessToken: null,
     isLoggedIn: false,
     isRefreshing: false,
   },
   reducers: {
     updateAccessToken: (state, action) => {
-      state.token = action.payload;
+      state.accessToken = action.payload;
     },
   },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.accessToken;
+        state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         return {
           ...state,
           user: action.payload.user,
-          token: action.payload.accessToken,
+          accessToken: action.payload.accessToken,
           isLoggedIn: true,
         };
       })
       .addCase(logOut.fulfilled, state => {
         // todo очистити стейт задач
         state.user = emptyUser;
-        state.token = null;
+        state.accessToken = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
       })
