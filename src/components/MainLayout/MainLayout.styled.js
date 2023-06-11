@@ -6,8 +6,6 @@ export const Container = styled.div`
   padding-left: 0;
   padding-right: 0;
 
-  /* margin: 0; */
-
   margin-left: auto;
   margin-right: auto;
 
@@ -28,8 +26,7 @@ export const Main = styled.main`
   position: relative;
 
   display: flex;
-  /* height: 100vh; */
-  /* justify-content: center; */
+  height: 100vh;
 `;
 
 export const WrapLeftColumn = styled.div`
@@ -53,5 +50,17 @@ export const WrapLeftColumn = styled.div`
 `;
 
 export const WrapRightColumn = styled.div`
+  // ! ОТУТ нічого не чіпайте. Тут все гуд. Правте стилі в своїх модулях.
   flex-grow: 1;
+  padding: 0 20px;
+
+  overflow: hidden;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    padding: 0 32px;
+  }
 `;

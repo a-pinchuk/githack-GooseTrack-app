@@ -22,6 +22,7 @@ import { correctToolBarTitle } from '../helper/helper';
 export const TasklToolBar = ({
   toolbarData,
   idData,
+  item,
   handlerOpenModal,
   disableDrag,
   enableDrag,
@@ -88,7 +89,8 @@ export const TasklToolBar = ({
           onClick={handleOpenToolBar}
           $isactive={isVisible}
         />
-        <IconBthPencil onClick={() => handlerOpenModal({ id: idData })} />
+        {/* <IconBthPencil onClick={() => handlerOpenModal({ id: idData })} /> */}
+        <IconBthPencil onClick={() => handlerOpenModal(item)} />
         <IconBthTrash onClick={() => handleDeleted(idData)} />
         {isVisible && (
           <Portal>

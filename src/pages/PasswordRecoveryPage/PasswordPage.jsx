@@ -1,31 +1,30 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateAccessToken } from 'redux/auth/authSlice';
-import { LoginForm } from 'components/LoginForm/LoginForm';
-import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
-import { Container, FormWrapper, ImgWrapper, Link } from './LoginPage.styled';
 
-const LoginPage = () => {
+import { updateAccessToken } from 'redux/auth/authSlice';
+import { PasswordForm } from 'components/PasswordRecoveryForm/PasswordForm';
+import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
+
+import { Container, FormWrapper } from './PasswordPage.styled';
+
+const PasswordPage = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const accessToken = window.location?.search.split('=')[1];
 
     dispatch(updateAccessToken(accessToken));
   }, [dispatch]);
+
   return (
     <Container>
       <FormWrapper>
-        <LoginForm />
+        <PasswordForm />
       </FormWrapper>
 
-      <AuthNavigate link="/register" text="Sign up" />
-
-      <Link href="https://githack-goosetrack.onrender.com/api/users/google">
-        Login with Google
-      </Link>
-      <ImgWrapper />
+      <AuthNavigate link="/login" text="Go back" />
     </Container>
   );
 };
 
-export default LoginPage;
+export default PasswordPage;

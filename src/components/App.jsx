@@ -12,6 +12,9 @@ import { Loader } from './Loader/Loader';
 const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const PasswordPage = lazy(() =>
+  import('pages/PasswordRecoveryPage/PasswordPage')
+);
 const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 const MainLayout = lazy(() => import('./MainLayout/MainLayout'));
@@ -32,6 +35,7 @@ export const App = () => {
             <Route index element={<MainPage />} />
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="password" element={<PasswordPage />} />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/" element={<MainLayout />}>

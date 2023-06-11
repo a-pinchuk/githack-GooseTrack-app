@@ -24,7 +24,7 @@ const CalendarPage = () => {
 
   const todayHandler = () => {
     // Перейти на день
-    console.log('Перейти на день');
+    // console.log('Перейти на день');
     // setToday(moment());
   };
 

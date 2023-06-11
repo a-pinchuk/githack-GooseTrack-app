@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import {
   Form as FormikForm,
   Field as FormikField,
@@ -65,7 +64,7 @@ export const Label = styled.label`
     }
   }
 
-  &:nth-of-type(2) {
+  &:nth-of-type(1) {
     margin-bottom: 32px;
 
     @media screen and (min-width: 768px) {
@@ -143,37 +142,9 @@ export const Field = styled(FormikField)`
   }
 `;
 
-export const PasswordInputWrapper = styled.div`
-  position: relative;
-  margin-top: 8px;
-`;
-
 export const InputWrapper = styled.div`
   position: relative;
   margin-top: 8px;
-`;
-
-export const VisibilityBtn = styled.button`
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  padding: 0;
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  & svg.is-valid {
-    stroke: ${p => p.theme.colors.greenValid};
-    fill: ${p => p.theme.colors.greenValid};
-  }
-
-  & svg.is-invalid {
-    stroke: ${p => p.theme.colors.redErrorLight};
-    fill: ${p => p.theme.colors.redErrorLight};
-  }
 `;
 
 export const Button = styled.button`
@@ -211,53 +182,8 @@ export const Button = styled.button`
   }
 `;
 
-export const Svg = styled.svg`
-  stroke: ${p => p.theme.colors.white};
-  height: 18px;
-  width: 18px;
-
-  @media screen and (min-width: 768px) {
-    height: 20px;
-    width: 20px;
-  }
-`;
-
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
   margin-top: 8px;
   color: ${p => p.theme.colors.redError};
-`;
-
-export const ResetPasswordLink = styled(Link)`
-  display: block;
-
-  margin-top: 8px;
-
-  font-family: ${p => p.theme.fonts.heading};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xs};
-  line-height: ${p => p.theme.lineHeights.body};
-  text-decoration: none;
-
-  /* font-family: ${p => p.theme.fonts.text};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xs};
-  line-height: 1.16; */
-  /* text-align: center; */
-
-  color: ${p => p.theme.colors.primary};
-  /* text-decoration: underline; */
-
-  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
-    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-
-  @media screen and (min-width: 768px) {
-    font-size: ${p => p.theme.fontSizes.s};
-    line-height: 1.21;
-  }
-  /* 
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    line-height: 1.33;
-  } */
 `;
