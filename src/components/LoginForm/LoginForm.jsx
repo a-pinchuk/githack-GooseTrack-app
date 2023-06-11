@@ -129,11 +129,11 @@ export const LoginForm = () => {
                 <p>This is a CORRECT password</p>
               )}
               <ErrorMessage name="password" component="div" />
-              
-              <ResetPasswordLink to="/password">
-                Forgot your password ?
-              </ResetPasswordLink>
             </Label>
+
+            <ResetPasswordLink to="/password">
+              Forgot your password ?
+            </ResetPasswordLink>
 
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Submitting' : 'Log in'}

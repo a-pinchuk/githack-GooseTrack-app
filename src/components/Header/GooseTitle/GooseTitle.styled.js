@@ -17,7 +17,7 @@ export const HeaderTitle = styled.h3`
     font-weight: ${props => props.theme.fontWeights.bold};
     font-size: 32px;
     line-height: 1;
-    color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.primary_text_mode};
     text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
       0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   }
@@ -37,6 +37,6 @@ export const TextMessagePrimary = styled.span`
 
 export const TextMessage = styled(TextMessagePrimary)`
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.primary_text_mode};
   }
 `;

@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import {
+  IconArrowRLeft,
+  IconArrowRight,
   LeftPaginatorBtn,
   PaginatorDate,
   PaginatorWrapper,
@@ -15,25 +17,27 @@ export const PeriodPaginator = ({
   prevHandler,
   nextHandler,
 }) => {
-  const { currentDay } = useParams();
+  const { currentDate, currentDay } = useParams();
+
+  const isDisabled =
+    currentDay === moment().format('YYYY-MM-DD') ||
+    currentDate === moment().format('YYYY-MM-DD');
 
   return (
     <PaginatorWrapper>
-      <PaginatorDate onClick={todayHandler}>
+      <PaginatorDate typeSelect={typeSelect} onClick={todayHandler}>
         {typeSelect === 'month'
           ? today.format('MMMM YYYY')
-          : today.format('D  MMMM YYYY ')}
+          : today.format('D MMM YYYY ')}
       </PaginatorDate>
-      <LeftPaginatorBtn
-        onClick={prevHandler}
-        disabled={
-          currentDay === moment().format('YYYY-MM-DD') ||
-          currentDay === moment().format('YYYY-MM')
-        }
-      >
-        {'<'}
-      </LeftPaginatorBtn>
-      <RightPaginatorBtn onClick={nextHandler}>{'>'}</RightPaginatorBtn>
+      <div>
+        <LeftPaginatorBtn onClick={prevHandler} disabled={isDisabled}>
+          <IconArrowRLeft disabled={isDisabled} />
+        </LeftPaginatorBtn>
+        <RightPaginatorBtn onClick={nextHandler}>
+          <IconArrowRight />
+        </RightPaginatorBtn>
+      </div>
     </PaginatorWrapper>
   );
 };
