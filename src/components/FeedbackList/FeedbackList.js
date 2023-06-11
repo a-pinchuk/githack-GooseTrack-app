@@ -7,7 +7,7 @@ import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
 
 import { ReviewItem } from 'components/ReviewItem/ReviewItem';
 import { IconButton } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   IconButtonContainer,
   ReviewerName,
@@ -22,9 +22,8 @@ import {
   IconBthTrash,
 } from './FeedbackList.styled';
 
-import { deleteReview, fetchUserReviews } from 'redux/reviews/operations';
-import { selectAllReviews } from 'redux/reviews/selectors';
-import { useEffect } from 'react';
+import { deleteReview } from 'redux/reviews/operations';
+
 import { theme } from 'theme';
 
 function stringToColor(string) {
@@ -61,17 +60,12 @@ function stringAvatar(name) {
   };
 }
 
-export const FeedbackList = ({ toggleEditFeedback }) => {
+export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
   const dispatch = useDispatch();
-  const reviews = useSelector(selectAllReviews);
 
   const hanleDeleteButton = id => {
     dispatch(deleteReview(id));
   };
-
-  useEffect(() => {
-    dispatch(fetchUserReviews());
-  }, [dispatch]);
 
   return (
     <StyledFeedbackList>
