@@ -118,14 +118,10 @@ code {
   background-color: #3e85f3;
   border-radius: 16px;
 }
-/* .MuiDialog-paper {
-  border: 2px solid yellow; */
-/* background-color: #3e85f3 !important; */
-/* } */
+
 .MuiDialogContent-root {
   background-color: #3e85f3 !important;
   border-radius: 16px;
-  /* border: 2px solid black; */
 }
 .MuiDialogContent-root:first-of-type {
   border-radius: 16px;
@@ -198,4 +194,21 @@ code {
 }
 .MuiPickersLayout-root > .MuiDialogActions-root {
   display: none;
+}
+
+.MuiButtonBase-root {
+  &.MuiButtonBase-root:hover {
+    color: #3e85f3;
+    background-color: transparent;
+  }
+  &.MuiButtonBase-root:focus {
+    color: #3e85f3;
+    background-color: transparent;
+  }
+  &.MuiPickersDay-root {
+    &:hover,
+    &:focus {
+      background-color: #1f79d2;
+    }
+  }
 }

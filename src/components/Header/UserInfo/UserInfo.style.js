@@ -11,9 +11,11 @@ function getRandomColor() {
 
 export const HeaderUserInfoSection = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const HeaderUserName = styled.h3`
+  margin: 0;
   font-family: ${props => props.theme.fonts.heading};
   font-style: normal;
   font-weight: ${props => props.theme.fontWeights.bold};
