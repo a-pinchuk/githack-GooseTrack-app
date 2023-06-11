@@ -8,9 +8,9 @@ import { selectAccessToken } from 'redux/auth/selectors';
  */
 
 export const PrivateRoute = () => {
-  const accessToken = useSelector(selectAccessToken);
+  const userAccessToken = useSelector(selectAccessToken);
 
-  return accessToken ? (
+  return userAccessToken ? (
     <div style={{ display: 'flex' }}>
       <Outlet />
     </div>
