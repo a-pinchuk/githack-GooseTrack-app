@@ -22,7 +22,7 @@ export const HeaderUserName = styled.h3`
   color: ${props => props.theme.colors.primary_text_mode};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 8px;
   }
 `;
