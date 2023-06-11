@@ -7,12 +7,15 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 import {
+  CharactersQuantityText,
   FormContainer,
   LabelText,
   RatingText,
   StyledButton,
   StyledEditButton,
   StyledTextArea,
+  CharactersQuantityTextContainer,
+  StyledCancelButton,
 } from './FeedbackForm.styled';
 
 const StyledRating = styled(Rating)({
@@ -32,20 +35,21 @@ export function FeedbackForm({
 }) {
   const [value, setValue] = useState(0);
   const [review, setReview] = useState('');
+  const [characterCount, setCharacterCount] = useState(0);
 
   useEffect(() => {
-    console.log('useEffect:');
-
     if (isEditFeedbackOpen) {
       setValue(rating);
       setReview(feedback);
+      setCharacterCount(feedback.length);
       return;
     }
     const storedReview = localStorage.getItem('review');
     const storedRating = localStorage.getItem('rating');
-    console.log('storedRating:', storedRating);
+
     if (storedReview) {
       setReview(JSON.parse(storedReview));
+      setCharacterCount(JSON.parse(storedReview).length);
     } else {
       setReview('');
     }
@@ -67,11 +71,13 @@ export function FeedbackForm({
   };
 
   const handleTextareaChange = e => {
-    setReview(e.target.value);
+    const inputValue = e.target.value;
+    setReview(inputValue);
+    setCharacterCount(inputValue.length);
     if (isEditFeedbackOpen) {
       return;
     }
-    localStorage.setItem('review', JSON.stringify(review));
+    localStorage.setItem('review', JSON.stringify(inputValue));
   };
 
   const handleRatingChange = (e, newValue) => {
@@ -81,6 +87,8 @@ export function FeedbackForm({
     }
     localStorage.setItem('rating', JSON.stringify(newValue));
   };
+
+  const isReviewValid = review.length <= 300;
 
   return (
     <FormContainer>
@@ -111,16 +119,33 @@ export function FeedbackForm({
           name="review"
           value={review}
           onChange={handleTextareaChange}
+          isReviewValid={isReviewValid}
         ></StyledTextArea>
+        <CharactersQuantityTextContainer>
+          {characterCount > 0 && (
+            <CharactersQuantityText isReviewValid={isReviewValid}>
+              Characters entered: {characterCount}
+            </CharactersQuantityText>
+          )}
+        </CharactersQuantityTextContainer>
+
         {isEditFeedbackOpen ? (
           <div style={{ display: 'flex', gap: '8px' }}>
-            <StyledEditButton type="submit">Edit</StyledEditButton>
-            <StyledEditButton onClick={toggleEditFeedback} type="button">
-              Cancel
+            <StyledEditButton
+              type="submit"
+              disabled={!isReviewValid}
+              isReviewValid={isReviewValid}
+            >
+              Edit
             </StyledEditButton>
+            <StyledCancelButton onClick={toggleEditFeedback} type="button">
+              Cancel
+            </StyledCancelButton>
           </div>
         ) : (
-          <StyledButton type="submit">Save</StyledButton>
+          <StyledButton type="submit" disabled={!isReviewValid}>
+            Save
+          </StyledButton>
         )}
       </form>
     </FormContainer>

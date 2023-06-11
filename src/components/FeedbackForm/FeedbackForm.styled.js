@@ -29,7 +29,6 @@ export const StyledTextArea = styled.textarea`
   border-width: 0;
   border-radius: 8px;
   padding: 14px 18px;
-  margin-bottom: 14px;
 
   font-family: 'Inter';
 
@@ -39,10 +38,13 @@ export const StyledTextArea = styled.textarea`
 
   color: #343434;
 
+  border-width: ${props => (props.isReviewValid ? 'none' : '1px')};
+  border-color: ${props => (props.isReviewValid ? 'none' : 'red')};
+
   :focus {
     outline: none;
     border-width: 1px;
-    border-color: #007bff;
+    border-color: ${props => (props.isReviewValid ? 'green' : 'red')};
   }
 
   ::placeholder {
@@ -51,10 +53,6 @@ export const StyledTextArea = styled.textarea`
     font-size: 14px;
     line-height: 1.29;
     color: #343434;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 18px;
   }
 `;
 
@@ -73,7 +71,8 @@ export const StyledButton = styled.button`
   color: #ffffff;
 
   border-radius: 8px;
-  background-color: #3e85f3;
+  background-color: ${props => (props.disabled ? 'grey' : '#3E85F3')};
+
   color: #ffffff;
   margin-bottom: 28px;
   border: 0;
@@ -81,9 +80,10 @@ export const StyledButton = styled.button`
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
   :hover,
   :focus {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: ${props =>
+      props.disabled ? 'none' : 'rgba(0, 0, 0, 0.35) 0px 5px 15px'};
   }
-
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   @media screen and (min-width: 768px) {
     padding: 15px;
     margin-bottom: 32px;
@@ -97,11 +97,44 @@ export const StyledEditButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
+  background-color: ${props => (props.disabled ? '#FAFBF9' : '#e5edfa')};
+  color: #343434;
+
+  border: 0;
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+  transition: all 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+  :hover,
+  :focus {
+    color: #ffffff;
+    background-color: ${props => (props.disabled ? '#FAFBF9' : '#3e85f3')};
+    box-shadow: ${props =>
+      props.isReviewValid ? 'rgba(0, 0, 0, 0.35) 0px 5px 15px;' : 'none'};
+  }
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.29;
+  color: #ffffff;
+
+  @media screen and (min-width: 678px) {
+    padding: 15px;
+  }
+`;
+
+export const StyledCancelButton = styled.button`
+  width: calc(100% / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
   background-color: #e5edfa;
   color: #343434;
 
   border: 0;
-  cursor: pointer;
+  cursor: poiner;
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
   :hover,
   :focus {
@@ -124,5 +157,23 @@ export const StyledEditButton = styled.button`
 
   @media screen and (min-width: 678px) {
     padding: 15px;
+  }
+`;
+
+export const CharactersQuantityText = styled.span`
+  display: block;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.29;
+  color: ${props => (props.isReviewValid ? 'green' : 'red')};
+`;
+
+export const CharactersQuantityTextContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  height: 14px;
+  @media screen and (min-width: 1440px) {
+    height: 18px;
   }
 `;
