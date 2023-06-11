@@ -33,7 +33,7 @@ export const Main = styled.main`
 `;
 
 export const WrapLeftColumn = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 225px;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {

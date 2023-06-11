@@ -19,6 +19,10 @@ export const PeriodPaginator = ({
 }) => {
   const { currentDate, currentDay } = useParams();
 
+  const isDisabled =
+    currentDay === moment().format('YYYY-MM-DD') ||
+    currentDate === moment().format('YYYY-MM-DD');
+
   return (
     <PaginatorWrapper>
       <PaginatorDate typeSelect={typeSelect} onClick={todayHandler}>
@@ -27,14 +31,8 @@ export const PeriodPaginator = ({
           : today.format('D MMM YYYY ')}
       </PaginatorDate>
       <div>
-        <LeftPaginatorBtn
-          onClick={prevHandler}
-          disabled={
-            currentDay === moment().format('YYYY-MM-DD') ||
-            currentDate === moment().format('YYYY-MM-DD')
-          }
-        >
-          <IconArrowRLeft />
+        <LeftPaginatorBtn onClick={prevHandler} disabled={isDisabled}>
+          <IconArrowRLeft disabled={isDisabled} />
         </LeftPaginatorBtn>
         <RightPaginatorBtn onClick={nextHandler}>
           <IconArrowRight />

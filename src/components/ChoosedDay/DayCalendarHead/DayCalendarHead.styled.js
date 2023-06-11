@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const colorWhite = '#fff';
-const colorGray = '#343434';
+// const colorGray = '#343434';
 const colorBlue = '#3e85f3';
 const fontFamily = 'Inter';
 const fontWeightBold = 600;
@@ -20,9 +20,9 @@ export const WeeksItem = styled.div`
   line-height: ${lineHeightMedium}px;
   text-transform: uppercase;
   border: 1px solid transparent;
-  background: ${colorWhite};
+  background: ${p => p.theme.colors.second_backgrond_mode};
   border-radius: 8px;
-  color: ${colorGray};
+  color: ${p => p.theme.colors.user_label_color};
   flex-direction: column;
   align-content: center;
   align-items: center;
@@ -36,13 +36,13 @@ export const WeeksItemDay = styled.div`
   width: 27px;
   height: 26px;
   padding: 3px;
-  background: ${colorWhite};
+  background: ${p => p.theme.colors.second_backgrond_mode};
   border-radius: 6px;
   font-family: ${fontFamily};
   font-weight: ${fontWeightSemiBold};
   font-size: ${fontSizeMedium}px;
   line-height: ${lineHeightMedium}px;
-  color: ${colorGray};
+  color: ${p => p.theme.colors.primary_text_mode};
 `;
 
 export const WeeksItemCurrent = styled.div`
@@ -63,8 +63,8 @@ export const WeeksItemCurrent = styled.div`
 
 export const DivGridWeeks = styled.div`
   border-radius: 8px;
-  background: ${colorWhite};
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  background: ${p => p.theme.colors.second_backgrond_mode};
+  border: ${p => p.theme.colors.calendar_out_border};
   margin: 24px 0 32px;
   text-align: center;
   display: grid;

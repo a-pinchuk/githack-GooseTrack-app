@@ -1,4 +1,3 @@
-import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
@@ -9,15 +8,27 @@ import { ReactComponent as EmptyLittleStar } from 'images/littleStarEmpty.svg';
 
 import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
 import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
+import { ReviewItem } from 'components/ReviewItem/ReviewItem';
+import { IconButton } from '@mui/material';
+import {
+  IconButtonContainer,
+  ReviewerName,
+  AvatarContainer,
+  StyledFeedbackList,
+  ListItem,
+  FeedBackContainer,
+  ReviewHeader,
+} from './FeedbackList.styled';
 
 export const IconBthPencil = styled(Pencil)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: black;
+  stroke: ${p => p.theme.colors.primary_text_mode};
   transition: stroke 250ms linear;
-  margin-right: 10px;
-  &:hover {
+
+  :hover,
+  :focus {
     stroke: #3e85f3;
   }
 `;
@@ -26,9 +37,12 @@ export const IconBthTrash = styled(Trash)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: black;
+  stroke: ${p => p.theme.colors.primary_text_mode};
+
   transition: stroke 250ms linear;
-  &:hover {
+
+  :hover,
+  :focus {
     stroke: #3e85f3;
   }
 `;
@@ -37,7 +51,6 @@ function stringToColor(string) {
   let hash = 0;
   let i;
 
-  /* eslint-disable no-bitwise */
   for (i = 0; i < string.length; i += 1) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
@@ -48,7 +61,6 @@ function stringToColor(string) {
     const value = (hash >> (i * 8)) & 0xff;
     color += `00${value.toString(16)}`.slice(-2);
   }
-  /* eslint-enable no-bitwise */
 
   return color;
 }
@@ -69,70 +81,31 @@ function stringAvatar(name) {
   };
 }
 
-export const FeedbackList = ({ reviews }) => {
+export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
   return (
-    <ul
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        padding: '16px',
-
-        // outline: '1px solid tomato',
-        width: '100%',
-        height: '292px',
-        listStyle: 'none',
-
-        backgroundColor: 'rgba(227, 243, 255, 0.5)',
-        borderRadius: ' 8px',
-        overflow: 'scroll',
-        margin: '0',
-      }}
-    >
+    <StyledFeedbackList>
       {reviews.map((review, i) => (
-        <li
-          key={i}
-          style={{
-            // outline: '1px solid pink',
-            width: '100%',
-            display: 'flex',
-          }}
-        >
-          <div
-            style={{
-              //   outline: '1px solid red',
-              width: '40px',
-            }}
-          >
+        <ListItem key={i}>
+          <AvatarContainer>
             <Avatar {...stringAvatar(review.name)} />
-          </div>
-          <div
-            style={{
-              //   outline: '1px solid orange',
-              width: '324px',
-            }}
-          >
-            <div
-              style={{
-                // outline: '1px solid tomato',
-                display: 'flex',
-                flexDirection: 'column',
-                paddingLeft: '12px',
-                position: 'relative',
-              }}
-            >
-              <p style={{ margin: '0 0 8px' }}>{review.name}</p>
-              <div
-                style={{
-                  display: 'flex',
-                  position: 'absolute',
-                  top: '0',
-                  right: '0',
-                }}
-              >
-                <IconBthPencil />
-                <IconBthTrash />
-              </div>
+          </AvatarContainer>
+          <FeedBackContainer>
+            <ReviewHeader>
+              <ReviewerName>{review.name}</ReviewerName>
+              <IconButtonContainer>
+                <IconButton
+                  sx={{ padding: '4px' }}
+                  aria-label="edit"
+                  onClick={() =>
+                    toggleEditFeedback(review.rating, review.feedback)
+                  }
+                >
+                  <IconBthPencil />
+                </IconButton>
+                <IconButton aria-label="delete" sx={{ padding: '4px' }}>
+                  <IconBthTrash />
+                </IconButton>
+              </IconButtonContainer>
               <Box
                 sx={{
                   //   width: '400px',
@@ -151,14 +124,12 @@ export const FeedbackList = ({ reviews }) => {
                   sx={{ display: 'flex', gap: '8px' }}
                 />
               </Box>
-            </div>
+            </ReviewHeader>
 
-            <p style={{ paddingLeft: '12px', margin: '0' }}>
-              {review.feedback}
-            </p>
-          </div>
-        </li>
+            <ReviewItem text={review.feedback} maxLength={150} />
+          </FeedBackContainer>
+        </ListItem>
       ))}
-    </ul>
+    </StyledFeedbackList>
   );
 };

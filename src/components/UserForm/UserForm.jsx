@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
-import { updateUserInfo } from '../../redux/auth/operations'; // Импорт вашего thunk
-import { selectUser } from 'redux/auth/selectors';
+import { updateUserInfo } from '../../redux/auth/operations';
 import moment from 'moment/moment';
-import { validationSchema } from './ValidationSchema.js';
+import { validationSchema } from './ValidationSchema';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import dayjs from 'dayjs';
+import { useAuth } from 'hooks';
 import {
   Container,
   FormContainer,
@@ -24,35 +23,25 @@ import {
   ErrorMessage,
   StyledDataPicker,
 } from './UserForm.styled';
-
 const UserForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
-
+  const { user } = useAuth();
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
-
     const file = event.currentTarget.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
     }
   };
-
   const handleDatePickerChange = date => {
-    console.log('date', date.$d);
+    if (!date) setFieldValue('birthday', '');
     const formattedDate = moment(date.$d).format('DD/MM/YYYY');
-    console.log('formattedDate', formattedDate);
     setFieldValue('birthday', formattedDate);
   };
-
-  const dateValue =
-    user.birthday instanceof Date
-      ? dayjs(user.birthday) // Преобразуем дату в объект Dayjs
-      : dayjs(user.birthday, 'DD/MM/YYYY'); // Если user.birthday - строка в формате 'DD/MM/YYYY'
-
+  const currentDate = moment().format('DD/MM/YYYY');
   const {
     errors,
     touched,
@@ -72,23 +61,41 @@ const UserForm = () => {
       birthday: user.birthday,
     },
     validationSchema: validationSchema,
-
     onSubmit: async values => {
       try {
-        console.log(values);
-        // const formattedDate = moment(values.birthday).format('DD/MM/YYYY');
-
-        // const updatedValues = {
-        //   ...values,
-        //   birthday: formattedDate,
-        // };
-
         await dispatch(updateUserInfo(values));
       } catch (error) {
         console.log(error.message);
       }
     },
   });
+  const formatPhoneNumber = value => {
+    const phoneNumber = value.replace(/[^\d]/g, ''); // Видаляємо всі нецифрові символи
+    const countryCode = phoneNumber.slice(0, 2);
+    const areaCode = phoneNumber.slice(2, 5);
+    const firstPart = phoneNumber.slice(5, 8);
+    const secondPart = phoneNumber.slice(8, 10);
+    const thirdPart = phoneNumber.slice(10, 12);
+    let formattedPhoneNumber = countryCode;
+    if (areaCode) {
+      formattedPhoneNumber += ` (${areaCode})`;
+    }
+    if (firstPart) {
+      formattedPhoneNumber += ` ${firstPart}`;
+    }
+    if (secondPart) {
+      formattedPhoneNumber += ` ${secondPart}`;
+    }
+    if (thirdPart) {
+      formattedPhoneNumber += ` ${thirdPart}`;
+    }
+    return formattedPhoneNumber.trim(); // Видаляємо зайві пробіли з початку та кінця рядка
+  };
+  const handlePhoneNumberChange = event => {
+    const formattedPhoneNumber = formatPhoneNumber(event.target.value);
+    setFieldValue('phone', formattedPhoneNumber);
+  };
+  const isFormDirty = Object.keys(touched).length > 0;
   return (
     <Container>
       <FormContainer onSubmit={handleSubmit}>
@@ -99,7 +106,6 @@ const UserForm = () => {
             <AvatarDefault />
           )}
         </StyledAvatar>
-
         <Label htmlFor="avatar">
           <input
             id="avatar"
@@ -107,17 +113,15 @@ const UserForm = () => {
             type="file"
             onChange={handleAvatarUpload}
             style={{ display: 'none' }}
+            accept="image/png, image/jpeg"
           />
           <Plus />
         </Label>
-
         <Heading>{user.name}</Heading>
         <Title>User</Title>
-
         <Wrapper>
           <WrapperInput>
             <Label htmlFor="name">User Name</Label>
-
             <Input
               id="name"
               name="name"
@@ -132,11 +136,16 @@ const UserForm = () => {
               <ErrorMessage>{errors.name}</ErrorMessage>
             )}
           </WrapperInput>
+          {/*  birthday */}
           <WrapperInput>
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
-                defaultValue={dateValue || dayjs()}
+                slotProps={{
+                  textField: {
+                    placeholder: `${currentDate}`,
+                  },
+                }}
                 onChange={handleDatePickerChange}
                 name="birthday"
                 views={['year', 'month', 'day']}
@@ -144,7 +153,7 @@ const UserForm = () => {
               />
             </LocalizationProvider>
           </WrapperInput>
-
+          {/*  email */}
           <WrapperInput>
             <Label htmlFor="email">Email</Label>
             <Input
@@ -161,16 +170,17 @@ const UserForm = () => {
               <ErrorMessage>{errors.email}</ErrorMessage>
             )}
           </WrapperInput>
-
+          {/*  phone */}
           <WrapperInput>
             <Label htmlFor="phone">Phone</Label>
             <Input
               id="phone"
-              placeholder=" 38 (097)..."
-              name="phone"
               type="tel"
+              name="phone"
+              placeholder=" 38 (097)..."
+              inputMode="numeric"
               value={values.phone || ''}
-              onChange={handleChange}
+              onChange={handlePhoneNumberChange}
               onBlur={handleBlur}
               className={errors.phone && touched.phone ? 'InvalidInput' : ''}
             />
@@ -178,6 +188,7 @@ const UserForm = () => {
               <ErrorMessage>{errors.phone}</ErrorMessage>
             )}
           </WrapperInput>
+          {/*  skype */}
           <WrapperInput>
             <Label htmlFor="skype">Skype</Label>
             <Input
@@ -194,12 +205,11 @@ const UserForm = () => {
             )}
           </WrapperInput>
         </Wrapper>
-        <Button disabled={isSubmitting} type="submit">
+        <Button disabled={isSubmitting || !isFormDirty} type="submit">
           {isSubmitting ? 'Submitting...' : 'Save changes'}
         </Button>
       </FormContainer>
     </Container>
   );
 };
-
 export default UserForm;

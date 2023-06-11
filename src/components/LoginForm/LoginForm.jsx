@@ -15,6 +15,7 @@ import {
   VisibilityBtn,
   Button,
   Svg,
+  ResetPasswordLink,
 } from './LoginForm.styled';
 
 import sprite from 'icons/sprite.svg';
@@ -128,7 +129,12 @@ export const LoginForm = () => {
                 <p>This is a CORRECT password</p>
               )}
               <ErrorMessage name="password" component="div" />
+              
+              <ResetPasswordLink to="/password">
+                Forgot your password ?
+              </ResetPasswordLink>
             </Label>
+
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Submitting' : 'Log in'}
               <Svg>

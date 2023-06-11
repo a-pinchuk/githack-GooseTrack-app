@@ -1,5 +1,4 @@
-import './components/Header/ThemeTogglerColors.css'
-
+import './components/Header/ThemeTogglerColors.css';
 
 export const theme = {
   colors: {
@@ -23,16 +22,15 @@ export const theme = {
     muted: '#F7F6F9',
     closeButton: '#111111',
 
-
     background_mode: 'var(--background)',
-    // #EAEAEA   ---->>>>>   #171820 
+    // #EAEAEA   ---->>>>>   #171820
 
     second_backgrond_mode: 'var(--second-backgrond)',
     // #FFFFFF   ---->>>>>   #21222C
 
     third_background_mode: 'var(--third-background)',
-    // #FFFFFF   ---->>>>>   #13151A
-    
+    // #FFFFFF   ---->>>>>   #13151Af
+
     primary_text_mode: 'var(--primary-text)',
     // #111111  ---->>>>>   #FFFFFF
 
@@ -44,7 +42,57 @@ export const theme = {
 
     background_button: 'var(--background-button)',
     // #E3F3FF  ---->>>>>   #3E85F3
-    
+
+    hover_button: 'var(--color-button-content-hover)',
+    // 3e85f3 ---->>>>>   #FFFFFF
+
+    user_label_color: 'var(--user-label-color)',
+    // #111111  ---->>>>> rgba(250, 250, 250, 0.3);
+
+    user_input_border: 'var(--user-input-border)',
+    // 1px solid rgba(17, 17, 17, 0.1) ---->>>>>  1px solid rgba(255, 255, 255, 0.15);
+
+    calendar_out_border: 'var(--calendar-out-border)',
+    // 1px solid rgba(220, 227, 229, 0.8) ---->>>>> 1px solid rgba(255, 255, 255, 0.15);
+
+    calendar_inner_background: 'var(--calendar-inner-background)',
+    // rgba(220, 227, 229, 0.8) ---->>>>> rgba(255, 255, 255, 0.15);
+
+    period_type_btn_active: 'var(--period-type-btn-active)',
+    //CAE8FF ---->>>>> #3E85F3
+
+    period_type_btn_not_active: 'var(--period-type-btn-not-active)',
+    // #E3F3FF ---->>>>> 21222C
+
+    period_type_btn_active_content: 'var(--period-type-btn-active-content)',
+    // 3e85f3 ---->>>>>   #FFFFFF
+
+    task_list_item_background: 'var(--task-list-item-background)',
+    // FFFFFF ---->>>>>   #111111
+
+    modal_window: 'var(--modal-window)',
+    // #FFFFFF   ---->>>>>   #171820
+
+    modal_form_content: 'var(--modal-form-content)',
+    // rgba(52, 52, 52, 0.8) ---->>>>>   #FFFFFF
+
+    modal_form_label: 'var(--modal-form-label)',
+    // rgba(52, 52, 52, 0.8) ---->>>>>   #rgba(250, 250, 250, 0.3);
+
+    task_item_bg: 'var(--task-item-bg)',
+    // : '#F7F6F9' ---->>>>> #171820
+
+    textarea_bg: 'var(--textarea-bg)',
+    // #f7f7f7 ---->>>>> transparent
+
+    textarea_border: 'var(--textarea-border)',
+    // none ---->>>>> 1px solid rgba(255, 255, 255, 0.15)
+
+    reviews_list: 'var(--reviews-list)',
+    // rgba(227, 243, 255, 0.5) ---->>>>> #21222c;
+    reviews_content: 'var(--reviews-content)',
+
+    // rgba(17, 17, 17, 0.7); ---->>>>>  gba(255, 255, 255, 0.7);
   },
   fonts: {
     body: 'Coolvetica',

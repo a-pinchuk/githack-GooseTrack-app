@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import {
   Form as FormikForm,
   Field as FormikField,
@@ -12,6 +13,11 @@ export const Form = styled(FormikForm)`
 
   background-color: ${p => p.theme.colors.background};
   border-radius: ${p => p.theme.radii.small};
+
+  @media screen and (max-width: 345px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 40px;
@@ -220,4 +226,38 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
   margin-top: 8px;
   color: ${p => p.theme.colors.redError};
+`;
+
+export const ResetPasswordLink = styled(Link)`
+  display: block;
+
+  margin-top: 8px;
+
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: ${p => p.theme.lineHeights.body};
+  text-decoration: none;
+
+  /* font-family: ${p => p.theme.fonts.text};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: 1.16; */
+  /* text-align: center; */
+
+  color: ${p => p.theme.colors.primary};
+  /* text-decoration: underline; */
+
+  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
+    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+
+  @media screen and (min-width: 768px) {
+    font-size: ${p => p.theme.fontSizes.s};
+    line-height: 1.21;
+  }
+  /* 
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
+  } */
 `;

@@ -1,10 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { ReactComponent as ArrowRightBtnBlack } from '../../images/arrow-right-black.svg';
 import { ReactComponent as ArrowLeftBtnBlack } from '../../images/arrow-left-black.svg';
-//import { ReactComponent as ArrowRightBtnWhite } from '../../images/arrow-right-white.svg';
-//import { ReactComponent as ArrowLeftBtnWhite } from '../../images/arrow-left-white.svg';
-// import { useTheme } from '../../hooks/useTheme';
 
 export const PaginatorWrapper = styled.div`
   width: 100%;
@@ -48,10 +45,11 @@ export const PaginatorBtn = styled.button`
   align-items: center;
   width: 36px;
   height: 30px;
-  background-color: ${props => props.theme.colors.white};
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  background-color: ${props => props.theme.colors.second_backgrond_mode};
+  border: ${p => p.theme.colors.calendar_out_border};
   border-radius: ${props => props.theme.radii.small};
   cursor: pointer;
+  color: ${p => p.theme.colors.primary_text_mode};
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 38px;
     height: 34px;
@@ -72,27 +70,14 @@ export const RightPaginatorBtn = styled(PaginatorBtn)`
 export const IconArrowRight = styled(ArrowRightBtnBlack)`
   width: 18px;
   height: 18px;
-  //fill: currentColor;
+  stroke: ${p => p.theme.colors.primary_text_mode};
 `;
+
 export const IconArrowRLeft = styled(ArrowLeftBtnBlack)`
   width: 18px;
   height: 18px;
-
-  /* color: ${props =>
-    props.disabled ? 'rgba(0, 0, 0, 0.4)' : 'currentColor'}; */
-  /* ${props =>
-    props.disabled &&
-    css`
-      path {
-        fill: rgba(0, 0, 0, 0.4);
-      }
-    `} */
+  stroke: ${p =>
+    p.disabled
+      ? p.theme.colors.calendar_out_border
+      : p.theme.colors.primary_text_mode};
 `;
-
-// export const IconArrowRight = styled(({ theme, ...rest }) => {
-//   const ArrowIcon = theme === 'light' ? ArrowRightBtnBlack : ArrowRightBtnWhite;
-//   return <ArrowIcon {...rest} />;
-// })`
-//   width: 18px;
-//   height: 18px;
-// `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const StyledAuthNavigate = styled(NavLink)`
+export const StyledAuthNavigate = styled(Link)`
   display: block;
 
   font-family: ${p => p.theme.fonts.text};

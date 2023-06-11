@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ReviewsContainer = styled.section`
   position: relative;
 
-  width: 335px;
+  max-width: 335px;
   min-height: 324px;
 
   margin-left: auto;
@@ -15,6 +15,7 @@ export const ReviewsContainer = styled.section`
 
   @media screen and (min-width: 768px) {
     width: 704px;
+    max-width: 704px;
     min-height: 360px;
 
     margin-bottom: 100px;
@@ -22,6 +23,7 @@ export const ReviewsContainer = styled.section`
 
   @media screen and (min-width: 1440px) {
     width: 1184px;
+    max-width: 1184px;
     min-height: 374px;
 
     margin-bottom: 118px;

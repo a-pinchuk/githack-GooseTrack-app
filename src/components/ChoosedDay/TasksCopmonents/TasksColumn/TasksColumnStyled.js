@@ -5,8 +5,9 @@ export const TaskItem = styled.li`
   flex: 0 0 100%;
   padding-right: 10px;
   border-radius: ${theme.radii.small};
-  border: 1px solid #dce3e580;
+  border: ${p => p.theme.colors.calendar_out_border};
   box-sizing: border-box;
+  background-color: ${theme.colors.task_item_bg};
   //add
   display: flex;
   flex-direction: column;
@@ -16,7 +17,7 @@ export const TaskItem = styled.li`
 
   max-height: 568px;
   @media screen and (min-width: 768px) {
-    flex: 0 0 46%;
+    flex: 0 0 47%;
     &:not(:last-child) {
       margin-right: 16px;
     }

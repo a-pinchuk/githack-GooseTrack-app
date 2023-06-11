@@ -30,13 +30,13 @@ export const UserNav = ({ toogleShowSiderBar }) => {
         <UserPanel>User Panel</UserPanel>
         <StyledList>
           <StyledItem>
-            <StyledLink to="account">
+            <StyledLink to="account" onClick={toogleShowSiderBar}>
               <UserIconStyled stroke="currentColor"></UserIconStyled>
               My account
             </StyledLink>
           </StyledItem>
           <StyledItem>
-            <StyledLink to="calendar">
+            <StyledLink to="calendar" onClick={toogleShowSiderBar}>
               <CalendarIconStyled stroke="currentColor"></CalendarIconStyled>
               Calendar
             </StyledLink>

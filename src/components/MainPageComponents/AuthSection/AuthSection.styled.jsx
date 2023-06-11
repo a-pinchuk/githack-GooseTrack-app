@@ -1,28 +1,40 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Header = styled.header`
-  height: 812px;
+  height: ${p => p.height}px;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    height: 1024px;
-  }
-  @media screen and (min-width: 1440px) {
-    height: 100vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-color: ${p => p.theme.colors.primary};
+`;
 
+export const ContentWrapper = styled.div`
   nav {
     margin-top: 32px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 208px;
 
-    @media screen and (min-width: 768px) {
+    ${({ height }) =>
+      css`
+        row-gap: calc(${height}px * 25.61 / 100);
+      `}
+
+      @media screen and (min-width: 768px) {
       margin-top: 40px;
+
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      column-gap: 24px;
+    }
+
+    @media screen and (max-height: 425px) {
+      margin-top: 32px;
 
       flex-direction: row-reverse;
       justify-content: center;
@@ -51,6 +63,18 @@ export const Header = styled.header`
       line-height: ${p => p.theme.lineHeights.body};
     }
 
+    @media screen and (max-height: 425px) {
+      font-size: 100px;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 44px;
+    }
+
+    @media screen and (max-height: 375px) {
+      font-size: 44px;
+    }
+
     span {
       font-style: italic;
     }
@@ -61,16 +85,9 @@ export const ImageWrapper = styled.div`
   width: 142px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 232px;
 
   @media screen and (min-width: 768px) {
     width: 150px;
-  }
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    padding-top: 321px;
-  }
-  @media screen and (min-width: 1440px) {
-    padding-top: 187px;
   }
 
   img {

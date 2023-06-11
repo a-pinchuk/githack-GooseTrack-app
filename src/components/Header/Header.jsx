@@ -15,6 +15,7 @@ import {
   MobileMenuBtn,
   RighSectiontHeader,
 } from './Header.styled';
+import { GooseTitle } from './GooseTitle/GooseTitle';
 
 const getTypePage = pathname => {
   if (pathname.includes('/account')) {
@@ -44,11 +45,11 @@ export const Header = ({ toogleShowSiderBar }) => {
   return (
     <HeaderSection>
       <MobileMenuBtn onClick={toogleShowSiderBar}>
-        <RxHamburgerMenu size={30}/>
+        <RxHamburgerMenu size={30} />
       </MobileMenuBtn>
 
       {isNotDoneTask ? (
-        <HeaderTitle>Calendar - DAY</HeaderTitle>
+        <GooseTitle />
       ) : (
         <HeaderTitle>
           {typePage === 'acount' ? 'User Profile' : 'Calendar'}
