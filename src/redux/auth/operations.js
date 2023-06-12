@@ -145,7 +145,7 @@ export const updateUserInfo = createAsyncThunk(
 
 export const forgotPassword = createAsyncThunk(
   '/users/forgot',
-  async (email, thunkAPI) => {
+  async ({ email }, thunkAPI) => {
     try {
       const res = await instance.post('/users/forgot', {
         email,

@@ -22,7 +22,7 @@ const PasswordRecoveryPage = () => {
   return (
     <Container>
       <FormWrapper>
-        <PasswordRecoveryForm token={token} />
+        <PasswordRecoveryForm accessToken={token} />
       </FormWrapper>
 
       <AuthNavigate link="/login" text="Log In" />
