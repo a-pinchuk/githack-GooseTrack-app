@@ -28,6 +28,7 @@ html[data-theme='light'] {
   --empty-star: #cec9c1;
   --scrollbar-bg: grey;
   --button-not-active: #e5edfa;
+  --user-input-birthday: none;
 }
 
 html[data-theme='dark'] {
@@ -58,6 +59,7 @@ html[data-theme='dark'] {
   --empty-star: #353647;
   --scrollbar-bg: #2d3037;
   --button-not-active: #21222c;
+  --user-input-birthday: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 body {

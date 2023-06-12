@@ -97,6 +97,8 @@ export const theme = {
     empty_star: 'var(--empty-star)',
 
     button_not_active: 'var(--button-not-active)',
+    user_input_birthday: 'var(--user-input-birthday',
+    // none ---->>>>>  solid rgba(255, 255, 255, 0.15)
   },
   fonts: {
     body: 'Coolvetica',
