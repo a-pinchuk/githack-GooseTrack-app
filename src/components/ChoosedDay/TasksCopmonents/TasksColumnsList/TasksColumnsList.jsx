@@ -13,7 +13,7 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <TaskContainer>
+      <TaskContainer data-tour="5">
         <StretchContainer>
           <TasksColumn
             toolbarData={[toolTitle(dataTitle[1]), toolTitle(dataTitle[0])]}

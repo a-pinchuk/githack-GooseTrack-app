@@ -23,7 +23,7 @@ export const TasksColumn = ({ taskData, title, category, toolbarData }) => {
 
   return (
     <>
-      <TaskItem>
+      <TaskItem data-tour="6">
         <ColumnHeadBar title={title} handlerOpenModal={handlerOpenModal} />
         <ColumnTasksList
           toolbarData={toolbarData}

@@ -44,7 +44,7 @@ export const Modal = ({ children, handlerCloseModal }) => {
   return createPortal(
     <>
       <Backdrop onClick={handleBackdropClick}>
-        <ModalContainer>
+        <ModalContainer data-tour="7">
           <CloseButton onClick={handlerCloseModal}>
             <MyCloseIcon width="24" height="24"></MyCloseIcon>
           </CloseButton>
