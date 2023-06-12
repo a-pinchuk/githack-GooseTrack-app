@@ -38,12 +38,10 @@ export const TasklToolBar = ({
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 1440px)').matches
   );
-  console.log('Query', matches);
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: matches ? 'right-start' : 'bottom',
   });
-  console.log(styles);
 
   const handleOpenToolBar = () => {
     setIsVisible(true);

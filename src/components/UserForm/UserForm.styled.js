@@ -13,7 +13,8 @@ export const StyledDataPicker = styled(DatePicker)`
   input::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
-    color: ${p => p.theme.colors.primary_text_mode};
+    color: ${p => p.theme.colors.user_placeholder};
+    /* color: ${p => p.theme.colors.primary_text_mode}; */
     font-weight: 400 !important;
     opacity: 1;
   }
@@ -237,7 +238,8 @@ export const Input = styled.input`
   &::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
-    color: ${p => p.theme.colors.primary_text_mode};
+    /* color: ${p => p.theme.colors.primary_text_mode}; */
+    color: ${p => p.theme.colors.user_placeholder};
   }
   &:hover,
   &:focus {
