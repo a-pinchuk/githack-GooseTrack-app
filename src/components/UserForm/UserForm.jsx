@@ -26,6 +26,7 @@ import {
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
+  console.log('🚀 ~ user:', user);
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
 
