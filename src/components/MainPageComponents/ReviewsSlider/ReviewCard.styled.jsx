@@ -8,7 +8,7 @@ export const ReviewCardContainer = styled.div`
   padding: 24px;
 
   width: 335px;
-  height: 194px;
+  min-height: 194px;
 
   font-family: ${p => p.theme.fonts.text};
 
@@ -27,6 +27,7 @@ export const ReviewCardContainer = styled.div`
 
     width: 580px;
     height: 187px;
+    min-height: auto;
 
     padding: 32px;
   }

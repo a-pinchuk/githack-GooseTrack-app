@@ -1,4 +1,37 @@
 import styled from 'styled-components';
+import { ReactComponent as Pencil } from 'images/tasksSvg/pencil-01.svg';
+import { ReactComponent as Trash } from 'images/tasksSvg/trash-04.svg';
+import { theme } from 'theme';
+
+export const IconBthPencil = styled(Pencil)`
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+
+  stroke: ${theme.colors.primary_text_mode};
+  transition: stroke 250ms linear;
+
+  :hover,
+  :focus {
+    stroke: ${theme.colors.secondary};
+  }
+`;
+
+/* stroke: ${p => p.theme.colors.primary_text_mode}; */
+/* stroke: ${p => p.theme.colors.primary_text_mode}; */
+export const IconBthTrash = styled(Trash)`
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+
+  stroke: ${theme.colors.primary_text_mode};
+  transition: stroke 250ms linear;
+
+  :hover,
+  :focus {
+    stroke: ${theme.colors.secondary};
+  }
+`;
 
 export const StyledFeedbackList = styled.ul`
   display: flex;

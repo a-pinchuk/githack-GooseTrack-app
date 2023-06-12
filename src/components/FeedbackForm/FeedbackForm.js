@@ -20,6 +20,12 @@ import {
 } from './FeedbackForm.styled';
 
 import { addReview, updateReview } from '../../redux/reviews/operations';
+import { theme } from 'theme';
+
+const EmptyBigStar = styled(FavoriteBorderIcon)`
+  fill: ${theme.colors.empty_star};
+  stroke: ${theme.colors.empty_star};
+`;
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -124,7 +130,7 @@ export function FeedbackForm({
           value={value}
           precision={1}
           icon={<FavoriteIcon fontSize="inherit" width="24px" />}
-          emptyIcon={<FavoriteBorderIcon fontSize="inherit" width="24px" />}
+          emptyIcon={<EmptyBigStar fontSize="inherit" width="24px" />}
           onChange={handleRatingChange}
           sx={{ display: 'flex', gap: '2px', maxWidth: '104px' }}
         />
