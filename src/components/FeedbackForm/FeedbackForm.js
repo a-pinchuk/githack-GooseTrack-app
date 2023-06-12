@@ -46,6 +46,7 @@ export function FeedbackForm({
   const [value, setValue] = useState(0);
   const [review, setReview] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+  const [changed, setChanged] = useState(false);
 
   // const { }=useSelector()
 
@@ -79,6 +80,7 @@ export function FeedbackForm({
     if (isEditFeedbackOpen) {
       dispatch(updateReview({ id, rating: value, comment: review }));
       toggleEditFeedback();
+      setChanged(true);
 
       return;
     }
@@ -100,7 +102,11 @@ export function FeedbackForm({
     const inputValue = e.target.value;
     setReview(inputValue);
     setCharacterCount(inputValue.length);
-    if (isEditFeedbackOpen) {
+    if (isEditFeedbackOpen && changed) {
+      return;
+    }
+    if (isEditFeedbackOpen && !changed) {
+      setChanged(!changed);
       return;
     }
     localStorage.setItem('review', JSON.stringify(inputValue));
@@ -108,13 +114,20 @@ export function FeedbackForm({
 
   const handleRatingChange = (e, newValue) => {
     setValue(newValue);
-    if (isEditFeedbackOpen) {
+    if (isEditFeedbackOpen && !changed) {
+      setChanged(true);
+      return;
+    }
+    if (isEditFeedbackOpen && changed) {
+      setChanged(true);
       return;
     }
     localStorage.setItem('rating', JSON.stringify(newValue));
   };
 
   const isReviewValid = review.length <= 300;
+  const isRatingValid = value >= 1;
+  console.log('isRatingValid:', isRatingValid);
 
   return (
     <FormContainer>
@@ -150,7 +163,7 @@ export function FeedbackForm({
         <CharactersQuantityTextContainer>
           {characterCount > 0 && (
             <CharactersQuantityText isReviewValid={isReviewValid}>
-              Characters entered: {characterCount}
+              Characters entered: {characterCount} (max: 300)
             </CharactersQuantityText>
           )}
         </CharactersQuantityTextContainer>
@@ -161,10 +174,18 @@ export function FeedbackForm({
               type="submit"
               disabled={!isReviewValid || !value || !review}
               isReviewValid={isReviewValid}
+              changed={changed}
+              isRatingValid={isRatingValid}
             >
               Edit
             </StyledEditButton>
-            <StyledCancelButton onClick={toggleEditFeedback} type="button">
+            <StyledCancelButton
+              onClick={() => {
+                setChanged(false);
+                toggleEditFeedback();
+              }}
+              type="button"
+            >
               Cancel
             </StyledCancelButton>
           </div>

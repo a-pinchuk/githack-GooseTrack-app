@@ -98,7 +98,12 @@ export const StyledEditButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${theme.colors.button_not_active};
+  background-color: ${props => {
+    return props.changed && props.isReviewValid && props.isRatingValid
+      ? '#3E85F3'
+      : theme.colors.button_not_active;
+  }};
+
   color: #343434;
 
   border: 0;
