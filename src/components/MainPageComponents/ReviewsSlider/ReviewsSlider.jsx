@@ -11,7 +11,7 @@ import { ReviewsContainer, ArrowContainer } from './ReviewsSlider.styled';
 
 import sprite from 'icons/sprite.svg';
 
-const SlickRight = props => (
+const SlickRight = ({ currentSlide, slideCount, ...props }) => (
   <div
     {...props}
     className={'slick-prev slick-arrow'}
@@ -25,7 +25,7 @@ const SlickRight = props => (
   </div>
 );
 
-const SlickLeft = props => (
+const SlickLeft = ({ currentSlide, slideCount, ...props }) => (
   <div
     {...props}
     className={'slick-next slick-arrow'}
