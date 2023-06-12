@@ -45,6 +45,7 @@ function stringToColor(string) {
 }
 
 function stringAvatar(name) {
+  console.log('name:', name);
   if (name.split(' ').length > 1)
     return {
       sx: {
