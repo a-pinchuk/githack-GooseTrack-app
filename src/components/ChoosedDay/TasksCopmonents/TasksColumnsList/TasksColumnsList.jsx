@@ -8,7 +8,7 @@ import { TouchBackend } from 'react-dnd-touch-backend';
 import { useEffect, useState } from 'react';
 export const TasksColumnsList = ({ sortedTasksData }) => {
   const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 1440px)').matches
+    window.matchMedia('(min-width: 768px) and (max-width: 1440px)').matches
   );
   const { done, inProgress, toDo } = sortedTasksData;
 
@@ -18,15 +18,12 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
 
   useEffect(() => {
     window
-      .matchMedia('(min-width:1440px)')
+      .matchMedia('(min-width: 768px) and (max-width: 1440px)')
       .addEventListener('change', e => setMatches(e.matches));
   }, []);
 
   return (
-    <DndProvider
-      backend={matches ? HTML5Backend : TouchBackend}
-      options={options}
-    >
+    <DndProvider backend={matches ? TouchBackend : HTML5Backend}>
       <TaskContainer data-tour="5">
         <StretchContainer>
           <TasksColumn
