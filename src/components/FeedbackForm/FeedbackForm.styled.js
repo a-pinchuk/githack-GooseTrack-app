@@ -39,7 +39,7 @@ export const StyledTextArea = styled.textarea`
 
   border-width: ${props => (props.isReviewValid ? 'none' : '1px')};
   border-color: ${props => (props.isReviewValid ? 'none' : 'red')};
-  margin-bottom: 14px;
+  margin-bottom: 2px;
   color: ${p => p.theme.colors.second_text_mode};
 
   :focus {
@@ -163,8 +163,8 @@ export const CharactersQuantityText = styled.span`
   display: block;
   font-family: 'Inter';
   font-weight: 600;
-  font-size: 14px;
-  line-height: 1.29;
+  font-size: 12px;
+  line-height: 1.17;
   color: ${props => (props.isReviewValid ? 'green' : 'red')};
 `;
 
