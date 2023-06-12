@@ -49,6 +49,7 @@ export const TaskColumnCard = ({
       style={{
         opacity: isDragging ? '0.5' : '1',
         cursor: 'grabbing',
+        //   transform: getItemType ? 'rotate(1.5deg)' : 'none',
       }}
     >
       <TaskText>{item.title}</TaskText>
