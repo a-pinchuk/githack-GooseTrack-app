@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const PasswordRecoveryForm = ({ accessToken }) => {
+export const PasswordRecoveryForm = ({ token }) => {
   const dispatch = useDispatch();
 
   const [passwordType, setPasswordType] = useState('password');
@@ -54,9 +54,7 @@ export const PasswordRecoveryForm = ({ accessToken }) => {
       initialValues={{ password: '', passwordConfirm: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await dispatch(
-          resetPassword({ accessToken, newpassword: values.password })
-        );
+        await dispatch(resetPassword({ token, newPassword: values.password }));
         setSubmitting(false);
       }}
     >
