@@ -21,9 +21,7 @@ export const PeriodPaginator = ({
 }) => {
   const { currentDate, currentDay } = useParams();
 
-  const {
-    data: { createdAt },
-  } = useSelector(selectUser);
+  const { createdAt } = useSelector(selectUser);
   const dateCreatedUser = moment(createdAt).format('YYYY-MM-DD');
 
   const isDisabled =
@@ -37,7 +35,7 @@ export const PeriodPaginator = ({
           ? today.format('MMMM YYYY')
           : today.format('D MMM YYYY ')}
       </PaginatorDate>
-      <div>
+      <div data-tour="3">
         <LeftPaginatorBtn onClick={prevHandler} disabled={isDisabled}>
           <IconArrowRLeft disabled={isDisabled} />
         </LeftPaginatorBtn>
