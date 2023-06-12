@@ -11,7 +11,7 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
   // console.log(dataTitle);
 
   return (
-    <TaskContainer>
+    <TaskContainer data-tour="5">
       <StretchContainer>
         <TasksColumn
           toolbarData={[toolTitle(dataTitle[1]), toolTitle(dataTitle[0])]}

@@ -87,7 +87,7 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   };
 
   return (
-    <CalendarGridWrapper>
+    <CalendarGridWrapper data-tour="4">
       {daysArray.map(dayItem => {
         const dayTasks = filterTask(dayItem); // Получаем отфильтрованные задачи для данного дня
         return (
