@@ -13,6 +13,7 @@ import {
 } from './CalendarTable.styled';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { theme } from 'theme';
 
 const DayLink = styled(Link)`
   /* min-width: 47px; */
@@ -24,7 +25,7 @@ const DayLink = styled(Link)`
   background-color: ${p => p.theme.colors.second_backgrond_mode};
   /* border: ${p => p.theme.colors.calendar_out_border}; */
 
-  color: ${props => props.color};
+  /* color: ${props => props.color}; */
 
   transition-property: all;
   transition-duration: 100ms;
@@ -74,7 +75,9 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   const daysArray = [...Array(totalDays)].map(() => day.add(1, 'day').clone());
 
   const isCurrentDay = day => moment().isSame(day, 'day');
-  const isSelectedMonth = day => today.isSame(day, 'month');
+  const isSelectedMonth = day => {
+    return today.isSame(day, 'month');
+  };
 
   const filterTask = calendarDay => {
     if (!tasks || tasks.length === 0) {
@@ -94,15 +97,22 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
           <DayLink
             to={`/calendar/day/${dayItem.format('YYYY-MM-DD')}`}
             key={dayItem.format('DDMMYYYY')}
-            color={
-              isSelectedMonth(dayItem) ? '#343434' : 'rgba(52, 52, 52, 0.3)'
-            }
           >
             <RowInCeil justifyContent={'flex-end'}>
               <ShowDayWrapper>
                 <DayWrapper>
                   {!isCurrentDay(dayItem) ? (
-                    <span>{dayItem.format('D')}</span>
+                    <span
+                      style={{
+                        color: `${
+                          isSelectedMonth(dayItem)
+                            ? `${theme.colors.third_text_mode}`
+                            : '#A9A9A9'
+                        }`,
+                      }}
+                    >
+                      {dayItem.format('D')}
+                    </span>
                   ) : (
                     <CurrentDay>{dayItem.format('D')}</CurrentDay>
                   )}

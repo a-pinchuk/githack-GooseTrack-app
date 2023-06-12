@@ -98,7 +98,7 @@ export const StyledEditButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${theme.colors.second_backgrond_mode};
+  background-color: ${theme.colors.button_not_active};
   color: #343434;
 
   border: 0;
@@ -132,7 +132,7 @@ export const StyledCancelButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${theme.colors.second_backgrond_mode};
+  background-color: ${theme.colors.button_not_active};
   color: #343434;
 
   border: 0;
