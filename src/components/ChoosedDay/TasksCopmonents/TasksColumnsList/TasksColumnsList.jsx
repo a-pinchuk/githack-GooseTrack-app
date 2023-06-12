@@ -4,15 +4,29 @@ import { correctTitle } from '../helper/helper';
 import { toolTitle } from '../helper/helper';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { useEffect, useState } from 'react';
 export const TasksColumnsList = ({ sortedTasksData }) => {
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 1440px)').matches
+  );
   const { done, inProgress, toDo } = sortedTasksData;
 
   //Ключи заголовков колонок
   const dataTitle = Object.keys(sortedTasksData);
   // console.log(dataTitle);
 
+  useEffect(() => {
+    window
+      .matchMedia('(min-width:1440px)')
+      .addEventListener('change', e => setMatches(e.matches));
+  }, []);
+
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider
+      backend={matches ? HTML5Backend : TouchBackend}
+      options={options}
+    >
       <TaskContainer data-tour="5">
         <StretchContainer>
           <TasksColumn
