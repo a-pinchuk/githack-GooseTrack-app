@@ -26,7 +26,8 @@ export const ScrollToTop = () => {
   return (
     <Container>
       <div id="scroll-progress">
-        <span id="scroll-progress-value">&#x1F815;</span>
+        {/* <span id="scroll-progress-value">&#x1F815;</span> */}
+        <span id="scroll-progress-value">UP</span>
       </div>
     </Container>
   );
