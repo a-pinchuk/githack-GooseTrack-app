@@ -161,11 +161,11 @@ export const forgotPassword = createAsyncThunk(
 
 export const resetPassword = createAsyncThunk(
   '/users/reset-password',
-  async ({ accessToken, newpassword }, thunkAPI) => {
+  async ({ token, newPassword }, thunkAPI) => {
     try {
       const res = await instance.post('/users/reset-password', {
-        accessToken,
-        newpassword,
+        token,
+        newPassword,
       });
 
       Notify.success(`Success`);
