@@ -5,7 +5,6 @@ import { Container } from './ScrollToTop.styled';
 export const ScrollToTop = () => {
   let calcScrollValue = () => {
     let scrollProgress = document.getElementById('scroll-progress');
-    let progressValue = document.getElementById('scroll-progress-value');
     let pos = document.documentElement.scrollTop;
     let calcHeight =
       document.documentElement.scrollHeight -
@@ -19,7 +18,7 @@ export const ScrollToTop = () => {
     scrollProgress.addEventListener('click', () => {
       document.documentElement.scrollTop = 0;
     });
-    scrollProgress.style.background = `conic-gradient(#03cc65 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+    scrollProgress.style.background = `conic-gradient(#3E85F3 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
   };
   window.onscroll = calcScrollValue;
   window.onload = calcScrollValue;
