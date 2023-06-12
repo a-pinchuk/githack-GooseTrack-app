@@ -1,17 +1,8 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateAccessToken } from 'redux/auth/authSlice';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 import { Container, FormWrapper, ImgWrapper, Link } from './LoginPage.styled';
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const accessToken = window.location?.search.split('=')[1];
-
-    dispatch(updateAccessToken(accessToken));
-  }, [dispatch]);
   return (
     <Container>
       <FormWrapper>
