@@ -45,6 +45,7 @@ function stringToColor(string) {
 }
 
 function stringAvatar(name) {
+  console.log('name:', name);
   if (name.split(' ').length > 1)
     return {
       sx: {
@@ -61,6 +62,7 @@ function stringAvatar(name) {
 }
 
 export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
+  console.log('reviews:', reviews);
   const dispatch = useDispatch();
 
   const hanleDeleteButton = id => {
@@ -78,7 +80,7 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
               </UserAvatarWrapper>
             ) : (
               <Avatar
-                {...stringAvatar(review.name)}
+                {...stringAvatar(review.owner.name)}
                 sx={{
                   width: '32px',
                   height: '32px',

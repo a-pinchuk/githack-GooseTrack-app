@@ -30,6 +30,7 @@ export const TasksColumn = ({ taskData, title, category, toolbarData }) => {
           taskData={taskData}
           handlerOpenModal={handlerOpenModal}
           title={title}
+          category={category}
         />
         <AddTasksBth handlerOpenModal={handlerOpenModal} />
       </TaskItem>
