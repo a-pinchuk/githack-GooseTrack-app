@@ -77,9 +77,9 @@ export const ReviewsSlider = () => {
         {lastTenReviews?.map(review => (
           <ReviewCard
             key={review._id}
-            src={review.owner.avatarUrl}
+            src={review.owner?.avatarUrl || null}
             num={review.rating}
-            name={review.owner.name}
+            name={review.owner?.name || 'John Doe'}
           >
             {review.comment}
           </ReviewCard>

@@ -31,6 +31,7 @@ const UserForm = () => {
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
+    setIsFormDirty(true);
     const file = event.currentTarget.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
@@ -89,11 +90,11 @@ const UserForm = () => {
   } = useFormik({
     initialValues: {
       avatar: null,
-      name: user.name,
-      email: user.email,
-      phone: user.phone,
-      skype: user.skype,
-      birthday: user.birthday,
+      name: user.data.name,
+      email: user.data.email,
+      phone: user.data.phone,
+      skype: user.data.skype,
+      birthday: user.data.birthday,
     },
     validationSchema: validationSchema,
     onSubmit: async values => {

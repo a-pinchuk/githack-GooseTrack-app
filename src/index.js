@@ -9,6 +9,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from 'redux/store';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/theme';
+import { TourProvider } from '@reactour/tour'; //потрібно передвинути вище
+import { steps } from 'steps';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,7 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Provider store={store}>
         <PersistGate loading="" persistor={persistor}>
           <BrowserRouter basename="/githack-GooseTrack-app">
-            <App />
+            <TourProvider steps={steps}>
+              <App />
+            </TourProvider>
           </BrowserRouter>
         </PersistGate>
       </Provider>

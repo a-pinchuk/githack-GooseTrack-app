@@ -13,12 +13,15 @@ export const PeriodTypeSelect = ({
   return (
     <PeriodTypeWrapper>
       <MonthPeriodTypeBtn
+        data-tour="1"
+        // className="first-step"
         isActive={typeSelect === 'month'}
         onClick={typeMonthHendler}
       >
         Month
       </MonthPeriodTypeBtn>
       <DayPeriodTypeBtn
+        data-tour="2"
         isActive={typeSelect === 'day'}
         onClick={typeDayHendler}
       >
