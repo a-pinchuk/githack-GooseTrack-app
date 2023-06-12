@@ -27,7 +27,7 @@ html[data-theme='light'] {
   --reviews-content: rgba(17, 17, 17, 0.7);
   --empty-star: #cec9c1;
   --scrollbar-bg: grey;
-
+  --user-input-birthday: none;
 }
 
 html[data-theme='dark'] {
@@ -57,7 +57,7 @@ html[data-theme='dark'] {
   --reviews-content: rgba(255, 255, 255, 0.7);
   --empty-star: #353647;
   --scrollbar-bg: #2d3037;
-
+  --user-input-birthday: solid rgba(255, 255, 255, 0.15);
 }
 
 body {
