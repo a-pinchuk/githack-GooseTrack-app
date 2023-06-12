@@ -57,7 +57,11 @@ html[data-theme='dark'] {
   --reviews-content: rgba(255, 255, 255, 0.7);
   --empty-star: #353647;
   --scrollbar-bg: #2d3037;
+<<<<<<< HEAD
+  --user-input-birthday: 1px solid rgba(255, 255, 255, 0.15);;
+=======
   --user-input-birthday: solid rgba(255, 255, 255, 0.15);
+>>>>>>> main
 }
 
 body {

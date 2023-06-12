@@ -28,14 +28,13 @@ export const StyledDataPicker = styled(DatePicker)`
     border: 1px solid #11111126;
   }
   .MuiOutlinedInput-root {
-    /* border: none; */
     min-width: 250px;
-    height: 42px;
+    height: 44px;
     padding-left: 14px;
     padding-right: 14px;
     outline: none;
 
-    /* border: ${p => p.theme.colors.user_input_border}; */
+    border: ${p => p.theme.colors.user_input_birthday};
     border-radius: ${p => p.theme.radii.small};
 
     &.Mui-focused .MuiOutlinedInput-notchedOutline {

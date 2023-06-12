@@ -96,7 +96,6 @@ export const theme = {
 
     empty_star: 'var(--empty-star)',
 
-    
     user_input_birthday: 'var(--user-input-birthday',
     // none ---->>>>>  solid rgba(255, 255, 255, 0.15)
   },
