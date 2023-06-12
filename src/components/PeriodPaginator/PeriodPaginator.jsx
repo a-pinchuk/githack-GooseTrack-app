@@ -9,6 +9,8 @@ import {
   RightPaginatorBtn,
 } from './PeriodPaginator.styled';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 export const PeriodPaginator = ({
   today,
@@ -19,9 +21,14 @@ export const PeriodPaginator = ({
 }) => {
   const { currentDate, currentDay } = useParams();
 
+  const {
+    data: { createdAt },
+  } = useSelector(selectUser);
+  const dateCreatedUser = moment(createdAt).format('YYYY-MM-DD');
+
   const isDisabled =
-    currentDay === moment().format('YYYY-MM-DD') ||
-    currentDate === moment().format('YYYY-MM-DD');
+    currentDay === dateCreatedUser ||
+    currentDate?.slice(0, 7) === dateCreatedUser?.slice(0, 7);
 
   return (
     <PaginatorWrapper>

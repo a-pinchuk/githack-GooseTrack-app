@@ -5,7 +5,7 @@ import { ReactComponent as ArrowLeftBtnBlack } from '../../images/arrow-left-bla
 
 export const PaginatorWrapper = styled.div`
   width: 100%;
-  height: 34px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
 
@@ -13,15 +13,13 @@ export const PaginatorWrapper = styled.div`
     width: 290px;
     height: 34px;
     justify-content: flex-start;
-    /* gap: 8px; */
+    gap: 8px;
   }
 `;
 
 export const PaginatorDate = styled.button`
-
   width: ${props => (props.typeSelect === 'month' ? '150px' : '112px')};
   height: 30px;
-
   padding: 6px 12px;
   background-color: ${props => props.theme.colors.primary};
   border: ${props => props.theme.borders.none};
@@ -33,9 +31,8 @@ export const PaginatorDate = styled.button`
   text-align: center;
   text-transform: uppercase;
   color: ${props => props.theme.colors.white};
-  margin-right: auto;
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    width: ${props => (props.typeSelect === 'month' ? '168px' : '128px')};
+    width: ${props => (props.typeSelect === 'month' ? '168px' : '132px')};
     height: 34px;
     padding: 8px 12px;
     font-size: ${props => props.theme.fontSizes.m};
