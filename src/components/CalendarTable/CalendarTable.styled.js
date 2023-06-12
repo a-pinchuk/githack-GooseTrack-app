@@ -166,6 +166,7 @@ export const HiddenTaskCount = styled.span`
   font-style: italic;
   font-size: 10px;
   line-height: 1.4;
+  font-weight: 600;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     left: 2px;
@@ -178,5 +179,19 @@ export const HiddenTaskCount = styled.span`
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     left: 4px;
     top: 25px;
+  }
+
+  animation: scaleAnimation 1s linear infinite alternate;
+
+  @keyframes scaleAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1.2);
+    }
   }
 `;
