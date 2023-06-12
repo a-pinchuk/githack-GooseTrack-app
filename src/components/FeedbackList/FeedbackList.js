@@ -62,6 +62,7 @@ function stringAvatar(name) {
 }
 
 export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
+  console.log('reviews:', reviews);
   const dispatch = useDispatch();
 
   const hanleDeleteButton = id => {
