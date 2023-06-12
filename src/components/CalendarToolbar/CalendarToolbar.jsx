@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useTour } from '@reactour/tour';
 import { PeriodPaginator } from 'components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from 'components/PeriodTypeSelect/PeriodTypeSelect';
 import { ToolbarWrapper } from './CalendarToolbar.styled';
@@ -14,6 +14,7 @@ export const CalendarToolbar = props => {
     typeMonthHendler,
     typeDayHendler,
   } = props;
+  const { setIsOpen } = useTour();
 
   return (
     <>
@@ -25,6 +26,7 @@ export const CalendarToolbar = props => {
           prevHandler={prevHandler}
           nextHandler={nextHandler}
         />
+        <button onClick={() => setIsOpen(true)}>Open Tour</button>
         <PeriodTypeSelect
           typeSelect={typeSelect}
           typeMonthHendler={typeMonthHendler}
