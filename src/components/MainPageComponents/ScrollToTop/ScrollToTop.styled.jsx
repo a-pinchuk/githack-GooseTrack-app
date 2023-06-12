@@ -17,12 +17,12 @@ export const Container = styled.div`
     cursor: pointer;
 
     &:hover {
-      -webkit-box-shadow: 0px 0px 5px 4px #3e85f3;
-      -moz-box-shadow: 0px 0px 5px 4px #3e85f3;
-      box-shadow: 0px 0px 5px 4px #3e85f3;
+      -webkit-box-shadow: 0px 0px 5px 4px ${p => p.theme.colors.primary};
+      -moz-box-shadow: 0px 0px 5px 4px ${p => p.theme.colors.primary};
+      box-shadow: 0px 0px 5px 4px ${p => p.theme.colors.primary};
 
       span {
-        color: #3e85f3;
+        color: ${p => p.theme.colors.primary};
       }
     }
 
@@ -39,18 +39,21 @@ export const Container = styled.div`
     display: block;
     height: calc(100% - 10px);
     width: calc(100% - 10px);
-    background-color: #ffffff;
-    border-radius: 50%;
+
+    font-size: 25px;
+
     display: grid;
     place-items: center;
-    font-size: 15px;
-    color: #001a2e;
+    border-radius: 50%;
+
+    color: ${p => p.theme.colors.blackTitle};
+    background-color: ${p => p.theme.colors.background};
 
     @media screen and (min-width: 768px) {
       height: calc(100% - 15px);
       width: calc(100% - 15px);
 
-      font-size: 35px;
+      font-size: 45px;
     }
   }
 `;
