@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/githack-GooseTrack-app/static/css/main.7353ca3b.css",
-    "main.js": "/githack-GooseTrack-app/static/js/main.2930cb4e.js",
+    "main.css": "/githack-GooseTrack-app/static/css/main.06a5bad7.css",
+    "main.js": "/githack-GooseTrack-app/static/js/main.cb73451e.js",
     "static/js/424.b6cdba2b.chunk.js": "/githack-GooseTrack-app/static/js/424.b6cdba2b.chunk.js",
     "static/js/525.b92f72e6.chunk.js": "/githack-GooseTrack-app/static/js/525.b92f72e6.chunk.js",
     "static/js/516.bfc57c70.chunk.js": "/githack-GooseTrack-app/static/js/516.bfc57c70.chunk.js",
@@ -60,8 +60,8 @@
     "static/media/addIcon.svg": "/githack-GooseTrack-app/static/media/addIcon.bbf7129492a6df4bbe3ee57c7159ae1d.svg",
     "static/media/arrow-left-black.svg": "/githack-GooseTrack-app/static/media/arrow-left-black.8df59adc9bacddf3c983af5ab06b718c.svg",
     "static/media/arrow-right-black.svg": "/githack-GooseTrack-app/static/media/arrow-right-black.b4edd76a4e277a383d7d8f3ec42e2e1d.svg",
-    "main.7353ca3b.css.map": "/githack-GooseTrack-app/static/css/main.7353ca3b.css.map",
-    "main.2930cb4e.js.map": "/githack-GooseTrack-app/static/js/main.2930cb4e.js.map",
+    "main.06a5bad7.css.map": "/githack-GooseTrack-app/static/css/main.06a5bad7.css.map",
+    "main.cb73451e.js.map": "/githack-GooseTrack-app/static/js/main.cb73451e.js.map",
     "424.b6cdba2b.chunk.js.map": "/githack-GooseTrack-app/static/js/424.b6cdba2b.chunk.js.map",
     "525.b92f72e6.chunk.js.map": "/githack-GooseTrack-app/static/js/525.b92f72e6.chunk.js.map",
     "516.bfc57c70.chunk.js.map": "/githack-GooseTrack-app/static/js/516.bfc57c70.chunk.js.map",
@@ -73,7 +73,7 @@
     "836.4d2e5e4d.chunk.js.map": "/githack-GooseTrack-app/static/js/836.4d2e5e4d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7353ca3b.css",
-    "static/js/main.2930cb4e.js"
+    "static/css/main.06a5bad7.css",
+    "static/js/main.cb73451e.js"
   ]
 }
