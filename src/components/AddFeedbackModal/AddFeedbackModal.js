@@ -17,6 +17,7 @@ export const AddFeedbackModal = ({ handlerCloseModal }) => {
   const dispatch = useDispatch();
 
   const reviews = useSelector(selectAllReviews);
+  console.log('reviews:', reviews);
 
   const toggleEditFeedback = (rating, feedback, _id) => {
     if (rating && feedback) {

@@ -80,7 +80,7 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
               </UserAvatarWrapper>
             ) : (
               <Avatar
-                {...stringAvatar(review.name)}
+                {...stringAvatar(review.owner.name)}
                 sx={{
                   width: '32px',
                   height: '32px',
