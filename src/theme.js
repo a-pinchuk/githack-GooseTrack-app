@@ -95,6 +95,8 @@ export const theme = {
     // rgba(17, 17, 17, 0.7); ---->>>>>  gba(255, 255, 255, 0.7);
 
     empty_star: 'var(--empty-star)',
+
+    button_not_active: 'var(--button-not-active)',
   },
   fonts: {
     body: 'Coolvetica',
