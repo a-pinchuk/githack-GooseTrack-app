@@ -54,7 +54,7 @@ export const PasswordRecoveryForm = () => {
       initialValues={{ password: '', passwordConfirm: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await dispatch(resetPassword(values));
+        await dispatch(resetPassword(values.password));
         setSubmitting(false);
       }}
     >
