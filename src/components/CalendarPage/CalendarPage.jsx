@@ -3,13 +3,21 @@ import { Outlet } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import moment from 'moment';
+import { useTour } from '@reactour/tour';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { CalendarContainer } from './CalendarPage.styled';
 
-const CalendarPage = () => {
+const CalendarPage = ({ setStep }) => {
   const navigate = useNavigate();
+  const { setIsOpen } = useTour();
 
+  const startTour = () => {
+    setStep(0);
+    //navigate(`/calendar/day/${moment().format('YYYY-MM-DD')}`);
+    setIsOpen(true);
+    console.log('start Tour begin');
+  };
   const { currentDay, currentDate } = useParams();
   const { pathname } = useLocation();
   const typeSelect = pathname.includes('/calendar/day') ? 'day' : 'month';
@@ -21,12 +29,6 @@ const CalendarPage = () => {
       navigate(`/calendar/month/${moment().format('YYYY-MM-DD')}`);
     }
   }, [pathname, navigate]);
-
-  const todayHandler = () => {
-    // Перейти на день
-    // console.log('Перейти на день');
-    // setToday(moment());
-  };
 
   const prevHandler = () => {
     navigate(
@@ -58,11 +60,11 @@ const CalendarPage = () => {
       <CalendarToolbar
         today={moment(workDate)}
         typeSelect={typeSelect}
-        todayHandler={todayHandler}
         prevHandler={prevHandler}
         nextHandler={nextHandler}
         typeMonthHendler={typeMonthHendler}
         typeDayHendler={typeDayHendler}
+        startTour={startTour}
       />
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
