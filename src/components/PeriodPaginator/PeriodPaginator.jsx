@@ -21,13 +21,8 @@ export const PeriodPaginator = ({
 }) => {
   const { currentDate, currentDay } = useParams();
 
-  const user = useSelector(selectUser); //зробити деструктуризацію отримати createdAt
-  console.log('user:', user);
-
-  const createdAt = '2023-05-02T09:46:51.648+00:00';
+  const { createdAt } = useSelector(selectUser);
   const dateCreatedUser = moment(createdAt).format('YYYY-MM-DD');
-
-  //const dateCreatedUser = '2023-05-28';
 
   const isDisabled =
     currentDay === dateCreatedUser ||
