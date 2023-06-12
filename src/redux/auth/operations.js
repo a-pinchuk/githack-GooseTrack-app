@@ -58,7 +58,7 @@ export const register = createAsyncThunk(
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
-      Notify.failure(`Bad request`);
+      Notify.failure(`Registration failed. Try again`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -77,7 +77,7 @@ export const logIn = createAsyncThunk(
       Notify.success(`Welcome!!!`);
       return res.data;
     } catch (error) {
-      Notify.failure(`Bad request`);
+      Notify.failure(`Login failed. Try again`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -150,10 +150,10 @@ export const forgotPassword = createAsyncThunk(
       const res = await instance.post('/users/forgot', {
         email,
       });
-      Notify.success(`Success`);
+      Notify.success(`Sent. Check your email.`);
       return res.data;
     } catch (error) {
-      Notify.failure(`Bad request`);
+      Notify.failure(`Sending failed. Try again.`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -168,10 +168,10 @@ export const resetPassword = createAsyncThunk(
         newPassword,
       });
 
-      Notify.success(`Success`);
+      Notify.success(`Password changed successfully.`);
       return res.data;
     } catch (error) {
-      Notify.failure(`Bad request`);
+      Notify.failure(`Password change failed.`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
