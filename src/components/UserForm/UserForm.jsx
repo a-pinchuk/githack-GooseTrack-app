@@ -90,11 +90,11 @@ const UserForm = () => {
   } = useFormik({
     initialValues: {
       avatar: null,
-      name: user.data.name,
-      email: user.data.email,
-      phone: user.data.phone,
-      skype: user.data.skype,
-      birthday: user.data.birthday,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      skype: user.skype,
+      birthday: user.birthday,
     },
     validationSchema: validationSchema,
     onSubmit: async values => {
