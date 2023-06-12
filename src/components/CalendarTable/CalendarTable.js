@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
@@ -10,12 +10,14 @@ import {
   ShowDayWrapper,
   TaskList,
   TaskItem,
+  HiddenTaskCount,
 } from './CalendarTable.styled';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { theme } from 'theme';
 
 const DayLink = styled(Link)`
+  position: relative;
   /* min-width: 47px; */
   padding: 5px 2px;
   overflow: hidden;
@@ -51,6 +53,20 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   // const isDesktop = useMediaQuery({ minWidth: 1440 });
+
+  const [maxVisibleTasks, setMaxVisibleTasks] = useState(0);
+  // const [hiddenTaskCount, setHiddenTaskCount] = useState(0);
+  const dayLinkRef = useRef(null);
+
+  useEffect(() => {
+    if (dayLinkRef.current) {
+      const dayLinkHeight = dayLinkRef.current.clientHeight;
+      console.log('dayLinkHeight:', dayLinkHeight);
+      const taskItemHeight = isMobile ? 25 : 28; // Замініть на відповідну висоту TaskItem
+      const maxVisible = Math.floor((dayLinkHeight - 10 - 20) / taskItemHeight);
+      setMaxVisibleTasks(maxVisible);
+    }
+  }, [isMobile]);
 
   const totalDays = 42;
 
@@ -93,12 +109,19 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
     <CalendarGridWrapper data-tour="4">
       {daysArray.map(dayItem => {
         const dayTasks = filterTask(dayItem); // Получаем отфильтрованные задачи для данного дня
+        const visibleTasks = dayTasks.slice(0, maxVisibleTasks);
+        const hiddenTask = dayTasks.length - visibleTasks.length;
+
         return (
           <DayLink
+            ref={dayLinkRef}
             to={`/calendar/day/${dayItem.format('YYYY-MM-DD')}`}
             key={dayItem.format('DDMMYYYY')}
           >
             <RowInCeil justifyContent={'flex-end'}>
+              {hiddenTask > 0 && (
+                <HiddenTaskCount>+{hiddenTask}</HiddenTaskCount>
+              )}
               <ShowDayWrapper>
                 <DayWrapper>
                   {!isCurrentDay(dayItem) ? (
@@ -119,9 +142,9 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
                 </DayWrapper>
               </ShowDayWrapper>
             </RowInCeil>
-            {dayTasks.length > 0 && (
+            {visibleTasks.length > 0 && (
               <TaskList>
-                {dayTasks.map(
+                {visibleTasks.map(
                   (
                     task // Используем отфильтрованные задачи здесь
                   ) => (

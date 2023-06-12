@@ -157,3 +157,26 @@ export const TaskItem = styled.li`
     padding: 4px 15px 4px 12px;
   }
 `;
+
+export const HiddenTaskCount = styled.span`
+  color: green;
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  font-style: italic;
+  font-size: 10px;
+  line-height: 1.4;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+    left: 2px;
+    top: 20px;
+
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    left: 4px;
+    top: 25px;
+  }
+`;
