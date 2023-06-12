@@ -3,16 +3,20 @@ import { FeedbackList } from 'components/FeedbackList/FeedbackList';
 import { Modal } from 'components/Modal/Modal';
 import { useState } from 'react';
 import { ModalContent } from './AddFeedbackModal.styled';
-// import { useSelector } from 'react-redux';
-// import { selectAllReviews } from 'redux/reviews/selectors';
-// import { fetchUserReviews } from 'redux/reviews/operations';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectAllReviews } from 'redux/reviews/selectors';
+import { fetchUserReviews } from 'redux/reviews/operations';
 
 export const AddFeedbackModal = ({ handlerCloseModal }) => {
   const [isEditFeedbackOpen, setisEditFeedbackOpen] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [rating, setRating] = useState(null);
   const [idReview, setIdReview] = useState(null);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const reviews = useSelector(selectAllReviews);
 
   const toggleEditFeedback = (rating, feedback, _id) => {
     if (rating && feedback) {
@@ -23,6 +27,10 @@ export const AddFeedbackModal = ({ handlerCloseModal }) => {
 
     setisEditFeedbackOpen(!isEditFeedbackOpen);
   };
+
+  useEffect(() => {
+    dispatch(fetchUserReviews());
+  }, [dispatch]);
 
   return (
     <Modal handlerCloseModal={handlerCloseModal}>
@@ -38,11 +46,14 @@ export const AddFeedbackModal = ({ handlerCloseModal }) => {
         ) : (
           <>
             <FeedbackForm />
-            <FeedbackList
-              // reviews={reviews}
-              toggleEditFeedback={toggleEditFeedback}
-              isEditFeedbackOpen={isEditFeedbackOpen}
-            />
+            {reviews.length > 0 && (
+              <FeedbackList
+                reviews={reviews}
+                // reviews={reviews}
+                toggleEditFeedback={toggleEditFeedback}
+                isEditFeedbackOpen={isEditFeedbackOpen}
+              />
+            )}
           </>
         )}
       </ModalContent>

@@ -74,7 +74,7 @@ export const { updateAccessToken } = authSlice.actions;
 
 const persistConfig = {
   key: 'auth',
-  whitelist: ['accessToken', 'user'],
+  whitelist: ['accessToken'],
   storage,
 };
 

@@ -93,7 +93,11 @@ export const theme = {
     reviews_content: 'var(--reviews-content)',
 
     // rgba(17, 17, 17, 0.7); ---->>>>>  gba(255, 255, 255, 0.7);
-    user_input_birthday: 'var(--user-input-birthday)',
+
+    empty_star: 'var(--empty-star)',
+
+    user_input_birthday: 'var(--user-input-birthday',
+    // none ---->>>>>  solid rgba(255, 255, 255, 0.15)
   },
   fonts: {
     body: 'Coolvetica',
