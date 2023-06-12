@@ -8,6 +8,8 @@ import {
 import { TasklToolBar } from '../TaskToolBar/TaskToolBar';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+import { useDrag } from 'react-dnd';
+import { ItemTypes } from '../helper/Items';
 
 export const TaskColumnCard = ({
   toolbarData,
@@ -18,6 +20,21 @@ export const TaskColumnCard = ({
 }) => {
   const userData = useSelector(selectUser);
 
+  const [{ isDragging }, drag] = useDrag({
+    item: {
+      id: item._id,
+      title: item.title,
+      priority: item.priority,
+      avatarUrl: userData?.avatarUrl,
+      name: userData?.name,
+      category: item.category,
+    },
+    type: ItemTypes.CARD,
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
+
   const avaFunc = value => {
     if (!value) {
       return;
@@ -27,7 +44,13 @@ export const TaskColumnCard = ({
   };
 
   return (
-    <TaskListItem>
+    <TaskListItem
+      ref={drag}
+      style={{
+        opacity: isDragging ? '0.5' : '1',
+        cursor: 'grabbing',
+      }}
+    >
       <TaskText>{item.title}</TaskText>
       <div
         style={{
