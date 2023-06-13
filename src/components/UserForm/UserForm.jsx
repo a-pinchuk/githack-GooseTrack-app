@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations';
@@ -26,7 +26,7 @@ import {
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  console.log('🚀 ~ user:', user);
+
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
 
@@ -80,6 +80,7 @@ const UserForm = () => {
     setIsFormDirty(true);
   };
   const currentDate = moment().format('DD/MM/YYYY');
+
   const {
     errors,
     touched,
@@ -106,6 +107,14 @@ const UserForm = () => {
       }
     },
   });
+
+  useEffect(() => {
+    setFieldValue('name', user.name);
+    setFieldValue('email', user.email);
+    setFieldValue('phone', user.phone);
+    setFieldValue('skype', user.skype);
+    setFieldValue('birthday', user.birthday);
+  }, [user, setFieldValue]);
 
   return (
     <Container>

@@ -62,7 +62,7 @@ export const Header = ({ toogleShowSiderBar }) => {
         )}
 
         <ThemeToggler />
-        <UserInfo />
+        <UserInfo toogleShowSiderBar={toogleShowSiderBar} />
       </RighSectiontHeader>
       {showModal && <AddFeedbackModal handlerCloseModal={handlerCloseModal} />}
     </HeaderSection>
