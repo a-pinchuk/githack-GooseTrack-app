@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Container } from './ScrollToTop.styled';
 
+import sprite from 'icons/sprite.svg';
+
 export const ScrollToTop = () => {
   let calcScrollValue = () => {
     let scrollProgress = document.getElementById('scroll-progress');
@@ -11,9 +13,15 @@ export const ScrollToTop = () => {
       document.documentElement.clientHeight;
     let scrollValue = Math.round((pos * 100) / calcHeight);
     if (pos > 100) {
-      scrollProgress.style.display = 'grid';
+      if (scrollProgress) {
+        scrollProgress.style.display = 'grid';
+      }
+      // scrollProgress.style.display = 'grid';
     } else {
-      scrollProgress.style.display = 'none';
+      if (scrollProgress) {
+        scrollProgress.style.display = 'none';
+      }
+      // scrollProgress.style.display = 'none';
     }
     scrollProgress.addEventListener('click', () => {
       document.documentElement.scrollTop = 0;
@@ -26,7 +34,11 @@ export const ScrollToTop = () => {
   return (
     <Container>
       <div id="scroll-progress">
-        <span id="scroll-progress-value">&#x1F815;</span>
+        <span id="scroll-progress-value">
+          <svg height="20" width="20">
+            <use href={sprite + '#icon-arrow-up'}></use>
+          </svg>
+        </span>
       </div>
     </Container>
   );
