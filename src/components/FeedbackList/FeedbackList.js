@@ -45,7 +45,7 @@ function stringToColor(string) {
 }
 
 function stringAvatar(name) {
-  console.log('name:', name);
+  // console.log('name:', name);
   if (name.split(' ').length > 1)
     return {
       sx: {
@@ -62,7 +62,7 @@ function stringAvatar(name) {
 }
 
 export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
-  console.log('reviews:', reviews);
+  // console.log('reviews:', reviews);
   const dispatch = useDispatch();
 
   const hanleDeleteButton = id => {

@@ -26,7 +26,6 @@ import {
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
 
@@ -107,13 +106,14 @@ const UserForm = () => {
       }
     },
   });
-
   useEffect(() => {
     setFieldValue('name', user.name);
     setFieldValue('email', user.email);
     setFieldValue('phone', user.phone);
     setFieldValue('skype', user.skype);
     setFieldValue('birthday', user.birthday);
+
+    setSelectedImage(null || user.avatarUrl);
   }, [user, setFieldValue]);
 
   return (

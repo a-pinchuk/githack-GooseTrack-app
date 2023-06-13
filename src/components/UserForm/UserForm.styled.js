@@ -13,7 +13,7 @@ export const StyledDataPicker = styled(DatePicker)`
   input::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
-    color: ${p => p.theme.colors.primary_text_mode};
+    color: ${p => p.theme.colors.user_placeholder};
     font-weight: 400 !important;
     opacity: 1;
   }
@@ -27,20 +27,20 @@ export const StyledDataPicker = styled(DatePicker)`
   .MuiOutlinedInput-notchedOutline {
     border: 1px solid #11111126;
   }
+
   .MuiOutlinedInput-root {
     min-width: 250px;
     height: 44px;
     padding-left: 14px;
     padding-right: 14px;
     outline: none;
-
-    border: ${p => p.theme.colors.user_input_birthday};
+    border: none;
     border-radius: ${p => p.theme.radii.small};
 
-    &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: 1px solid #111111;
+    .MuiOutlinedInput-notchedOutline {
+      border: ${p => p.theme.colors.user_input_border};
     }
-    &:hover .MuiOutlinedInput-notchedOutline {
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
       border: 1px solid #111111;
     }
   }
@@ -48,21 +48,15 @@ export const StyledDataPicker = styled(DatePicker)`
 
 export const Container = styled.div`
   max-width: 375px;
-  /* padding-top: 151px; */
   padding-bottom: 40px;
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
+
   background-color: ${p => p.theme.colors.background_mode};
   @media (min-width: 768px) {
-    min-width: 768px;
-    /* padding-top: 132px; */
+    max-width: 100%;
     padding-bottom: 38px;
-    /* padding-left: 32px; */
-    /* padding-right: 32px; */
   }
   @media (min-width: 1440px) {
     max-width: 100%;
-    /* padding-top: 40px; */
     padding-bottom: 32px;
   }
 `;
@@ -237,7 +231,7 @@ export const Input = styled.input`
   &::placeholder {
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
-    color: ${p => p.theme.colors.primary_text_mode};
+    color: ${p => p.theme.colors.user_placeholder};
   }
   &:hover,
   &:focus {

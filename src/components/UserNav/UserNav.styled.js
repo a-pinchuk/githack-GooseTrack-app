@@ -29,7 +29,10 @@ export const StyledLink = styled(NavLink)`
   line-height: calc(19 / 16);
 
   color: ${props => props.theme.colors.second_text_mode};
+
   :hover {
+    border: 1px solid ${props => props.theme.colors.hover_button};
+    border-radius: 8px;
     color: ${props => props.theme.colors.hover_button};
   }
 
@@ -68,9 +71,13 @@ export const StyledItem = styled.li`
   height: 56px;
 
   border-radius: 8px;
+  &.active {
+    background: ${props => props.theme.colors.background_button};
+  }
 
   :hover {
-    background: ${props => props.theme.colors.background_button};
+    /* background: ${props => props.theme.colors.background_button}; */
+    /* background: red; */
   }
 
   width: 185px;

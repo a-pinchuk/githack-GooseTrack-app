@@ -80,7 +80,7 @@ export function FeedbackForm({
     if (isEditFeedbackOpen) {
       dispatch(updateReview({ id, rating: value, comment: review }));
       toggleEditFeedback();
-      setChanged(true);
+      setChanged(false);
 
       return;
     }
@@ -127,7 +127,7 @@ export function FeedbackForm({
 
   const isReviewValid = review.length <= 300;
   const isRatingValid = value >= 1;
-  console.log('isRatingValid:', isRatingValid);
+  // console.log('isRatingValid:', isRatingValid);
 
   return (
     <FormContainer>

@@ -61,12 +61,12 @@ export const CalendarTable = ({ startDay, today, tasks }) => {
   useEffect(() => {
     if (dayLinkRef.current) {
       const dayLinkHeight = dayLinkRef.current.clientHeight;
-      console.log('dayLinkHeight:', dayLinkHeight);
-      const taskItemHeight = isMobile ? 25 : 28; // Замініть на відповідну висоту TaskItem
+
+      const taskItemHeight = isMobile ? 25 : isTablet ? 28 : 33; // Замініть на відповідну висоту TaskItem
       const maxVisible = Math.floor((dayLinkHeight - 10 - 20) / taskItemHeight);
       setMaxVisibleTasks(maxVisible);
     }
-  }, [isMobile]);
+  }, [isMobile, isTablet]);
 
   const totalDays = 42;
 

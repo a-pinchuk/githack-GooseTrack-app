@@ -54,7 +54,8 @@ export const AvatarWrapper = styled.div`
   & img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border-radius: ${p => p.theme.radii.round};
   }
 `;
@@ -90,6 +91,7 @@ export const StarContainer = styled.ul`
 
 export const CommentText = styled.div`
   margin: 0;
+  word-break: break-all;
 
   font-size: ${p => p.theme.fontSizes.s};
   font-weight: ${p => p.theme.fontWeights.normal};

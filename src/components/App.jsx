@@ -51,7 +51,10 @@ export const App = () => {
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="password" element={<PasswordPage />} />
-            <Route path="reset-password/:token" element={<PasswordRecoveryPage />} />
+            <Route
+              path="reset-password/:token"
+              element={<PasswordRecoveryPage />}
+            />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/" element={<MainLayout />}>

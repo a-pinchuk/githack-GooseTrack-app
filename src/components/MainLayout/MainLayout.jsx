@@ -32,10 +32,6 @@ const MainLayout = () => {
     }
   };
 
-  // useEffect(() => {
-  //   setShowSideBar(false);
-  // }, []);
-
   return (
     <Container>
       <Main>
