@@ -65,6 +65,7 @@ export const tasksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.successful = true;
+
         const index = state.tasks.findIndex(
           elem => elem._id === action.payload.data._id
         );
