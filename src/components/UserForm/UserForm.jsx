@@ -161,6 +161,7 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
+                closeOnSelect={true}
                 slotProps={{
                   textField: {
                     placeholder: `${currentDate}`,
