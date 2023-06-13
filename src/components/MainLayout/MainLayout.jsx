@@ -24,13 +24,17 @@ const MainLayout = () => {
     dispatch(updateUserInfo);
   }, [user.email, dispatch]);
 
-  const toogleShowSiderBar = () => {
-    setShowSideBar(prev => !prev);
+  const toogleShowSiderBar = (status = null) => {
+    if (status === null) {
+      setShowSideBar(prev => !prev);
+    } else {
+      setShowSideBar(status);
+    }
   };
 
-  useEffect(() => {
-    setShowSideBar(false);
-  }, []);
+  // useEffect(() => {
+  //   setShowSideBar(false);
+  // }, []);
 
   return (
     <Container>

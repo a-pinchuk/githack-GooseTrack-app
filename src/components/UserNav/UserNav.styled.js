@@ -5,6 +5,13 @@ import { ReactComponent as UserIcon } from '../../images/sideBar/user-check.svg'
 import { ReactComponent as CalendarIcon } from '../../images/sideBar/calendar-check.svg';
 import { ReactComponent as CloseIcon } from '../../images/x-close.svg';
 
+export const LinkLogo = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+`;
+
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
 
