@@ -127,7 +127,7 @@ export function FeedbackForm({
 
   const isReviewValid = review.length <= 300;
   const isRatingValid = value >= 1;
-  console.log('isRatingValid:', isRatingValid);
+  // console.log('isRatingValid:', isRatingValid);
 
   return (
     <FormContainer>
