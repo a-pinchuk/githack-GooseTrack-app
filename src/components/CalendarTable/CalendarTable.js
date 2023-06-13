@@ -52,7 +52,7 @@ const DayLink = styled(Link)`
 export const CalendarTable = ({ startDay, today, tasks }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
-  const isDesktop = useMediaQuery({ minWidth: 1440 });
+  // const isDesktop = useMediaQuery({ minWidth: 1440 });
 
   const [maxVisibleTasks, setMaxVisibleTasks] = useState(0);
   // const [hiddenTaskCount, setHiddenTaskCount] = useState(0);
