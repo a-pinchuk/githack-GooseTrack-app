@@ -3,8 +3,11 @@ import {
   format,
   formatISO,
   startOfWeek,
+  startOfDay,
+  parseISO,
   lastDayOfWeek,
   eachDayOfInterval,
+  isBefore,
 } from 'date-fns';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -17,11 +20,13 @@ import {
   SelectedDay,
   NotSelectedDay,
 } from './DayCalendarHead.styled';
+import { useAuth } from 'hooks';
 
 export const DayCalendarHead = () => {
-  const { currentDay: targetDate } = useParams();  
+  const { currentDay: targetDate } = useParams();
   const navigate = useNavigate();
 
+  const { user } = useAuth();
   const formatofWeek = 'eeee';
   const [time, setTime] = useState(new Date());
 
@@ -61,14 +66,30 @@ export const DayCalendarHead = () => {
       // Відображаємо звичайний день
       <WeeksItemDay>{week.getDate()}</WeeksItemDay>
     );
+
+    // Check if the week is before the user's created date
+
+    const disableButton = isBefore(
+      startOfDay(week),
+      startOfDay(parseISO(user.createdAt))
+    );
+
+    // const disableButton = isBeforeFunc(week, user.createdAt);
+
     return isSelected ? (
-      // Додаємо клас "SelectedDay" для виділення обраного дня
-      <SelectedDay onClick={() => handleChangDay(week)}>
+      // Add the "SelectedDay" class to highlight the selected day
+      <SelectedDay
+        onClick={() => handleChangDay(week)}
+        disabled={disableButton} // Disable the button if necessary
+      >
         {dayComponent}
       </SelectedDay>
     ) : (
-      // Додаємо клас "NotSelectedDay" для невиділеного дня
-      <NotSelectedDay onClick={() => handleChangDay(week)}>
+      // Add the "NotSelectedDay" class to unselected days
+      <NotSelectedDay
+        onClick={() => handleChangDay(week)}
+        disabled={disableButton} // Disable the button if necessary
+      >
         {dayComponent}
       </NotSelectedDay>
     );
@@ -81,9 +102,9 @@ export const DayCalendarHead = () => {
     <DivGridWeeks>
       {totalDate.map(week => (
         <WeeksItem key={week.getTime()}>
-          {/* Відображаємо назву дня тижня */}
+          {/* Display the day of the week */}
           <WeeksItemDateName>{formatWeekName(week)}</WeeksItemDateName>
-          {/* Відображаємо компонент дня */}
+          {/* Display the day component */}
           {renderDayComponent(week, selectedDay(week))}
         </WeeksItem>
       ))}
