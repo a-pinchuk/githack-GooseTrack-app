@@ -48,22 +48,15 @@ export const StyledDataPicker = styled(DatePicker)`
 
 export const Container = styled.div`
   max-width: 375px;
-  /* padding-top: 151px; */
-  padding-bottom: 40px;
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
+  height: calc(100% - 151px);
   background-color: ${p => p.theme.colors.background_mode};
   @media (min-width: 768px) {
-    min-width: 768px;
-    /* padding-top: 132px; */
-    padding-bottom: 38px;
-    /* padding-left: 32px; */
-    /* padding-right: 32px; */
+    min-width: 704px;
+    height: calc(100% - 155px);
   }
   @media (min-width: 1440px) {
     max-width: 100%;
-    /* padding-top: 40px; */
-    padding-bottom: 32px;
+    height: calc(100% - 138px);
   }
 `;
 export const FormContainer = styled.form`
@@ -74,6 +67,7 @@ export const FormContainer = styled.form`
   padding-bottom: 40px;
   padding-left: 18px;
   padding-right: 18px;
+  height: 100%;
   background-color: ${p => p.theme.colors.second_backgrond_mode};
   border-radius: ${p => p.theme.radii.big};
 
@@ -183,8 +177,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  overflow: auto;
+  margin-bottom: 40px;
   @media (min-width: 1440px) {
     width: 758px;
+    margin: auto 0;
     flex-direction: initial;
     flex-wrap: wrap;
     column-gap: 50px;
@@ -292,7 +289,7 @@ export const ErrorMessage = styled.div`
 export const Button = styled.button`
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: auto;
   padding-top: 14px;
   padding-bottom: 14px;
   padding-left: 50px;
@@ -319,8 +316,5 @@ export const Button = styled.button`
   @media (min-width: 768px) {
     width: 262px;
     height: 48px;
-  }
-  @media (min-width: 1440px) {
-    margin-top: 88px;
   }
 `;
