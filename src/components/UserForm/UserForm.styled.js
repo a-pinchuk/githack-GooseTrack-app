@@ -48,21 +48,15 @@ export const StyledDataPicker = styled(DatePicker)`
 
 export const Container = styled.div`
   max-width: 375px;
-  /* padding-top: 151px; */
   padding-bottom: 40px;
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
+
   background-color: ${p => p.theme.colors.background_mode};
   @media (min-width: 768px) {
-    min-width: 768px;
-    /* padding-top: 132px; */
+    max-width: 100%;
     padding-bottom: 38px;
-    /* padding-left: 32px; */
-    /* padding-right: 32px; */
   }
   @media (min-width: 1440px) {
     max-width: 100%;
-    /* padding-top: 40px; */
     padding-bottom: 32px;
   }
 `;
