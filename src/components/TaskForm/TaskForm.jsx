@@ -75,6 +75,12 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    if (informationTask.start > informationTask.end) {
+      Notify.failure('Start time cannot be later than end time');
+      return;
+    }
+
     if (operation === 'edit') {
       dispatch(updateTask(informationTask));
     } else {
