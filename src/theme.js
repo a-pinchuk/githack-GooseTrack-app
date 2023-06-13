@@ -98,9 +98,6 @@ export const theme = {
 
     button_not_active: 'var(--button-not-active)',
 
-    user_input_birthday: 'var(--user-input-birthday)',
-    // none ---->>>>>  solid rgba(255, 255, 255, 0.15)
-
     user_placeholder: 'var(--user-placeholder)',
     //  ##111111; ---->>>> #D0D0D0
   },
