@@ -40,7 +40,7 @@ export const StyledTextArea = styled.textarea`
   border-width: ${props => (props.isReviewValid ? 'none' : '1px')};
   border-color: ${props => (props.isReviewValid ? 'none' : 'red')};
   margin-bottom: 2px;
-  color: ${p => p.theme.colors.second_text_mode};
+  color: ${theme.colors.second_text_mode};
 
   :focus {
     outline: none;
