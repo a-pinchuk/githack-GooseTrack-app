@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { changeTaskCategory } from 'redux/task/operations';
 import { ItemTypes } from '../helper/Items';
 import { useDrop } from 'react-dnd';
+import { theme } from 'theme';
 
 // import { correctTitle } from '../helper/helper';
 export const ColumnTasksList = ({
@@ -80,9 +81,8 @@ export const ColumnTasksList = ({
         style={{
           touchAction: disableDrag ? 'auto' : 'none',
           borderRadius: isOver ? '8px' : 'none',
-          background: isOver ? '#feefe2' : 'none',
-          marginLeft: isOver ? '7px' : '0',
-          paddingTop: isOver ? '15px' : '0',
+          background: isOver ? `${theme.colors.background_mode}` : 'none',
+          marginLeft: isOver ? '10px' : '0',
         }}
       >
         {taskData?.map(item => {
