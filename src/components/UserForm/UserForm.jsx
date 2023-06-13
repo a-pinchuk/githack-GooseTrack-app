@@ -106,13 +106,6 @@ const UserForm = () => {
       }
     },
   });
-  useEffect(() => {
-    setFieldValue('name', user.name);
-    setFieldValue('email', user.email);
-    setFieldValue('phone', user.phone);
-    setFieldValue('skype', user.skype);
-    setFieldValue('birthday', user.birthday);
-  }, [user, setFieldValue]);
 
   useEffect(() => {
     setFieldValue('name', user.name);
@@ -120,6 +113,7 @@ const UserForm = () => {
     setFieldValue('phone', user.phone);
     setFieldValue('skype', user.skype);
     setFieldValue('birthday', user.birthday);
+    setSelectedImage(null || user.avatarUrl);
   }, [user, setFieldValue]);
 
   return (
@@ -167,6 +161,7 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
+                closeOnSelect={true}
                 slotProps={{
                   textField: {
                     placeholder: `${currentDate}`,
