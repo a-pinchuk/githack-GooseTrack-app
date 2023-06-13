@@ -147,7 +147,7 @@ export const FeedbackList = ({ reviews, toggleEditFeedback }) => {
               </Box>
             </ReviewHeader>
 
-            <ReviewItem text={review.comment} maxLength={150} />
+            <ReviewItem text={review.comment} maxLength={80} />
           </FeedBackContainer>
         </ListItem>
       ))}

@@ -5,7 +5,6 @@ export const ReviewItem = ({ text, maxLength }) => {
   const [expanded, setExpanded] = useState(false);
 
   const myElementRef = useRef(null);
-  const [isTextOverflowing, setIsTextOverflowing] = useState(false);
 
   const handleClick = () => {
     setExpanded(!expanded);
@@ -18,47 +17,48 @@ export const ReviewItem = ({ text, maxLength }) => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('click', handleOutsideClick);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', handleOutsideClick);
 
-    return () => {
-      window.removeEventListener('click', handleOutsideClick);
-    };
+      return () => {
+        window.removeEventListener('click', handleOutsideClick);
+      };
+    }
   }, [handleOutsideClick]);
 
-  useEffect(() => {
-    const checkTextOverflow = () => {
-      if (myElementRef.current) {
-        const { clientHeight, scrollHeight } = myElementRef.current;
-        setIsTextOverflowing(scrollHeight > clientHeight);
-      }
-    };
-
-    checkTextOverflow();
-    window.addEventListener('resize', checkTextOverflow);
-
-    return () => {
-      window.removeEventListener('resize', checkTextOverflow);
-    };
+  const isTextOverflowing = useCallback(() => {
+    if (myElementRef.current) {
+      const { clientHeight, scrollHeight } = myElementRef.current;
+      return scrollHeight > clientHeight;
+    }
+    return false;
   }, []);
 
-  if (expanded || !isTextOverflowing) {
-    return (
-      <Review ref={myElementRef} onClick={handleClick} expanded={expanded}>
-        {text}
-      </Review>
-    );
-  } else if (isTextOverflowing) {
-    const truncatedText = text.substring(0, maxLength) + '...';
-    return (
-      <Review ref={myElementRef} onClick={handleClick} expanded={expanded}>
-        {truncatedText}
-      </Review>
-    );
-  } else {
-    return (
-      <Review ref={myElementRef} onClick={handleClick} expanded={expanded}>
-        {text}
-      </Review>
-    );
-  }
+  useEffect(() => {
+    const handleResize = () => {
+      setExpanded(false);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
+  const truncatedText =
+    text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+
+  return (
+    <Review
+      ref={myElementRef}
+      onClick={handleClick}
+      expanded={expanded}
+      isOverflowing={isTextOverflowing}
+    >
+      {expanded ? text : truncatedText}
+    </Review>
+  );
 };
