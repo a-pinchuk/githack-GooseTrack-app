@@ -112,6 +112,7 @@ export const ReviewHeader = styled.div`
 export const UserAvatar = styled.img`
   height: auto;
   width: 100%;
+  object-fit: cover;
 `;
 
 export const UserAvatarWrapper = styled.div`

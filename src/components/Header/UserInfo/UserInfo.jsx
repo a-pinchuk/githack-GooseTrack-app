@@ -24,7 +24,7 @@ const UserInfo = ({ toogleShowSiderBar }) => {
     <NavLink
       to="/account"
       style={{ textDecoration: 'none' }}
-      onClick={toogleShowSiderBar}
+      onClick={() => toogleShowSiderBar(false)}
     >
       <HeaderUserInfoSection>
         <HeaderUserName>{user.name}</HeaderUserName>

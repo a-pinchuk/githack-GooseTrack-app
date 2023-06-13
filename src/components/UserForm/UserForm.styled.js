@@ -48,6 +48,7 @@ export const StyledDataPicker = styled(DatePicker)`
 export const Container = styled.div`
   max-width: 375px;
   padding-bottom: 40px;
+
   background-color: ${p => p.theme.colors.background_mode};
 
   @media (min-width: 768px) {

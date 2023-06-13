@@ -7,7 +7,7 @@ export const CalendarGridWrapper = styled.div`
   grid-gap: 1px;
   max-width: 767px;
   margin: 0 auto;
-  height: calc(100vh - 320px);
+  height: calc(100vh - 340px);
   border: ${p => p.theme.colors.calendar_out_border};
 
   /* border: 1px solid rgba(220, 227, 229, 0.8); */

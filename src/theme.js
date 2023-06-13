@@ -35,7 +35,7 @@ export const theme = {
     // #111111  ---->>>>>   #FFFFFF
 
     second_text_mode: 'var(--second-text)',
-    // #34343480  ---->>>>>   #FFFFFF
+    // #343434  ---->>>>>   #FFFFFF
 
     third_text_mode: 'var(--third-text)',
     // #343434  ---->>>>>   #FFFFFF

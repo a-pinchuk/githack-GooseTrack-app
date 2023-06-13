@@ -30,6 +30,7 @@ const getTypePage = pathname => {
 export const Header = ({ toogleShowSiderBar }) => {
   const { pathname } = useLocation();
   const typePage = getTypePage(pathname);
+
   const { isNotDoneTask } = useTasks();
 
   const [showModal, setShowModal] = useState(false);

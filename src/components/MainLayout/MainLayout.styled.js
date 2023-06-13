@@ -33,19 +33,19 @@ export const WrapLeftColumn = styled.div`
   height: 100%;
   width: 225px;
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+  transition: all 250ms ease-in-out 0s;
+  z-index: 100;
+  position: absolute;
+  left: ${p => {
+    return p.showSideBar ? '0' : '-1000px';
+  }};
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 289px;
   }
 
-  @media screen and (max-width: ${props => props.theme.breakpoints.desktop}) {
-    position: absolute;
-
-    transition: all 250ms ease-in-out 0s;
-    z-index: 100;
-
-    left: ${p => {
-      return p.showSideBar ? '0' : '-1000px';
-    }};
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    position: static;
   }
 `;
 
@@ -55,12 +55,14 @@ export const WrapRightColumn = styled.div`
   padding: 0 20px;
 
   overflow: hidden;
-
+  /* overflow-y: auto; */
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     padding: 0 32px;
+    /* overflow-y: auto; */
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding: 0 32px;
+    /* overflow: hidden; */
   }
 `;
