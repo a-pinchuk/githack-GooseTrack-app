@@ -37,5 +37,5 @@ export const ButtonTask = styled.button`
   }
 `;
 export const ButtonBox = styled.div`
-  padding: 32px 18px 28px 18px;
+  padding: 14px 18px 28px 18px;
 `;
