@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations';
@@ -106,6 +106,14 @@ const UserForm = () => {
       }
     },
   });
+  useEffect(() => {
+    setFieldValue('name', user.name);
+    setFieldValue('email', user.email);
+    setFieldValue('phone', user.phone);
+    setFieldValue('skype', user.skype);
+    setFieldValue('birthday', user.birthday);
+  }, [user, setFieldValue]);
+
   useEffect(() => {
     setFieldValue('name', user.name);
     setFieldValue('email', user.email);
