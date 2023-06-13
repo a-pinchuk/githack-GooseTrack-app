@@ -12,8 +12,14 @@ import {
   UserPanel,
 } from './UserNav.styled';
 import goose from '../../images/sideBar/GOOSE.png';
+import { useState } from 'react';
 
 export const UserNav = ({ toogleShowSiderBar }) => {
+    const [activeBlock, setActiveBlock] = useState(null);
+
+    const handleBlockClick = block => {
+      setActiveBlock(block);
+    };
   return (
     <div>
       <LogoWrapper>
@@ -29,14 +35,34 @@ export const UserNav = ({ toogleShowSiderBar }) => {
       <nav>
         <UserPanel>User Panel</UserPanel>
         <StyledList>
-          <StyledItem>
-            <StyledLink to="account" onClick={toogleShowSiderBar}>
+          <StyledItem
+            active={activeBlock === 'block1' ? 'true' : undefined}
+            onClick={() => handleBlockClick('block1')}
+          >
+            <StyledLink
+              to="account"
+              active={activeBlock === 'block1' ? 'true' : undefined}
+              onClick={() => {
+                toogleShowSiderBar();
+                handleBlockClick('block1');
+              }}
+            >
               <UserIconStyled stroke="currentColor"></UserIconStyled>
               My account
             </StyledLink>
           </StyledItem>
-          <StyledItem>
-            <StyledLink to="calendar" onClick={toogleShowSiderBar}>
+          <StyledItem
+            active={activeBlock === 'block2' ? 'true' : undefined}
+            onClick={() => handleBlockClick('block2')}
+          >
+            <StyledLink
+              to="calendar"
+              onClick={() => {
+                toogleShowSiderBar();
+                handleBlockClick('block2');
+              }}
+              active={activeBlock === 'block2' ? 'true' : undefined}
+            >
               <CalendarIconStyled stroke="currentColor"></CalendarIconStyled>
               Calendar
             </StyledLink>

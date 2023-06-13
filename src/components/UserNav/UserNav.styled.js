@@ -21,7 +21,8 @@ export const StyledLink = styled(NavLink)`
   font-size: 16px;
   line-height: calc(19 / 16);
 
-  color: ${props => props.theme.colors.second_text_mode};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: ${({ active }) => (active ? '#3e85f3' : 'rgba(52, 52, 52, 0.5)')};
   :hover {
     color: ${props => props.theme.colors.hover_button};
   }
@@ -61,7 +62,10 @@ export const StyledItem = styled.li`
   height: 56px;
 
   border-radius: 8px;
-
+  background-color: ${({ active }) => (active ? '#e3f3ff' : 'transparent')};
+  color: ${({ active }) => (active ? '#fff' : '#000')};
+  stroke: ${({ active }) => (active ? '#3e85f3' : '#34343480')};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   :hover {
     background: ${props => props.theme.colors.background_button};
   }
