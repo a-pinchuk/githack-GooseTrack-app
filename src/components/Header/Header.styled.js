@@ -42,6 +42,7 @@ export const MobileMenuBtn = styled.button`
 
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 34px;
