@@ -80,7 +80,7 @@ export function FeedbackForm({
     if (isEditFeedbackOpen) {
       dispatch(updateReview({ id, rating: value, comment: review }));
       toggleEditFeedback();
-      setChanged(true);
+      setChanged(false);
 
       return;
     }
