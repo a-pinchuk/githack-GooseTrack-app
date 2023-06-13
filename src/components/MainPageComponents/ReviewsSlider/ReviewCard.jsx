@@ -1,6 +1,7 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 
+import { useResponse } from 'hooks';
 import {
   ReviewCardContainer,
   HeaderContainer,
@@ -12,6 +13,19 @@ import {
 import sprite from 'icons/sprite.svg';
 
 export const ReviewCard = props => {
+  const { isMobile } = useResponse();
+
+  const shortenComment = comment => {
+    const maxLength = isMobile ? 135 : 160;
+
+    if (comment.length <= maxLength) {
+      return comment;
+    }
+    return comment.slice(0, maxLength) + '...';
+  };
+
+  const formattedComment = shortenComment(props.children);
+
   return (
     <ReviewCardContainer>
       <HeaderContainer>
@@ -57,7 +71,7 @@ export const ReviewCard = props => {
         </div>
       </HeaderContainer>
 
-      <CommentText>{props.children}</CommentText>
+      <CommentText>{formattedComment}</CommentText>
     </ReviewCardContainer>
   );
 };
