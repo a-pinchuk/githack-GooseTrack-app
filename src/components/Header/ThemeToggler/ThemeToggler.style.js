@@ -5,8 +5,6 @@ export const ThemeModeBtn = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
 
   display: flex;
   align-items: center;
