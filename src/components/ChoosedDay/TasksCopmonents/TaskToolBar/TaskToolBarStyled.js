@@ -87,7 +87,7 @@ export const TooltipButton = styled.button`
   padding: 0;
   transition: color 250ms linear;
   cursor: pointer;
-  color: ${theme.colors.second_text_mode};
+  color: ${theme.colors.third_text_mode};
 
   &:hover {
     color: ${theme.colors.secondary};

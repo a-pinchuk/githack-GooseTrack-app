@@ -14,8 +14,10 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
 
   //Ключи заголовков колонок
   const dataTitle = Object.keys(sortedTasksData);
-  // console.log(dataTitle);
 
+  const option = {
+    delayTouchStart: 300,
+  };
   useEffect(() => {
     window
       .matchMedia('(min-width: 768px) and (max-width: 1440px)')
@@ -23,7 +25,10 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
   }, []);
 
   return (
-    <DndProvider backend={matches ? TouchBackend : HTML5Backend}>
+    <DndProvider
+      backend={matches ? TouchBackend : HTML5Backend}
+      options={option}
+    >
       <TaskContainer data-tour="5">
         <StretchContainer>
           <TasksColumn

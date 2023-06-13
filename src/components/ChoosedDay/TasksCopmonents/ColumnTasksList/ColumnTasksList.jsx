@@ -80,9 +80,9 @@ export const ColumnTasksList = ({
         style={{
           touchAction: disableDrag ? 'auto' : 'none',
           borderRadius: isOver ? '8px' : 'none',
-          background: isOver ? '#feefe2' : 'none',
-          marginLeft: isOver ? '7px' : '0',
-          paddingTop: isOver ? '15px' : '0',
+          background: isOver ? '#EAEAEA' : 'none',
+          marginLeft: isOver ? '10px' : '0',
+          //  paddingTop: isOver ? '15px' : '0',
         }}
       >
         {taskData?.map(item => {
