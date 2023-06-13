@@ -15,7 +15,11 @@ export const ButtonTask = styled.button`
   font-size: ${theme.fontSizes.s};
   height: 47px;
   line-height: ${theme.lineHeights.body};
+  border: none;
   border: 1px dashed ${theme.colors.primary};
+  //------------------
+
+  //------------------
   border-radius: ${theme.radii.small};
   transition: background 250ms linear;
   &:hover {
