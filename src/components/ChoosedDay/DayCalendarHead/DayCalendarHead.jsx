@@ -24,7 +24,6 @@ import { useAuth } from 'hooks';
 
 export const DayCalendarHead = () => {
   const { currentDay: targetDate } = useParams();
-  console.log(targetDate);
   const navigate = useNavigate();
 
   const { user } = useAuth();
