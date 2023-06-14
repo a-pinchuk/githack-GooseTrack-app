@@ -37,7 +37,7 @@ export const WrapLeftColumn = styled.div`
   z-index: 100;
   position: absolute;
   left: ${p => {
-    return p.showSideBar ? '0' : '-1000px';
+    return p.showSideBar ? '0' : '-200%';
   }};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
@@ -45,8 +45,18 @@ export const WrapLeftColumn = styled.div`
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    position: static;
+    position: relative;
+    left: 0;
   }
+`;
+
+export const LeftField = styled.div`
+  position: absolute;
+  right: 100%;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: ${props => props.theme.colors.third_background_mode};
 `;
 
 export const WrapRightColumn = styled.div`

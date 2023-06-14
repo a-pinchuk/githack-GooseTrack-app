@@ -12,6 +12,7 @@ import {
   Main,
   WrapLeftColumn,
   WrapRightColumn,
+  LeftField,
 } from './MainLayout.styled';
 
 const MainLayout = () => {
@@ -36,6 +37,7 @@ const MainLayout = () => {
     <Container>
       <Main>
         <WrapLeftColumn showSideBar={showSideBar}>
+          <LeftField />
           <SideBar toogleShowSiderBar={toogleShowSiderBar} />
         </WrapLeftColumn>
 
