@@ -65,14 +65,14 @@ export const WrapRightColumn = styled.div`
   padding: 0 20px;
 
   overflow: hidden;
-  /* overflow-y: auto; */
+  overflow-y: auto;
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     padding: 0 32px;
-    /* overflow-y: auto; */
+    overflow-y: auto;
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding: 0 32px;
-    /* overflow: hidden; */
+    overflow: hidden;
   }
 `;
