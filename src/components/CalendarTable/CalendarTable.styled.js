@@ -7,7 +7,7 @@ export const CalendarGridWrapper = styled.div`
   grid-gap: 1px;
   max-width: 767px;
   margin: 0 auto;
-  height: calc(100vh - 320px);
+  height: calc(100vh - 340px);
   border: ${p => p.theme.colors.calendar_out_border};
 
   /* border: 1px solid rgba(220, 227, 229, 0.8); */
@@ -155,5 +155,43 @@ export const TaskItem = styled.li`
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding: 4px 15px 4px 12px;
+  }
+`;
+
+export const HiddenTaskCount = styled.span`
+  color: green;
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  font-style: italic;
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 600;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+    left: 2px;
+    top: 20px;
+
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    left: 4px;
+    top: 25px;
+  }
+
+  animation: scaleAnimation 1s linear infinite alternate;
+
+  @keyframes scaleAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1.2);
+    }
   }
 `;

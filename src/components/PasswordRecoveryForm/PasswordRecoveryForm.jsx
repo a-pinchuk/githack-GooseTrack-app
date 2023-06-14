@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
@@ -27,8 +28,9 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const PasswordRecoveryForm = ({ accessToken }) => {
+export const PasswordRecoveryForm = ({ token }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [passwordType, setPasswordType] = useState('password');
   const [confirmPasswordType, setConfirmPasswordType] = useState('password');
@@ -54,9 +56,12 @@ export const PasswordRecoveryForm = ({ accessToken }) => {
       initialValues={{ password: '', passwordConfirm: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await dispatch(
-          resetPassword({ accessToken, newpassword: values.password })
+        const res = await dispatch(
+          resetPassword({ token, newPassword: values.password })
         );
+        if (res.type === '/users/reset-password/fulfilled') {
+          navigate('/login', { replace: true });
+        }
         setSubmitting(false);
       }}
     >

@@ -39,8 +39,8 @@ export const StyledTextArea = styled.textarea`
 
   border-width: ${props => (props.isReviewValid ? 'none' : '1px')};
   border-color: ${props => (props.isReviewValid ? 'none' : 'red')};
-  margin-bottom: 14px;
-  color: ${p => p.theme.colors.second_text_mode};
+  margin-bottom: 2px;
+  color: ${theme.colors.second_text_mode};
 
   :focus {
     outline: none;
@@ -98,7 +98,12 @@ export const StyledEditButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${theme.colors.button_not_active};
+  background-color: ${props => {
+    return props.changed && props.isReviewValid && props.isRatingValid
+      ? '#3E85F3'
+      : theme.colors.button_not_active;
+  }};
+
   color: #343434;
 
   border: 0;
@@ -163,8 +168,8 @@ export const CharactersQuantityText = styled.span`
   display: block;
   font-family: 'Inter';
   font-weight: 600;
-  font-size: 14px;
-  line-height: 1.29;
+  font-size: 12px;
+  line-height: 1.17;
   color: ${props => (props.isReviewValid ? 'green' : 'red')};
 `;
 

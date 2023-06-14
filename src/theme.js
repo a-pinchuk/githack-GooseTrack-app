@@ -35,7 +35,7 @@ export const theme = {
     // #111111  ---->>>>>   #FFFFFF
 
     second_text_mode: 'var(--second-text)',
-    // #34343480  ---->>>>>   #FFFFFF
+    // #343434  ---->>>>>   #FFFFFF
 
     third_text_mode: 'var(--third-text)',
     // #343434  ---->>>>>   #FFFFFF
@@ -97,8 +97,9 @@ export const theme = {
     empty_star: 'var(--empty-star)',
 
     button_not_active: 'var(--button-not-active)',
-    user_input_birthday: 'var(--user-input-birthday',
-    // none ---->>>>>  solid rgba(255, 255, 255, 0.15)
+
+    user_placeholder: 'var(--user-placeholder)',
+    //  ##111111; ---->>>> #D0D0D0
   },
   fonts: {
     body: 'Coolvetica',

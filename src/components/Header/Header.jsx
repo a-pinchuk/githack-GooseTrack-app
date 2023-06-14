@@ -30,6 +30,7 @@ const getTypePage = pathname => {
 export const Header = ({ toogleShowSiderBar }) => {
   const { pathname } = useLocation();
   const typePage = getTypePage(pathname);
+
   const { isNotDoneTask } = useTasks();
 
   const [showModal, setShowModal] = useState(false);
@@ -62,7 +63,7 @@ export const Header = ({ toogleShowSiderBar }) => {
         )}
 
         <ThemeToggler />
-        <UserInfo />
+        <UserInfo toogleShowSiderBar={toogleShowSiderBar} />
       </RighSectiontHeader>
       {showModal && <AddFeedbackModal handlerCloseModal={handlerCloseModal} />}
     </HeaderSection>

@@ -23,6 +23,7 @@ const PasswordRecoveryPage = lazy(() =>
 const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 const MainLayout = lazy(() => import('./MainLayout/MainLayout'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -66,6 +67,7 @@ export const App = () => {
               </Route>
             </Route>
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       {isRefreshing && <Loader />}

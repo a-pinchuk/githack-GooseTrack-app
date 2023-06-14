@@ -24,7 +24,7 @@ export const ContentWrapper = styled.div`
         row-gap: calc(${height}px * 25.61 / 100);
       `}
 
-      @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       margin-top: 40px;
 
       flex-direction: row-reverse;
@@ -144,5 +144,28 @@ export const RegisterLink = styled(Link)`
   &:hover,
   &:focus {
     opacity: 0.8;
+  }
+`;
+
+export const ScrollDownWrapper = styled.div`
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+
+  height: 40px;
+  width: 40px;
+
+  @media screen and (min-width: 768px) {
+    bottom: 20px;
+    right: 10px;
+
+    height: 70px;
+    width: 70px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 `;

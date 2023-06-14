@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations';
@@ -79,6 +79,7 @@ const UserForm = () => {
     setIsFormDirty(true);
   };
   const currentDate = moment().format('DD/MM/YYYY');
+
   const {
     errors,
     touched,
@@ -100,11 +101,21 @@ const UserForm = () => {
     onSubmit: async values => {
       try {
         await dispatch(updateUserInfo(values));
+        setIsFormDirty(false);
       } catch (error) {
         console.log(error.message);
       }
     },
   });
+  useEffect(() => {
+    setFieldValue('name', user.name);
+    setFieldValue('email', user.email);
+    setFieldValue('phone', user.phone);
+    setFieldValue('skype', user.skype);
+    setFieldValue('birthday', user.birthday);
+
+    setSelectedImage(null || user.avatarUrl);
+  }, [user, setFieldValue]);
 
   return (
     <Container>
@@ -151,6 +162,7 @@ const UserForm = () => {
             <Label htmlFor="birthday">Birthday</Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
+                closeOnSelect={true}
                 slotProps={{
                   textField: {
                     placeholder: `${currentDate}`,

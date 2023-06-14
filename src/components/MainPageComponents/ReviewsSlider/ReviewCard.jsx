@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 
+import { Modal } from 'components/Modal/Modal';
+
+import { useResponse } from 'hooks';
 import {
   ReviewCardContainer,
   HeaderContainer,
   AvatarWrapper,
   StarContainer,
   CommentText,
+  ModalContent,
 } from './ReviewCard.styled';
 
 import sprite from 'icons/sprite.svg';
 
 export const ReviewCard = props => {
+  const { isMobile } = useResponse();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const shortenComment = comment => {
+    const maxLength = isMobile ? 135 : 160;
+
+    if (comment.length <= maxLength) {
+      return comment;
+    }
+    return comment.slice(0, maxLength) + '...';
+  };
+
+  const formattedComment = shortenComment(props.children);
+
   return (
     <ReviewCardContainer>
       <HeaderContainer>
@@ -57,7 +79,13 @@ export const ReviewCard = props => {
         </div>
       </HeaderContainer>
 
-      <CommentText>{props.children}</CommentText>
+      <CommentText onClick={toggleModal}>{formattedComment}</CommentText>
+
+      {isModalOpen && (
+        <Modal handlerCloseModal={toggleModal}>
+          <ModalContent>{props.children}</ModalContent>
+        </Modal>
+      )}
     </ReviewCardContainer>
   );
 };

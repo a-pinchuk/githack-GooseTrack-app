@@ -11,7 +11,6 @@ import { Container, FormWrapper } from './PasswordRecoveryPage.styled';
 const PasswordRecoveryPage = () => {
   const dispatch = useDispatch();
   const { token } = useParams();
-  console.log(token);
 
   useEffect(() => {
     const accessToken = window.location?.search.split('=')[1];
@@ -22,7 +21,7 @@ const PasswordRecoveryPage = () => {
   return (
     <Container>
       <FormWrapper>
-        <PasswordRecoveryForm accessToken={token} />
+        <PasswordRecoveryForm token={token} />
       </FormWrapper>
 
       <AuthNavigate link="/login" text="Log In" />

@@ -62,7 +62,7 @@ export const ReviewsContainer = styled.section`
   & .slick-arrow {
     position: absolute;
     bottom: 0;
-    z-index: 10;
+    /* z-index: 0; */
   }
 
   & svg.svg-arrow {
