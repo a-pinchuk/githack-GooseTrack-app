@@ -22,7 +22,7 @@ export const Container = styled.div`
       box-shadow: 0px 0px 5px 4px ${p => p.theme.colors.primary};
 
       span {
-        color: ${p => p.theme.colors.primary};
+        stroke: ${p => p.theme.colors.primary};
       }
     }
 
@@ -40,20 +40,27 @@ export const Container = styled.div`
     height: calc(100% - 10px);
     width: calc(100% - 10px);
 
-    font-size: 25px;
-
     display: grid;
     place-items: center;
     border-radius: 50%;
 
-    color: ${p => p.theme.colors.blackTitle};
     background-color: ${p => p.theme.colors.background};
+
+    stroke: ${p => p.theme.colors.blackTitle};
 
     @media screen and (min-width: 768px) {
       height: calc(100% - 15px);
       width: calc(100% - 15px);
+    }
 
-      font-size: 45px;
+    svg {
+      width: 20px;
+      height: 20px;
+
+      @media screen and (min-width: 768px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 `;

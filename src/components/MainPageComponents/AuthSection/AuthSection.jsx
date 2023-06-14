@@ -8,10 +8,12 @@ import {
   ImageWrapper,
   LoginLink,
   RegisterLink,
+  ScrollDownWrapper,
 } from './AuthSection.styled';
 
 import goose1 from 'images/mainPage/desktop/desktop_goose_mainPage.png';
 import goose2 from 'images/mainPage/desktop/desktop_goose_mainPage@2x.png';
+import scroll from 'images/mainPage/scroll-down.gif';
 
 import sprite from 'icons/sprite.svg';
 
@@ -43,6 +45,10 @@ export const AuthSection = () => {
           <RegisterLink to="register">Sign up</RegisterLink>
         </nav>
       </ContentWrapper>
+
+      <ScrollDownWrapper>
+        <img src={`${scroll}`} alt="scroll down" title="scroll down" />
+      </ScrollDownWrapper>
     </Header>
   );
 };
