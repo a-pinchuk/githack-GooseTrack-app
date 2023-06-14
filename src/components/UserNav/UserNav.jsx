@@ -13,7 +13,13 @@ import {
   UserPanel,
   LinkLogo,
 } from './UserNav.styled';
-import goose from '../../images/sideBar/GOOSE.png';
+
+import goose_desktop2 from '../../images/sideBar/goose_desktop@2x.png';
+import goose_desktop from '../../images/sideBar/goose_desktop.png';
+import goose_tablet2 from '../../images/sideBar/goose_table@2x.png';
+import goose_tablet from '../../images/sideBar/goose_table.png';
+import goose_mobile2 from '../../images/sideBar/goose_mobile@2x.png';
+import goose_mobile from '../../images/sideBar/goose_mobile.png';
 
 const getTypePage = pathname => {
   if (pathname.includes('/account')) {
@@ -30,7 +36,20 @@ export const UserNav = ({ toogleShowSiderBar }) => {
     <div>
       <LogoWrapper>
         <LinkLogo to="calendar" onClick={() => toogleShowSiderBar(false)}>
-          <GooseImg alt="goose-track-img" src={goose}></GooseImg>
+          {/* dfgdfg   142 d2  120 tb  72 tm  71 d 60 t  36 m*/}
+          <GooseImg
+            alt="goose-track-img"
+            srcset={`
+                      ${goose_desktop2}   142w,
+                      ${goose_tablet2}   120w,
+                      ${goose_mobile2}   72w,
+                      ${goose_desktop}   71w,
+                      ${goose_tablet}   60w,
+                      ${goose_mobile}   36w,
+                    `}
+            sizes="(max-width: 375px) 36px, (max-width: 768px) 60px, 71px"
+            src={goose_desktop}
+          ></GooseImg>
           <TextLogo>
             G<TextLogoSpan>oo</TextLogoSpan>seTrack
           </TextLogo>

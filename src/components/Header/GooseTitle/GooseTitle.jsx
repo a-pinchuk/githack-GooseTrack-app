@@ -1,6 +1,8 @@
 import React from 'react';
 
-import gooseHeader from '../../../images/goose-header.png';
+import gooseHeader from '../../../images/goose_active_task.png';
+import gooseHeader2x from '../../../images/goose_active_task@2x.png';
+
 import {
   GooseWrapper,
   HeaderTitle,
@@ -11,7 +13,13 @@ import {
 export const GooseTitle = () => {
   return (
     <GooseWrapper>
-      <img src={gooseHeader} width="64" height="60" alt="goose" />
+      <img
+        srcSet={`${gooseHeader} 1x, ${gooseHeader2x} 2x`}
+        src={gooseHeader}
+        width="64"
+        height="60"
+        alt="goose"
+      />
       <div>
         <HeaderTitle>Calendar</HeaderTitle>
         <TextMessagePrimary>
