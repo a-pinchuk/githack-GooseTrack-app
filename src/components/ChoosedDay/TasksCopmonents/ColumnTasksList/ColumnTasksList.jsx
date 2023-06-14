@@ -82,7 +82,9 @@ export const ColumnTasksList = ({
           touchAction: disableDrag ? 'auto' : 'none',
           borderRadius: isOver ? '8px' : 'none',
           background: isOver ? `${theme.colors.background_mode}` : 'none',
-          marginLeft: isOver ? '10px' : '0',
+          boxShadow: isOver
+            ? `inset 10px 2px ${theme.colors.modal_window}`
+            : 'none',
         }}
       >
         {taskData?.map(item => {

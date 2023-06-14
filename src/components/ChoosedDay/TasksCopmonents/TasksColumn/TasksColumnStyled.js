@@ -3,11 +3,11 @@ import { theme } from 'theme';
 
 export const TaskItem = styled.li`
   flex: 0 0 100%;
-  padding-right: 10px;
+  padding-right: 7px;
   border-radius: ${theme.radii.small};
   border: ${p => p.theme.colors.calendar_out_border};
-  box-sizing: border-box;
-  background-color: ${theme.colors.task_item_bg};
+
+  background-color: ${theme.colors.third_background_mode};
   //add
   display: flex;
   flex-direction: column;
