@@ -12,11 +12,15 @@ function getRandomColor() {
 
 export const TaskListItem = styled.li`
   border-radius: 8px;
+  width: 100%;
   padding: 14px;
   border: ${theme.colors.calendar_out_border};
   padding: 14px;
   margin-bottom: 18px;
   background-color: ${theme.colors.task_list_item_background};
+  @media screen and (min-width: 768px) {
+    width: 301px;
+  }
 `;
 
 export const AvatorTaskList = styled.img`
