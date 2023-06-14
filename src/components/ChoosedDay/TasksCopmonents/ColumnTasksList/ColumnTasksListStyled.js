@@ -7,6 +7,7 @@ export const TaskListBox = styled.ul`
   padding-left: 18px;
   list-style: none;
   position: relative;
+
   /* overflow: visible; */
   z-index: 0;
   //add

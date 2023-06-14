@@ -15,7 +15,6 @@ export const TaskListItem = styled.li`
   width: 100%;
   padding: 14px;
   border: ${theme.colors.calendar_out_border};
-  padding: 14px;
   margin-bottom: 18px;
   background-color: ${theme.colors.task_item_bg};
   @media screen and (min-width: 768px) {

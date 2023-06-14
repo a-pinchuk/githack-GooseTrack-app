@@ -83,7 +83,7 @@ export const ColumnTasksList = ({
           borderRadius: isOver ? '8px' : 'none',
           background: isOver ? `${theme.colors.background_mode}` : 'none',
           boxShadow: isOver
-            ? `inset 10px 2px ${theme.colors.modal_window}`
+            ? `inset 7px 0px ${theme.colors.third_background_mode}`
             : 'none',
         }}
       >
