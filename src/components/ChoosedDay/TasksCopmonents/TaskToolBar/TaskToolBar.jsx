@@ -74,7 +74,7 @@ export const TasklToolBar = ({
       dispatch(deleteTask(id));
     }
     if (erorr) {
-      Notify.failure(`something is going wrong`);
+      Notify.failure(`data delete error`);
     }
   };
 
