@@ -70,7 +70,12 @@ export const tasksSlice = createSlice({
           elem => elem._id === action.payload.data._id
         );
         state.tasks.splice(index, 1);
+
+        if (state.tasks.length === 0) {
+          state.tasks = [];
+        }
       })
+
       .addCase(updateTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
