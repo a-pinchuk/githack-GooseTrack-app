@@ -74,7 +74,7 @@ export const TasklToolBar = ({
       dispatch(deleteTask(id));
     }
     if (erorr) {
-      Notify.failure(`data delete error`);
+      Notify.failure(`Unable to find Task`);
     }
   };
 
