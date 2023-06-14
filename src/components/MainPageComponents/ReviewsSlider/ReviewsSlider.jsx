@@ -94,15 +94,6 @@ export const ReviewsSlider = () => {
           calendar, and filter options make navigation seamless. Great for
           staying organized.
         </ReviewCard>
-        <ReviewCard src={''} num={5} name="Honor Society">
-          GooseTrack is incredibly helpful, the sidebar with account management,
-          calendar, and filter options make navigation seamless. Great for
-          staying organized. GooseTrack is incredibly helpful, the sidebar with
-          account management, calendar, and filter options make navigation
-          seamless. Great for staying organized. GooseTrack is incredibly
-          helpful, the sidebar with account management, calendar, and filter
-          options make navigation seamless. Great for yo
-        </ReviewCard>
       </Slider>
       <ArrowContainer />
     </ReviewsContainer>

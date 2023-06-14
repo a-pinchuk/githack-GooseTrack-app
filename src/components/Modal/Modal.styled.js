@@ -41,7 +41,7 @@ export const CloseButton = styled.button`
   border: none;
   cursor: pointer;
   z-index: 999;
-  stroke: white;
+  stroke: black;
 
   @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
     top: 18px;
