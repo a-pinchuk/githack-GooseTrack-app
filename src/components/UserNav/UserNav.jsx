@@ -39,7 +39,7 @@ export const UserNav = ({ toogleShowSiderBar }) => {
           {/* dfgdfg   142 d2  120 tb  72 tm  71 d 60 t  36 m*/}
           <GooseImg
             alt="goose-track-img"
-            srcset={`
+            srcSet={`
                       ${goose_desktop2}   142w,
                       ${goose_tablet2}   120w,
                       ${goose_mobile2}   72w,
@@ -47,7 +47,7 @@ export const UserNav = ({ toogleShowSiderBar }) => {
                       ${goose_tablet}   60w,
                       ${goose_mobile}   36w,
                     `}
-            sizes="(max-width: 375px) 36px, (max-width: 768px) 60px, 71px"
+            sizes="(min-width: 1440px) 71px, (min-width: 768px) 60px, (min-width: 375px) 36px"
             src={goose_desktop}
           ></GooseImg>
           <TextLogo>
