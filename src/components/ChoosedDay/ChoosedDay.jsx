@@ -55,7 +55,7 @@ const ChoosedDay = () => {
       };
     }
 
-    if (tasks && tasks.length > 0) {
+    if (tasks) {
       const categorizedArrays = getCategorizedArrays(tasks, targetDate);
       setSortedTasks(categorizedArrays);
     }
