@@ -66,6 +66,7 @@ body {
   background: var(--background);
   /* transition: background-color 400ms;     */
 }
+
 html {
   /* width */
   ::-webkit-scrollbar {
