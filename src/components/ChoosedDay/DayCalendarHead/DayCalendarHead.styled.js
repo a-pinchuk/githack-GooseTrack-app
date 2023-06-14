@@ -85,19 +85,35 @@ export const WeeksItemDateName = styled.div`
 
 const commonDayStyles = `
   display: inline-block;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
 `;
 
-export const SelectedDay = styled.div`
+export const SelectedDay = styled.button`
   ${commonDayStyles};
 `;
 
-export const NotSelectedDay = styled.div`
+export const NotSelectedDay = styled.button`
   ${commonDayStyles};
 
-  :hover,
-  :focus {
-    outline: 1px solid lightgray;
+  :not(:disabled) {
+    :hover,
+    :focus {
+      outline: 1px solid lightgray;
+    }
+  }
+
+  :disabled {
+    > ${WeeksItemDay} {
+      background-color: ${p => p.theme.colors.background_mode};
+      cursor: default;
+      border: none;
+      color: ${p => p.theme.colors.second_text_mode};
+    }
   }
 `;

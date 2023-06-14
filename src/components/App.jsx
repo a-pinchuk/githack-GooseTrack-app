@@ -10,6 +10,7 @@ import { currentUser } from 'redux/auth/operations';
 import { Loader } from './Loader/Loader';
 import { useSearchParams } from 'react-router-dom/dist';
 import { updateAccessToken } from 'redux/auth/authSlice';
+
 const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -22,6 +23,7 @@ const PasswordRecoveryPage = lazy(() =>
 const ChoosedDay = lazy(() => import('../components/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 const MainLayout = lazy(() => import('./MainLayout/MainLayout'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -51,7 +53,10 @@ export const App = () => {
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="password" element={<PasswordPage />} />
-            <Route path="reset-password/:token" element={<PasswordRecoveryPage />} />
+            <Route
+              path="reset-password/:token"
+              element={<PasswordRecoveryPage />}
+            />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/" element={<MainLayout />}>
@@ -62,6 +67,7 @@ export const App = () => {
               </Route>
             </Route>
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       {isRefreshing && <Loader />}

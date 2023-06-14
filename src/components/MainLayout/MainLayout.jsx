@@ -12,36 +12,34 @@ import {
   Main,
   WrapLeftColumn,
   WrapRightColumn,
+  LeftField,
 } from './MainLayout.styled';
-
-import { useMediaQuery } from 'react-responsive';
 
 const MainLayout = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [showSideBar, setShowSideBar] = useState(false);
 
-  const isMobile = useMediaQuery({ maxWidth: 1439 });
-
   useEffect(() => {
     if (user.email) return;
     dispatch(updateUserInfo);
   }, [user.email, dispatch]);
 
-  const toogleShowSiderBar = () => {
-    setShowSideBar(prev => !prev);
+  const toogleShowSiderBar = (status = null) => {
+    if (status === null) {
+      setShowSideBar(prev => !prev);
+    } else {
+      setShowSideBar(status);
+    }
   };
 
   return (
     <Container>
       <Main>
-        {isMobile ? (
-          <WrapLeftColumn showSideBar={showSideBar}>
-            <SideBar toogleShowSiderBar={toogleShowSiderBar} />
-          </WrapLeftColumn>
-        ) : (
-          <SideBar />
-        )}
+        <WrapLeftColumn showSideBar={showSideBar}>
+          <LeftField />
+          <SideBar toogleShowSiderBar={toogleShowSiderBar} />
+        </WrapLeftColumn>
 
         <WrapRightColumn>
           <Header toogleShowSiderBar={toogleShowSiderBar} />

@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks';
 import { useEffect, useState } from 'react';
 
-const UserInfo = () => {
+const UserInfo = ({ toogleShowSiderBar }) => {
   const { user } = useAuth();
   const [avatar, setAvatar] = useState(null);
 
@@ -21,7 +21,11 @@ const UserInfo = () => {
   }, [user?.name]);
 
   return (
-    <NavLink to="/account" style={{ textDecoration: 'none' }}>
+    <NavLink
+      to="/account"
+      style={{ textDecoration: 'none' }}
+      onClick={() => toogleShowSiderBar(false)}
+    >
       <HeaderUserInfoSection>
         <HeaderUserName>{user.name}</HeaderUserName>
 

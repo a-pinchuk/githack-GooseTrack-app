@@ -24,15 +24,7 @@ export const steps = [
   },
   {
     selector: '[data-tour="6"]',
-    content: 'Click on "Add task" to create a task',
-  },
-  {
-    selector: '[data-tour="7"]',
     content:
-      'Enter the required text and finally create the task! Now it will always be here. Enjoy it and have a good day!',
-  },
-  {
-    selector: '[data-tour="8"]',
-    content: '',
+      'Click on "Add task", then enter the required text and finally create the task! Now it will always be here. Enjoy it and have a good day!',
   },
 ];

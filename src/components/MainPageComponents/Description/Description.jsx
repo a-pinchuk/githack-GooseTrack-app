@@ -41,7 +41,7 @@ export const Description = () => {
   const { isDesktop, isTablet, isMobile } = useResponse();
 
   return (
-    <Main>
+    <Main id="mainPagesection">
       <Section>
         <InfoBox>
           <Number>1.</Number>

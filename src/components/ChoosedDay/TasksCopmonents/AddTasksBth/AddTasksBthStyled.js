@@ -15,7 +15,14 @@ export const ButtonTask = styled.button`
   font-size: ${theme.fontSizes.s};
   height: 47px;
   line-height: ${theme.lineHeights.body};
+  border: none;
   border: 1px dashed ${theme.colors.primary};
+  @media screen and (min-width: 768px) {
+    width: 301px;
+  }
+  //------------------
+
+  //------------------
   border-radius: ${theme.radii.small};
   transition: background 250ms linear;
   &:hover {
@@ -33,5 +40,5 @@ export const ButtonTask = styled.button`
   }
 `;
 export const ButtonBox = styled.div`
-  padding: 32px 18px 28px 18px;
+  padding: 14px 10px 28px 18px;
 `;

@@ -14,7 +14,7 @@ const LogoutBtn = () => {
 
   return (
     <LogOutBtnStyled type="submit" onClick={handleLogout}>
-      Logout
+      Log out
       <LogOutIconStyled></LogOutIconStyled>
     </LogOutBtnStyled>
   );

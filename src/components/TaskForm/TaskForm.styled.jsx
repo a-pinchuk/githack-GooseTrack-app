@@ -126,17 +126,17 @@ export const RadioButtonCustom = styled.span`
   /* Define different colors for each radio button */
   ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
     background-color: #72c2f8;
-    border-color: #2196f3;
+    border-color: #72c2f8;
   }
 
   ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
-    background-color: #4caf50;
-    border-color: #4caf50;
+    background-color: #f3b249;
+    border-color: #f3b249;
   }
 
   ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
-    background-color: #f44336;
-    border-color: #f44336;
+    background-color: #ea3d65;
+    border-color: #ea3d65;
   }
 `;
 

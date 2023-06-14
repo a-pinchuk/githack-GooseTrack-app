@@ -21,13 +21,17 @@ export const useTasks = () => {
   };
 
   useEffect(() => {
-    if (!workDate) setIsNotDoneTask(false);
+    if (!currentDay) {
+      setIsNotDoneTask(false);
+      return;
+    }
 
     const foundNotDoneTask = tasks.find(
-      elemen => elemen.date === workDate && elemen.category !== 'done'
+      elemen => elemen.date === currentDay && elemen.category !== 'done'
     );
+
     setIsNotDoneTask(!!foundNotDoneTask);
-  }, [workDate, tasks]);
+  }, [currentDay, tasks]);
 
   useEffect(() => {
     if (!workDate) return;
@@ -37,7 +41,9 @@ export const useTasks = () => {
   }, [workDate]);
 
   useEffect(() => {
-    if (prevNumMonth.current !== numActiveMonth || !numActiveMonth) {
+    if (!workDate) return;
+
+    if (prevNumMonth.current !== numActiveMonth) {
       dispatch(fetchAllTasks(workDate));
       prevNumMonth.current = numActiveMonth;
     }
