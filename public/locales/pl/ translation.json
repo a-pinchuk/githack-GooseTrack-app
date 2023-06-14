@@ -1,0 +1,15 @@
+{
+  "registration": {
+    "GoogleText": "Ввійти за допомогою гугл",
+    "loginText": " Or log in using an email and password",
+    "after": "after registering",
+    "Password": "Пароль",
+    "LOG IN": " Ввійти",
+    "REGISTRATION": " Реєстрація",
+    "Forgot your password": "Забули пароль"
+  },
+  "dashboard": {
+    "Log": " Wejsc",
+    "Sign": " Rejestracja"
+  }
+}

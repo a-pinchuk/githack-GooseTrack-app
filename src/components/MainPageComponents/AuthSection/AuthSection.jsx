@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useViewportHeight } from 'hooks';
+import LanguageSwitcher from './LanguageSwitcher';
 
 import {
   Header,
@@ -19,6 +21,7 @@ import sprite from 'icons/sprite.svg';
 
 export const AuthSection = () => {
   const viewportHeight = useViewportHeight();
+  const { t } = useTranslation();
 
   return (
     <Header height={viewportHeight}>
@@ -31,18 +34,18 @@ export const AuthSection = () => {
             title="Goose welcome you"
           />
         </ImageWrapper>
-
         <h1>
           G<span>oo</span>seTrack
         </h1>
+        <LanguageSwitcher position="header" />
         <nav>
           <LoginLink to="login">
-            Log in
+            {t('dashboard.Lod')}
             <svg height="13.5" width="13.5">
               <use href={sprite + '#icon-enter'}></use>
             </svg>
           </LoginLink>
-          <RegisterLink to="register">Sign up</RegisterLink>
+          <RegisterLink to="register">{t('dashboard.Sign')}</RegisterLink>
         </nav>
       </ContentWrapper>
 

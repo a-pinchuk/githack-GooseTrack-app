@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+export const TRANSITION = {
+  duration: '300ms',
+  timing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  delay: '0ms',
+};
 
 export const Header = styled.header`
   height: ${p => p.height}px;
@@ -167,5 +172,87 @@ export const ScrollDownWrapper = styled.div`
     display: block;
     max-width: 100%;
     height: auto;
+  }
+`;
+export const LanguageButton = styled.button`
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+  @media ${'768px'} {
+    margin-right: 5px;
+  }
+`;
+export const FlagImg = styled.img`
+  display: block;
+  width: ${p => {
+    switch (p.position) {
+      case 'menu':
+        return `30px`;
+      case 'header':
+        return '28px';
+      default:
+        return `32px`;
+    }
+  }};
+  height: ${p => {
+    switch (p.position) {
+      case 'menu':
+        return `30px`;
+      case 'header':
+        return '28px';
+      default:
+        return `32px`;
+    }
+  }};
+  filter: ${p => {
+    if (p.isActive && p.language === 'en')
+      return `drop-shadow(1px 3px 10px #3f51b5)`;
+    if (p.isActive && p.language === 'ua') return;
+  }};
+  transition: filter ${TRANSITION.duration} ${TRANSITION.timing};
+
+  &:hover,
+  &:focus {
+    filter: ${p => {
+      if (p.language === 'en') return `drop-shadow(1px 3px 10px #3f51b5)`;
+      if (p.language === 'ua') return `drop-shadow(1px 3px 10px #50b8f8)`;
+      return;
+    }};
+  }
+  @media screen and (min-width: 420px) {
+    width: 32px;
+    height: 32px;
+  }
+`;
+export const LanguageBtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: ${p => {
+    switch (p.position) {
+      case 'menu':
+        return `0px`;
+      case 'header':
+        return '15px';
+      default:
+        return;
+    }
+  }};
+  @media screen and (min-width: 420px) {
+    flex-wrap: ${p => {
+      switch (p.position) {
+        case 'menu':
+          return `wrap`;
+        case 'header':
+          return 'nowrap';
+        default:
+          return;
+      }
+    }};
   }
 `;

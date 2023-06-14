@@ -1,3 +1,4 @@
+// import { useTranslation } from 'react-i18next';
 import { FeedbackForm } from 'components/FeedbackForm/FeedbackForm';
 import { FeedbackList } from 'components/FeedbackList/FeedbackList';
 import { Modal } from 'components/Modal/Modal';

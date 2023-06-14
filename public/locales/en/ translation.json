@@ -1,0 +1,15 @@
+{
+  "registration": {
+    "GoogleText": "You can log in with your Google Account",
+    "loginText": " Or log in using an email and password",
+    "after": "after registering",
+    "Password": "Password",
+    "LOG IN": " LOG IN",
+    "Sign up": " Sign up",
+    "Forgot your password": "Forgot your password"
+  },
+  "dashboard": {
+    "Log": " LOG IN",
+    "Sign": " Sign up"
+  }
+}
