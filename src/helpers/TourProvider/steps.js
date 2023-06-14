@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 export const steps = [
   {
     // selector: '.first-step',
@@ -27,31 +24,7 @@ export const steps = [
   },
   {
     selector: '[data-tour="6"]',
-    content: 'Click on "Add task" to create a task',
-  },
-  {
-    selector: '[data-tour="7"]',
     content:
-      'Enter the required text and finally create the task! Now it will always be here. Enjoy it and have a good day!',
+      'Click on "Add task", then enter the required text and finally create the task! Now it will always be here. Enjoy it and have a good day!',
   },
 ];
-
-export const useSteps = () => {
-  const redirect = useNavigate();
-  const [step, setStep] = useState(0);
-
-  const setCurrentStep = step => {
-    switch (step) {
-      case 5:
-        redirect('day/:currentDay', true);
-        break;
-      default:
-        break;
-    }
-    setStep(step);
-  };
-  return {
-    step,
-    setCurrentStep,
-  };
-};
