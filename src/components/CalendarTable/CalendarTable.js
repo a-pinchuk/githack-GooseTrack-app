@@ -35,6 +35,7 @@ const DayLink = styled(Link)`
 
   :hover {
     transform: scale(1.05);
+    z-index: 1;
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }

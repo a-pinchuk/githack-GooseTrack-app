@@ -15,7 +15,7 @@ import { selectUser } from 'redux/auth/selectors';
 export const PeriodPaginator = ({
   today,
   typeSelect,
-  todayHandler,
+
   prevHandler,
   nextHandler,
 }) => {
@@ -30,7 +30,7 @@ export const PeriodPaginator = ({
 
   return (
     <PaginatorWrapper>
-      <PaginatorDate typeSelect={typeSelect} onClick={todayHandler}>
+      <PaginatorDate typeSelect={typeSelect}>
         {typeSelect === 'month'
           ? today.format('MMMM YYYY')
           : today.format('D MMM YYYY ')}

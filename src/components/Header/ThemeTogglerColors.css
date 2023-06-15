@@ -29,6 +29,7 @@ html[data-theme='light'] {
   --scrollbar-bg: grey;
   --button-not-active: #e5edfa;
   --user-placeholder: #111111;
+  --button-calendar: #606470;
 }
 
 html[data-theme='dark'] {
@@ -60,6 +61,7 @@ html[data-theme='dark'] {
   --scrollbar-bg: #2d3037;
   --button-not-active: #21222c;
   --user-placeholder: white;
+  --button-calendar: #d0d0d0;
 }
 
 body {
