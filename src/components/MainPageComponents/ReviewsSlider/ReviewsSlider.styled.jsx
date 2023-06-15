@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.section`
+  background-color: #fff;
+`;
+
 export const ReviewsContainer = styled.section`
   position: relative;
 
@@ -8,7 +12,7 @@ export const ReviewsContainer = styled.section`
 
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 64px;
+  padding-bottom: 64px;
 
   font-family: ${p => p.theme.fonts.text};
   background-color: ${p => p.theme.colors.background};
@@ -18,7 +22,7 @@ export const ReviewsContainer = styled.section`
     max-width: 704px;
     min-height: 360px;
 
-    margin-bottom: 100px;
+    padding-bottom: 100px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -26,7 +30,7 @@ export const ReviewsContainer = styled.section`
     max-width: 1184px;
     min-height: 374px;
 
-    margin-bottom: 118px;
+    padding-bottom: 118px;
   }
 
   h2 {
@@ -61,8 +65,16 @@ export const ReviewsContainer = styled.section`
 
   & .slick-arrow {
     position: absolute;
-    bottom: 0;
-    /* z-index: 0; */
+    bottom: 64px;
+
+    @media screen and (min-width: 768px) {
+      bottom: 100px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      bottom: 118px;
+    }
+
   }
 
   & svg.svg-arrow {

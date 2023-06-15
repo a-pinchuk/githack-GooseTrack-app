@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from 'theme';
 
 export const Container = styled.div`
   width: 100%;
@@ -66,9 +67,30 @@ export const WrapRightColumn = styled.div`
 
   overflow: hidden;
   overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${theme.colors.bg_scroll_color};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${theme.colors.scroll_сolor};
+  }
+
+  ::-webkit-scrollbar-track-piece {
+    background: transparent;
+    border: none;
+  }
+
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     padding: 0 32px;
     overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {

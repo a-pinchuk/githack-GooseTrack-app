@@ -13,15 +13,19 @@ export const StyledDataPicker = styled(DatePicker)`
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
     color: ${p => p.theme.colors.user_placeholder};
-    font-weight: 400 !important;
+    font-weight: 600;
     opacity: 1;
   }
+
   /* Input value */
   .MuiInputBase-root {
     position: relative;
     font-family: 'Inter';
     font-size: 14px;
     font-weight: 600;
+  }
+  .MuiButtonBase-root {
+    color: ${p => p.theme.colors.button_calendar};
   }
   .MuiOutlinedInput-notchedOutline {
     border: 1px solid #11111126;

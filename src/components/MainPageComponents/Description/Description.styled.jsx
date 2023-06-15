@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Main = styled.div`
+  background-color: #fff;
+`;
+
+export const Wrapper = styled.div`
   max-width: 335px;
 
   margin-left: auto;
   margin-right: auto;
-  margin-top: 64px;
-  margin-bottom: 64px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 
   @media screen and (max-width: 345px) {
     margin-left: 5px;
@@ -22,7 +26,7 @@ export const Main = styled.div`
     width: 1184px;
     max-width: 1184px;
 
-    margin-bottom: 100px;
+    padding-bottom: 100px;
   }
 `;
 

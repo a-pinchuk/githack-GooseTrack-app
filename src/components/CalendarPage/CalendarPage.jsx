@@ -77,46 +77,18 @@ const CalendarPage = () => {
           ...base,
           '--reactour-accent': '#3E85F3',
           borderRadius: 8,
+          maxWidth: 640,
+          top: step === 1 ? 70 : step === 4 || step === 5 ? -230 : 20,
+
+          left: step === 1 ? -160 : -50,
           color: props => props.theme.colors.primary_text_mode,
         }),
         maskArea: base => ({ ...base, rx: 8 }),
         maskWrapper: base => ({ ...base, color: '#504d4d' }),
         badge: base => ({ ...base, left: '-0.8125em', right: 'auto' }),
-        controls: base => ({ ...base, marginTop: 100 }),
+        controls: base => ({ ...base, marginTop: 10 }),
         close: base => ({ ...base, right: 8, left: 'auto', top: 8 }),
       }}
-      // nextButton={({
-      //   Button,
-      //   currentStep,
-      //   stepsLength,
-      //   setIsOpen,
-      //   setCurrentStep,
-      //   steps,
-      // }) => {
-      //   const last = currentStep === stepsLength - 1;
-      //   return (
-      //     <Button
-      //       onClick={() => {
-      //         if (last) {
-      //           setIsOpen(false);
-      //         } else {
-      //           setCurrentStep(s => (s === steps?.length - 1 ? 0 : s + 1));
-      //         }
-      //         if (currentStep === 3 && !currentDay) {
-      //           console.log('currentStep === 3 && !currentDay');
-      //           navigate(`/calendar/day/${moment().format('YYYY-MM-DD')}`);
-      //           // setTimeout(() => {
-      //           //   setCurrentStep(4);
-      //           // }, 1000);
-      //           setCurrentStep(3);
-      //           // setCurrentStep(4);
-      //         }
-      //       }}
-      //     >
-      //       {last && null}
-      //     </Button>
-      //   );
-      // }}
     >
       <CalendarContainer>
         <CalendarToolbar

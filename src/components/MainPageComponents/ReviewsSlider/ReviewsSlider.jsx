@@ -7,7 +7,11 @@ import { fetchAllReviews } from 'redux/reviews/operations';
 import { selectAllReviews } from 'redux/reviews/selectors';
 import { ReviewCard } from './ReviewCard';
 
-import { ReviewsContainer, ArrowContainer } from './ReviewsSlider.styled';
+import {
+  ReviewsContainer,
+  Wrapper,
+  ArrowContainer,
+} from './ReviewsSlider.styled';
 
 import sprite from 'icons/sprite.svg';
 
@@ -71,31 +75,33 @@ export const ReviewsSlider = () => {
   const lastTenReviews = reviews?.data?.slice(-10);
 
   return (
-    <ReviewsContainer>
-      <h2>REVIEWS</h2>
-      <Slider className="slider" {...settings}>
-        {lastTenReviews?.map(review => (
-          <ReviewCard
-            key={review._id}
-            src={review.owner?.avatarUrl || null}
-            num={review.rating}
-            name={review.owner?.name || 'John Doe'}
-          >
-            {review.comment}
-          </ReviewCard>
-        ))}
+    <Wrapper>
+      <ReviewsContainer>
+        <h2>REVIEWS</h2>
+        <Slider className="slider" {...settings}>
+          {lastTenReviews?.map(review => (
+            <ReviewCard
+              key={review._id}
+              src={review.owner?.avatarUrl || null}
+              num={review.rating}
+              name={review.owner?.name || 'John Doe'}
+            >
+              {review.comment}
+            </ReviewCard>
+          ))}
 
-        <ReviewCard src={''} num={4} name="Olena Doe">
-          GooseTrack is impressive, the calendar view and filter options make it
-          easy to stay organized and focused. Highly recommended.
-        </ReviewCard>
-        <ReviewCard src={''} num={5} name="Alexander Hubbard">
-          GooseTrack is incredibly helpful, the sidebar with account management,
-          calendar, and filter options make navigation seamless. Great for
-          staying organized.
-        </ReviewCard>
-      </Slider>
-      <ArrowContainer />
-    </ReviewsContainer>
+          <ReviewCard src={''} num={4} name="Olena Doe">
+            GooseTrack is impressive, the calendar view and filter options make
+            it easy to stay organized and focused. Highly recommended.
+          </ReviewCard>
+          <ReviewCard src={''} num={5} name="Alexander Hubbard">
+            GooseTrack is incredibly helpful, the sidebar with account
+            management, calendar, and filter options make navigation seamless.
+            Great for staying organized.
+          </ReviewCard>
+        </Slider>
+        <ArrowContainer />
+      </ReviewsContainer>
+    </Wrapper>
   );
 };

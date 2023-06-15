@@ -26,8 +26,10 @@ import {
 const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
+
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
+  const [birthdayNumber, setBirthdayNumber] = useState(null);
 
   const handleAvatarUpload = event => {
     setFieldValue('avatar', event.currentTarget.files[0]);
@@ -115,6 +117,7 @@ const UserForm = () => {
     setFieldValue('birthday', user.birthday);
 
     setSelectedImage(null || user.avatarUrl);
+    setBirthdayNumber(user.birthday);
   }, [user, setFieldValue]);
 
   return (
@@ -165,7 +168,7 @@ const UserForm = () => {
                 closeOnSelect={true}
                 slotProps={{
                   textField: {
-                    placeholder: `${currentDate}`,
+                    placeholder: birthdayNumber || `${currentDate}`,
                   },
                 }}
                 onChange={handleDatePickerChange}

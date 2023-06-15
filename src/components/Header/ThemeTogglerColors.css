@@ -29,6 +29,9 @@ html[data-theme='light'] {
   --scrollbar-bg: grey;
   --button-not-active: #e5edfa;
   --user-placeholder: #111111;
+  --button-calendar: #606470;
+  --scroll-color: #e7e5e5;
+  --bg-scroll-color: #f2f2f2;
 }
 
 html[data-theme='dark'] {
@@ -59,7 +62,10 @@ html[data-theme='dark'] {
   --empty-star: #353647;
   --scrollbar-bg: #2d3037;
   --button-not-active: #21222c;
-  --user-placeholder: #d0d0d0;
+  --user-placeholder: white;
+  --button-calendar: #d0d0d0;
+  --scroll-color: #171820;
+  --bg-scroll-color: #2d3037;
 }
 
 body {
