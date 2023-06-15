@@ -1,0 +1,107 @@
+[  
+  {
+    "name": "Andrii Pinchuk",
+    "role": "Team Lead",
+    "github": "https://github.com/a-pinchuk",
+    "linkedin": "https://www.linkedin.com/in/andrii-pinchuk/",
+    "image": "images/mainPage/TeamFotos/Andrii_Pinchuk.jpg"
+  },
+  {
+    "name": "Kateryna Semeniuk",
+    "role": "Scrum master",
+    "github": "https://github.com/Katya-Semeniuk",
+    "linkedin": "https://www.linkedin.com/in/katya-semeniuk-a2b806260",
+    "image": "images/mainPage/TeamFotos/Kateryna_Semeniuk.jpg"
+  },
+  {
+    "name": "Vitalii Smyrnov",
+    "role": "Developer",
+    "github": "https://github.com/VitaliiSmyrnov",
+    "linkedin": "https://www.linkedin.com/in/vitalii-smyrnov/",
+    "image": "images/mainPage/TeamFotos/Vitalii_Smyrnov.jpg"
+  },
+  {
+    "name": "Serhii Kostiuchenko",
+    "role": "Developer",
+    "github": "https://github.com/Kcepriu",
+    "linkedin": "https://www.linkedin.com/in/serhii-kostiuchenko/",
+    "image": "images/mainPage/TeamFotos/Serhii_Kostiuchenko.jpg"
+  },
+  {
+    "name": "Mykola Naumenko",
+    "role": "Developer",
+    "github": "https://github.com/NNaumenko83",
+    "linkedin": "https://www.linkedin.com/in/mykola--naumenko/",
+    "image": "images/mainPage/TeamFotos/Mykola_Naumenko.jpg"
+  },
+  {
+    "name": "Dmytro Havryliak",
+    "role": "Developer",
+    "github": "https://github.com/DimaHavr",
+    "linkedin": "https://www.linkedin.com/in/dmytro-havryliak/",
+    "image": "images/mainPage/TeamFotos/Dmytro_Havryliak.jpg"
+  },
+  {
+    "name": "Roman Vozniuk",
+    "role": "Developer",
+    "github": "https://github.com/VozzRoman",
+    "linkedin": "https://www.linkedin.com/in/voznuke-roman/",
+    "image": "images/mainPage/TeamFotos/Roman_Vozniuk.jpg"
+  },
+  {
+    "name": "Oleksandr Shevchuk",
+    "role": "Developer",
+    "github": "https://github.com/Sasha92Shevchuk",
+    "linkedin": "https://www.linkedin.com/in/oleksandr-shevchuk-y/",
+    "image": "images/mainPage/TeamFotos/Oleksandr_Shevchuk.jpg"
+  },
+  {
+    "name": "Yaroslav Kramarchuk",
+    "role": "Developer",
+    "github": "https://github.com/YarKram",
+    "linkedin": "https://www.linkedin.com/in/yaroslav-kramarchuk/",
+    "image": "images/mainPage/TeamFotos/Yaroslav_Kramarchuk.jpg"
+  },
+  {
+    "name": "Kyrylo Savchenko",
+    "role": "Developer",
+    "github": "https://github.com/Kyrylo2",
+    "linkedin": "https://www.linkedin.com/in/savchenko-kyrylo/",
+    "image": "images/mainPage/TeamFotos/Kyrylo_Savchenko.jpg"
+  },
+  {
+    "name": "Oleksii Vitomskyi",
+    "role": "Developer",
+    "github": "https://github.com/Alexey7272",
+    "linkedin": "https://www.linkedin.com/in/oleksii-vitomskyi",
+    "image": "images/mainPage/TeamFotos/Oleksii_Vitomskyi.jpg"
+  },
+  {
+    "name": "Andrii Melnyk",
+    "role": "Developer",
+    "github": "https://github.com/ammolder",
+    "linkedin": "https://www.linkedin.com/in/ammolder/",
+    "image": "images/mainPage/TeamFotos/Andrii_Melnyk.jpg"
+  },
+  {
+    "name": "Dmytro Shkilniuk",
+    "role": "Developer",
+    "github": "https://github.com/Dmytro-1506",
+    "linkedin": "https://www.linkedin.com/in/dmytro-shkilniuk-3ba959276/",
+    "image": "images/mainPage/TeamFotos/Dmytro_Shkilniuk.jpg"
+  },
+  {
+    "name": "Taras Tikan",
+    "role": "Developer",
+    "github": "https://github.com/TarasTikan",
+    "linkedin": "https://www.linkedin.com/in/taras-tikan-317b7a1a7/",
+    "image": "images/mainPage/TeamFotos/Taras_Tikan.jpg"
+  },
+  {
+    "name": "Yurii Mykhalchenko",
+    "role": "Developer",
+    "github": "https://github.com/YuriiMykhalchenko",
+    "linkedin": "https://www.linkedin.com/in/yurii-mykhalchenko",
+    "image": "images/mainPage/TeamFotos/Yurii_Mykhalchenko.jpg"
+  }
+]
