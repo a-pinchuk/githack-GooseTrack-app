@@ -1,0 +1,109 @@
+[  
+  {
+    "name": "Andrii Pinchuk",
+    "role": "Team Lead",
+    "github": "https://github.com/a-pinchuk",
+    "linkedin": "https://www.linkedin.com/in/andrii-pinchuk/",
+    "image": "images/mainPage/TeamFotos/Andrii_Pinchuk.jpg"
+  },
+  {
+    "name": "Kateryna Semeniuk",
+    "role": "Scrum master",
+    "github": "https://github.com/Katya-Semeniuk",
+    "linkedin": "",
+    "image": "images/mainPage/TeamFotos/Kateryna_Semeniuk.jpg"
+  },
+  {
+    "name": "Vitalii Smyrnov",
+    "role": "Developer",
+    "github": "https://github.com/VitaliiSmyrnov",
+    "linkedin": "https://www.linkedin.com/in/vitalii-smyrnov/",
+    "image": "images/mainPage/TeamFotos/Vitalii_Smyrnov.jpg"
+  },
+  {
+    "name": "Serhii Kostiuchenko",
+    "role": "Developer",
+    "github": "https://github.com/Kcepriu",
+    "linkedin": "https://www.linkedin.com/in/serhii-kostiuchenko/",
+    "image": "images/mainPage/TeamFotos/Serhii_Kostiuchenko.jpg"
+  },
+  {
+    "name": "Mykola Naumenko",
+    "role": "Developer",
+    "github": "https://github.com/NNaumenko83",
+    "linkedin": "https://www.linkedin.com/in/mykola--naumenko/",
+    "image": "images/mainPage/TeamFotos/Mykola_Naumenko.jpg"
+  },
+  {
+    "name": "Oleksandr Shevchuk",
+    "role": "Developer",
+    "github": "https://github.com/Sasha92Shevchuk",
+    "linkedin": "https://www.linkedin.com/in/oleksandr-shevchuk-y/",
+    "image": "images/mainPage/TeamFotos/Oleksandr_Shevchuk.jpg"
+  },
+  {
+    "name": "Kyrylo Savchenko",
+    "role": "Developer",
+    "github": "https://github.com/Kyrylo2",
+    "linkedin": "https://www.linkedin.com/in/savchenko-kyrylo/",
+    "image": "images/mainPage/TeamFotos/Kyrylo_Savchenko.jpg"
+  },
+  {
+    "name": "Andrii Melnyk",
+    "role": "Developer",
+    "github": "https://github.com/ammolder",
+    "linkedin": "https://www.linkedin.com/in/ammolder/",
+    "image": "images/mainPage/TeamFotos/Andrii_Melnyk.jpg"
+  },
+  {
+    "name": "Yaroslav Kramarchuk",
+    "role": "Developer",
+    "github": "https://github.com/YarKram",
+    "linkedin": "https://www.linkedin.com/in/yaroslav-kramarchuk/",
+    "image": "images/mainPage/TeamFotos/Yaroslav_Kramarchuk.jpg"
+  },
+  {
+    "name": "Dmytro Havryliak",
+    "role": "Developer",
+    "github": "https://github.com/DimaHavr",
+    "linkedin": "https://www.linkedin.com/in/dmytro-havryliak/",
+    "image": "images/mainPage/TeamFotos/Dmytro_Havryliak.jpg"
+  },
+  {
+    "name": "Roman",
+    "role": "Developer",
+    "github": "https://github.com/VozzRoman",
+    "linkedin": "",
+    "image": ""
+  },
+  {
+    "name": "Alexey",
+    "role": "Developer",
+    "github": "https://github.com/Alexey7272",
+    "linkedin": "",
+    "image": ""
+  },
+  {
+    "name": "Дмитро Шкільнюк",
+    "role": "Developer",
+    "github": "https://github.com/Dmytro-1506",
+    "linkedin": "",
+    "image": ""
+  },
+  {
+    "name": "Taras",
+    "role": "Developer",
+    "github": "",
+    "linkedin": "",
+    "image": ""
+  },
+  {
+    "name": "Юрій Михальченко",
+    "role": "Developer",
+    "github": "",
+    "linkedin": "",
+    "image": ""
+  }
+
+
+]
