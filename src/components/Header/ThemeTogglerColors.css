@@ -60,7 +60,7 @@ html[data-theme='dark'] {
   --empty-star: #353647;
   --scrollbar-bg: #2d3037;
   --button-not-active: #21222c;
-  --user-placeholder: #d0d0d0;
+  --user-placeholder: white;
   --button-calendar: #d0d0d0;
 }
 
