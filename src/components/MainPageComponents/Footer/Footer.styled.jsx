@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FooterStyled = styled.footer`
   height: auto;
-  margin-bottom: 15px;
+  padding-bottom: 15px;
 
   font-family: 'Inter';
   font-weight: 400;
@@ -22,16 +22,12 @@ export const FooterStyled = styled.footer`
     line-height: 1.18;
   }
 
-  @media screen and (min-width: 768px) {
-    height: 20px;
-  }
-
   & p {
     margin: 0;
     padding: 0;
 
     @media screen and (max-width: 767px) {
-      margin-bottom: 5px;
+      padding-bottom: 5px;
     }
   }
 `;
