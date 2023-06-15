@@ -13,9 +13,10 @@ export const StyledDataPicker = styled(DatePicker)`
     font-family: ${p => p.theme.fonts.text};
     font-size: ${p => p.theme.fontSizes.s};
     color: ${p => p.theme.colors.user_placeholder};
-    font-weight: 400 !important;
+    font-weight: 600;
     opacity: 1;
   }
+
   /* Input value */
   .MuiInputBase-root {
     position: relative;
