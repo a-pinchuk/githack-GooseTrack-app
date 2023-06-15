@@ -10,8 +10,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from 'redux/store';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/theme';
-import { steps } from 'steps';
-import { StyledTourProvider } from 'helpers/StyledTourProvider.styled';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

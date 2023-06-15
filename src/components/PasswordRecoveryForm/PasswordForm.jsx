@@ -20,6 +20,7 @@ import sprite from 'icons/sprite.svg';
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email('This is an ERROR email')
+    .matches(/^[a-zA-Z0-9@.]+$/, 'Email must contain only Latin characters')
     .required('Email is required'),
 });
 

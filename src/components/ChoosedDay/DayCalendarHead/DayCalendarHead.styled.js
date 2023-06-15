@@ -110,10 +110,10 @@ export const NotSelectedDay = styled.button`
 
   :disabled {
     > ${WeeksItemDay} {
-      background-color: #f2f2f2;
+      background-color: ${p => p.theme.colors.background_mode};
       cursor: default;
       border: none;
-      color: lightgray;
+      color: ${p => p.theme.colors.second_text_mode};
     }
   }
 `;

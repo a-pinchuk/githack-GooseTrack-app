@@ -10,6 +10,7 @@ import { currentUser } from 'redux/auth/operations';
 import { Loader } from './Loader/Loader';
 import { useSearchParams } from 'react-router-dom/dist';
 import { updateAccessToken } from 'redux/auth/authSlice';
+
 const CalendarPage = lazy(() => import('./CalendarPage/CalendarPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));

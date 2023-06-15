@@ -18,7 +18,6 @@ export const PeriodTypeSelect = ({
     <PeriodTypeWrapper>
       <MonthPeriodTypeBtn
         data-tour="1"
-        // className="first-step"
         isActive={typeSelect === 'month'}
         onClick={typeMonthHendler}
       >

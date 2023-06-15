@@ -70,7 +70,12 @@ export const TasklToolBar = ({
   };
 
   const handleDeleted = id => {
-    dispatch(deleteTask(id));
+    if (successful) {
+      dispatch(deleteTask(id));
+    }
+    if (erorr) {
+      Notify.failure(`Unable to find Task`);
+    }
   };
 
   useEffect(() => {

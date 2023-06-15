@@ -50,7 +50,9 @@ export const AuthSection = () => {
       </ContentWrapper>
 
       <ScrollDownWrapper>
-        <img src={`${scroll}`} alt="scroll down" title="scroll down" />
+        <a href="#mainPagesection">
+          <img src={`${scroll}`} alt="scroll down" title="scroll down" />
+        </a>
       </ScrollDownWrapper>
     </Header>
   );

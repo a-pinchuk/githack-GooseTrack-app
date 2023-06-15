@@ -3,11 +3,11 @@ import { theme } from 'theme';
 
 export const TaskItem = styled.li`
   flex: 0 0 100%;
-  padding-right: 10px;
+  padding-right: 7px;
   border-radius: ${theme.radii.small};
-  border: ${p => p.theme.colors._out_border};
-  box-sizing: border-box;
-  background-color: ${theme.colors.task_item_bg};
+  border: ${p => p.theme.colors.calendar_out_border};
+  background-color: ${theme.colors.third_background_mode};
+
   //add
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ export const TaskItem = styled.li`
 
   max-height: 568px;
   @media screen and (min-width: 768px) {
-    flex: 0 0 47%;
+    flex: 0 0 48.5%;
     &:not(:last-child) {
       margin-right: 16px;
     }

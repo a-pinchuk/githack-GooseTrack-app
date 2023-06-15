@@ -8,7 +8,7 @@ export const ReviewCardContainer = styled.div`
   padding: 24px;
 
   width: 335px;
-  min-height: 194px;
+  height: 194px;
 
   font-family: ${p => p.theme.fonts.text};
 
@@ -17,7 +17,6 @@ export const ReviewCardContainer = styled.div`
 
   @media screen and (max-width: 374px) {
     width: 99%;
-    height: auto;
     padding: 10px;
   }
 
@@ -27,7 +26,6 @@ export const ReviewCardContainer = styled.div`
 
     width: 580px;
     height: 187px;
-    min-height: auto;
 
     padding: 32px;
   }
@@ -91,7 +89,10 @@ export const StarContainer = styled.ul`
 
 export const CommentText = styled.div`
   margin: 0;
-  word-break: break-all;
+  height: 72px;
+
+  overflow-wrap: break-word;
+  overflow-y: hidden;
 
   font-size: ${p => p.theme.fontSizes.s};
   font-weight: ${p => p.theme.fontWeights.normal};
@@ -99,10 +100,41 @@ export const CommentText = styled.div`
 
   color: rgba(17, 17, 17, 0.7);
 
+  cursor: pointer;
+
+  @media screen and (max-width: 374px) {
+    height: 86px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 447px;
+    height: 54px;
 
     flex-grow: 1;
     align-self: flex-end;
+  }
+`;
+
+export const ModalContent = styled.div`
+  height: auto;
+  padding: 40px 40px;
+  max-width: 335px;
+
+  overflow-wrap: break-word;
+
+  font-family: 'Inter';
+  font-size: ${p => p.theme.fontSizes.m};
+
+  font-weight: ${p => p.theme.fontWeights.normal};
+  line-height: 1.29;
+
+  color: rgba(17, 17, 17, 0.7);
+  background-color: ${p => p.theme.colors.background};
+  border: ${p => p.theme.borders.normal} rgba(17, 17, 17, 0.1);
+  border-radius: ${p => p.theme.radii.small};
+
+  @media screen and (min-width: 768px) {
+    padding: 45px 50px;
+    max-width: 468px;
   }
 `;

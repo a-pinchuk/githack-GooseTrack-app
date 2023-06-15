@@ -44,8 +44,6 @@ export const useTasks = () => {
     if (!workDate) return;
 
     if (prevNumMonth.current !== numActiveMonth) {
-      console.log('fetchAllTasks', numActiveMonth, workDate);
-
       dispatch(fetchAllTasks(workDate));
       prevNumMonth.current = numActiveMonth;
     }

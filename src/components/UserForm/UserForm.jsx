@@ -104,6 +104,7 @@ const UserForm = () => {
     onSubmit: async values => {
       try {
         await dispatch(updateUserInfo(values));
+        setIsFormDirty(false);
       } catch (error) {
         console.log(error.message);
       }
