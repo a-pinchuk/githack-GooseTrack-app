@@ -23,6 +23,9 @@ export const StyledDataPicker = styled(DatePicker)`
     font-size: 14px;
     font-weight: 600;
   }
+  .MuiButtonBase-root {
+    color: ${p => p.theme.colors.button_calendar};
+  }
   .MuiOutlinedInput-notchedOutline {
     border: 1px solid #11111126;
   }
