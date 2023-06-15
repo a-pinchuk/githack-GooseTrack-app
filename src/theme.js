@@ -101,6 +101,9 @@ export const theme = {
     user_placeholder: 'var(--user-placeholder)',
     //  ##111111; ---->>>> #D0D0D0
     button_calendar: 'var(--button-calendar)',
+
+    scroll_сolor: 'var(--scroll-color)',
+    bg_scroll_color: 'var(--bg-scroll-color)',
   },
   fonts: {
     body: 'Coolvetica',

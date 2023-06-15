@@ -30,6 +30,8 @@ html[data-theme='light'] {
   --button-not-active: #e5edfa;
   --user-placeholder: #111111;
   --button-calendar: #606470;
+  --scroll-color: #e7e5e5;
+  --bg-scroll-color: #f2f2f2;
 }
 
 html[data-theme='dark'] {
@@ -62,6 +64,8 @@ html[data-theme='dark'] {
   --button-not-active: #21222c;
   --user-placeholder: #d0d0d0;
   --button-calendar: #d0d0d0;
+  --scroll-color: #171820;
+  --bg-scroll-color: #2d3037;
 }
 
 body {
