@@ -1,4 +1,6 @@
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import {
   CalendarIconStyled,
   CloseBtnIcon,
@@ -26,6 +28,8 @@ const getTypePage = pathname => {
 export const UserNav = ({ toogleShowSiderBar }) => {
   const { pathname } = useLocation();
   const typePage = getTypePage(pathname);
+  const { t } = useTranslation();
+
   return (
     <div>
       <LogoWrapper>
@@ -42,18 +46,18 @@ export const UserNav = ({ toogleShowSiderBar }) => {
         ></CloseBtnIcon>
       </LogoWrapper>
       <nav>
-        <UserPanel>User Panel</UserPanel>
+        <UserPanel>{t('sidebar.user panel')}</UserPanel>
         <StyledList>
           <StyledItem className={typePage === 'account' ? 'active' : ''}>
             <StyledLink to="account" onClick={() => toogleShowSiderBar(false)}>
               <UserIconStyled stroke="currentColor"></UserIconStyled>
-              My account
+              {t('sidebar.account')}
             </StyledLink>
           </StyledItem>
           <StyledItem className={typePage === 'calendar' ? 'active' : ''}>
             <StyledLink to="calendar" onClick={() => toogleShowSiderBar(false)}>
               <CalendarIconStyled stroke="currentColor"></CalendarIconStyled>
-              Calendar
+              {t('sidebar.calendar')}
             </StyledLink>
           </StyledItem>
         </StyledList>

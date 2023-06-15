@@ -2,6 +2,7 @@ import React, { useEffect, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
@@ -52,6 +53,7 @@ const CalendarPage = () => {
   const typeDayHendler = () => {
     navigate(`/calendar/day/${moment().format('YYYY-MM-DD')}`);
   };
+  const { t } = useTranslation();
 
   return (
     <CalendarContainer>
@@ -64,7 +66,7 @@ const CalendarPage = () => {
         typeMonthHendler={typeMonthHendler}
         typeDayHendler={typeDayHendler}
       />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>{t('loading.load')}</div>}>
         <Outlet />
       </Suspense>
     </CalendarContainer>

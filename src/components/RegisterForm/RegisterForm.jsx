@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 import { register } from 'redux/auth/operations';
 import {
@@ -41,6 +42,7 @@ const validationSchema = Yup.object().shape({
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [passwordType, setPasswordType] = useState('password');
 
@@ -71,16 +73,16 @@ export const RegisterForm = () => {
 
         return (
           <Form>
-            <Title>Sign Up</Title>
+            <Title>{t('nav.signup.title')}</Title>
             <Label className={isValid('name')}>
-              Name
+              {t('nav.signup.form.title')}
               <InputWrapper>
                 <Field
                   className={isValid('name')}
                   type="text"
                   name="name"
-                  placeholder="Enter your name"
-                  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                  placeholder={t('nav.signup.form.name.placeholder')}
+                  title={t('nav.signup.form.name.title')}
                   value={values.name}
                 />
                 {isValid('name') === 'is-valid' && (
@@ -98,14 +100,14 @@ export const RegisterForm = () => {
               <ErrorMessage name="name" component="div" />
             </Label>
             <Label className={isValid('email')}>
-              Email
+              {t('nav.signup.form.email.label')}
               <InputWrapper>
                 <Field
                   className={isValid('email')}
                   type="email"
                   name="email"
-                  placeholder="Enter email"
-                  title="Email must be in the format username@domain.com"
+                  placeholder={t('nav.signup.form.email.placeholder')}
+                  title={t('nav.signup.form.email.title')}
                   value={values.email}
                 />
                 {isValid('email') === 'is-valid' && (
@@ -120,19 +122,19 @@ export const RegisterForm = () => {
                 )}
               </InputWrapper>
               {isValid('email') === 'is-valid' && (
-                <p>This is a CORRECT email</p>
+                <p>{t('nav.signup.form.email.check')}</p>
               )}
               <ErrorMessage name="email" component="div" />
             </Label>
             <Label className={isValid('password')}>
-              Password
+              {t('nav.signup.form.password.label')}
               <PasswordInputWrapper>
                 <Field
                   className={isValid('password')}
                   type={passwordType}
                   name="password"
-                  placeholder="Enter password"
-                  title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long."
+                  placeholder={t('nav.signup.form.password.placeholder')}
+                  title={t('nav.signup.form.password.title')}
                   value={values.password}
                 />
 
@@ -159,12 +161,12 @@ export const RegisterForm = () => {
                 </VisibilityBtn>
               </PasswordInputWrapper>
               {isValid('password') === 'is-valid' && (
-                <p>This is a CORRECT password</p>
+                <p>{t('nav.signup.form.password.check')}</p>
               )}
               <ErrorMessage name="password" component="div" />
             </Label>
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting' : 'Sign Up'}
+              {isSubmitting ? 'Submitting' : t('nav.signup.form.submitBtn')}
               <Svg>
                 <use href={sprite + '#icon-enter'}></use>
               </Svg>

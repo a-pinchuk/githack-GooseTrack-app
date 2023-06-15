@@ -1,6 +1,7 @@
 import { ReactComponent as FavoriteIcon } from 'images/fullStar.svg';
 import { ReactComponent as FavoriteBorderIcon } from 'images/emptyStar.svg';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -51,6 +52,7 @@ export function FeedbackForm({
   // const { }=useSelector()
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isEditFeedbackOpen) {
@@ -131,7 +133,7 @@ export function FeedbackForm({
 
   return (
     <FormContainer>
-      <RatingText>Rating</RatingText>
+      <RatingText>{t('feedBack.rating')}</RatingText>
       <Box
         sx={{
           '& > legend': { mt: 1 },
@@ -150,11 +152,11 @@ export function FeedbackForm({
       </Box>
       <form onSubmit={handleFeedbackSubmit}>
         <label htmlFor="feedback">
-          <LabelText>Review</LabelText>
+          <LabelText>{t('feedBack.review')}</LabelText>
         </label>
         <StyledTextArea
           id="feedback"
-          placeholder="Enter text"
+          placeholder={t('feedBack.placeholder')}
           name="review"
           value={review}
           onChange={handleTextareaChange}
@@ -177,7 +179,7 @@ export function FeedbackForm({
               changed={changed}
               isRatingValid={isRatingValid}
             >
-              Edit
+              {t('feedBack.edit')}
             </StyledEditButton>
             <StyledCancelButton
               onClick={() => {
@@ -186,7 +188,7 @@ export function FeedbackForm({
               }}
               type="button"
             >
-              Cancel
+              {t('feedBack.cancel')}
             </StyledCancelButton>
           </div>
         ) : (
@@ -194,7 +196,7 @@ export function FeedbackForm({
             type="submit"
             disabled={!isReviewValid || !value || !review}
           >
-            Save
+            {t('feedBack.save')}
           </StyledButton>
         )}
       </form>

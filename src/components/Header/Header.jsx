@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useTasks } from 'hooks';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AddFeedbackModal } from 'components/AddFeedbackModal/AddFeedbackModal';
 
 // import './ThemeTogglerColors.css';
@@ -8,12 +9,14 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import BtnAddFeedback from './BtnAddFeedback/BtnAddFeedback';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import UserInfo from './UserInfo/UserInfo';
+import LanguageSwitcher from '../MainPageComponents/AuthSection/LanguageSwitcher';
 
 import {
   HeaderTitle,
   HeaderSection,
   MobileMenuBtn,
   RighSectiontHeader,
+  Languages,
 } from './Header.styled';
 import { GooseTitle } from './GooseTitle/GooseTitle';
 
@@ -42,6 +45,7 @@ export const Header = ({ toogleShowSiderBar }) => {
   const handlerShowModal = () => {
     setShowModal(true);
   };
+  const { t } = useTranslation();
 
   return (
     <HeaderSection showMotivationTitle={typePage === 'day' && isNotDoneTask}>
@@ -53,11 +57,17 @@ export const Header = ({ toogleShowSiderBar }) => {
         <GooseTitle />
       ) : (
         <HeaderTitle>
-          {typePage === 'acount' ? 'User Profile' : 'Calendar'}
+          {typePage === 'acount'
+            ? t('userPage.header.title')
+            : t('calendarPage.header.title')}
         </HeaderTitle>
       )}
 
       <RighSectiontHeader>
+        <Languages>
+          <LanguageSwitcher position="header" />
+        </Languages>
+
         {typePage !== 'acount' && (
           <BtnAddFeedback handlerShowModal={handlerShowModal} />
         )}

@@ -1,40 +1,34 @@
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
+import translationEN from '../src/languages/translationEn.json';
+import translationUA from '../src/languages/translationUa.json';
+
+const resources = {
+  en: {
+    translation: translationEN,
+  },
+  ua: {
+    translation: translationUA,
+  },
+};
 
 i18n
   .use(Backend)
+
   .use(LanguageDetector)
+
   .use(initReactI18next)
+
   .init({
-    debug: true,
+    resources,
     fallbackLng: 'en',
-    backend: { loadPath: 'locales/{{lng}}/{{ns}}.json' },
-    // resourses: {
-    //   en: {
-    //     translation: {
-    //       Log: 'Log in',
-    //       Sign: 'Sign up',
-    //     },
-    //   },
-    //   ua: {
-    //     translation: {
-    //       Log: ' Ввійти',
-    //       Sign: ' Реєстрація',
-    //     },
-    //   },
-    // },
-    detection: {
-      // order: ['queryString', 'cookie'],
-      //    cache: ['cookie']
-      order: ['localStorage', 'navigator'],
-      lookupLocalStorage: 'i18nextLng',
-    },
+    debug: true,
+    lng: 'en',
     interpolation: {
-      escapeValue: false,
+      escapeValue: false, // not needed for react as it escapes by default
     },
   });
-console.log('i18n :', i18n);
 
 export default i18n;

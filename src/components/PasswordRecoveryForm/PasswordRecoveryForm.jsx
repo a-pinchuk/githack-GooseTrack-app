@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
@@ -31,6 +32,7 @@ const validationSchema = Yup.object().shape({
 export const PasswordRecoveryForm = ({ token }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [passwordType, setPasswordType] = useState('password');
   const [confirmPasswordType, setConfirmPasswordType] = useState('password');
@@ -75,16 +77,16 @@ export const PasswordRecoveryForm = ({ token }) => {
 
         return (
           <Form>
-            <Title>Password recovery</Title>
+            <Title>{t('changePassword.title')}</Title>
 
             <Label className={isValid('password')}>
-              Password
+              {t('changePassword.password.password')}
               <PasswordInputWrapper>
                 <Field
                   className={isValid('password')}
                   type={passwordType}
                   name="password"
-                  placeholder="Enter password"
+                  placeholder={t('changePassword.password.placeholder')}
                   title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long."
                   value={values.password}
                 />
@@ -118,13 +120,13 @@ export const PasswordRecoveryForm = ({ token }) => {
             </Label>
 
             <Label className={isValid('passwordConfirm')}>
-              Confirm Password
+              {t('changePassword.password.confirm')}
               <PasswordInputWrapper>
                 <Field
                   className={isValid('passwordConfirm')}
                   type={confirmPasswordType}
                   name="passwordConfirm"
-                  placeholder="Confirm password"
+                  placeholder={t('changePassword.password.confirmPlaceholder')}
                   title="Please confirm your password"
                   value={values.passwordConfirm}
                 />
@@ -158,7 +160,7 @@ export const PasswordRecoveryForm = ({ token }) => {
             </Label>
 
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting' : 'Send'}
+              {isSubmitting ? 'Submitting' : t('changePassword.sendBtn')}
             </Button>
           </Form>
         );

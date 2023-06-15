@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import {
   DayPeriodTypeBtn,
   MonthPeriodTypeBtn,
@@ -10,6 +12,8 @@ export const PeriodTypeSelect = ({
   typeMonthHendler,
   typeDayHendler,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <PeriodTypeWrapper>
       <MonthPeriodTypeBtn
@@ -18,14 +22,14 @@ export const PeriodTypeSelect = ({
         isActive={typeSelect === 'month'}
         onClick={typeMonthHendler}
       >
-        Month
+        {t('calendarPage.nav.period.monthBtn')}
       </MonthPeriodTypeBtn>
       <DayPeriodTypeBtn
         data-tour="2"
         isActive={typeSelect === 'day'}
         onClick={typeDayHendler}
       >
-        Day
+        {t('calendarPage.nav.period.dayBtn')}
       </DayPeriodTypeBtn>
     </PeriodTypeWrapper>
   );

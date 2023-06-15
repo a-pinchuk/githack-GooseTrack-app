@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useTranslation } from 'react-i18next';
 import gooseHeader from '../../../images/goose-header.png';
 import {
   GooseWrapper,
@@ -9,14 +9,15 @@ import {
 } from './GooseTitle.styled';
 
 export const GooseTitle = () => {
+  const { t } = useTranslation();
   return (
     <GooseWrapper>
       <img src={gooseHeader} width="64" height="60" alt="goose" />
       <div>
-        <HeaderTitle>Calendar</HeaderTitle>
+        <HeaderTitle> {t('calendarPage.header.title')}</HeaderTitle>
         <TextMessagePrimary>
-          Let go
-          <TextMessage> of the past and focus on the present!</TextMessage>
+          {t('calendarPage.header.action')}
+          <TextMessage> {t('calendarPage.header.phrase')}</TextMessage>
         </TextMessagePrimary>
       </div>
     </GooseWrapper>

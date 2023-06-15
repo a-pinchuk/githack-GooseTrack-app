@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
@@ -24,6 +25,7 @@ const validationSchema = Yup.object().shape({
 
 export const PasswordForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     <Formik
@@ -44,16 +46,16 @@ export const PasswordForm = () => {
 
         return (
           <Form>
-            <Title>Password recovery</Title>
+            <Title> {t('changePassword.title')}</Title>
 
             <Label className={isValid('email')}>
-              Email
+              {t('changePassword.email')}
               <InputWrapper>
                 <Field
                   className={isValid('email')}
                   type="email"
                   name="email"
-                  placeholder="Enter email"
+                  placeholder={t('changePassword.placeholder')}
                   title="Email must be in the format username@domain.com"
                   value={values.email}
                 />
@@ -76,7 +78,7 @@ export const PasswordForm = () => {
             </Label>
 
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting' : 'Send'}
+              {isSubmitting ? 'Submitting' : t('changePassword.sendBtn')}
             </Button>
           </Form>
         );

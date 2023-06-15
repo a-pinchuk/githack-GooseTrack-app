@@ -40,12 +40,12 @@ export const AuthSection = () => {
         <LanguageSwitcher position="header" />
         <nav>
           <LoginLink to="login">
-            {t('dashboard.Lod')}
+            {t('nav.login.title')}
             <svg height="13.5" width="13.5">
               <use href={sprite + '#icon-enter'}></use>
             </svg>
           </LoginLink>
-          <RegisterLink to="register">{t('dashboard.Sign')}</RegisterLink>
+          <RegisterLink to="register">{t('nav.signup.title')}</RegisterLink>
         </nav>
       </ContentWrapper>
 

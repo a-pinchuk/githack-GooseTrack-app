@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   WrapForm,
@@ -45,6 +47,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
   const [dateSave, setDataSave] = useState(null);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const successful = useSelector(selectSuccessful);
   const error = useSelector(selectTasksError);
 
@@ -93,10 +96,10 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
     <WrapForm>
       <Form onSubmit={handleSubmit}>
         <Label>
-          Title
+          {t('calendarPage.daySection.task.form.title')}
           <Input
             type="text"
-            placeholder="Enter text"
+            placeholder={t('calendarPage.daySection.task.form.placeholder')}
             name="title"
             value={informationTask.title}
             onChange={handleChange}
@@ -105,7 +108,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
         </Label>
         <FormGroup>
           <Label>
-            Start
+            {t('calendarPage.daySection.task.form.start')}
             <Input
               id="time"
               type="time"
@@ -116,7 +119,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
             />
           </Label>
           <Label>
-            End
+            {t('calendarPage.daySection.task.form.end')}
             <Input
               type="time"
               name="end"
@@ -138,7 +141,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
                 onChange={handleChange}
               />
               <RadioButtonCustom />
-              Low
+              {t('calendarPage.daySection.task.form.priority.low')}
             </RadioButtonsLabel>
           </RadioContainer>
           <RadioContainer>
@@ -151,7 +154,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
                 onChange={handleChange}
               />
               <RadioButtonCustom />
-              Medium
+              {t('calendarPage.daySection.task.form.priority.medium')}
             </RadioButtonsLabel>
           </RadioContainer>
           <RadioContainer>
@@ -164,7 +167,7 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
                 onChange={handleChange}
               />
               <RadioButtonCustom />
-              High
+              {t('calendarPage.daySection.task.form.priority.high')}
             </RadioButtonsLabel>
           </RadioContainer>
         </WrapRadio>
@@ -173,17 +176,17 @@ export const TaskForm = ({ initialData, handlerCloseModal }) => {
         {operation === 'edit' ? (
           <EditButton type="submit">
             <IconEditPen />
-            Edit
+            {t('calendarPage.daySection.task.form.editBtn')}
           </EditButton>
         ) : (
           <WrapButton>
             <EditButton type="submit">
               <IconPlus />
-              Add
+              {t('calendarPage.daySection.task.form.addBtn')}
             </EditButton>
 
             <CancelButton type="button" onClick={handlerCloseModal}>
-              Cancel
+              {t('calendarPage.daySection.task.form.cancelBtn')}
             </CancelButton>
           </WrapButton>
         )}

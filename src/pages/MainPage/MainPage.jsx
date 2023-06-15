@@ -1,4 +1,5 @@
 import React from 'react';
+import LanguageSwitcher from '../../components/MainPageComponents/AuthSection/LanguageSwitcher';
 
 import {
   AuthSection,
@@ -11,6 +12,7 @@ const MainPage = () => {
   return (
     <>
       <AuthSection />
+      <LanguageSwitcher position="header" />
       <Description />
       <ReviewsSlider />
       <ScrollToTop />

@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 
 import ukrainian from 'images/flags/ua.jpg';
 import english from 'images/flags/en.jpg';
-import polish from 'images/goose-header.png';
 
 import {
   FlagImg,
@@ -28,23 +27,6 @@ const LanguageSwitcher = ({ position, onClose }) => {
 
   return (
     <LanguageBtnWrapper position={position}>
-      <LanguageButton
-        onClick={() => {
-          changeLanguage('pl');
-          if (position === 'menu') {
-            onClose();
-            return;
-          }
-        }}
-      >
-        <FlagImg
-          src={polish}
-          alt="polish"
-          position={position}
-          isActive={current === 'pl'}
-          language="pl"
-        />
-      </LanguageButton>
       <LanguageButton
         onClick={() => {
           changeLanguage('ua');

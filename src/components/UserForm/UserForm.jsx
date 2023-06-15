@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import { useFormik } from 'formik';
 import { updateUserInfo } from '../../redux/auth/operations';
 import moment from 'moment/moment';
@@ -25,6 +27,7 @@ import {
 } from './UserForm.styled';
 const UserForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [selectedImage, setSelectedImage] = useState(null || user.avatarUrl);
   const [isFormDirty, setIsFormDirty] = useState(false);
@@ -138,15 +141,15 @@ const UserForm = () => {
           <Plus />
         </Label>
         <Heading>{user.name}</Heading>
-        <Title>User</Title>
+        <Title>{t('userPage.title')}</Title>
         <Wrapper>
           <WrapperInput>
-            <Label htmlFor="name">User Name</Label>
+            <Label htmlFor="name">{t('userPage.form.userName.label')}</Label>
             <Input
               id="name"
               name="name"
               type="text"
-              placeholder="User Name"
+              placeholder={t('userPage.form.userName.placeholder')}
               value={values.name || ''}
               onChange={handleInputChange}
               onBlur={handleBlur}
@@ -158,7 +161,9 @@ const UserForm = () => {
           </WrapperInput>
           {/*  birthday */}
           <WrapperInput>
-            <Label htmlFor="birthday">Birthday</Label>
+            <Label htmlFor="birthday">
+              {t('userPage.form.birthday.label')}
+            </Label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
                 closeOnSelect={true}
@@ -176,12 +181,12 @@ const UserForm = () => {
           </WrapperInput>
           {/*  email */}
           <WrapperInput>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email"> {t('userPage.form.email.label')}</Label>
             <Input
               id="email"
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder={t('userPage.form.email.placeholder')}
               value={values.email || ''}
               onChange={handleInputChange}
               onBlur={handleBlur}
@@ -193,12 +198,12 @@ const UserForm = () => {
           </WrapperInput>
           {/*  phone */}
           <WrapperInput>
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="phone">{t('userPage.form.phone.label')}</Label>
             <Input
               id="phone"
               type="tel"
               name="phone"
-              placeholder=" 38 (097)..."
+              placeholder={t('userPage.form.phone.placeholder')}
               inputMode="numeric"
               value={values.phone || ''}
               onChange={handlePhoneNumberChange}
@@ -211,9 +216,11 @@ const UserForm = () => {
           </WrapperInput>
           {/*  skype */}
           <WrapperInput>
-            <Label htmlFor="skype">Skype</Label>
+            <Label htmlFor="skype">
+              {t('userPage.form.skype.placeholder')}
+            </Label>
             <Input
-              placeholder="Add skype number"
+              placeholder={t('userPage.form.skype.placeholder')}
               id="skype"
               name="skype"
               value={values.skype || ''}
@@ -227,7 +234,7 @@ const UserForm = () => {
           </WrapperInput>
         </Wrapper>
         <Button disabled={isSubmitting || !isFormDirty} type="submit">
-          {isSubmitting ? 'Submitting...' : 'Save changes'}
+          {isSubmitting ? 'Submitting...' : t('userPage.form.saveChangesBtn')}
         </Button>
       </FormContainer>
     </Container>

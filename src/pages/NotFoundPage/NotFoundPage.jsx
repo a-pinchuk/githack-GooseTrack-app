@@ -1,13 +1,14 @@
-
+import { useTranslation } from 'react-i18next';
 import { Section, HomeLink } from './NotFoundPage.styled';
 
 const NotFoundPage = () => {
+  const { t } = useTranslation();
   return (
     <Section>
       <h1>404</h1>
-      <h2>Looks like you're lost</h2>
-      <p>The page you are looking for is not available!</p>
-      <HomeLink to="/">Go to Home</HomeLink>
+      <h2>{t('notFound.fact')}</h2>
+      <p>{t('notFound.information')}</p>
+      <HomeLink to="/">{t('notFound.return')}</HomeLink>
     </Section>
   );
 };

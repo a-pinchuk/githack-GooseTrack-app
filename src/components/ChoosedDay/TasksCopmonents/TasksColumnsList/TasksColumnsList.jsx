@@ -6,6 +6,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { TouchBackend } from 'react-dnd-touch-backend';
 import { useEffect, useState } from 'react';
+
 export const TasksColumnsList = ({ sortedTasksData }) => {
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 768px) and (max-width: 1440px)').matches

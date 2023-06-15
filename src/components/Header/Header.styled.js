@@ -59,3 +59,10 @@ export const RighSectiontHeader = styled.div`
   align-items: center;
   margin-left: auto;
 `;
+
+export const Languages = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+`;

@@ -1,8 +1,6 @@
 {
   "registration": {
-    "GoogleText": "You can log in with your Google Account",
-    "loginText": " Or log in using an email and password",
-    "after": "after registering",
+    "GoogleText": "Login with Google",
     "Password": "Password",
     "LOG IN": " LOG IN",
     "Sign up": " Sign up",
@@ -11,5 +9,52 @@
   "dashboard": {
     "Log": " LOG IN",
     "Sign": " Sign up"
+  },
+  "nav": {
+    "login": {
+      "title": "Увійти",
+      "form": {
+        "title": "Увійти",
+        "email": {
+          "label": "Електронна пошта",
+          "placeholder": "Введіть електронну пошту",
+          "title": "Електронна пошта повинна мати формат username@domain.com"
+        },
+        "password": {
+          "label": "Пароль",
+          "placeholder": "Введіть пароль",
+          "title": "Пароль повинен містити принаймні одну цифру, одну прописну та одну заголовну літеру та бути не менше 6 символів.",
+          "showBtn": "Показати пароль"
+        },
+        "forgotPasswordLink": "Забули пароль?",
+        "submitBtn": "Увійти",
+        "signupLink": "Зареєструватися",
+        "googleLoginLink": "Увійти за допомогою Google"
+      }
+    },
+    "signup": {
+      "title": "Зареєструватися",
+      "form": {
+        "title": "Зареєструватися",
+        "name": {
+          "label": "Ім'я",
+          "placeholder": "Введіть ваше ім'я",
+          "title": "Ім'я може містити лише літери, апостроф, тире та пробіли. Наприклад, Іван, Василь Галушка, Шарль де Сало де Пилипи д'Артаньян"
+        },
+        "email": {
+          "label": "Електронна пошта",
+          "placeholder": "Введіть електронну пошту",
+          "title": "Електронна пошта повинна мати формат username@domain.com"
+        },
+        "password": {
+          "label": "Пароль",
+          "placeholder": "Введіть пароль",
+          "title": "Пароль повинен містити принаймні одну цифру, одну прописну та одну заголовну літеру та бути не менше 6 символів.",
+          "showBtn": "Показати пароль"
+        },
+        "submitBtn": "Зареєструватися",
+        "loginLink": "Увійти"
+      }
+    }
   }
 }

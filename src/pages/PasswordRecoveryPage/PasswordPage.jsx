@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { updateAccessToken } from 'redux/auth/authSlice';
 import { PasswordForm } from 'components/PasswordRecoveryForm/PasswordForm';
@@ -15,6 +16,7 @@ const PasswordPage = () => {
 
     dispatch(updateAccessToken(accessToken));
   }, [dispatch]);
+  const { t } = useTranslation();
 
   return (
     <Container>
@@ -22,7 +24,7 @@ const PasswordPage = () => {
         <PasswordForm />
       </FormWrapper>
 
-      <AuthNavigate link="/login" text="Go back" />
+      <AuthNavigate link="/login" text={t('changePassword.return')} />
     </Container>
   );
 };

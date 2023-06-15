@@ -5,7 +5,7 @@ export const TaskItem = styled.li`
   flex: 0 0 100%;
   padding-right: 10px;
   border-radius: ${theme.radii.small};
-  border: ${p => p.theme.colors.calendar_out_border};
+  border: ${p => p.theme.colors._out_border};
   box-sizing: border-box;
   background-color: ${theme.colors.task_item_bg};
   //add

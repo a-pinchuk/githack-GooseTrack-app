@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Slider from 'react-slick';
 
@@ -63,6 +64,7 @@ const settings = {
 export const ReviewsSlider = () => {
   const reviews = useSelector(selectAllReviews);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchAllReviews());
@@ -72,7 +74,7 @@ export const ReviewsSlider = () => {
 
   return (
     <ReviewsContainer>
-      <h2>REVIEWS</h2>
+      <h2> {t('mainPage.reviews.title')}</h2>
       <Slider className="slider" {...settings}>
         {lastTenReviews?.map(review => (
           <ReviewCard

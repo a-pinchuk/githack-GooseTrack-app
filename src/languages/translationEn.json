@@ -1,0 +1,219 @@
+{
+  "nav": {
+    "login": {
+      "title": "Log In",
+
+      "form": {
+        "title": "Log In",
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter email",
+          "title": "Email must be in the format username@domain.com"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter password",
+          "title": "Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long.",
+          "showBtn": "Show password"
+        },
+        "forgotPasswordLink": "Forgot your password?",
+        "submitBtn": "Log In",
+        "signupLink": "Sign up",
+        "googleLoginLink": "Login with Google"
+      }
+    },
+
+    "signup": {
+      "title": "Sign Up",
+      "form": {
+        "title": "Sign Up",
+        "name": {
+          "label": "Name",
+          "placeholder": "Enter your name",
+          "title": "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter email",
+          "title": "Email must be in the format username@domain.com",
+          "check": "This is a CORRECT email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter password",
+          "title": "Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long.",
+          "showBtn": "Show password",
+          "check": "This is a CORRECT email"
+        },
+        "submitBtn": "Sign Up",
+        "loginLink": "Log In",
+        "googleLoginLink": "Sign up with Google"
+      }
+    }
+  },
+
+  "changePassword": {
+      "title": "Password recovery",
+      "email": {
+          "email": "Email",
+          "placeholder": "Enter email"
+          },
+      "password": {
+          "password": "Password",
+          "placeholder": "Enter password",
+          "confirm": "Confirm Password",
+          "confirmPlaceholder": "Confirm Password"
+      },
+      "sendBtn": "Send",
+      "return": "Go Back"
+    },
+
+  "mainPage": {
+    "calendar": {
+      "title": "CALENDAR",
+      "view": "VIEW",
+      "description": "GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout."
+    },
+    "sidebar": {
+      "title": "SIDEBAR",
+      "description": "GooseTrack offers easy access to your account settings, calendar, and filters. The \"My Account\" allows you to manage your profile information and preferences, while the calendar provides a quick and convenient way to view your upcoming events and tasks."
+    },
+    "allinone": {
+        "title1": "ALL IN",
+        "title2": "ONE",
+      "description": "GooseTrack is an all-in-one productivity tool that helps you stay on top of your tasks, events, and deadlines. Say goodbye to scattered to-do lists and hello to streamlined productivity with GooseTrack."
+    },
+    "reviews": {
+      "title": "REVIEWS"
+    }
+  },
+
+  "sidebar": {
+    "logo": "GooseTrack",
+    "user panel": "User Panel",
+    "account": "My Account",
+    "calendar": "Calendar",
+    "logout": "Log out"
+  },
+  "calendarPage": {
+    "header": {
+      "title": "Calendar",
+      "action": "Let go",
+      "phrase": "of the past and focus on the present!",
+      "feedback": "Feedback",
+      "newFeedbackModal": {
+        "rating": {
+          "title": "Rating",
+          "placeholder": "Enter rating"
+        },
+        "review": {
+          "title": "Review",
+          "placeholder": "Enter text"
+        },
+        "saveBtn": "Save",
+        "editBtn": "Edit",
+        "cancelBtn": "Cancel"
+      }
+    },
+    "nav": {
+      "currentMonthBtn": "JUNE 2023",
+      "openTourBtn": "Open Tour",
+      "period": {
+        "monthBtn": "Month",
+        "dayBtn": "Day"
+      }
+    },
+    "dayBar": {
+      "monday": "MON",
+      "tuesday": "TUE",
+      "wednesday": "WED",
+      "thursday": "THU",
+      "friday": "FRI",
+      "saturday": "SAT",
+      "sunday": "SUN"
+    },
+    "daySection": {
+      "toDo": {
+        "title": "To do",
+        "addTaskBtn": "Add task"
+      },
+      "inProgress": {
+        "title": "In progress",
+        "addTaskBtn": "Add task"
+      },
+      "done": {
+        "title": "Done",
+        "addTaskBtn": "Add task"
+      },
+      "task": {
+        "form": {
+          "title": "Title",
+          "placeholder":"Enter text",
+          "start": "Start",
+          "end": "End",
+          "priority": {
+            "low": "Low",
+            "medium": "Medium",
+            "high": "High"
+          },
+          "addBtn": "Add",
+          "cancelBtn": "Cancel",
+          "editBtn": "Edit"
+        },
+        "toolbar": {
+          "status": {
+            "toDo": "To do",
+            "inProgress": "In progress",
+            "done": "Done"
+          }
+        }
+      }
+    }
+  },
+  "userPage": {
+    "header": {
+      "title": "User Profile"
+    },
+    "title":"User",
+    "form": {
+      "avatarLabel": "Choose avatar",
+      "userName": {
+        "label": "User Name",
+        "placeholder": "User Name"
+      },
+      "birthday": {
+        "label": "Birthday",
+        "placeholder": "14/06/2023"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Email"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": " 38 (097)..."
+      },
+      "skype": {
+        "label": "Skype",
+        "placeholder": "Add skype number"
+      },
+      "saveChangesBtn": "Save changes"
+    }
+  },
+  "notFound":{
+      "fact": "Looks like you're lost.",
+      "information": "The page you are looking for is not available!",
+      "return": "Go to Home"
+  },
+  "feedBack":{
+      "rating": "Rating",
+      "review": "Review",
+      "placeholder": "Enter text",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "save": "Save"
+  },
+  "loading": {
+      "load": "Loading..."
+  }
+}
