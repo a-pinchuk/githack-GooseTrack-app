@@ -4,6 +4,7 @@ import {
   AuthSection,
   Description,
   ReviewsSlider,
+  Footer,
   ScrollToTop,
 } from 'components/MainPageComponents';
 
@@ -13,6 +14,7 @@ const MainPage = () => {
       <AuthSection />
       <Description />
       <ReviewsSlider />
+      <Footer />
       <ScrollToTop />
     </>
   );
