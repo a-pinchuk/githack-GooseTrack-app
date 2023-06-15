@@ -2,7 +2,12 @@ import React from 'react';
 
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
-import { Container, FormWrapper, ImgWrapper } from './RegisterPage.styled';
+import {
+  Container,
+  FormWrapper,
+  ImgWrapper,
+  Link,
+} from './RegisterPage.styled';
 
 const RegisterPage = () => {
   return (
@@ -13,6 +18,9 @@ const RegisterPage = () => {
 
       <AuthNavigate link="/login" text="Log In" />
 
+      <Link href="https://githack-goosetrack.onrender.com/api/users/google">
+        Sign Up with Google
+      </Link>
       <ImgWrapper />
     </Container>
   );
