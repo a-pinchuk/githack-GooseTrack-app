@@ -58,6 +58,8 @@ const CalendarPage = () => {
     navigate(`/calendar/day/${moment().format('YYYY-MM-DD')}`);
   };
 
+  const isDesktop = window.innerWidth >= 1440;
+
   return (
     <TourProvider
       steps={steps}
@@ -77,10 +79,9 @@ const CalendarPage = () => {
           ...base,
           '--reactour-accent': '#3E85F3',
           borderRadius: 8,
-          maxWidth: 640,
-          top: step === 1 ? 70 : step === 4 || step === 5 ? -230 : 20,
-
-          left: step === 1 ? -160 : -50,
+          maxWidth: isDesktop ? 640 : 350,
+          top: step === 1 ? 70 : 20,
+          left: isDesktop ? (step === 1 ? -160 : -50) : 0,
           color: props => props.theme.colors.primary_text_mode,
         }),
         maskArea: base => ({ ...base, rx: 8 }),
