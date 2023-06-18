@@ -74,6 +74,16 @@ const CalendarPage = () => {
           setStep(step + 1);
         }
       }}
+      prevButton={({ Button }) => {
+        return (
+          <Button
+            onClick={() => {
+              setStep(step - 1);
+            }}
+            kind="prev"
+          ></Button>
+        );
+      }}
       styles={{
         popover: base => ({
           ...base,
