@@ -1,9 +1,9 @@
-import React, { useEffect, Suspense, useState } from 'react';
+import React, { useEffect, Suspense, useState, useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import moment from 'moment';
-
+import { ThemeContext } from 'styled-components';
 import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
 import { CalendarContainer } from './CalendarPage.styled';
 import { TourProvider } from '@reactour/tour';
@@ -12,6 +12,7 @@ import { Loader } from 'components/Loader/Loader';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
+  const theme = useContext(ThemeContext);
 
   const [step, setStep] = useState(0);
 
@@ -58,8 +59,11 @@ const CalendarPage = () => {
     navigate(`/calendar/day/${moment().format('YYYY-MM-DD')}`);
   };
 
+  const isDesktop = window.innerWidth >= 1440;
+
   return (
     <TourProvider
+      theme={theme}
       steps={steps}
       currentStep={step}
       setCurrentStep={() => {
@@ -72,22 +76,39 @@ const CalendarPage = () => {
           setStep(step + 1);
         }
       }}
+      prevButton={({ Button }) => {
+        return (
+          <Button
+            onClick={() => {
+              setStep(step - 1);
+            }}
+            kind="prev"
+          ></Button>
+        );
+      }}
       styles={{
         popover: base => ({
           ...base,
           '--reactour-accent': '#3E85F3',
           borderRadius: 8,
-          maxWidth: 640,
-          top: step === 1 ? 70 : step === 4 || step === 5 ? -230 : 20,
-
-          left: step === 1 ? -160 : -50,
-          color: props => props.theme.colors.primary_text_mode,
+          maxWidth: isDesktop ? 640 : 350,
+          top: step === 1 ? 70 : 20,
+          left: isDesktop ? (step === 1 ? -160 : -50) : 0,
+          color: theme.colors.primary_text_mode,
+          backgroundColor: theme.colors.background_mode,
         }),
         maskArea: base => ({ ...base, rx: 8 }),
         maskWrapper: base => ({ ...base, color: '#504d4d' }),
+        arrow: base => ({ ...base, color: theme.colors.primary_text_mode }),
         badge: base => ({ ...base, left: '-0.8125em', right: 'auto' }),
         controls: base => ({ ...base, marginTop: 10 }),
-        close: base => ({ ...base, right: 8, left: 'auto', top: 8 }),
+        close: base => ({
+          ...base,
+          right: 8,
+          left: 'auto',
+          top: 8,
+          color: theme.colors.primary_text_mode,
+        }),
       }}
     >
       <CalendarContainer>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import gooseMainPage from '../../images/mainPage/tablet/tablet_goose_mainPage.png';
 import step2 from './img/step2.gif';
 import step3 from './img/step3.gif';
@@ -12,7 +13,14 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  max-width: 350px;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    max-width: 640px;
+  }
 `;
+
+const isDesktop = window.innerWidth >= 1440;
 
 export const steps = [
   {
@@ -21,7 +29,7 @@ export const steps = [
     content: (
       <Wrapper>
         <p>Hello! You are on this tab</p>
-        <img src={gooseMainPage} alt="Goose" />
+        {isDesktop && <img src={gooseMainPage} alt="Goose" />}
       </Wrapper>
     ),
   },
@@ -30,7 +38,7 @@ export const steps = [
     content: (
       <Wrapper>
         <p>Select the "Day" tab to navigate to the days</p>
-        <img src={step2} alt="Day" />
+        {isDesktop && <img src={step2} alt="Day" />}
       </Wrapper>
     ),
   },
@@ -42,7 +50,7 @@ export const steps = [
           You can also change months or days backwards by clicking prev or next
           button
         </p>
-        <img src={step3} alt="Change" />
+        {isDesktop && <img src={step3} alt="Change" />}
       </Wrapper>
     ),
   },
@@ -51,7 +59,7 @@ export const steps = [
     content: (
       <Wrapper>
         <p>You can also immediately jump to the day of the selected month</p>
-        <img src={step4_2} alt="Month" />
+        {isDesktop && <img src={step4_2} alt="Month" />}
       </Wrapper>
     ),
   },
@@ -63,7 +71,7 @@ export const steps = [
           Next, you can choose what type of task you want to create, p.s. if you
           swipe left, another type will open
         </p>
-        <img src={step5} alt="Set Tasks" />
+        {isDesktop && <img src={step5} alt="Set Tasks" />}
       </Wrapper>
     ),
   },
@@ -75,7 +83,7 @@ export const steps = [
           Click on "Add task", then enter the required text and finally create
           the task! Now it will always be here. Enjoy it and have a good day!
         </p>
-        <img src={step6} alt="Write Tasks" />
+        {isDesktop && <img src={step6} alt="Write Tasks" />}
       </Wrapper>
     ),
   },
